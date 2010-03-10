@@ -36,11 +36,7 @@ feature {NONE} -- Creation
 			request.add_parameter_record ("GATEWAY_INTERFACE", "CGI/1.1")
   			request.add_parameter_record ("SERVER_PROTOCOL", "HTTP/1.1")
   			request.add_parameter_record ("REQUEST_METHOD", "GET")
-  			-- request.add_parameter_record ("QUERY_STRING", "page=greeting")
   			request.add_parameter_record ("REQUEST_URI", "/program/creator/go_to.htm?page=greeting")
-  			-- request.add_parameter_record ("SCRIPT_NAME", "/program/creator")
-  			-- request.add_parameter_record ("PATH_INFO", "/go_to.htm")
-  			-- request.add_parameter_record ("PATH_TRANSLATED", "/var/www/html/msp_dev/go_to.htm")
   			request_string := request.as_fast_cgi_string (1)
 			socket.put_string (request_string)
 			from
