@@ -1,0 +1,58 @@
+
+LoadModule fastcgi_module modules/mod_fastcgi.so
+
+FastCgiExternalServer "/var/www/html/fast-cgi-production" -host localhost:7878
+
+<VirtualHost *:80>
+	ServerAdmin name@domain.com
+	DocumentRoot /var/www/html
+    	ServerName domain.com
+    	
+    	ErrorDocument 404 /www.domain.com/fastcgi/demo/go_to.htm?page=greeting
+
+	<Directory "/var/www/html/production">
+		RedirectMatch permanent [/]$ http://www.domain.com/fastcgi/demo/go_to.htm?page=greeting
+		Order allow,deny
+		Allow from all
+	</Directory>
+    	
+	Alias /fastcgi "/var/www/html/fast-cgi-production"
+
+	<Directory "/var/www/html/fast-cgi-production">
+		SetHandler fastcgi-script
+		Options ExecCGI
+		Order allow,deny
+		Allow from all
+	</Directory>
+	
+	Alias /personal "/var/www/html/production/personal"
+	
+</VirtualHost>
+ 
+<VirtualHost *:443>
+
+	ServerAdmin name@domain.com
+	DocumentRoot /var/www/html
+    	ServerName domain.com
+    	
+    	ErrorDocument 404 /www.domain.com/fastcgi/demo/go_to.htm?page=greeting
+
+	<Directory "/var/www/html/production">
+		RedirectMatch permanent [/]$ http://www.domain.com/fastcgi/demo/go_to.htm?page=greeting
+		Order allow,deny
+		Allow from all
+	</Directory>
+    	
+	Alias /fastcgi "/var/www/html/fast-cgi-production"
+
+	<Directory "/var/www/html/fast-cgi-production">
+		SetHandler fastcgi-script
+		Options ExecCGI
+		Order allow,deny
+		Allow from all
+	</Directory>
+	
+	Alias /personal "/var/www/html/production/personal"
+
+</VirtualHost>
+

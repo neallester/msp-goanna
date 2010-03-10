@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if [ $# != 2 ]; 
+then
+	echo "Usage: $0 <host> <username>"
+	echo "eg: $0 shell.goanna.info glennmaughan"
+	exit 1
+fi
+
+$GOANNA/src/scripts/package-web /tmp/goanna-web.tgz
+if [ $? != 0 ];
+then
+	echo "Error packaging web"
+	exit 1
+fi
+
+echo "Transfering package to $1"
+scp /tmp/goanna-web.tgz ${2}@${1}:
+if [ $? != 0 ];
+then
+	echo "Error copying web package"
+	exit 1
+fi
+
+echo "Unpacking package on $1"
+ssh -l $2 $1 "cd /home/groups/g/go/goanna/htdocs; tar xfzv ~/goanna-web.tgz"
+if [ $? != 0 ];
+then
+	echo "Error unpacking web package"
+	exit 1
+fi
+
+

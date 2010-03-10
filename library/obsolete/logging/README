@@ -1,0 +1,55 @@
+Project Goanna Library
+----------------------
+
+NOTE: This cluster is now obsolete. Use log4e instead.
+
+Logging
+-------
+
+The logging cluster provides a simple framework for system instrumentation
+and logging.
+
+Usage
+-----
+
+A LOGGER can be created that logs to a number of different channels for
+particular facilities. A facility can be any named logging service you 
+require, such as "system" or "sub-system".
+
+Channels write log messages to an IO_MEDIUM and can be set to filter written
+messages based on a maximum and minimum log level.
+
+Two convenience classes provide a standard file logger, STANDARD_LOGGER and 
+SHARED_STANDARD_LOGGER. Class SHARED_STANDARD_LOGGER implements a once function
+reference to a SHARED_LOGGER instance that can be shared via inheritance.
+
+An example of using the SHARED_STANDARD_LOGGER follows:
+
+
+	class TEST_LOGGER
+
+	inherit
+		SHARED_STANDARD_LOGGER
+			export
+				{NONE} all
+			end
+	
+	creation
+		make
+
+	feature
+
+		make is
+				-- Log a few messages
+			do
+				-- using the convenience routine 'log'
+				log (Error, "This is an error")
+				log (Critical, "This is a critical error")
+
+				-- using the logger directly with the "general" facility channel
+				Logger.channel (Standard_facility).write (Critical, 
+					"this is a critical error")
+			end
+
+	end
+

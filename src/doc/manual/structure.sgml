@@ -1,0 +1,17 @@
+<chapter>
+  <title>Structure</title>
+  <section>
+    <title>Design Rationale</title>
+    <para>This is the Design rationale</para>
+  </section>
+  <section>
+    <title>Libraries</title>
+    <para>Major components: servlet, xml-rpc, soap, log4e, etc</para>
+  </section>
+</chapter>
+
+<!--
+    Local Variables:
+        sgml-parent-document: ("manual.sgml" "book" "chapter")
+    End:
+-->

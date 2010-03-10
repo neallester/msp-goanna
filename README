@@ -1,0 +1,16 @@
+Project Goanna
+--------------
+
+Welcome to Project Goanna. This project aims to provide a framework and
+set of tools for building dynamic internet applications using the Eiffel
+language. You will find documentation for installing and using the Goanna
+libraries and tools in the 'doc' directory.
+
+I hope you find Project Goanna useful and also hope you can contribute to
+its development.
+
+All documentation is in HTML format and can be found in the 'doc' directory.
+
+Glenn Maughan
+6 November 2001
+

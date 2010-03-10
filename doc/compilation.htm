@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>Goanna Compilation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="style/site.css" type="text/css">
+</head>
+
+<body bgcolor="#FFCC99" text="#000000">
+<p><img src="images/headings_r21_c6.gif" width="115" height="41"> </p>
+<p class="indentp">The Goanna tools and examples use the GOBO geant and gexace 
+  tools to perform Ace file generation and to control the compilation process. 
+  You will need to have a recent CVS version of GOBO on your system to build Goanna.</p>
+<p class="indentp">All scripts rely on the enviornment variable GOANNA. It should 
+  be set to the root directory of the Goanna installation.</p>
+<p class="indentp">To initialise the library, build all examples and all tools, 
+  you can run geant on the build.eant file located in the root directory of the 
+  Goanna installation. To install the library on Unix, run:</p>
+<p class="indentcode"> cd $GOANNA/library<br>
+  geant install</p>
+<p class="indentp">To install the library on Windows, run:</p>
+<p class="indentcode">cd %GOANNA%/library<br>
+  geant install</p>
+<p class="indentp">To compile individual examples or tools you must first prepare 
+  the library by running <span class="code">geant</span> in the library directory. 
+  This will generate compiler specific files for all '<span class="code">.ge</span>' 
+  files by using the <span class="code">gepp</span> GOBO tool. Once the library 
+  has been initialised you can execute <span class="code">geant</span> in a particular 
+  example or tool directory.</p>
+<p class="indentp">The build rules provided by the geant files include:</p>
+<ul>
+  <li><span class="code">install</span> - prepare the directory for use. ie, generate 
+    compiler specific source files and Ace files.</li>
+  <li><span class="code">compile</span> - using the value of the <span class="code">GOBO_EIFFEL</span> 
+    environment variable compile all tools and examples using either the SmallEiffel 
+    ('<span class="code">se</span>') compiler or ISE ('<span class="code">ise</span>') 
+    compiler.</li>
+  <li><span class="code">compile_debug</span> - compile in debug mode with all 
+    assertion checking on.</li>
+  <li><span class="code">clean</span> - remove temporary build files.</li>
+  <li><span class="code">clobber</span> - remove all build files including generated 
+    executables.</li>
+</ul>
+<p class="indentp">For example, to build the standalone web server example using 
+  ISE Eiffel on Unix, run:</p>
+<p class="indentcode">cd $GOANNA/examples/servlet/standalone<br>
+  set GOBO_EIFFEL=ise<br>
+  geant compile</p>
+<p class="indentp">This will compile the example using ISE Eiffel in finalization 
+  mode. An executable will be generated in the current directory. If you need 
+  to compile in debug mode, then use the build rule '<span class="code">compile_debug</span>' 
+  instead. To use the SmallEiffel compiler set the <span class="code">GOBO_EIFFEL</span> 
+  variable to '<span class="code">se</span>'. You can also force the use of a 
+  particular compiler by using the build rules '<span class="code">compile_ise</span>', 
+  '<span class="code">compile_se</span>', '<span class="code">compile_debug_ise</span>' 
+  and '<span class="code">compile_debug_se</span>'.</p>
+<p class="indentp">Build rules are also provided to compile with the HACT and 
+  VisualEiffel compilers, however no testing has been performed using these compilers. 
+  If you have any success with these compilers please let <a href="mailto:glennmaughan@users.sourceforge.net">Glenn 
+  Maughan</a> know.</p>
+<p class="indentp">If you run <span class="code">geant</span> without any arguments 
+  it will display the build rules available in the '<span class="code">build.eant</span>' 
+  file found in the current directory.</p>
+<p class="indentp"><span class="indentp">Note, some of the library clusters and 
+  examples will not compile under SmallEiffel. They will be ported to SmallEiffel 
+  when time permits and compiler support allows. The following table shows the 
+  progress of the porting effort.</span></p>
+<div class="indentp">
+  <table border="0" class="p" width="75%">
+    <tr bgcolor="lightgrey" align="center"> 
+      <td align="left" width="48%"><b>Cluster/Application</b></td>
+      <td width="26%"><b>ISE Eiffel</b></td>
+      <td width="26%"><b>SmallEiffel</b></td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">library/utility</td>
+      <td width="26%">Yes</td>
+      <td width="26%">Yes</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">library/utility/codegen</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (ISE classes)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">library/utility/log4e</td>
+      <td width="26%">Yes</td>
+      <td width="26%">Yes</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">library/webservices/connectors/cgi</td>
+      <td width="26%">Yes</td>
+      <td width="26%">Yes</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">library/webservices/connectors/fast_cgi</td>
+      <td width="26%">Yes</td>
+      <td width="26%">Yes</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">library/webservices/connectors/stand_alone</td>
+      <td width="26%">Yes</td>
+      <td width="26%">Yes</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">library/models/dom</td>
+      <td width="26%">Yes</td>
+      <td width="26%">Yes</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">library/protocols/xmlrpc</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (agents)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">library/services</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (agents)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">library/servlet</td>
+      <td width="26%">Yes</td>
+      <td width="26%" >Yes</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">src/bdv</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (ISE classes)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">src/xmle</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (ISE classes)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">examples/bachelor</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (ISE classes)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">examples/dom_printer</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (ISE classes)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">examples/servlet/cgi</td>
+      <td width="26%">Yes</td>
+      <td width="26%">Yes</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">examples/servlet/fast_cgi</td>
+      <td width="26%">Yes</td>
+      <td width="26%">Yes</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">examples/servlet/standalone</td>
+      <td width="26%">Yes</td>
+      <td width="26%">Yes</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">examples/xmlrpc/client/addressbook</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (Vision, agents)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">examples/xmlrpc/client/calculator</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (Vision, agents)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">examples/xmlrpc/client/currenttime</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (Vision, agents)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">examples/xmlrpc/client/currenttime-web</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (agents)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">examples/xmlrpc/client/spellchecker</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (Vision, agents)</td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="48%">examples/xmlrpc/server</td>
+      <td width="26%">Yes</td>
+      <td width="26%" bgcolor="#FFCC00">No (agents)</td>
+    </tr>
+  </table>
+</div>
+<p class="indentp">&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,5 @@
+.error_message { color: red ; }
+.error_message a {color: red ; }
+.error_message a:link:hover { color: #CD853F ; }
+.error_message a:visited:hover { color: #CD853F ; }
+.required {color: green }

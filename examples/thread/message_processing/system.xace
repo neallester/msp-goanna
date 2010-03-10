@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<system name="message_processing">
+	<description>
+		description: "XAce file for Goanna message_processing example"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Colin Adams [colin-adams@users.sourceforge.net]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum License v2 (see forum.txt)."
+	</description>
+
+	<root class="ROOT_CLASS" creation="make"/>
+
+	<option name="multithreaded" value="true"/>
+	<option unless="${DEBUG}">
+		<option name="assertion" value="none"/>
+		<option name="finalize" value="true"/>
+	</option>
+	<option if="${DEBUG}">
+		<option name="assertion" value="all"/>
+		<option name="finalize" value="false"/>
+	</option>
+
+	<cluster name="root_cluster" location="${GOANNA}/examples/thread/message_processing"/>
+	
+	<mount location="${GOBO}/library/library.xace"/>
+	<mount location="${GOBO}/library/kernel.xace"/>
+	<mount location="${GOANNA}/library/library.xace"/>
+	<mount location="${GOANNA}/library/thread.xace"/>
+ 
+</system>

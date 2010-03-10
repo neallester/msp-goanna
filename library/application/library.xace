@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<library name="goanna_application">
+
+	<description>
+		description: "Xace file for the Goanna Web Application Framework Library"
+		copyright: "Copyright (c) Neal L. Lester and others"
+		license: "Eiffel Forum License v2 (see forum.txt)"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+	</description>
+
+	<cluster name="application" location="${GOANNA}/library/application">
+		<cluster name="goa_forms" location="$/forms" >
+			<cluster name="goa_parameters"  location="$/parameters" />
+		</cluster>
+		<cluster name="goa_servlets"  location="$/servlets" />
+		<cluster name="goa_facilities" location="$/facilities"/>
+		<cluster name="xml" >
+			<cluster name="goa_page" />
+			<cluster name="goa_redirect" />
+			<cluster name="goa_common" />
+			<cluster name="goa_xslt" location="$/xslt" />
+			<cluster name="goa_items" location="$/items" />
+		</cluster>
+	</cluster>
+		
+</library>

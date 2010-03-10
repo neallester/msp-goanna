@@ -1,0 +1,41 @@
+<html>
+<head><title>Servlet Servet Test</title></head>
+
+<body>
+
+<h2>Test basic servlet</h2>
+
+<p>Basic POST form:</p>
+<form action="http://bugs/fcgi-bin/servlet_server/basic" method="POST">
+<input type="text" name="parameter"><br>
+<input type="submit">
+</form>
+
+<p>Basic GET form:</p>
+<form action="http://bugs/fcgi-bin/servlet_server/basic" method="GET">
+<input type="text" name="parameter"><br>
+<input type="submit">
+</form>
+
+<h2>Test XMLE servlet</h2>
+<form action="http://bugs/fcgi-bin/servlet_server/xmle" method="POST">
+<input type="text" name="parameter"><br>
+<input type="submit">
+</form>
+
+<h2>Test DOM servlet</h2>
+<p>Pretty print source:</p>
+<form action="http://bugs/fcgi-bin/servlet_server/dom" method="POST">
+<input type="text" name="parameter"><br>
+<input type="submit">
+</form>
+
+<p>Compact source:</p>
+<form action="http://bugs/fcgi-bin/servlet_server/dom" method="POST">
+<input type="text" name="parameter"><br>
+<input type="hidden" name="compact" value="true">
+<input type="submit">
+</form>
+
+</body>
+</html>

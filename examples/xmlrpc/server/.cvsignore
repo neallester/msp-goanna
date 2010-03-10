@@ -1,0 +1,9 @@
+*.rc
+*.esd
+*.ace
+*.se
+*.log
+TESTGEN
+EIFGEN
+*.epr
+*ve.xace

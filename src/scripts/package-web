@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# != 1 ]; 
+then
+	echo "Usage: $0 <tarballname>"
+	exit 1
+fi
+
+echo "Packaging: $1"
+(cd $GOANNA/doc; tar -c -z -f $1 \
+	--exclude "_notes" \
+	--exclude "CVS" \
+	--exclude "*~" \
+	. )
+

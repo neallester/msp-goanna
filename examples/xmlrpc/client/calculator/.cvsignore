@@ -1,0 +1,7 @@
+*.rc
+*.log
+TESTGEN
+*.ace
+*ve.xace
+*.se
+EIFGEN

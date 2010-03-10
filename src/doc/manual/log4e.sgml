@@ -1,0 +1,432 @@
+<chapter>
+  <title>Logging (log4e)</title>
+  <para>The <literal>log4e</literal> library provides a complete framework 
+    for logging messages in an application. Logged messages can be processed 
+    based on priority and content and sent to multiple destinations. A destination, 
+    in Goanna log4e, is known as an appender. The types of appenders include 
+    files and the NT event log.
+  </para>
+  <para>The classes in <literal>log4e</literal> are a direct port of Jakarta log4j 
+    which can be found at <ulink url="http://jakarta.apache.org">the Apache
+    Jakarta project</ulink>. For the most part, the source 
+    has been ported as is. A number of Eiffel-like improvements have been made 
+    such as appropriate contracts, and the use of generic types. The general 
+    struture and usage of the library remains very similar to the original 
+    Java version.
+  </para>
+  
+  <section>
+    <title>Overview</title>
+    <para>The central object of the log4e library is the
+      <emphasis>hierarchy</emphasis>. The hierarchy holds each of the
+      logging <emphasis>categories</emphasis> on which messages 
+      can be logged. As its name suggests, the hierarchy maintains the
+      collection of categories in a hierarchy with a predefined root 
+      category at the top and user defined sub-categories beneath.
+    </para>
+    <para>Each category has a name, a logging priority and zero or 
+      more <emphasis>appenders</emphasis>. Different types
+      of appenders can log messages to different destinations, be it 
+      a file, NT event log or socket. They can also format those
+      messages any way required and filter messages based on priority 
+      and/or message content.
+    </para>
+  </section>
+
+  <section>
+    <title>The Category Hierarchy</title>
+    <para>The category hierarchy, represented by the class 
+      <classname>LOG_HIERARCHY</classname>, holds a collection of 
+      categories that you define. Multiple independant hierarchies can exist within 
+      an application. However, it is more common
+      to use one hierarchy with multiple categories to represent different 
+      logging areas.
+    </para>
+    <para><classname>LOG_HIERARCHY</classname> provides methods for accessing 
+      categories and setting hierarchy level
+      logging priorities. The hierarchy is the only object that can create 
+      instances of categories 
+      (<classname>LOG_CATEGORY</classname> and maintains the parents 
+      of each category internally. In addition, each hierarchy
+      instance initialises a <emphasis>root</emphasis> category that resides at 
+      the top of the category hierarchy. If required,
+      the root category can be used as the sole logging category in an
+      application.
+    </para>
+    
+    <section>
+      <title>Categories</title>
+      <para>The category hierarchy is determine by the names given to 
+	each category &mdash; a dot in the name indicates a 
+	parent-child relationship between categories. For example, 
+	if a category is created with the name 
+	<literal>a.b</literal> it identifies the category named 
+	<literal>b</literal> with the parent category named 
+	<literal>a</literal>. When this category is created the category 
+	hierarchy will also instantiate any intermediate
+	parent categories if needed. For the category named 
+	<literal>a.b</literal> the hierarchy will create a category
+	named <literal>a</literal> if it doesn't already exist and set 
+	it as the parent of <literal>b</literal>. A category
+	name can contain an arbitrary number of parts separated by 
+	dots ('<literal>.</literal>'). The hierarchy will manage the parents
+	automatically for you.
+      </para>
+      <para>The naming of categories follows your requirements for 
+	logging. Category hierarchies can be defined that
+	provide logging categories for an application as a whole, 
+	subsystems and/or source modules. You can create very simple
+	logging hierarchies, such as using only the root category, 
+	through to very complex hierarchies, such as providing a 
+	category for every source file or module in your application.
+      </para>
+      <para>A category can only be created by the category hierarchy by 
+	calling the <function>category</function>
+	function of <classname>LOG_CATEGORY</classname>. The sole 
+	parameter to this function specifies the name of the category
+	you would like to access. The hierarchy will create the 
+	category (and its parents) if required and return the category
+	to you. This ensures that there will only be one instance 
+	of a named category in each category hierarchy and that it is
+	correctly positioned in the hierarchy. Once you have a 
+	reference to the category you can then configure the category's
+	priority and appenders and log messages to it. For example, given the
+	following variables declarations:
+      </para>
+      <programlisting>
+	hierarchy: LOG_HIERARCHY
+	category: LOG_CATEGORY
+      </programlisting>
+      <para>
+	you can create a category named <literal>server.access</literal> and
+	assign it to the variable <varname>category</varname> using:
+      </para>
+      <programlisting>
+	category := hierarchy.category ("server.access")
+      </programlisting>
+      <para>Messages can be sent to a category using the routines 
+	<function>debugging</function><footnote><para>The original 
+	    log4j library uses the routine name 
+	    <function>debug</function> however this is a reserved word 
+	    in Eiffel and has therefore been renamed 
+	    <function>debugging</function></para></footnote>,
+	<function>warn</function>, <function>info</function>, 
+	<function>error</function>, <function>fatal</function> or
+	<function>log</function> to log at predefined priorities or 
+	a specified priority in the case of <function>log</function>. 
+      </para>
+    </section>
+
+    <section>
+      <title>Priorities</title>
+      <para>
+        Each log message has a priority which can determine
+	what should be done with the message, whether it should be written to a
+	log file or discarded. All log4e priorities are defined in the class
+        <classname>LOG_PRIORITY_CONSTANTS</classname> of type
+        <classname>LOG_PRIORITY</classname> and range from the lowest priority
+        <constant>Debug_p</constant> through <constant>Info_p</constant>,
+        <constant>Warning_p</constant> and <constant>Error_p</constant>, to the
+        highest priority <constant>Fatal_p</constant>. The logging priorities are
+        represented by a positive integer ranging from 50,000 for
+        <constant>Fatal_p</constant> through to 10,000 for
+        <constant>Debug_p</constant>.
+	<footnote>
+	  <para>
+	    The integers representing
+	    priorities could just as easily ranged from 5 to 1. The numbers were
+	    originally used in the <application>log4j</application> library and
+	    it was decided not to change them.
+	  </para>
+	</footnote> This is to facilitate comparisons
+        between priorities to determine if a log message matches or exceeds a set
+        priority and should therefore be written to a log file.
+      </para>
+      <para>
+        A log priority also has a string representation that identifies the
+        priority and can be written to log files. For example, the
+        <constant>Debug_p</constant> has the string representation
+        <literal>DEBUG</literal> which can be inserted into a log message during
+        the formatting process.
+      </para>
+      <para>
+	Each category can have its own priority setting which determines the
+	level of log messages that will be processed or ignored. If a category
+	does not have a priority set it will inherit one from its parent. The
+	category priority determines the level of logging that will take place
+	on that category &mdash; all log messages that meet or exceed the
+	priority will be logged, all others will be discarded.
+      </para>
+      <para>
+	To set the priority of a category you need to call
+	<function>set_priority</function> and pass a priority object from the
+	class <classname>LOG_PRIORITY_CONSTANTS</classname>. For example, you
+	can set the logging priority of the category defined above to
+	<constant>Info_p</constant> using:
+	<programlisting>
+	  category.set_priority (Info_p)
+	</programlisting>
+	after which you can access the category's priority using the function
+	<function>priority</function> which will return the priority or the
+	parent category's priority if one has not been set.
+      </para>
+      <para>
+	In addition to priorities set at the level of categories, a priority can
+	be set at the hierarchy level. A hierarchy's priority is set during
+	initialisation. The creation procedure <function>make</function>
+	specifies a single argument, <literal>priority</literal>, which is used
+	to set its priority level. The hierarchy priority level is checked
+	before any category level priority to determine if a log message should
+	be handled.
+      </para>
+      <para>
+	Fine grained control over priorities can also be performed at the
+	hierarchy level by disabling a particular priority (and and priorities
+	below it). When a hierarchy is first created all priorities are enabled
+	by default. If you need to disable a priority for an entire hierarchy,
+	the most efficient way is to call <function>disable</function> of
+	<classname>LOG_HIERARCHY</classname> passing the priority to
+	disable. Convenience routines are also included to disable the most
+	common priorities including <function>disable_debug</function> and
+	<function>disable_info</function> used to disable debugging and
+	information logging, respectively. You can also enable or disable all
+	levels of logging using the functions <function>enable_all</function>
+	and <function>disable_all</function>.
+      </para>
+      <para>
+	The logging hierarchy typically determines whether to handle a message
+	at a particular priority using internal integer comparisons. You can
+	also determine whether a log message will be handled by calling
+	<function>is_enabled_for</function> and passing the relevant priority
+	object. The function will return <literal>True</literal> if that level
+	of logging or above is enabled.
+      </para>
+    </section>
+
+    <section>
+      <title>Additive Categories</title>
+      <para>
+	Once a category has handled a log message it can pass it on to its parent
+	for additional handling. This is known as an
+	<firstterm>additive</firstterm> category. The parent can then handle the
+	log message and pass on to its parent if it is also additive. A category
+	is additive by default as indicated by the query
+	<function>is_additive</function>. If you need to change the additive
+	status of a category call <function>set_additive</function> passing
+	<literal>True</literal> or <literal>False</literal> depending on the
+	status you need.
+      </para>
+      <para>
+	The following table shows the affect of the
+	<function>is_additive</function> flag.
+      </para>
+      <table frame="all">
+	<title>Affect of <function>is_additive</function> flag.</title>
+	<tgroup cols="3" align="left" colsep="1" rowsep="1">
+	  <thead>
+	    <row>
+	      <entry>Category Name</entry>
+	      <entry><function>is_additive</function></entry>
+	      <entry>Handled by</entry>
+	    </row>
+	  </thead>
+	  <tbody>
+	    <row>
+	      <entry><literal>root</literal></entry>
+	      <entry>not applicable</entry>
+	      <entry><literal>root</literal></entry>
+	    </row>
+	    <row>
+	      <entry><literal>x</literal></entry>
+	      <entry><literal>True</literal></entry>
+	      <entry><literal>x</literal>, <literal>root</literal></entry>
+	    </row>
+	    <row>
+	      <entry><literal>x.y</literal></entry>
+	      <entry><literal>True</literal></entry>
+	      <entry><literal>x</literal>, <literal>y</literal> and
+		<literal>root</literal></entry>
+	    </row>
+	    <row>
+	      <entry><literal>x.y.z</literal></entry>
+	      <entry><literal>True</literal></entry>
+	      <entry><literal>x</literal>, <literal>y</literal>,
+		<literal>z</literal> and <literal>root</literal></entry>
+	    </row>	    
+	    <row>
+	      <entry><literal>security</literal></entry>
+	      <entry><literal>False</literal></entry>
+	      <entry><literal>security</literal></entry>
+	    </row>
+	    <row>
+	      <entry><literal>security.access</literal></entry>
+	      <entry><literal>True</literal></entry>
+	      <entry><literal>access</literal> and
+	      <literal>security</literal></entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </table>
+    </section>
+
+    <section>
+      <title>Logging</title>
+      <para>
+	To send a log message of each priority to the category we created earlier,
+	you can write:
+      </para> 
+      <programlisting>
+	category.debugging ("This is a debug message")
+	category.info ("This is an information message")
+	category.warn ("This is a warning message")
+	category.error ("This is an error message")
+	category.fatal ("This is a fatal message")
+	category.log (hierarchy.Info_p, "This is another information message")
+      </programlisting>
+      <para>
+	Each of the statements send a message to the
+	<literal>server.access</literal> category with different priorities. The
+	final statement explicitly logs a message with the priority
+	<constant>Info_p</constant> as defined in
+	<classname>LOG_PRIORITY_CONSTANTS</classname>. Many of the log4e classes
+	inherit (sometimes indirectly) from
+	<classname>LOG_PRIORITY_CONSTANTS</classname> and therefore provide
+	access to all of the predefined priority constants, as used in the
+	<function>log</function> example above. We could just as easily
+	inherited from the <classname>LOG_PRIORITY_CONSTANTS</classname> class
+	to access the priority directly.
+      </para>
+      <para>
+	All of the logging routines take an object of type
+	<classname>ANY</classname> as the <parameter>message</parameter>
+	parameter thus allowing objects of arbitrary types to be logged. The
+	category calls <function>out</function> on the object to convert it to a
+	string that can then be written to the appropriate log. Basic types,
+	such as <classname>INTEGER</classname>, <classname>DOUBLE</classname>
+	and <classname>CHARACTER</classname>, all define reasonable
+	implementations of <function>out</function>. If you need to log
+	objects other than basic types you will need to redefine
+	<function>out</function> to return the
+	<classname>STRING</classname> representation you require. For example,
+	given the following class <classname>USER</classname>: 
+      </para>
+      <programlisting>
+	class USER
+	inherit
+	    ANY
+	        redefine out end
+        creation 
+	    make
+        feature -- Initialisation
+
+            make (first, last: STRING) is
+                do
+                    first_name := first
+                    surname := last
+                end
+
+	feature -- Access
+
+	    first_name: STRING
+
+	    surname: STRING
+
+	feature -- Basic routines
+
+	    out: STRING is
+	        do
+	            create Result.make (100)
+	            Result.append ("USER first_name=" + first_name)
+	            Result.append (" surname=" + surname)
+	        end
+
+	end -- class USER
+      </programlisting>
+      <para>
+	We can create an instance and log details about that instance to a
+	category by passing the instance itself: 
+      </para>
+      <programlisting>
+	create user.make ("Jim", "Smith")
+	category.info (user)
+      </programlisting>
+      <para>
+	The string that will be sent to the log will be: <computeroutput>USER
+	first_name=Jim surname=Smith</computeroutput>
+      </para>
+    </section>
+  </section>
+  
+  <section>
+    <title>Appenders</title>
+    <para>Describe the purpose of appenders and how to create one.</para>
+    <section>
+      <title>File Appenders</title>
+      <para>Describe general file appender classes.</para>
+      <section>
+	<title>Standard Out and Standard Error</title>
+	<para>Describe standard out and standard error file appenders.</para>
+      </section>
+      <section>
+	<title>Rolling Files</title>
+	<para>Describe rolling file appenders: rolling file, calendar
+	  rolling file and externally rolled.</para>
+      </section>
+      <section>
+	<title>NT Event Log</title>
+	<para>Describe logging to the NT Event log.</para>
+      </section>
+    </section>
+    <section>
+      <title>Appender Layouts</title>
+      <para>Describe creation and usage of layouts.</para>
+      <section>
+	<title>Simple Layout</title>
+	<para>Describe simple layouts.</para>
+      </section>
+      <section>
+	<title>Date/Time Layout</title>
+	<para>Describe time layout and date time layouts.</para>
+      </section>
+      <section>
+	<title>Pattern Layout</title>
+	<para>Describe pattern layouts.</para>
+      </section>
+    </section>
+    <section>
+      <title>Filters</title>
+      <para>Describe filtering of log events.</para>
+      <section>
+	<title>Priority Match Filters</title>
+	<para>Describe priority match filters.</para>
+      </section>
+      <section>
+	<title>Priority Range Filters</title>
+	<para>Describe priority range filters.</para>
+      </section>
+      <section>
+	<title>String Match Filters</title>
+	<para>Describe string match filters.</para>
+      </section>
+    </section>
+  </section>
+  <section>
+    <title>Configuration</title>
+    <para>Describe general configuration.</para>
+    <section>
+      <title>Programmatic Configuration</title>
+      <para>Describe general programmatic configuration and shared logging hierarchies.</para>
+    </section>
+    <section>
+      <title>XML Configuration</title>
+      <para>Describe configuration using XML.</para>
+    </section>
+  </section>
+</chapter>
+
+<!--
+    Local Variables:
+        sgml-parent-document: ("manual.sgml" "book" "chapter")
+    End:
+-->
+

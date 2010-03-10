@@ -1,0 +1,43 @@
+Eiffel Compilation Manager
+Version 6.5.8.1777 GPL Edition - linux-x86
+
+Degree 6: Examining System
+Degree 5: Parsing Classes
+Degree 4: Analyzing Inheritance
+Degree 3: Checking Types
+Degree 2: Generating Byte Code
+Degree 1: Generating Metadata
+Melting System Changes
+Degree -2: Constructing Polymorphic Table
+Removing Unused Code
+
+Degree -3: Generating Optimized Code
+System Recompiled.
+You must now run "finish_freezing" in:
+	/home/neal/goanna/test/utility/EIFGENs/xutility/F_code
+Eiffel C/C++ Compilation Tool - Version 6.5
+Copyright Eiffel Software 1985-2009. All Rights Reserved
+
+Preparing C compilation
+Compiling C code in E1
+Compiling C code in C16
+Compiling C code in C14
+Compiling C code in C15
+Compiling C code in C13
+Compiling C code in C12
+Compiling C code in C11
+Compiling C code in C10
+Compiling C code in C9
+Compiling C code in C8
+Compiling C code in C7
+Compiling C code in C6
+In file included from big_file_C6_c.c:10:
+uc253.c: In function `F586_4641':
+uc253.c:264: warning: comparison is always true due to limited range of data type
+Compiling C code in C5
+Compiling C code in C4
+Compiling C code in C3
+Compiling C code in C2
+Compiling C code in C1
+Compiling C code in E2
+C compilation completed

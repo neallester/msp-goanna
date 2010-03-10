@@ -1,0 +1,13 @@
+Project Goanna Library
+----------------------
+
+Utility
+-------
+
+This cluster provides utility classes and compiler portability classes.
+
+The utility classes include a Base 64 encoder and decoder, string tokenizers
+and a streamable string.
+
+The spec cluster provides classes used to assist porting Goanna applications
+to the SmallEiffel compiler.

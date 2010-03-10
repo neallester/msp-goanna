@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+
+<project name="goanna" default="help">
+
+	<description>
+		description: "Eiffel Ant file for Goanna"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-05-17 10:52:14 -0700 (Wed, 17 May 2006) $"
+		revision: "$Revision: 495 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+		thanks: "Modified version of GOBO ant files"
+	</description>
+
+	<target name="help">
+		<echo message="usage:"/>
+		<echo message="   geant install"/>
+		<echo message="   geant compile"/>
+		<echo message="   geant compile_debug"/>
+		<echo message="   geant clean"/>
+		<echo message="   geant clobber"/>
+	</target>
+
+	<target name="install" depend="init">
+		<description>
+			Install Goanna.
+		</description>
+
+		<set name="target" value="install"/>
+		<geant file="build.eant" target="${target}" dir="library"/>
+		<geant target="do_all"/>
+	</target>
+
+	<target name="compile" depend="install">
+		<description>
+			Compile all Goanna examples and tools.
+		</description>
+
+		<set name="target" value="compile"/>
+		<geant target="do_all"/>
+	</target>
+	
+	<target name="compile_debug" depend="install">
+		<description>
+			Compile all Goanna examples and tools in debug mode.
+		</description>
+
+		<set name="target" value="compile_debug"/>
+		<geant target="do_all"/>
+	</target>
+
+	<target name="clean" depend="init">
+		<description>
+			Remove intermediary generated files.
+		</description>
+
+		<set name="target" value="clean"/>
+		<geant target="do_all"/>
+	</target>
+
+	<target name="clobber" depend="init">
+		<description>
+			Remove all generated files.
+		</description>
+
+		<set name="target" value="clobber"/>
+		<geant target="do_all"/>
+	</target>
+
+
+<!-- Implementation -->
+
+	<target name="init">
+		<!-- do nothing -->
+	</target>
+
+	<target name="do_all" depend="init">
+		<description>
+			Call 'geant' with the same target ${target}
+			in all subdirectories.
+		</description>
+		<geant file="build.eant" target="${target}" dir="examples"/>
+		<geant file="build.eant" target="${target}" dir="doc"/>
+		<geant file="build.eant" target="${target}" dir="src"/>
+		<geant file="build.eant" target="${target}" dir="library"/>
+	</target>
+
+</project>

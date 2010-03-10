@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+
+<project name="utility" default="help">
+
+	<description>
+		description: "Eiffel Ant file for the Goanna Utility Library"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2010-02-28 10:44:18 -0800 (Sun, 28 Feb 2010) $"
+		revision: "$Revision: 628 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+		thanks: "Modified version of GOBO build.xml files"
+	</description>
+
+	<inherit>
+		<parent location="${GOBO}/misc/ge2e.eant"/>
+	</inherit>
+
+	<target name="help">
+		<echo message="usage:"/>
+		<echo message="   geant install"/>
+		<echo message="   geant clean"/>
+		<echo message="   geant clobber"/>
+	</target>
+
+	<target name="install">
+		<description>
+			Install the Goanna Kernel Library.
+			Generate Eiffel files from .ge files.
+		</description>
+	
+		<set name="gepp_file" value="bit_manipulation"/>		
+		<geant target="ge2e">
+			<argument name="spec_dir" value="spec"/>
+			<argument name="gepp_dir" value="."/>
+			<argument name="gepp_file" value="bit_manipulation"/>
+		</geant>
+		<set name="gepp_file" value="character_manipulation"/>		
+		<geant target="ge2e">
+			<argument name="spec_dir" value="spec"/>
+			<argument name="gepp_dir" value="."/>
+			<argument name="gepp_file" value="character_manipulation"/>
+		</geant>
+		<set name="gepp_file" value="goa_string_manipulation"/>		
+		<geant target="ge2e">
+			<argument name="spec_dir" value="spec"/>
+			<argument name="gepp_dir" value="."/>
+			<argument name="gepp_file" value="goa_string_manipulation"/>
+		</geant>
+		<set name="gepp_file" value="integer_formatter"/>
+		<geant target="ge2e">
+			<argument name="spec_dir" value="spec"/>
+			<argument name="gepp_dir" value="."/>
+			<argument name="gepp_file" value="integer_formatter"/>
+		</geant>
+		<set name="gepp_file" value="ref_type_routines"/>
+		<geant target="ge2e">
+			<argument name="spec_dir" value="spec"/>
+			<argument name="gepp_dir" value="."/>
+			<argument name="gepp_file" value="ref_type_routines"/>
+		</geant>
+	</target>
+
+	<target name="clean">
+		<description>
+			Remove intermediary generated files.
+		</description>
+
+	</target>
+
+	<target name="clobber">
+		<description>
+			Remove all generated files.
+		</description>
+
+		<geant target="clean"/>
+		<delete directory="spec"/>
+	</target>
+
+</project>

@@ -1,0 +1,51 @@
+Eiffel Compilation Manager
+Version 6.5.8.1777 GPL Edition - linux-x86
+
+Degree 6: Examining System
+Degree 5: Parsing Classes
+Degree 6: Examining System
+Degree 5: Parsing Classes
+-------------------------------------------------------------------------------
+
+Warning code: VD80
+
+Configuration warning
+
+Class: L4E_LOGGER
+File name: /home/neal/log4e/library/spec/singlethreaded/l4e_logger_i.e
+Expected file name: /home/neal/log4e/library/spec/singlethreaded/l4e_logger.e
+
+
+-------------------------------------------------------------------------------
+
+Error code: VTCT
+
+Error: type is based on unknown class.
+What to do: use an identifier that is the name of a class in the universe.
+
+Class: GOA_SHARED_ENCODING_REGISTRY
+Unknown class name: REGISTRY in xsoap
+
+-------------------------------------------------------------------------------
+
+Error code: VTCT
+
+Error: type is based on unknown class.
+What to do: use an identifier that is the name of a class in the universe.
+
+Class: GOA_SOAP_CONSTANTS
+Unknown class name: GOA_SOAP_VALUE_FACTORY in xsoap
+
+-------------------------------------------------------------------------------
+
+Error code: VTCT
+
+Error: type is based on unknown class.
+What to do: use an identifier that is the name of a class in the universe.
+
+Class: GOA_SOAP_ENCODING
+Unknown class name: GOA_SOAP_VALUE in xsoap
+
+-------------------------------------------------------------------------------
+
+BUILD FAILED!

@@ -1,0 +1,98 @@
+system
+	bachelor
+
+root
+	APPLICATION: "make"
+
+default
+	assertion (all)
+	multithreaded (no)
+	console_application (no)
+	dynamic_runtime (no)
+	dead_code_removal (yes)
+	profile (no)
+	line_generation (no)
+	debug  (yes)
+	array_optimization (no)
+	inlining (no)
+	inlining_size ("4")
+	precompiled ("$EIFFEL4\precomp\spec\$PLATFORM\base");
+
+
+cluster
+	
+	goanna 					:	"c:\goanna";
+	library (goanna) 			: 	"$\library";
+	fast_cgi (library) 			:	"$\fast_cgi"
+	efcgi (fast_cgi)				:	"$\efcgi"
+	efcgi_servlet (fast_cgi)		:	"$\servlet"
+	servlet (library) 			:	"$\servlet"
+	servlet_http (servlet)			:	"$\http"
+	goanna_utility (library) 		:	"$\utility"
+	goanna_utility_ise (goanna_utility): 	"$\spec\ise"
+		exclude
+			"bit_manipulation.e";
+		end
+	httpd (goanna)				: 	"$\tools\httpd"
+	goanna_utility_ise4 (goanna_utility) : "$\spec\ise4"
+	logging (library) 			:	"$\logging"
+	datetime (library) 			:	"$\datetime"
+	gobo (goanna)				:	"$\gobo"
+	kl_kernel (gobo)				:	"$\library\kernel";
+	kl_kernel_spec (gobo)			:	"$\library\kernel\spec\ise";
+	ds_container (gobo)			:	"$\library\structure\container";
+	ds_dispenser (gobo)			:	"$\library\structure\dispenser";
+	ds_list (gobo)				:	"$\library\structure\list";
+	ds_set (gobo)				:	"$\library\structure\set";
+	ds_sort (gobo)				:	"$\library\structure\sort";
+	ds_support (gobo)			:	"$\library\structure\support";
+	ds_table (gobo)				:	"$\library\structure\table";
+	dt_clock (gobo)				:	"$\library\time\clock";
+	dt_date (gobo)				:	"$\library\time\date";
+	dt_spec (gobo)				:	"$\library\time\spec\ise";
+	dt_time_zone (gobo)			:	"$\library\time\time_zone";
+	et_ast_assertion (gobo)		:	"$\library\tools\ast\assertion";
+	et_ast_class (gobo)			:	"$\library\tools\ast\class";
+	et_ast_constant (gobo)			:	"$\library\tools\ast\constant";
+	et_ast_expression (gobo)		:	"$\library\tools\ast\expression";
+	et_ast_feature (gobo)			:	"$\library\tools\ast\feature";
+	et_ast_instruction (gobo)		:	"$\library\tools\ast\instruction";
+	et_ast_name (gobo)			:	"$\library\tools\ast\name";
+	et_ast_type (gobo)			:	"$\library\tools\ast\type";
+	et_error (gobo)				:	"$\library\tools\error";
+	et_parser (gobo)				:	"$\library\tools\parser";
+	ut_command (gobo)			:	"$\library\utility\command";
+	ut_error (gobo)				:	"$\library\utility\error";
+	ut_formatter (gobo)			:	"$\library\utility\formatter";
+	ut_support (gobo)			:	"$\library\utility\support";
+	ut_spec (gobo)				:	"$\library\utility\spec\ise";
+
+	root_cluster (goanna)			:	"$\examples\bachelor"
+
+	application (root_cluster) 		: 	"$\application"; -- "library" refers to the goanna library subdirectory
+	user (application)			:	"$\user";
+	topic	(application)			: 	"$\topic";
+	domain (application) 			:	"$\domain";
+	unique_string_sequence (application) 	: 	"$\unique_string_sequence";
+	content_container (application) 	: 	"$\content_container";
+	form_elements (content_container)	: 	"$\form_elements"
+	forms (content_container) 		: 	"$\forms";
+	page_sequence_elements (application) 	: 	"$\page_sequence_elements";
+
+		-- EiffelBase
+	all base:						"$EIFFEL4\library\base"
+		exclude
+			"desc";"table_eiffel3"
+		end
+
+	thread:						"$EIFFEL4\library\thread"
+
+external
+	include_path:
+		"c:\goanna\library\utility\spec\ise4\include",
+		"c:\goanna\gobo\library\time\include"
+
+	object:	
+		"c:\goanna\library\datetime\clib\Debug\datetime.lib",
+		"c:\goanna\sockets\C\Debug\cl.lib"
+end

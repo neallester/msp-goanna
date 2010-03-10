@@ -1,0 +1,48 @@
+Project Goanna Example
+----------------------
+
+Servlet
+-------
+
+This example demonstrates the different types of servlet that Project Goanna
+supports. The servlet types include:
+
+	simple - standard hard-coded HTML page generation
+
+	dom - a dynamically created and streamed DOM document
+
+	xmle - a streamed DOM object created from an XMLE generated temmplate
+
+Usage
+-----
+
+You must register the servlet manager in Apache. Add a line similar to the
+following to httpd.conf:
+
+	FastCgiExternalServer "/home/httpd/fcgi-bin/servlet_server" \
+		-port localhost:8000 -idle-timeout 4000
+
+Change localhost and the port to the location and port that the server
+application will be running on. 
+
+The server must be given a port number and backlog size as command line
+arguments when it is executed.
+
+Then run the server either on the command line or within your IDE and 
+request the following page in your browser:
+
+	http://localhost/fcgi-bin/servlet_server
+
+You will receive a "Not Found" page. This is because each of the servlets is
+registered with a path name. To request a particular servlet add the path
+name "simple", "dom" or "xmle" to the URI. For example:
+
+	http://localhost/fcgi-bin/servlet_server/simple
+
+will request a response from the "simple" servlet.
+
+NOTE: To call the xmle servlet you must have the binary DOM file from the
+xml file test.xml located in the execution directory. To generate this file
+run the XMLE tool over the file test.xml located in the 'templates' directory
+and copy the file to the execution directory (eg, the EIFGEN/W_code directory
+for ISE Eiffel).

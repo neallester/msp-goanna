@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<system name="web_application">
+	<description>
+	  author: "Neal L Lester [neallester@users.sourceforge.net]"
+	  date: "$Date: 2006-12-21 08:37:42 -0800 (Thu, 21 Dec 2006) $"
+	  revision: "$Revision: 525 $"
+	  copyright: "(c) Neal L Lester"
+	  License: "Eiffel Forum License Version 2 (see forum.txt)"
+	</description>
+
+	<cluster name="root_cluster" location=".">
+	  <cluster name="servlets" />
+	  <cluster name="parameters" />
+	</cluster>
+
+	<root class="APPLICATION_SERVER" creation="application_make"/>
+
+	<mount location="${GOBO}/library/library.xace"/>
+	<mount location="${GOBO}/library/kernel.xace"/>
+	<mount location="${GOANNA}/library/library.xace"/>
+	<mount location="${GOANNA}/library/application/library.xace" />
+</system>

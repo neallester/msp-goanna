@@ -1,0 +1,21 @@
+test
+
+	Goanna
+
+default
+
+	-- NOTE: This test harness must be executed 
+	-- in a Cygwin shell or under Linux.
+
+	class ("TEST_[A-Z0-9_]*")
+	feature ("test_[a-z0-9_]*")
+	prefix ("X")
+	testgen ("TESTGEN")
+	compile ("bash build-ise.sh")
+	execute ("goanna")
+
+cluster
+
+	test_log4e: "$GOANNA/testmt/log4e"
+
+end

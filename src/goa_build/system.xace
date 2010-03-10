@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<system name="goa_build">
+	<description>
+		description: "XAce file for goa_build application"
+		date: "$Date: 2007-04-02 20:44:49 -0700 (Mon, 02 Apr 2007) $"
+		revision: "$Revision: 552 $"
+		author: "Neal L. Lester [neal@3dsafety.com]"
+		copyright: "Copyright (c) Neal L. Lester"
+		license: "Eiffel Forum License v2 (see forum.txt)"
+	</description>
+
+	<root class="GOA_BUILD" creation="make"/>
+
+	<cluster name="goa_build" location=".">
+		<cluster name="goa_xslt" location="$GOANNA/library/application/xml/xslt" />
+	</cluster>
+
+	<mount location="${GOBO}/library/library.xace"/>
+	<mount location="${GOBO}/library/kernel.xace"/>
+	<mount location="${GOANNA}/library/library.xace"/>
+</system>

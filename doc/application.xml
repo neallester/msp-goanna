@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://www.gobosoft.com/eiffel/gobo/documentation"
+	 id="application_introduction">
+  <chapterinfo>
+    <copyright>
+      <year>2007</year>
+      <holder>Neal L. Lester and others</holder>
+    </copyright>
+    <author>
+      <firstname>Neal</firstname>
+      <surname>Lester</surname>
+    </author>
+    <email>neallester@users.sourceforge.net</email>
+    <date>June 28, 2007</date>
+  </chapterinfo>
+  <title>Goanna HTML Web Application Framework</title>
+  <para>
+
+The Goanna Web Application Framework provides a complete open source
+solution for developing cross platform cross compiler web based
+applications in Eiffel.  The major features of the library include:
+
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>
+
+XSLT based HTML generation.  A web application using the framework
+generates XML that conforms to a specified schema.  <ulink
+url="http://www.w3.org/TR/xslt20/">XSLT</ulink> is then used to generate
+HTML. With a well defined schema, content and presentation are nicely
+separated.  Extendible Eiffel classes with features for creating each
+element of the schema and preconditions specifying the schema
+validity rules make creating the XML easy. Developers can use the
+included schema and XSLT transforms (in which case no knowledge of
+XSLT is required), or they can define a new schema using <ulink
+url="http://relaxng.org/compact-tutorial-20030326.html">Relax NG
+Compact Syntax</ulink>.  User defined schemas may include those
+provided in the framework (or other user defined schemas). A build
+tool automatically creates the necessary support classes for authoring
+XML using a custom defined schema.
+
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+
+A standardized approach to form processing. The semantics of each form
+(mandatory, expected, and possible parameters etc.) are easily specified by the
+developer.  The content of incoming requests is verified by the
+framework to ensure it conforms with the expected semantics before
+form processing occurs.  Forms may include hidden fields that the
+framework uses to verify that the application's state at processing
+time remains consistent with the state at form generation time.  This
+allows management of the problematic "Back Button". Every form
+parameter is processed by it's own object (of type
+<classname>DEFERRED_PARAMETER</classname>) making reuse of processing
+logic easy via inheritance.
+
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+
+Control of page sequencing by a single feature in a single class
+(<classname>APPLICATION_CONFIGURATION</classname>.<featurename>next_page</featurename>)
+makes the design of complex user interactions easier.
+
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+
+Support for <ulink url="http://www.w3.org/Style/CSS/">Cascading Style
+Sheets</ulink> and Javascript.
+
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+
+SSL aware applications.  Encryption is done by the web server, but the
+framework will automatically forward insecure requests for secured information
+to a secure page before processing.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+
+Support for <ulink
+url="http://httpd.apache.org/docs/1.3/vhosts/name-based.html">name
+based virtual domain hosting</ulink>.
+
+      </para>
+    </listitem>
+  </itemizedlist>
+  <section id="current_status">
+    <title>Current Status</title>
+    <para>
+      
+The Goanna Web Application Framework is considered Beta software.  As
+of mid September, 2005, it
+has been in production use at a low volume Internet facing website for
+over one year.  The <projectname>goa_build</projectname> application
+has undergone much less usage.  In particular,
+<projectname>goa_build</projectname> error handling is largely untested.
+
+    </para>
+  </section>
+  <section id="building_environment">
+    <title>Building the Development Environment</title>
+    <orderedlist>
+      <listitem>
+	<para>
+
+Install the <ulink
+url="http://sourceforge.net/svn/?group_id=24591">Subversion version</ulink>
+of <ulink url="http://www.gobosoft.com">the GOBO library</ulink> as
+described <ulink
+url="http://gobo-eiffel.svn.sourceforge.net/viewvc/gobo-eiffel/gobo/trunk/Readme.txt?view=markup">here</ulink>
+taking care to set all of the required environment variables and
+<ulink
+url="http://gobo-eiffel.svn.sourceforge.net/viewvc/gobo-eiffel/gobo/trunk/work/bootstrap/Readme.txt?view=markup">bootstrap</ulink>
+the library.
+
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+
+Install version 2.2 of the <ulink url="http://www.berenddeboer.net/eposix/">e-POSIX
+Library</ulink> taking care to set all of the required environment
+variables.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+
+Install the
+<ulink url="http://sourceforge.net/svn/?group_id=14711">SVN version of Goanna</ulink>
+as described
+<ulink url="http://goanna.sourceforge.net/">here</ulink>
+taking care to set the <envar>GOANNA</envar> environment variable.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+
+Install <ulink url="http://www.fastcgi.com/">FastCgi</ulink> on the web server
+that will be hosting the application.  This step is not necessary if
+you will be configuring the application as a stand alone web server,
+but Goanna's stand alone web application facility is not recommended
+for production use.
+	  
+	</para>
+	<para>
+
+A sample Apache httpd.conf file is provided in <ulink
+url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/httpd.conf.sample?view=markup">$GOANNA/examples/application</ulink>.
+Each Goanna Application running on the web server must have it's own
+FastCgiExternalServer with a unique (developer selected) path and it's
+own port.  The port number must match
+<classname>APPLICATION_CONFIGURATION</classname>.<featurename>port</featurename>.
+In each alias declaration, the alias path is selected by the developer
+and the path in quotes must match the path given in the
+FastCgiExternalServer declaration. You may then access the application
+at the following URL:
+	  
+	</para>
+	<para>
+
+http://hostname/alias/subdirectory/go_to.htm?page=servlet (without the extension)
+	  
+	</para>
+	<para>
+
+Where 'alias' is the developer specified alias in <filename
+class="unknown">httpd.conf</filename> and 'subdirectory' is any
+developer selected string.  The 'subdirectory' is not configured
+within the application as it will respond to requests for any
+subdirectory under 'alias'.
+	  
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+
+Compile the goa_build tool:
+	</para>
+	<para>
+
+cd $GOANNA/goa_build
+	</para>
+	<para>
+geant compile
+	</para>
+	<para>
+
+Then place the executable <filename
+class="unknown">goa_build</filename> in your system's execution path.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+
+If you will be doing <ulink url="#custom_html_generation">custom HTML
+generation</ulink>, install <ulink
+url="http://www.thaiopensource.com/relaxng/trang.html">trang</ulink>
+and ensure the trang executable is in your system's execution path or
+set the environment variable <envar>TRANG_INVOCATION</envar> with the
+complete path to the trang executable including the executable file
+name. For example:
+
+	</para>
+	<para>
+	
+TRANG_INVOCATION=$JAVA_HOME/bin/java -jar /usr/local/share/trang/trang.jar
+	
+	</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section id="starting_an_application">
+    <title>Application Development</title>
+    <section>
+
+      <title>Creating an Application</title>
+      <para>
+
+An example application is available in:
+	
+      </para>
+      <para>
+
+<ulink url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/">$GOANNA/examples/application</ulink>
+	
+      </para>
+      <para>
+
+<ulink url="http://www.mysafetyprogram.com/fastcgi/demo/go_to.htm?page=questions">Click here to see the demo in action</ulink>.
+	
+      </para>
+      <orderedlist>
+
+	<listitem>
+	  <para>
+
+Create a new project directory and copy all of the files (and subdirectories) in
+$GOANNA/library/application/templates to your project directory and
+then delete the CVS subdirectories (recursively).
+	    
+	  </para>
+	  <para>
+
+In our example, we will create the directory "application".
+	    
+	  </para>
+
+	</listitem>
+	<listitem>
+	  <para>
+
+If desired, search and replace "web_application" with your project
+name in <filename class="unknown">build.eant</filename> and make any necessary
+additions to <filename class="unknown">system.xace</filename>.
+
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+APPLICATION_SERVER must inherit from exactly one servlet connector.
+We recommend using <classname>GOA_FAST_CGI_SERVLET_APP</classname>,
+but his requires that FastCGI has been installed on the web server.
+If this is not available, then
+<classname>GOA_CGI_SERVLET_APP</classname> can be used.
+Alternatively, <classname>GOA_HTTPD_SERVLET_APP</classname> can be
+used, thus avoiding the need for a web server altogether. But this is
+only recommended for testing. You might also consider writing your own
+servlet connector, if you have a special environment. If you use the
+FastCGI connector, you must undefine
+<classname>GOA_FAST_CGI_SERVLET_APP</classname>.<featurename>initialise_logger</featurename>,
+and
+<classname>GOA_FAST_CGI_SERVLET_APP</classname>.<featurename>all_servlets_registered</featurename>. If
+you use the stand alone connector you must undefine
+<featurename>log_hierarchy</featurename>.
+
+	  </para>
+	  <para>
+
+In our example, we have used <classname>GOA_FAST_CGI_SERVLET_APP</classname>.
+	    
+	  </para>
+
+	</listitem>
+	<listitem>
+	  <para>
+
+<classname>PARAMETER_PROCESSING_RESULT</classname>,
+<classname>APPLICATION_CONFIGURATION</classname>, and all servlets
+must inherit from
+<classname>GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT</classname>
+or another (developer provided) class implementing
+<classname>GOA_TRANSACTION_MANAGEMENT</classname>.
+	    
+	  </para>
+	  <para>
+
+In our example, these classes all inherit from
+<classname>GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT</classname>.
+	    
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    
+Implement deferred features.
+<classname>APPLICATION_SERVER</classname>.<featurename>command_line_ok</featurename>
+must:
+	    
+	  </para>
+	  <para>
+	    <itemizedlist>
+	      <listitem>
+		<para>
+
+First create (or assign an existing object to)
+<classname>APPLICATION_SERVER</classname>.<featurename>active_configuration</featurename>
+and then call
+<classname>APPLICATION_SERVER</classname>.<featurename>touch_configuration</featurename>
+		  
+		</para>
+	      </listitem>
+	      <listitem>
+		<para>
+
+Create at least one <classname>VIRTUAL_DOMAIN_HOST</classname> and
+then call
+<classname>APPLICATION_SERVER</classname>.<featurename>register_virtual_domain_host</featurename>
+to register the host under the name given in
+<classname>APPLICATION_CONFIGURATION</classname>.<featurename>default_virtual_domain_host_lookup_string</featurename>.
+
+		</para>
+	      </listitem>
+	      <listitem>
+		<para>
+Return a result of <featurename>True</featurename>.
+		</para>
+	      </listitem>
+	    </itemizedlist>
+	  </para>
+	  <para>
+
+In our example, this is done in <ulink
+url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/application_server.e?view=markup">APPLICATION_SERVER</ulink>.
+
+	  </para>
+	  <para>
+
+The feature
+<classname>APPLICATION_CONFIGURATION</classname>.<featurename>next_page</featurename>
+returns the next page to display to the user.  In our example, it is
+<ulink
+url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/application_configuration.e?view=markup">APPLICATION_CONFIGURATION</ulink>.
+
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+Switch to the data directory (as defined in
+<classname>APPLICATION_CONFIGURATION</classname> and type:
+	    
+	  </para>
+	  <para>
+<filename class="unknown">goa_build</filename>	    
+	  </para>
+	  <para>
+
+This will copy Goanna provided rnc (schema) and xsl (transformation)
+files to the data directory where they can accessed by the
+application.
+	  
+	  </para>
+
+	</listitem>
+      </orderedlist>
+    </section>
+    <section id="servlets">
+      <title>Application Servlets</title>
+      <para>
+
+Request processing and page generation within a Goanna Web Application
+is performed by servlets.  Servlets that display information to the
+user should inherit from
+<classname>GOA_DISPLAYABLE_SERVLET</classname>.  Servlets that process
+incoming requests but never generate a response to the user may
+inherit directly from
+<classname>GOA_APPLICATION_SERVLET</classname>. Class <ulink
+url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/servlets/question_servlet.e?view=markup">QUESTION_SERVLET</ulink>
+provides an example of a simple servlet that displays an input form to
+the user and processes the request when the user submits the form to
+the server. Developers must implement the deferred feature
+<featurename>name</featurename> which generally should include an
+extension (e.g. .htm) and is used as the file name portion of the url
+referring to the servlet.  Servlet names must be unique within the
+system.  Servlets must be instantiated (and accessed) as once
+functions in <classname>SHARED_SERVLETS</classname>.  Additionally,
+each servlet must be registered by adding a call to
+<classname>GOA_APPLICATION_SERVER</classname>.<featurename>register_servlet</featurename>
+(<argument>servlet_feature_name_from_SHARED_SERVLETS</argument>)
+within the developer implemented feature
+<classname>APPLICATION_SERVER</classname>.<featurename>register_servlets</featurename>.
+      </para>
+      <para>
+
+The parameter semantics for each servlet are defined in that servlet's
+creation instruction by adding the name of each <ulink
+url="#parameters">parameter</ulink> used by the
+servlet to one of five
+lists:
+
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+
+<anchor id="mandatory_parameters"/><featurename>mandatory_parameters</featurename> must be present and
+their content valid
+before any additional parameter processing occurs.  These are
+generally hidden
+(e.g. <classname>GOA_VERIFY_STATE_PARAMETER</classname>) parameters
+used to ensure that the application is still in a state consistent
+with the state when the form was created.  The unique user ID for a
+logged in user is a good candidate for a mandatory_parameter.  This
+prevents a user from requesting a form as user A, submitting it, logging out,
+logging in as user B, using the back button to navigate to
+the initial form, and then resubmitting the user A form while logged in
+as user B. OK, it doesn't actually prevent the user from doing that,
+but it does prevent the application from mistakenly processing that form.
+
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+<featurename>expected_parameters</featurename> must be present in the
+content received with the request or the request will not be processed.
+
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+<featurename>possible_parameters</featurename> may or may not be
+present in the content received with the request.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+<featurename>add_if_absent_parameters</featurename> are useful if
+some processing is required when a parameter is not present in the
+content received with the request (e.g. HTML checkbox elements;
+<classname>GOA_BOOLEAN_PARAMETER</classname>).
+
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+<featurename>pass_through_parameters</featurename> (experimental) are
+added to the <classname>REQUEST_PROCESSING_RESULT</classname> and
+become available to the servlet that is generating the response to
+the request but are not processed when the incoming request is processed.
+
+	  </para>
+	</listitem>
+      </itemizedlist>
+      <para>
+
+A servlet's creation routine may set the features
+<classname>GOA_APPLICATION_SERVLET</classname>.<featurename>receive_secure</featurename>
+and
+<classname>GOA_DISPLAYABLE_SERVLET</classname>.<featurename>send_secure</featurename>
+to True when required. <featurename>receive_secure</featurename>
+ensures that url's referring to the servlet will use the https
+protocol.  <featurename>send_secure</featurename> will ensure that
+html generated by the servlet is only sent on a secure connection; the
+client will automatically be redirected to a secure page if necessary.
+
+      </para>
+
+      <para>
+
+Developers may redefine the features
+<classname>GOA_APPLICATION_SERVLET</classname>.<featurename>ok_to_process</featurename>
+and
+<classname>GOA_DISPLAYABLE_SERVLET</classname>.<featurename>ok_to_display</featurename>.
+<featurename>ok_to_process</featurename> allows the developer to
+prevent processing of a form unless the application is in an
+acceptable state (e.g. user logged
+in). <featurename>ok_to_display</featurename> is intended to prevent
+sending a particular response unless the application is in an
+acceptable state, but it is the developer's responsibility to check
+ok_to_display when implementing
+<classname>APPLICATION_CONFIGURATION</classname>.<featurename>next_page</featurename>.
+
+      </para>
+    </section>
+    <section id="parameters">
+      <title>Request Parameters</title>
+      <para>
+
+Each parameter submitted in an HTML form is processed by an object of
+type <classname>GOA_DEFERRED_PARAMETER</classname>.  These objects
+must be instantiated (and accessed) as once functions in
+<classname>SHARED_REQUEST_PARAMETERS</classname>. The same parameter
+may be used by multiple servlets. In the sample application, <ulink url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/parameters/name_parameter.e?view=markup">NAME_PARAMETER</ulink> provides an example of a parameter that allows the user to enter their name and stores their input in the sample application's <ulink url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/session_status.e?view=markup">SESSION_STATUS</ulink> object.  It will display an error message to the user if the user attempts to enter an empty name.  If the user attempts to replace a previously valid name with an empty name, it will not do the update and will so inform the user.  These behaviors are inherited from <ulink url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/library/application/forms/parameters/goa_non_empty_update_input_parameter.e?view=markup">NON_EMPTY_UPDATE_INPUT_PARAMETER</ulink>.
+
+      </para>
+      <para>
+
+The built in parameter classes provided in Goanna are intended as
+mixin classes.  In general, simply inherit from the class or classes
+that provide(s) the functionality required and then implement the
+deferred features.  Each parameter must be given a unique name.  Each
+parameter should inherit from
+<classname>GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT</classname>
+or a developer provided class that implements the features of
+<classname>GOA_TRANSACTION_MANAGEMENT</classname>.
+      </para>      
+    </section>
+    <section id="advanced_form_processing">
+      <title>Advanced Form Processing</title>
+      <para>
+
+The results of processing a single parameter are stored in an object
+of type
+<classname>PARAMETER_PROCESSING_RESULT</classname>. Processing a
+request from the user generates an object of type
+<classname>REQUEST_PROCESSING_RESULT</classname> which must inherit
+from their corresponding GOA_ prefixed classes..
+
+      </para>
+      <para>
+
+Sometimes the processing performed by one parameter is dependent on
+the processing results from another parameter.  Parameters may
+redefine the feature
+<classname>GOA_DEFERRED_PARAMETER</classname>.<featurename>processing_order</featurename>
+to control the order in which the parameters are processed.  Legal
+values range from <featurename>process_first</featurename> through
+<featurename>process_fifth</featurename> with a default value of
+<featurename>process_third</featurename>. It is recommended that the
+developer define invariants specifying the processing order
+(e.g. parameter_foo.processing_order &lt;
+parameter_bar.processing_order). The
+<classname>PARAMETER_PROCESSING_RESULT</classname> generated by
+another parameter (within the same request) may be obtained using the
+query
+<classname>GOA_REQUEST_PROCESSING_RESULT</classname>.<featurename>parameter_processing_result</featurename>.
+
+      </para>
+      <para>
+
+Features to store intermediate processing results which are not part
+of the persistent object model may be added to classes
+<classname>PARAMETER_PROCESSING_RESULT</classname>,
+<classname>REQUEST_PROCESSING_RESULT</classname> or
+<classname>SESSION_STATUS</classname> as appropriate. Hooks to the persistent object model and non persistent information that must live between requests should be placed in <classname>SESSION_STATUS</classname>. Non-persistent information that must be passed between parameters during processing of a single request may be stored in <classname>REQUEST_PROCESSING_RESULT</classname>.  It is also convenient to place hooks to commonly accessed portions of the persistent object model in <classname>REQUEST_PROCESSING_RESULT</classname>.
+
+      </para>
+      <para>
+
+Servlets that must perform additional processing may also redefine the
+following features:
+
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+
+<featurename>perform_post_mandatory_parameter_processing</featurename>
+to perform actions that are required after all mandatory parameters
+have been processed and verified valid but before any other parameters
+are processed.
+
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+<featurename>perform_final_processing</featurename> to perform actions
+that are required after all parameters have completed their
+processing. Note: that all mandatory parameters must be valid for this
+to fire, but this feature is called even if some (or all) of the other
+parameters in the form are invalid.  It is the developers
+responsibility to check the validity status of other parameters if
+that is necessary.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+		
+<featurename>perform_invalid_mandatory_parameters_processing</featurename>
+to perform actions that are required if one or more mandatory
+parameters in the servlet are invalid.  Note this means that other
+parameters (e.g. expected parameters) will not have performed their
+processing.
+
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </section>
+  </section>
+  <section id="html_generation">
+    <title>HTML Generation</title>
+    <para>
+
+Content intended for display to the user is first generated in XML and
+subsequently transformed to HTML using XSLT.  Four kinds of classes
+are involved in XML generation.  XML generation classes are provided
+with the framework or developers may create a <ulink
+url="#custom_html_generation">custom document schema</ulink>. The XML
+generation class names are prefixed by the name (namespace prefix) of
+the schema that describes their XML content.
+    </para>
+    <para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+        
+<classname>_XML_DOCUMENT</classname>. These 
+classes include features to add all of the elements
+specified in the schema to an XML document with preconditions
+describing the schema validity rules.
+	    
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+<classname>_PREFIX_ATTRIBUTE_VALUES</classname> classes contain
+string constants for all attribute values specified using a choice of
+literal strings (e.g. { "value1" | "value2" }).  The naming convention
+for each feature is
+<featurename>attribute_name_attribute_value</featurename>.
+	    
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+<classname>_SCHEMA_CODES</classname> classes
+contain integer constants representing each element and
+attribute used within the schema.
+	    
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	  
+<classname>_XML_DOCUMENT_EXTENDED</classname> classes
+contain any developer provided extensions to the functionality
+included in the corresponding <classname>_XML_DOCUMENT</classname> 
+class.
+	  
+	  </para>
+	</listitem>
+	
+      </itemizedlist>
+      
+    </para>
+    <para>
+
+<classname>_XML_DOCUMENT</classname>,
+<classname>_PREFIX_ATTRIBUTE_VALUES</classname>, and
+<classname>_SCHEMA_CODES</classname> classes are all generated by the
+<filename class="unknown">goa_build</filename> application from an XML
+schema.  Developers should avoid creating their own classes with these
+names.  The <classname>_XML_DOCUMENT_EXTENDED</classname> classes are
+necessary to allow developers to add functionality to a
+<classname>_XML_DOCUMENT</classname> without having that code
+overwritten upon subsequent invocations of the <filename
+class="unknown">goa_build</filename> application.
+
+    </para>
+    <para>
+
+Generating HTML output for the user may be performed using an
+<classname>GOA_PAGE_XML_DOCUMENT_EXTENDED</classname> object. 
+<classname>GOA_REDIRECT_XML_DOCUMENT_EXTENDED</classname>
+may be used to redirect the user to another page.
+<classname>GOA_PAGE_XML_DOCUMENT_EXTENDED</classname> includes
+primitives for generating most HTML constructs and a number of
+convenience features.  Additionally, form parameters may be easily
+added to the document by first calling
+<featurename>start_data_entry_table_element</featurename> and then
+adding each parameter with
+<featurename>add_standard_input_row</featurename>.  A data entry table
+consists of three columns.  Generally, the first column contains the
+label, the second column the input, and the third column any error
+messages associated with the parameter. For checkbox and radio button
+parameter the first two columns are combined and contain the parameter
+followed by the label.
+      
+    </para>
+    <para>
+
+When adding a hyperlink to a servlet to an XML page, use:
+      
+    </para>
+    <para>
+<classname>GOA_PAGE_XML_DOCUMENT_EXTENDED</classname>.<featurename>add_item</featurename>
+(servlet.hyperlink (processing_result, text)
+    </para>
+    <para>
+
+Referring to the servlet's URL directly will cause the servlet to try
+and process incoming content.  Because no content is included with the
+URL, this will generally not produce the desired results.  If the
+developer does want the servlet to process the incoming request, use
+<featurename>post_url</featurename> instead (taking care to
+add the appropriate parameter values to the hyperlink before adding it
+to the XML document).
+
+    </para>
+    <para>
+
+The class <classname>MESSAGE_CATALOG</classname> is intended to
+contain all text displayed to the user.  This design is intended
+facilitate adding support for multiple languages in the future.  It is
+not strictly necessary for the developer to use
+<classname>MESSAGE_CATALOG</classname> but some
+<classname>GOA_REQUEST_PARAMETER</classname> classes do generate
+messages contained in <classname>GOA_MESSAGE_CATALOG</classname>.
+      
+    </para>
+  </section>
+  <section id="custom_html_generation">
+    <title>Custom HTML Generation</title>
+    <para>
+ 
+Goanna Framework Applications generate XML which is then transformed
+to HTML using XSLT.  Developers can extend or replace the support
+classes used for this purpose.  Document schemas produce Eiffel
+objects that may be instantiated and used within an application.
+Included schemas produce deferred classes and are intended to be
+incorporated into document schemas or other included schemas.
+    </para>
+    <para>
+
+Both document and included schemas are specified using <ulink
+url="http://relaxng.org/compact-tutorial-20030326.html">Relax NG
+Compact Syntax (RNC)</ulink>. Each schema must be given a unique
+namespace and prefix and the namespace prefix must match the file name
+(excluding the extension of course). Each schema must have a matching
+XSLT transform that generates HTML given an XML document that conforms
+with that schema.  The document schema and XSLT transform must have
+the same file name. A document schema and all supporting files
+(included schemas and XSLT transforms) must be in a single
+subdirectory. When designing a schema please keep in mind that the
+full RNC is not currently supported.  A list of known
+limitations may be found <ulink
+url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/src/goa_build/transform/README?view=markup">here</ulink>.
+      
+    </para>
+    <para>
+
+To get started on a custom schema:
+
+    </para>
+    <orderedlist>
+      <listitem>
+	<para>
+
+Create a Relax NG Compact Syntax schema (with a rnc extension) for the
+XML which your web application will generate.
+
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+
+Create a XSLT stylesheet (with an xsl extension) which will transform
+that XML into HTML (or any other form required).
+
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+
+Create the CSS stylesheet the HTML page will reference (optional).
+
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+
+Place these files in a separate directory and then type:
+
+	</para>
+	<para>
+
+goa_build -f your_schema.rnc
+
+	</para>
+	<para>
+
+The files your_schema_xml_document.e, your_schema_attribute_values.e,
+and your_schema_schema_codes.e will be created in this
+directory. Create the class YOUR_SCHEMA_XML_DOCUMENT_EXTENDED (with
+the file name your_schema_xml_document_extended.e) which inherits from
+YOUR_SCHEMA_XML_DOCUMENT. Use this class in your application.
+
+	</para>
+      </listitem>
+      <listitem>
+	  <para>
+
+Additional details and requirements for these files are provided
+below.
+
+	  </para>
+	</listitem>
+    </orderedlist>
+  </section>
+  
+  <section id="creating_document_schemas">
+      <title>Creating Document Schemas</title>
+      <para>
+	 
+<ulink
+url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/library/application/xml/goa_page/goa_page.rnc?view=markup">goa_page.rnc</ulink>
+and the corresponding XSLT transform <ulink
+url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/library/application/xml/goa_page/goa_page.xsl?view=markup">goa_page.xsl</ulink>
+provide an example of how to specify a document schema.  The document
+schema must include the namespace declaration for every included
+schema (recursively), and (generally):
+
+      </para>
+      <para>
+namespace datatypeLibrary ="http://www.w3.org/2001/XMLSchema-datatypes"	
+      </para>
+      <para>
+
+The schema must include RNC grammar and start element declarations.
+Included schemas may be incorporated using the RNC include "filename"
+declaration. If the developer will use the Goanna library
+<classname>GOA_REQUEST_PARAMETER</classname> objects, then the schema (or
+an included schema) must include the <filename
+class="unknown">goa_common.rnc</filename> schema.
+      </para>
+      <para>
+
+The <projectname>goa_build</projectname> program can automatically
+create an attribute value declaration for the attribute named "class"
+from a CSS stylesheet and insert it into a document schema. To use
+this facility, add a stylesheet declaration as a comment to the
+schema, using the syntax:
+
+      </para>
+      <para>
+# stylesheet="file_name.css"	
+      </para>
+      <para>
+
+The stylesheet does not need to be in the same directory as the
+schema, and it is the developers responsibility to ensure that the
+stylesheet is also placed in a directory where it can be served by the
+web server.  The stylesheet must include at least one style declaration
+for every CSS class used in the schema and all included schemas
+(recursively).  If more than one stylesheet are associated with a
+schema in practice, only one stylesheet is specified in the schema and
+it must include the superset of classes used with the schema. If the
+document schema includes (recursively) the goa_common.rnc schema, then
+a stylesheet declaration is mandatory and the stylesheet must include
+at least those classes declared in <filename
+class="unknown">goa_common.css</filename>.
+	
+      </para>
+      <para>
+
+If a stylesheet declaration is used, the RNC schema must also include:
+	
+      </para>
+      <para>
+CLASS_ATTRIBUTE_PLACEHOLDER	
+      </para>
+      <para>
+
+at a location in the schema where it is legal to include a RNC
+attribute declaration.  The placeholder will be replaced with the class
+attribute declaration. For example:
+      </para>
+      <para>
+
+class = attribute class { "class_name_1" | "class_name_2" }
+	
+      </para>
+      <para>
+
+The XSLT transform corresponding to a document schema must include the
+XSLT transform corresponding to every included schema.  For example:
+	
+      </para>
+      <para>
+&lt;xsl:include href="goa_common.xsl" /&gt;	
+      </para>
+      <para>
+
+If the document schema includes (recursively) <filename
+class="unknown">goa_common.rnc</filename>, then (in order to provide
+support for Javascripts provided with the framework) the XSLT
+transform should also include the following statement within the
+template generating the HTML "HEAD" portion of the document:
+	
+      </para>
+      <para>
+&lt;xsl:call-template name="goa_common_scripts" /&gt;
+      </para>
+      <para>
+
+The selections for elements and attributes in included schemas that
+are defined as a choice (.e.g. elem1 = element ns:elem1 { elem2 |
+elem3 }) may be expanded by using the rnc combine operator |=.
+	
+      </para>
+      <para>
+
+When the new document schema is ready, invoke
+<projectname>goa_build</projectname> from the directory containing the
+schema and all supporting files.  Type:
+	
+      </para>
+      <para>
+<projectname>goa_build -h</projectname>	
+      </para>
+
+      <para>
+for more information on using the boa_build tool.  Note that when
+using the -d --datadirectory switch (recommended) the data directory
+value given to <projectname>goa_build -h</projectname> should match
+the directory specified in
+<classname>APPLICATION_CONFIGURATION</classname>.<featurename>data_directory</featurename>.
+When using the -e --eiffeldirectory (recommended) the directory given should be a
+valid cluster location within the Eiffel project. The build tool will:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+
+Copy all of the necessary Goanna support files to the current
+directory (unless you have specified the -n (--norefresh) switch).
+	    
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+Write a file <filename
+class="unknown">namespace_prefix.frng</filename> to the data directory
+(specified using the -d (--datadirectory) switch or the current
+directory if none is specified).  This file contains a "flattened"
+schema (all included files merged into a single file) in <ulink
+url="http://www.relaxng.org/">Relax NG syntax</ulink>. 
+	    
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	  
+Create the classes
+<classname>NAMESPACE_PREFIX_XML_DOCUMENT</classname>,
+<classname>NAMESPACE_PREFIX_ATTRIBUTE_VALUES</classname>, and (for
+document schemas) <classname>NAMESPACE_PREFIX_SCHEMA_CODES</classname>
+in the Eiffel directory (or the current directory if none is
+specified).  If a stylesheet declaration was included in the schema,
+then <classname>NAMESPACE_PREFIX_ATTRIBUTE_VALUES</classname> this
+class will include constants for each class contained in the specified
+stylesheet (e.g. <featurename>class_error_message</featurename>).
+	    
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+Compile the XSLT transform contained in the file <filename
+class="unknown">namespace_prefix.xsl</filename>. Hint: if this
+generates errors that are difficult to understand, try running the
+transform through <ulink
+url="http://saxon.sourceforge.net">Saxon</ulink> which sometimes
+provides less cryptic error messages.
+
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+Recursively find and process all included schemas (described in
+more detail <ulink url="#creating_included_schemas">below</ulink>).
+	    
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+
+Recursively find and copy all XSLT files to the data directory (if one
+was specified).
+	    
+	  </para>
+	</listitem>
+      </itemizedlist>
+      <para>
+	
+The developer must create a class
+<classname>NAMESPACE_PREFIX_XML_DOCUMENT_EXTENDED</classname> which
+inherits from
+<classname>NAMESPACE_PREFIX_XML_DOCUMENT</classname>. The developer
+may add any additional XML generation features to this class and
+should generally use the <classname>EXTENDED</classname> version of an
+XML document within the application.
+
+      </para>
+    </section>
+    <section id="creating_included_schemas">
+      <title>Creating Included Schemas</title>
+      <para>
+
+<ulink
+url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/library/application/xml/goa_common/goa_common.rnc?view=markup">goa_common.rnc</ulink>
+and the corresponding XSLT transform <ulink
+url="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/library/application/xml/goa_common/goa_common.xsl?view=markup">goa_common.xsl</ulink>
+provide an example of how to specify an included schema.  Included
+schemas must include a namespace declaration (with the namespace
+prefix matching the file name) and the namespace declaration for each
+included schema.  Included schemas must NOT include the RNC grammar
+and start element declarations. Included schemas should include a
+stylesheet declaration if the developers require access to
+<featurename>class_attribute_value</featurename> constants. The
+stylesheet should contain only those classes which are unique to the
+schema and not those that are inherited from other included schemas.
+Included schemas should NOT include a CLASS_ATTRIBUTE_PLACEHOLDER. The
+developer must also create a file
+<classname>NAMESPACE_PREFIX_XML_DOCUMENT_EXTENDED</classname> which
+inherits from <classname>NAMESPACE_PREFIX_XML_DOCUMENT</classname> for
+included schemas.
+	
+      </para>
+      <para>
+
+When processing included schemas, the
+<projectname>goa_build</projectname> tool will generate the deferred
+class <classname>NAMESPACE_PREFIX_XML_DOCUMENT</classname>. The tool
+will also generate the (effective) class
+<classname>NAMESPACE_PREFIX_ATTRIBUTE_VALUES</classname> which will
+contain string constants for all attributes declared as a choice of
+string values.  However, class attribute value constants will NOT be
+included in <classname>NAMESPACE_PREFIX_ATTRIBUTE_VALUES</classname>.  Instead, deferred
+features for each class name present the stylesheet will be added
+to the class <classname>NAMESPACE_PREFIX_XML_DOCUMENT.</classname>  
+	
+      </para>
+    </section>
+</chapter>

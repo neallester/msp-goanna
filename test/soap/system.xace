@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<system name="xsoap">
+	<description>
+		system: "Goanna SOAP Library Tester"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum License v2 (see forum.txt)."
+	</description>
+
+	<root class="XSOAP" creation="make"/>
+
+	<option unless="${DEBUG}">
+		<option name="assertion" value="none"/>
+		<option name="finalize" value="true"/>
+		<option name="debug" value="false"/>
+	</option>
+	<option if="${DEBUG}">
+		<option name="assertion" value="all"/>
+		<option name="finalize" value="false"/>
+	</option>
+	<cluster name="soap_tester" location="${GOANNA}/test/soap">
+	  <cluster name="testgen" location="TESTGEN"/>
+	</cluster>
+
+	<mount location="${GOANNA}/library/library.xace"/>
+	<mount location="${GOBO}/library/library.xace"/>
+	<mount location="${GOBO}/library/kernel.xace"/>
+
+</system>

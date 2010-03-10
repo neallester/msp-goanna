@@ -1,0 +1,65 @@
+DESCRIPTION
+
+The four files common.xsl, schema_codes.xsl, deferred_xml_writer,
+and validating_xml_wrter.xsl are xslt transforms that generate
+eiffel classes from a Relax NG grammar.
+
+http://www.oasis-open.org/committees/relax-ng/spec-20011203.html
+
+schema_codes.xsl creates a class that includes integer
+codes and string constants representing the elements and attributes
+defined in the schema.
+
+deferred_xml_writer.xsl creates a deferred class that represents a
+schema fragment intended for inclusion in another schema.  This allows
+eiffel to see documents containing the included schema as distinct
+types.
+
+common.xsl contains some templates that are common to the various
+transforms.
+
+validating_xml_writer.xsl outputs an eiffel class that includes features
+for creating and populating an xml document conforming with the
+Relax NG schema.  The validity rules defined by the Relax NG grammar
+are embedded as preconditions in the eiffel class.
+
+See test/sample.rnc for an example schema that passes all unit tests.
+
+See test/generate_classes.sh for an example of how to use the
+transforms on Linux using the Saxon xslt processor (obsolete).
+
+Use the parameters author, copyright, and license to populate the
+corresponding indexing clauses in the generated Eiffel classes.
+
+
+
+
+KNOWN LIMITATIONS
+
+1) The Relax NG grammar used as input to the stylesheet may include
+   elements from only one namespace, and that namespace must be named
+   first in the grammar element.
+2) The transforms assume that the xslt processor will return namespace
+   prefixes in the order declared in the grammar element (GEXSLT does).
+   If the class and feature names don't match the grammar namespace
+   prefix, then pass in the prefix as a parameter
+   (prefix=namespace-prefix)
+3) xsd:nonNegativeInteger is the only data type supported (it should be easy
+   to add more).
+4) When combining grammars, only the combine="choice" option ( |= in compact
+   syntax notation) is supported.  The combine="interleave" option ( &= in
+   compact syntax notation) will be interpreted as |=.
+   Currently only the combining of lists is supported:
+       my_list  = elem1 | elem2
+       my_list |= elem3 | elem4
+   This is equal to
+       my_list = elem1 | elem2 | elem3 | elem4
+   The following example will not compile
+       my_elem  = element ns:elem1 { ... }
+       my_elem |= element ns:elem2 { ... }
+5) Does not (currently) support mixing namespaces that contain elements
+   with the same name.
+6) Lists of aliases are only allowed for elements and not for attributes
+7) Dont try to be too smart with your grammar, stuff like (elem1?)+ won't be
+   recognised properly. Try to keep your gramar simple, this makes it also easier
+   to understand.

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<project name="application" default="help">
+
+	<description>
+		description: "Servlet Application"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-12-11 11:57:49 -0800 (Mon, 11 Dec 2006) $"
+		revision: "$Revision: 521 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+		thanks: "Modified version of GOBO ant files"
+	</description>
+
+	<inherit>
+		<parent location="${GOBO}/misc/eiffel.eant">
+			<redefine target="init_system"/>
+			<!-- <redefine target="install"/> -->
+			<redefine target="help"/>
+		</parent>
+	</inherit>
+
+	<target name="help">
+		<echo message="usage:"/>
+		<echo message="   geant install"/>
+		<echo message="   geant compile"/>
+		<echo message="   geant compile_ise"/>
+		<echo message="   geant compile_debug"/>
+		<echo message="   geant compile_debug_ise"/>
+		<echo message="   geant clean"/>
+		<echo message="   geant clobber"/>
+	</target>
+
+<!-- Implementation -->
+
+	<!-- override install for ISE only 
+	<target name="install" depend="init">
+		<description>
+			Install ${system} directory.
+		</description>
+
+		<unset name="gexace_output"/>
+		<set name="eiffel" value="ise"/>
+		<geant target="xace"/>
+		<geant target="other_install"/>
+	</target> -->
+
+	<target name="init_system">
+		<set name="system" value="application"/>
+		<set name="library" value="servlet"/>
+		<set name="system_dir" value="${GOANNA}/examples/${library}/${system}"/>
+	</target>
+
+</project>

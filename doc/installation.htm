@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Goanna Installation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="style/site.css" type="text/css">
+</head>
+
+<body bgcolor="#FFcc99" text="#000000">
+<p><img src="images/headings_r9_c5.gif" width="118" height="43"> </p>
+<p class="indentp">This document describes how to install and build the Project 
+  Goanna tools and examples.</p>
+<p class="indentp">You can install Project Goanna using a pre-packaged tar file 
+  or by checking out the latest source from its CVS repository at SourceForge.</p>
+<p class="indentp">A pre-packaged installation will normally give you a more stable 
+  version than a checkout from CVS. Tar files are created at every major milestone 
+  of the project and represent a tested release.</p>
+<p class="indentp">Pre-packaged tar files are available from SourceForge in the 
+  <a href="downloads.htm">Downloads</a> section. Download the latest tar file 
+  from here and extract into a directory of your choice.</p>
+<p class="indentp">If you wish to use the latest source from CVS follow the instructions 
+  on the <a href="http://sourceforge.net/cvs/?group_id=14711" target="_top">Project 
+  Goanna CVS</a> page for Anonymous CVS Access.</p>
+<p class="indentp">Due to a few limitations of CVS, and a major restructuring 
+  of the source tree, you may end up with a number of empty directories when you 
+  checkout the source. If you execute: </p>
+<p class="indentcode">cvs update -Pd</p>
+<p class="indentp">these directories will be removed. You can also add the <span class="code">-P</span> 
+  option to the initial checkout command.</p>
+<p class="indentp">Once installed, create an environment variable named <span class="code">GOANNA</span> 
+  that points to the root directory of the installation.<br>
+</p>
+<p class="indentp">The Project Goanna source tree contains the following top level 
+  directories:</p>
+<ul class="indentp">
+  <li> doc - documentation (including this file)</li>
+  <li>library - library class texts</li>
+  <li>examples - example applications and test harnesses for the library</li>
+  <li>tools - Project Goanna tools including XMLE and BDOM viewer. </li>
+</ul>
+<p><img src="images/headings_r6_c14.gif" width="195" height="42"><br>
+</p>
+<p class="indentp">Installation of Project Goanna requires a number of third party 
+  Eiffel libraries to be installed and built. Each distinct library is reverenced 
+  using an environment variable that points to the<br>
+  top level directory of the library.</p>
+<p class="indentp">The following table lists the third-party libraries used by 
+  Goanna</p>
+<div class="indentp">
+  <table width="90%" border="0" class="p">
+    <tr bgcolor="lightgrey" align="left"> 
+      <td width="9%"><b>Library</b></td>
+      <td width="16%"><b>Version</b></td>
+      <td width="31%"><b>Authors</b></td>
+      <td width="31%"><b>Description</b></td>
+      <td width="13%"><b>Variable</b></td>
+    </tr>
+    <tr bgcolor="white"> 
+      <td width="9%"><a href="http://www.gobosoft.com" target="_top">gobo</a></td>
+      <td width="16%">CVS version</td>
+      <td width="31%">Eric Bezault</td>
+      <td width="31%">Portable Eiffel libraries and tools.</td>
+      <td width="13%">GOBO</td>
+    </tr>
+  </table>
+  <br>
+</div>
+<p class="indentp">If the library includes C (or other external language source) 
+  then it must be compiled into an appropriate library for the platform you are 
+  working on. For example, under Windows you will need to compile the expat C 
+  code into a <span class="code">.obj</span> file. Follow the instructions included 
+  with each library.</p>
+<p class="indentp">The build files for Goanna reference all required C libraries 
+  in their default locations.</p>
+<p><img src="images/headings_r9_c13.gif" width="117" height="38"></p>
+<p class="indentp">Project Goanna provides a framework and environment for building 
+  dynamic internet applications and requires a web server to act as a front-end 
+  request processor. If you need to use a third-party web server, such as Apache, 
+  then you must use the FastCGI protocol to connect to Goanna. FastCGI modules 
+  are available for both Apache and IIS (not freely available). Primarily <a href="http://www.apache.org" target="_top">Apache 
+  Web Server</a> and the <a href="http://www.fastcgi.com" target="_top">mod_fastcgi</a> 
+  combination are used.</p>
+<p class="indentp">To build mod_fastcgi for Apache, follow the instructions provided 
+  with the package. If building on Unix, make sure you have the Apache development 
+  libraries installed (ie, the apache-devel RPM module on RedHat Linux).</p>
+<p class="indentp">You can also use the Eiffel HTTP server that is provided with 
+  Goanna. This is the combination recommended for development and testing because 
+  it is simple to setup and everything is written in Eiffel. However, at this 
+  stage, it is not recommended that applications be deployed using the Goanna 
+  HTTP server because it does not provide any authentication facilities and has 
+  not been thoroughly tested.</p>
+<p><img src="images/headings_r18_c11.gif" width="270" height="42"></p>
+<p class="indentp">NOTE: The following section describes configuration of Apache 
+  on Unix only. If you are using another server/FastCGI combination let us know 
+  what you had to do to get it going.</p>
+<p class="indentp">NOTE: The reason we currently use the Unix version of mod_fastcgi 
+  in Apache is because the Windows beta version of mod_fastcgi is very buggy. 
+  You may have success with a more recent version.</p>
+<p class="indentp">Once the FastCGI module is built and installed, you need to 
+  configure Apache so that it knows about your FastCGI applications.</p>
+<p class="indentp">Currently, the Project Goanna FastCGI implementation only supports 
+  external FastCGI servers. This is actually a good thing because it allows you 
+  to run your servers within your chosen IDE (ie, with a debugger!).</p>
+<p class="indentp">The simplest way to configure external FastCGI servers is to 
+  set up an alias and a FastCGI script directory. You will need the following 
+  lines in the <span class="code">httpd.conf</span> file:</p>
+<p class="indentcode"> LoadModule fastcgi_module modules/mod_fastcgi.dll<br>
+  Alias /fcgi-bin &quot;/home/apache/fcgi-bin&quot;<br>
+  <br>
+  &lt;Directory &quot;/home/apache/fcgi-bin&quot;&gt;<br>
+  SetHandler fastcgi-script<br>
+  Options ExecCGI<br>
+  Allow from all<br>
+  &lt;/Directory&gt;</p>
+<p class="indentp">The configuration lines above load the FastCGI module, create 
+  an alias <span class="code">/fcgi-bin</span> to the directory <span class="code">/home/apache/fcgi-bin</span> 
+  and set the handler and permissions on that directory.</p>
+<p class="indentp">For each external server you run, you need to add a line similar 
+  to the following:</p>
+<p class="indentcode">FastCgiExternalServer &quot;/home/apache/fcgi-bin/test.exe 
+  -host localhost:8000</p>
+<p class="indentp">The name <span class="code">test.exe</span> is just symbolic. 
+  For an external server it does not need to physically exist. The <span class="code">-host</span> 
+  parameter can point to any host and any port. Configure this parameter to suit 
+  where you will be running the external server. </p>
+<p class="indentp">You can also add additional parameters to this line to adjust 
+  timeout values and so on. Refer to the mod_fastcgi documentation for more information.</p>
+</body>
+</html>

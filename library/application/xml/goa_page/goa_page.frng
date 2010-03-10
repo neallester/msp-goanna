@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  Schema for xml representing page content.  Intended for transformation to html by page.xsl
+  www.freesafetyprogram.com
+  Author:	Neal L Lester [neal@3dsafety.com]
+  date: 	$Date: 2007-04-03 15:19:15 -0700 (Tue, 03 Apr 2007) $
+  revision: 	$Revision: 555 $
+  copyright: 	(c) Neal L Lester
+  License: "Eiffel Forum License Version 2 (see forum.txt)"
+--><!-- stylesheet="goa_common.css" --><grammar xmlns:goa_page="http://www.sourceforge.net/projects/goanna/goa_page" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <ref name="page"/>
+  </start>
+  <define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="paragraph">
+    <element name="goa_common:paragraph">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="text_item"/>
+          <ref name="popup_hyperlink"/>
+          <ref name="hyperlink"/>
+          <ref name="submit"/>
+          <ref name="input"/>
+          <ref name="radio"/>
+          <ref name="select"/>
+          <ref name="text_area"/>
+          <ref name="image"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="text_item">
+    <element name="goa_common:text_item">
+      <optional>
+        <choice>
+          <ref name="class"/>
+          <ref name="span"/>
+        </choice>
+      </optional>
+      <optional>
+        <text/>
+      </optional>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="span">
+    <attribute name="span"/>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="division">
+    <element name="goa_common:division">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="paragraph"/>
+          <ref name="submit"/>
+          <ref name="division"/>
+          <ref name="hyperlink"/>
+          <ref name="text_item"/>
+          <ref name="input"/>
+          <ref name="hidden"/>
+          <ref name="radio"/>
+          <ref name="select"/>
+          <ref name="text_area"/>
+          <ref name="table"/>
+          <ref name="image"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="ordered_list">
+    <element name="goa_common:ordered_list">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <oneOrMore>
+        <ref name="list_item"/>
+      </oneOrMore>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="list_item">
+    <element name="goa_common:list_item">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="division"/>
+          <ref name="paragraph"/>
+          <ref name="text_item"/>
+          <ref name="hyperlink"/>
+          <ref name="popup_hyperlink"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="unordered_list">
+    <element name="goa_common:unordered_list">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <oneOrMore>
+        <ref name="list_item"/>
+      </oneOrMore>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="hyperlink">
+    <element name="goa_common:hyperlink">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <ref name="url"/>
+      <optional>
+        <ref name="tool_tip"/>
+      </optional>
+      <text/>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="popup_hyperlink">
+    <element name="goa_common:popup_hyperlink">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <ref name="url"/>
+      <text/>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="palette">
+    <attribute name="palette"/>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="table">
+    <element name="goa_common:table">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <optional>
+        <ref name="cellspacing"/>
+      </optional>
+      <optional>
+        <ref name="cellpadding"/>
+      </optional>
+      <ref name="summary"/>
+      <ref name="header"/>
+      <ref name="footer"/>
+      <ref name="body"/>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="summary">
+    <attribute name="summary"/>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="cellspacing">
+    <attribute name="cellspacing">
+      <data type="nonNegativeInteger"/>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="cellpadding">
+    <attribute name="cellpadding">
+      <data type="nonNegativeInteger"/>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="header">
+    <element name="goa_common:header">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="row"/>
+      </zeroOrMore>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="row">
+    <element name="goa_common:row">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <oneOrMore>
+        <ref name="cell"/>
+      </oneOrMore>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="cell">
+    <element name="goa_common:cell">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <ref name="colspan"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="text_item"/>
+          <ref name="popup_hyperlink"/>
+          <ref name="hyperlink"/>
+          <ref name="submit"/>
+          <ref name="input"/>
+          <ref name="radio"/>
+          <ref name="checkbox"/>
+          <ref name="select"/>
+          <ref name="text_area"/>
+          <ref name="division"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="colspan">
+    <attribute name="colspan">
+      <data type="nonNegativeInteger"/>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="footer">
+    <element name="goa_common:footer">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="row"/>
+      </zeroOrMore>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="body">
+    <element name="goa_common:body">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="row"/>
+      </zeroOrMore>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="hidden">
+    <element name="goa_common:hidden">
+      <ref name="name"/>
+      <ref name="value"/>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="name">
+    <attribute name="name"/>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="input">
+    <element name="goa_common:input">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <ref name="name"/>
+      <ref name="type"/>
+      <ref name="disabled"/>
+      <optional>
+        <ref name="maxlength"/>
+      </optional>
+      <optional>
+        <ref name="size"/>
+      </optional>
+      <ref name="value"/>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="type">
+    <attribute name="type">
+      <choice>
+        <value>text</value>
+        <value>password</value>
+      </choice>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="maxlength">
+    <attribute name="maxlength">
+      <data type="nonNegativeInteger"/>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="size">
+    <attribute name="size">
+      <data type="nonNegativeInteger"/>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="disabled">
+    <attribute name="disabled">
+      <choice>
+        <value>yes</value>
+        <value>no</value>
+      </choice>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="submit">
+    <element name="goa_common:submit">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <ref name="name"/>
+      <ref name="value"/>
+      <optional>
+        <ref name="on_click_script"/>
+      </optional>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="radio">
+    <element name="goa_common:radio">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <ref name="name"/>
+      <ref name="value"/>
+      <ref name="checked"/>
+      <ref name="disabled"/>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="value">
+    <attribute name="value"/>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="checked">
+    <attribute name="checked">
+      <choice>
+        <value>yes</value>
+        <value>no</value>
+      </choice>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="checkbox">
+    <element name="goa_common:checkbox">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <ref name="name"/>
+      <ref name="checked"/>
+      <ref name="disabled"/>
+      <optional>
+        <ref name="on_click_script"/>
+      </optional>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="on_click_script">
+    <attribute name="on_click_script"/>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="select">
+    <element name="goa_common:select">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <ref name="name"/>
+      <ref name="disabled"/>
+      <optional>
+        <ref name="multiple"/>
+      </optional>
+      <optional>
+        <ref name="size"/>
+      </optional>
+      <optional>
+        <ref name="on_click_script"/>
+      </optional>
+      <oneOrMore>
+        <ref name="option"/>
+      </oneOrMore>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="multiple">
+    <attribute name="multiple">
+      <choice>
+        <value>yes</value>
+        <value>no</value>
+      </choice>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="option">
+    <element name="goa_common:option">
+      <ref name="value"/>
+      <optional>
+        <ref name="selected"/>
+      </optional>
+      <text/>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="selected">
+    <attribute name="selected">
+      <choice>
+        <value>yes</value>
+        <value>no</value>
+      </choice>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="text_area">
+    <element name="goa_common:text_area">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <ref name="name"/>
+      <ref name="rows"/>
+      <ref name="columns"/>
+      <optional>
+        <text/>
+      </optional>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="rows">
+    <attribute name="rows">
+      <data type="nonNegativeInteger"/>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="columns">
+    <attribute name="columns">
+      <data type="nonNegativeInteger"/>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="url">
+    <attribute name="url"/>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="image">
+    <element name="goa_common:image">
+      <optional>
+        <ref name="class"/>
+      </optional>
+      <ref name="url"/>
+      <ref name="alternate_text"/>
+      <ref name="height"/>
+      <ref name="width"/>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="alternate_text">
+    <attribute name="alternate_text"/>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="height">
+    <attribute name="height">
+      <data type="nonNegativeInteger"/>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="width">
+    <attribute name="width">
+      <data type="nonNegativeInteger"/>
+    </attribute>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="tool_tip">
+    <element name="goa_common:tool_tip">
+      <ref name="class"/>
+      <text/>
+    </element>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="page_title">
+    <attribute name="page_title"/>
+  </define><define xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common" name="style_sheet">
+    <attribute name="style_sheet"/>
+  </define>
+  <define name="page">
+    <element name="goa_page:page">
+      <ref name="host_name"/>
+      <ref name="page_title"/>
+      <ref name="style_sheet"/>
+      <optional>
+        <ref name="submit_url"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="paragraph"/>
+          <ref name="division"/>
+          <ref name="text_area"/>
+          <ref name="submit"/>
+          <text/>
+          <ref name="hyperlink"/>
+          <ref name="text_item"/>
+          <ref name="ordered_list"/>
+          <ref name="unordered_list"/>
+          <ref name="hidden"/>
+          <ref name="popup_hyperlink"/>
+          <ref name="table"/>
+          <ref name="select"/>
+          <ref name="input"/>
+          <ref name="radio"/>
+          <ref name="image"/>
+          <ref name="address"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="host_name">
+    <attribute name="host_name"/>
+  </define>
+  <define name="submit_url">
+    <attribute name="submit_url"/>
+  </define>
+  <define name="dummy">
+    <attribute name="dummy">
+      <data type="nonNegativeInteger"/>
+    </attribute>
+  </define>
+  <define name="class">
+    <attribute name="class">
+      <choice>
+        <value>error_message</value>
+        <value>required</value>
+      </choice>
+    </attribute>
+  </define>
+</grammar>

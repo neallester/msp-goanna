@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<project name="library" default="help">
+
+	<description>
+		description: "Eiffel Ant file for Goanna libraries"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@users.sourceforge.net]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum License v2 (see forum.txt)."
+		thanks: "Modified version of GOBO build.xml files"
+	</description>
+
+	<target name="help">
+		<echo message="usage:"/>
+		<echo message="   geant install"/>
+		<echo message="   geant clean"/>
+		<echo message="   geant clobber"/>
+	</target>
+
+	<target name="install" depend="init">
+		<description>
+			Install the Goanna libraries.
+		</description>
+
+		<set name="target" value="install"/>
+		<geant target="do_all"/>
+	</target>
+
+	<target name="clean" depend="init">
+		<description>
+			Remove intermediary generated files.
+		</description>
+
+		<set name="target" value="clean"/>
+		<geant target="do_all"/>
+	</target>
+
+	<target name="clobber" depend="init">
+		<description>
+			Remove all generated files.
+		</description>
+
+		<set name="target" value="clobber"/>
+		<geant target="do_all"/>
+	</target>
+
+
+<!-- Implementation -->
+
+	<target name="init">
+		<!-- do nothing -->
+	</target>
+
+	<target name="do_all" depend="init">
+		<description>
+			Call 'geant' with the same target ${target}
+			in all subdirectories.
+		</description>
+
+		<geant file="build.eant" target="${target}" dir="utility"/>
+	</target>
+
+</project>

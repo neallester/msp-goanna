@@ -1,0 +1,60 @@
+<chapter>
+  <title>Web Services</title>
+  <section>
+    <title>Service Registry</title>
+    <para>Describe implementation of service registry.</para>
+  </section>
+  <section>
+    <title>Protocols</title>
+    <section>
+      <title>XML-RPC</title>
+      <para>Describe implementation of XML-RPC API.</para>
+    </section>
+    <section>
+      <title>SOAP</title>
+      <para>Describe implementation of SOAP API.</para>
+    </section>
+  </section>
+  <section>
+    <title>Examples</title>
+    <para>Describe web services examples</para>
+    <section>
+      <title>XML-RPC Examples</title>
+      <para>Describe general structure of XML-RPC examples and server side.</para>
+      <section>
+	<title>Interoperability Tests</title>
+	<para>Describe Interop tests.</para>
+      </section>
+      <section>
+	<title>Calculator</title>
+	<para>Describe distributed calculator.</para>
+      </section>
+      <section>
+	<title>Address Book</title>
+	<para>Describe Address Book example.</para>
+      </section>
+      <section>
+	<title>Current Time</title>
+	<para>Describe current time example.</para>
+      </section>
+      <section>
+	<title>Spell Checker</title>
+	<para>Describe distributed spell checker.</para>
+      </section>
+    </section>
+    <section>
+      <title>SOAP Examples</title>
+      <para>Describe general SOAP examples and server implementation.</para>
+      <section>
+	<title>Interoperability Tests</title>
+	<para>Describe interop tests.</para>
+      </section>
+    </section>
+  </section>
+</chapter>
+
+<!--
+    Local Variables:
+        sgml-parent-document: ("manual.sgml" "book" "chapter")
+    End:
+-->

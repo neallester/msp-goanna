@@ -1,0 +1,18 @@
+test
+
+	goanna
+
+default
+
+	class ("TEST_[A-Z0-9_]*")
+	feature ("test_[a-z0-9_]*")
+	prefix ("X")
+	testgen ("TESTGEN")
+	compile ("compile -no_split -no_style_warning -case_insensitive -clean -no_gc GOANNA")
+	execute ("goanna")
+
+cluster
+
+	test_log4e: "$GOANNA/testmt/log4e"
+
+end

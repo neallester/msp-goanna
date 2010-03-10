@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+
+<project name="goanna_doc" default="help">
+
+	<description>
+		description: "Goanna Docmentation"
+		copyright: "Copyright (c) 2005, Glenn Maughn, Colin Adams, Neal Lester and other"
+		license: "Eiffel Forum License v2 (see forum.txt)"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+	</description>
+
+	<target name="help">
+		<echo message="usage:"/>
+		<echo message="   geant install"/>
+		<echo message="   geant clean"/>
+		<echo message="   geant clobber"/>
+	</target>
+
+	<target name="install">
+		<description>
+			Install the Goanna Documentation
+		</description>
+
+		<!-- This may come in handy later -->
+
+		<set name="xslt_processor" value="gexslt" unless="$GOBO_XSLT_PROCESSOR"/>
+		<set name="xslt_processor" value="${GOBO_XSLT_PROCESSOR}" if="$GOBO_XSLT_PROCESSOR"/>
+
+		<xslt processor="${xslt_processor}" input="application.xml" output="application.htm" stylesheet="misc/goa2html.xsl" />
+	</target>
+
+	<target name="clean">
+		<description>
+			Remove intermediary generated files.
+		</description>
+
+		<!-- do nothing -->
+	</target>
+
+	<target name="clobber">
+		<description>
+			Remove all generated files.
+		</description>
+
+		<delete file="application.htm"/>
+	</target>
+
+<!-- Implementation -->
+
+	<target name="xslt_and_shift" export="NONE">
+		<description>
+			Call `xslt' and shift variables `previous' and `current' one chapter forward.
+		</description>
+		<argument name="a_next"/>
+
+		<geant target="xslt" arguments="${previous},${current},${a_next}"/>
+			<!-- Shift parameters -->
+		<set name="previous" value="${current}"/>
+		<set name="current" value="${a_next}"/>
+	</target>
+
+	<target name="xslt" export="NONE">
+		<description>
+			Execute XSL Transformation for argument ${a_file}, ${a_previous}
+			and ${a_next} using processor ${xslt_processor}.
+		</description>
+		<argument name="a_previous"/>
+		<argument name="a_file"/>
+		<argument name="a_next"/>
+
+		<xslt processor="${xslt_processor}" input="${a_file}.xml" output="${a_file}.html" stylesheet="misc/goa2html.xsl">
+			<parameter name="previous" value="&quot;'${a_previous}.html'&quot;"/>
+			<parameter name="next" value="&quot;'${a_next}.html'&quot;"/>
+			<parameter name="toc" value="&quot;'index.html'&quot;"/>
+		</xslt>
+	</target>
+
+</project>

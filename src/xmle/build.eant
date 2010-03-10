@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<project name="xlme" inherit="${GOBO}/misc/eiffel.eant" default="help">
+
+	<description>
+		description: "Build file for xmle"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+		thanks: "Modified version of GOBO ant files"
+	</description>
+
+<!-- Implementation -->
+
+	<target name="init_system">
+		<set name="system" value="xmle"/>
+		<set name="system_dir" value="${GOANNA}/src/${system}"/>
+		<set name="vetuner" value="huge"/>
+	</target>
+
+</project>

@@ -1,0 +1,1137 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <title>Goanna HTML Web Application Framework</title>
+ </head>
+ <body bgcolor="#FFCC99" text="#000000">
+  <h1>Goanna HTML Web Application Framework</h1>
+  <hr size="1" />
+  <p>
+   
+   The Goanna Web Application Framework provides a complete open source
+   solution for developing cross platform cross compiler web based
+   applications in Eiffel.  The major features of the library include:
+   
+   
+  </p>
+  <ul>
+   <li>
+    
+    XSLT based HTML generation.  A web application using the framework
+    generates XML that conforms to a specified schema.  <a href="http://www.w3.org/TR/xslt20/">XSLT</a> is then used to generate
+    HTML. With a well defined schema, content and presentation are nicely
+    separated.  Extendible Eiffel classes with features for creating each
+    element of the schema and preconditions specifying the schema
+    validity rules make creating the XML easy. Developers can use the
+    included schema and XSLT transforms (in which case no knowledge of
+    XSLT is required), or they can define a new schema using <a href="http://relaxng.org/compact-tutorial-20030326.html">Relax NG
+     Compact Syntax</a>.  User defined schemas may include those
+    provided in the framework (or other user defined schemas). A build
+    tool automatically creates the necessary support classes for authoring
+    XML using a custom defined schema.
+    
+    
+   </li>
+   <li>
+    
+    A standardized approach to form processing. The semantics of each form
+    (mandatory, expected, and possible parameters etc.) are easily specified by the
+    developer.  The content of incoming requests is verified by the
+    framework to ensure it conforms with the expected semantics before
+    form processing occurs.  Forms may include hidden fields that the
+    framework uses to verify that the application's state at processing
+    time remains consistent with the state at form generation time.  This
+    allows management of the problematic "Back Button". Every form
+    parameter is processed by it's own object (of type
+    <font color="#008080"><i><tt>DEFERRED_PARAMETER</tt></i></font>) making reuse of processing
+    logic easy via inheritance.
+    
+    
+   </li>
+   <li>
+    
+    Control of page sequencing by a single feature in a single class
+    (<font color="#008080"><i><tt>APPLICATION_CONFIGURATION</tt></i></font>.<font color="#008080"><i><tt>next_page</tt></i></font>)
+    makes the design of complex user interactions easier.
+    
+    
+   </li>
+   <li>
+    
+    Support for <a href="http://www.w3.org/Style/CSS/">Cascading Style
+     Sheets</a> and Javascript.
+    
+    
+   </li>
+   <li>
+    
+    SSL aware applications.  Encryption is done by the web server, but the
+    framework will automatically forward insecure requests for secured information
+    to a secure page before processing.
+    
+   </li>
+   <li>
+    
+    Support for <a href="http://httpd.apache.org/docs/1.3/vhosts/name-based.html">name
+     based virtual domain hosting</a>.
+    
+    
+   </li>
+  </ul>
+  <div><a name="current_status"></a>
+   
+   <h2>Current Status</h2>
+   
+   <p>
+    
+    The Goanna Web Application Framework is considered Beta software.  As
+    of mid September, 2005, it
+    has been in production use at a low volume Internet facing website for
+    over one year.  The <i>goa_build</i> application
+    has undergone much less usage.  In particular,
+    <i>goa_build</i> error handling is largely untested.
+    
+    
+   </p>
+   
+  </div>
+  <div><a name="building_environment"></a>
+   
+   <h2>Building the Development Environment</h2>
+   
+   <ol>
+    <li>
+     
+     Install the <a href="http://sourceforge.net/svn/?group_id=24591">Subversion version</a>
+     of <a href="http://www.gobosoft.com">the GOBO library</a> as
+     described <a href="http://gobo-eiffel.svn.sourceforge.net/viewvc/gobo-eiffel/gobo/trunk/Readme.txt?view=markup">here</a>
+     taking care to set all of the required environment variables and
+     <a href="http://gobo-eiffel.svn.sourceforge.net/viewvc/gobo-eiffel/gobo/trunk/work/bootstrap/Readme.txt?view=markup">bootstrap</a>
+     the library.
+     
+     	
+    </li>
+    <li>
+     
+     Install version 2.2 of the <a href="http://www.berenddeboer.net/eposix/">e-POSIX
+      Library</a> taking care to set all of the required environment
+     variables.
+     	
+    </li>
+    <li>
+     
+     Install the
+     <a href="http://sourceforge.net/svn/?group_id=14711">SVN version of Goanna</a>
+     as described
+     <a href="http://goanna.sourceforge.net/">here</a>
+     taking care to set the <font color="#008080">GOANNA</font> environment variable.
+     	
+    </li>
+    <li>
+     
+     Install <a href="http://www.fastcgi.com/">FastCgi</a> on the web server
+     that will be hosting the application.  This step is not necessary if
+     you will be configuring the application as a stand alone web server,
+     but Goanna's stand alone web application facility is not recommended
+     for production use.
+     	  
+     	
+     <p>
+      
+      A sample Apache httpd.conf file is provided in <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/httpd.conf.sample?view=markup">$GOANNA/examples/application</a>.
+      Each Goanna Application running on the web server must have it's own
+      FastCgiExternalServer with a unique (developer selected) path and it's
+      own port.  The port number must match
+      <font color="#008080"><i><tt>APPLICATION_CONFIGURATION</tt></i></font>.<font color="#008080"><i><tt>port</tt></i></font>.
+      In each alias declaration, the alias path is selected by the developer
+      and the path in quotes must match the path given in the
+      FastCgiExternalServer declaration. You may then access the application
+      at the following URL:
+      	  
+      	
+     </p>
+     <p>
+      
+      http://hostname/alias/subdirectory/go_to.htm?page=servlet (without the extension)
+      	  
+      	
+     </p>
+     <p>
+      
+      Where 'alias' is the developer specified alias in <font color="#800000"><i><tt>httpd.conf</tt></i></font> and 'subdirectory' is any
+      developer selected string.  The 'subdirectory' is not configured
+      within the application as it will respond to requests for any
+      subdirectory under 'alias'.
+      	  
+      	
+     </p>
+    </li>
+    <li>
+     
+     Compile the goa_build tool:
+     	
+     <p>
+      
+      cd $GOANNA/goa_build
+      	
+     </p>
+     <p>
+      geant compile
+      	
+     </p>
+     <p>
+      
+      Then place the executable <font color="#800000"><i><tt>goa_build</tt></i></font> in your system's execution path.
+      	
+     </p>
+    </li>
+    <li>
+     
+     If you will be doing <a href="#custom_html_generation">custom HTML
+      generation</a>, install <a href="http://www.thaiopensource.com/relaxng/trang.html">trang</a>
+     and ensure the trang executable is in your system's execution path or
+     set the environment variable <font color="#008080">TRANG_INVOCATION</font> with the
+     complete path to the trang executable including the executable file
+     name. For example:
+     
+     	
+     <p>
+      	
+      TRANG_INVOCATION=$JAVA_HOME/bin/java -jar /usr/local/share/trang/trang.jar
+      	
+      	
+     </p>
+    </li>
+   </ol>
+   
+  </div>
+  <div><a name="starting_an_application"></a>
+   
+   <h2>Application Development</h2>
+   
+   <div>
+    
+    
+    <h3>Creating an Application</h3>
+    
+    <p>
+     
+     An example application is available in:
+     	
+     
+    </p>
+    
+    <p>
+     
+     <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/">$GOANNA/examples/application</a>
+     	
+     
+    </p>
+    
+    <p>
+     
+     <a href="http://www.mysafetyprogram.com/fastcgi/demo/go_to.htm?page=questions">Click here to see the demo in action</a>.
+     	
+     
+    </p>
+    
+    <ol>
+     <li>
+      
+      Create a new project directory and copy all of the files (and subdirectories) in
+      $GOANNA/library/application/templates to your project directory and
+      then delete the CVS subdirectories (recursively).
+      	    
+      	  
+      <p>
+       
+       In our example, we will create the directory "application".
+       	    
+       	  
+      </p>
+     </li>
+     <li>
+      
+      If desired, search and replace "web_application" with your project
+      name in <font color="#800000"><i><tt>build.eant</tt></i></font> and make any necessary
+      additions to <font color="#800000"><i><tt>system.xace</tt></i></font>.
+      
+      	  
+     </li>
+     <li>
+      
+      APPLICATION_SERVER must inherit from exactly one servlet connector.
+      We recommend using <font color="#008080"><i><tt>GOA_FAST_CGI_SERVLET_APP</tt></i></font>,
+      but his requires that FastCGI has been installed on the web server.
+      If this is not available, then
+      <font color="#008080"><i><tt>GOA_CGI_SERVLET_APP</tt></i></font> can be used.
+      Alternatively, <font color="#008080"><i><tt>GOA_HTTPD_SERVLET_APP</tt></i></font> can be
+      used, thus avoiding the need for a web server altogether. But this is
+      only recommended for testing. You might also consider writing your own
+      servlet connector, if you have a special environment. If you use the
+      FastCGI connector, you must undefine
+      <font color="#008080"><i><tt>GOA_FAST_CGI_SERVLET_APP</tt></i></font>.<font color="#008080"><i><tt>initialise_logger</tt></i></font>,
+      and
+      <font color="#008080"><i><tt>GOA_FAST_CGI_SERVLET_APP</tt></i></font>.<font color="#008080"><i><tt>all_servlets_registered</tt></i></font>. If
+      you use the stand alone connector you must undefine
+      <font color="#008080"><i><tt>log_hierarchy</tt></i></font>.
+      
+      	  
+      <p>
+       
+       In our example, we have used <font color="#008080"><i><tt>GOA_FAST_CGI_SERVLET_APP</tt></i></font>.
+       	    
+       	  
+      </p>
+     </li>
+     <li>
+      
+      <font color="#008080"><i><tt>PARAMETER_PROCESSING_RESULT</tt></i></font>,
+      <font color="#008080"><i><tt>APPLICATION_CONFIGURATION</tt></i></font>, and all servlets
+      must inherit from
+      <font color="#008080"><i><tt>GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT</tt></i></font>
+      or another (developer provided) class implementing
+      <font color="#008080"><i><tt>GOA_TRANSACTION_MANAGEMENT</tt></i></font>.
+      	    
+      	  
+      <p>
+       
+       In our example, these classes all inherit from
+       <font color="#008080"><i><tt>GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT</tt></i></font>.
+       	    
+       	  
+      </p>
+     </li>
+     <li>
+      	    
+      Implement deferred features.
+      <font color="#008080"><i><tt>APPLICATION_SERVER</tt></i></font>.<font color="#008080"><i><tt>command_line_ok</tt></i></font>
+      must:
+      	    
+      	  
+      <p>
+       	    
+       <ul>
+        <li>
+         
+         First create (or assign an existing object to)
+         <font color="#008080"><i><tt>APPLICATION_SERVER</tt></i></font>.<font color="#008080"><i><tt>active_configuration</tt></i></font>
+         and then call
+         <font color="#008080"><i><tt>APPLICATION_SERVER</tt></i></font>.<font color="#008080"><i><tt>touch_configuration</tt></i></font>
+         		  
+         		
+        </li>
+        <li>
+         
+         Create at least one <font color="#008080"><i><tt>VIRTUAL_DOMAIN_HOST</tt></i></font> and
+         then call
+         <font color="#008080"><i><tt>APPLICATION_SERVER</tt></i></font>.<font color="#008080"><i><tt>register_virtual_domain_host</tt></i></font>
+         to register the host under the name given in
+         <font color="#008080"><i><tt>APPLICATION_CONFIGURATION</tt></i></font>.<font color="#008080"><i><tt>default_virtual_domain_host_lookup_string</tt></i></font>.
+         
+         		
+        </li>
+        <li>
+         Return a result of <font color="#008080"><i><tt>True</tt></i></font>.
+         		
+        </li>
+       </ul>
+       	  
+      </p>
+      <p>
+       
+       In our example, this is done in <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/application_server.e?view=markup">APPLICATION_SERVER</a>.
+       
+       	  
+      </p>
+      <p>
+       
+       The feature
+       <font color="#008080"><i><tt>APPLICATION_CONFIGURATION</tt></i></font>.<font color="#008080"><i><tt>next_page</tt></i></font>
+       returns the next page to display to the user.  In our example, it is
+       <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/application_configuration.e?view=markup">APPLICATION_CONFIGURATION</a>.
+       
+       	  
+      </p>
+     </li>
+     <li>
+      
+      Switch to the data directory (as defined in
+      <font color="#008080"><i><tt>APPLICATION_CONFIGURATION</tt></i></font> and type:
+      	    
+      	  
+      <p>
+       <font color="#800000"><i><tt>goa_build</tt></i></font>	    
+       	  
+      </p>
+      <p>
+       
+       This will copy Goanna provided rnc (schema) and xsl (transformation)
+       files to the data directory where they can accessed by the
+       application.
+       	  
+       	  
+      </p>
+     </li>
+    </ol>
+    
+   </div>
+   
+   <div><a name="servlets"></a>
+    
+    <h3>Application Servlets</h3>
+    
+    <p>
+     
+     Request processing and page generation within a Goanna Web Application
+     is performed by servlets.  Servlets that display information to the
+     user should inherit from
+     <font color="#008080"><i><tt>GOA_DISPLAYABLE_SERVLET</tt></i></font>.  Servlets that process
+     incoming requests but never generate a response to the user may
+     inherit directly from
+     <font color="#008080"><i><tt>GOA_APPLICATION_SERVLET</tt></i></font>. Class <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/servlets/question_servlet.e?view=markup">QUESTION_SERVLET</a>
+     provides an example of a simple servlet that displays an input form to
+     the user and processes the request when the user submits the form to
+     the server. Developers must implement the deferred feature
+     <font color="#008080"><i><tt>name</tt></i></font> which generally should include an
+     extension (e.g. .htm) and is used as the file name portion of the url
+     referring to the servlet.  Servlet names must be unique within the
+     system.  Servlets must be instantiated (and accessed) as once
+     functions in <font color="#008080"><i><tt>SHARED_SERVLETS</tt></i></font>.  Additionally,
+     each servlet must be registered by adding a call to
+     <font color="#008080"><i><tt>GOA_APPLICATION_SERVER</tt></i></font>.<font color="#008080"><i><tt>register_servlet</tt></i></font>
+     (<font color="#008080"><i><tt>servlet_feature_name_from_SHARED_SERVLETS</tt></i></font>)
+     within the developer implemented feature
+     <font color="#008080"><i><tt>APPLICATION_SERVER</tt></i></font>.<font color="#008080"><i><tt>register_servlets</tt></i></font>.
+     
+    </p>
+    
+    <p>
+     
+     The parameter semantics for each servlet are defined in that servlet's
+     creation instruction by adding the name of each <a href="#parameters">parameter</a> used by the
+     servlet to one of five
+     lists:
+     
+     
+    </p>
+    
+    <ul>
+     <li>
+      
+      <a name="mandatory_parameters"></a><font color="#008080"><i><tt>mandatory_parameters</tt></i></font> must be present and
+      their content valid
+      before any additional parameter processing occurs.  These are
+      generally hidden
+      (e.g. <font color="#008080"><i><tt>GOA_VERIFY_STATE_PARAMETER</tt></i></font>) parameters
+      used to ensure that the application is still in a state consistent
+      with the state when the form was created.  The unique user ID for a
+      logged in user is a good candidate for a mandatory_parameter.  This
+      prevents a user from requesting a form as user A, submitting it, logging out,
+      logging in as user B, using the back button to navigate to
+      the initial form, and then resubmitting the user A form while logged in
+      as user B. OK, it doesn't actually prevent the user from doing that,
+      but it does prevent the application from mistakenly processing that form.
+      
+      	  
+     </li>
+     <li>
+      
+      <font color="#008080"><i><tt>expected_parameters</tt></i></font> must be present in the
+      content received with the request or the request will not be processed.
+      
+      	  
+     </li>
+     <li>
+      
+      <font color="#008080"><i><tt>possible_parameters</tt></i></font> may or may not be
+      present in the content received with the request.
+      	  
+     </li>
+     <li>
+      
+      <font color="#008080"><i><tt>add_if_absent_parameters</tt></i></font> are useful if
+      some processing is required when a parameter is not present in the
+      content received with the request (e.g. HTML checkbox elements;
+      <font color="#008080"><i><tt>GOA_BOOLEAN_PARAMETER</tt></i></font>).
+      
+      	  
+     </li>
+     <li>
+      
+      <font color="#008080"><i><tt>pass_through_parameters</tt></i></font> (experimental) are
+      added to the <font color="#008080"><i><tt>REQUEST_PROCESSING_RESULT</tt></i></font> and
+      become available to the servlet that is generating the response to
+      the request but are not processed when the incoming request is processed.
+      
+      	  
+     </li>
+    </ul>
+    
+    <p>
+     
+     A servlet's creation routine may set the features
+     <font color="#008080"><i><tt>GOA_APPLICATION_SERVLET</tt></i></font>.<font color="#008080"><i><tt>receive_secure</tt></i></font>
+     and
+     <font color="#008080"><i><tt>GOA_DISPLAYABLE_SERVLET</tt></i></font>.<font color="#008080"><i><tt>send_secure</tt></i></font>
+     to True when required. <font color="#008080"><i><tt>receive_secure</tt></i></font>
+     ensures that url's referring to the servlet will use the https
+     protocol.  <font color="#008080"><i><tt>send_secure</tt></i></font> will ensure that
+     html generated by the servlet is only sent on a secure connection; the
+     client will automatically be redirected to a secure page if necessary.
+     
+     
+    </p>
+    
+    
+    <p>
+     
+     Developers may redefine the features
+     <font color="#008080"><i><tt>GOA_APPLICATION_SERVLET</tt></i></font>.<font color="#008080"><i><tt>ok_to_process</tt></i></font>
+     and
+     <font color="#008080"><i><tt>GOA_DISPLAYABLE_SERVLET</tt></i></font>.<font color="#008080"><i><tt>ok_to_display</tt></i></font>.
+     <font color="#008080"><i><tt>ok_to_process</tt></i></font> allows the developer to
+     prevent processing of a form unless the application is in an
+     acceptable state (e.g. user logged
+     in). <font color="#008080"><i><tt>ok_to_display</tt></i></font> is intended to prevent
+     sending a particular response unless the application is in an
+     acceptable state, but it is the developer's responsibility to check
+     ok_to_display when implementing
+     <font color="#008080"><i><tt>APPLICATION_CONFIGURATION</tt></i></font>.<font color="#008080"><i><tt>next_page</tt></i></font>.
+     
+     
+    </p>
+    
+   </div>
+   
+   <div><a name="parameters"></a>
+    
+    <h3>Request Parameters</h3>
+    
+    <p>
+     
+     Each parameter submitted in an HTML form is processed by an object of
+     type <font color="#008080"><i><tt>GOA_DEFERRED_PARAMETER</tt></i></font>.  These objects
+     must be instantiated (and accessed) as once functions in
+     <font color="#008080"><i><tt>SHARED_REQUEST_PARAMETERS</tt></i></font>. The same parameter
+     may be used by multiple servlets. In the sample application, <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/parameters/name_parameter.e?view=markup">NAME_PARAMETER</a> provides an example of a parameter that allows the user to enter their name and stores their input in the sample application's
+     <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/examples/application/session_status.e?view=markup">SESSION_STATUS</a> object.  It will display an error message to the user if the user attempts to enter an empty name.  If the user attempts
+     to replace a previously valid name with an empty name, it will not do the update and will so inform the user.  These behaviors
+     are inherited from <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/library/application/forms/parameters/goa_non_empty_update_input_parameter.e?view=markup">NON_EMPTY_UPDATE_INPUT_PARAMETER</a>.
+     
+     
+    </p>
+    
+    <p>
+     
+     The built in parameter classes provided in Goanna are intended as
+     mixin classes.  In general, simply inherit from the class or classes
+     that provide(s) the functionality required and then implement the
+     deferred features.  Each parameter must be given a unique name.  Each
+     parameter should inherit from
+     <font color="#008080"><i><tt>GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT</tt></i></font>
+     or a developer provided class that implements the features of
+     <font color="#008080"><i><tt>GOA_TRANSACTION_MANAGEMENT</tt></i></font>.
+     
+    </p>      
+    
+   </div>
+   
+   <div><a name="advanced_form_processing"></a>
+    
+    <h3>Advanced Form Processing</h3>
+    
+    <p>
+     
+     The results of processing a single parameter are stored in an object
+     of type
+     <font color="#008080"><i><tt>PARAMETER_PROCESSING_RESULT</tt></i></font>. Processing a
+     request from the user generates an object of type
+     <font color="#008080"><i><tt>REQUEST_PROCESSING_RESULT</tt></i></font> which must inherit
+     from their corresponding GOA_ prefixed classes..
+     
+     
+    </p>
+    
+    <p>
+     
+     Sometimes the processing performed by one parameter is dependent on
+     the processing results from another parameter.  Parameters may
+     redefine the feature
+     <font color="#008080"><i><tt>GOA_DEFERRED_PARAMETER</tt></i></font>.<font color="#008080"><i><tt>processing_order</tt></i></font>
+     to control the order in which the parameters are processed.  Legal
+     values range from <font color="#008080"><i><tt>process_first</tt></i></font> through
+     <font color="#008080"><i><tt>process_fifth</tt></i></font> with a default value of
+     <font color="#008080"><i><tt>process_third</tt></i></font>. It is recommended that the
+     developer define invariants specifying the processing order
+     (e.g. parameter_foo.processing_order &lt;
+     parameter_bar.processing_order). The
+     <font color="#008080"><i><tt>PARAMETER_PROCESSING_RESULT</tt></i></font> generated by
+     another parameter (within the same request) may be obtained using the
+     query
+     <font color="#008080"><i><tt>GOA_REQUEST_PROCESSING_RESULT</tt></i></font>.<font color="#008080"><i><tt>parameter_processing_result</tt></i></font>.
+     
+     
+    </p>
+    
+    <p>
+     
+     Features to store intermediate processing results which are not part
+     of the persistent object model may be added to classes
+     <font color="#008080"><i><tt>PARAMETER_PROCESSING_RESULT</tt></i></font>,
+     <font color="#008080"><i><tt>REQUEST_PROCESSING_RESULT</tt></i></font> or
+     <font color="#008080"><i><tt>SESSION_STATUS</tt></i></font> as appropriate. Hooks to the persistent object model and non persistent information that must live between requests should
+     be placed in <font color="#008080"><i><tt>SESSION_STATUS</tt></i></font>. Non-persistent information that must be passed between parameters during processing of a single request may be stored in
+     <font color="#008080"><i><tt>REQUEST_PROCESSING_RESULT</tt></i></font>.  It is also convenient to place hooks to commonly accessed portions of the persistent object model in <font color="#008080"><i><tt>REQUEST_PROCESSING_RESULT</tt></i></font>.
+     
+     
+    </p>
+    
+    <p>
+     
+     Servlets that must perform additional processing may also redefine the
+     following features:
+     
+     
+    </p>
+    
+    <ul>
+     <li>
+      
+      <font color="#008080"><i><tt>perform_post_mandatory_parameter_processing</tt></i></font>
+      to perform actions that are required after all mandatory parameters
+      have been processed and verified valid but before any other parameters
+      are processed.
+      
+      	  
+     </li>
+     <li>
+      <font color="#008080"><i><tt>perform_final_processing</tt></i></font> to perform actions
+      that are required after all parameters have completed their
+      processing. Note: that all mandatory parameters must be valid for this
+      to fire, but this feature is called even if some (or all) of the other
+      parameters in the form are invalid.  It is the developers
+      responsibility to check the validity status of other parameters if
+      that is necessary.
+      	  
+     </li>
+     <li>
+      		
+      <font color="#008080"><i><tt>perform_invalid_mandatory_parameters_processing</tt></i></font>
+      to perform actions that are required if one or more mandatory
+      parameters in the servlet are invalid.  Note this means that other
+      parameters (e.g. expected parameters) will not have performed their
+      processing.
+      
+      	  
+     </li>
+    </ul>
+    
+   </div>
+   
+  </div>
+  <div><a name="html_generation"></a>
+   
+   <h2>HTML Generation</h2>
+   
+   <p>
+    
+    Content intended for display to the user is first generated in XML and
+    subsequently transformed to HTML using XSLT.  Four kinds of classes
+    are involved in XML generation.  XML generation classes are provided
+    with the framework or developers may create a <a href="#custom_html_generation">custom document schema</a>. The XML
+    generation class names are prefixed by the name (namespace prefix) of
+    the schema that describes their XML content.
+    
+   </p>
+   
+   <p>
+    
+    <ul>
+     <li>
+      
+      <font color="#008080"><i><tt>_XML_DOCUMENT</tt></i></font>. These 
+      classes include features to add all of the elements
+      specified in the schema to an XML document with preconditions
+      describing the schema validity rules.
+      	    
+      	  
+     </li>
+     <li>
+      
+      <font color="#008080"><i><tt>_PREFIX_ATTRIBUTE_VALUES</tt></i></font> classes contain
+      string constants for all attribute values specified using a choice of
+      literal strings (e.g. { "value1" | "value2" }).  The naming convention
+      for each feature is
+      <font color="#008080"><i><tt>attribute_name_attribute_value</tt></i></font>.
+      	    
+      	  
+     </li>
+     <li>
+      
+      <font color="#008080"><i><tt>_SCHEMA_CODES</tt></i></font> classes
+      contain integer constants representing each element and
+      attribute used within the schema.
+      	    
+      	  
+     </li>
+     <li>
+      	  
+      <font color="#008080"><i><tt>_XML_DOCUMENT_EXTENDED</tt></i></font> classes
+      contain any developer provided extensions to the functionality
+      included in the corresponding <font color="#008080"><i><tt>_XML_DOCUMENT</tt></i></font> 
+      class.
+      	  
+      	  
+     </li>
+    </ul>
+    
+    
+   </p>
+   
+   <p>
+    
+    <font color="#008080"><i><tt>_XML_DOCUMENT</tt></i></font>,
+    <font color="#008080"><i><tt>_PREFIX_ATTRIBUTE_VALUES</tt></i></font>, and
+    <font color="#008080"><i><tt>_SCHEMA_CODES</tt></i></font> classes are all generated by the
+    <font color="#800000"><i><tt>goa_build</tt></i></font> application from an XML
+    schema.  Developers should avoid creating their own classes with these
+    names.  The <font color="#008080"><i><tt>_XML_DOCUMENT_EXTENDED</tt></i></font> classes are
+    necessary to allow developers to add functionality to a
+    <font color="#008080"><i><tt>_XML_DOCUMENT</tt></i></font> without having that code
+    overwritten upon subsequent invocations of the <font color="#800000"><i><tt>goa_build</tt></i></font> application.
+    
+    
+   </p>
+   
+   <p>
+    
+    Generating HTML output for the user may be performed using an
+    <font color="#008080"><i><tt>GOA_PAGE_XML_DOCUMENT_EXTENDED</tt></i></font> object. 
+    <font color="#008080"><i><tt>GOA_REDIRECT_XML_DOCUMENT_EXTENDED</tt></i></font>
+    may be used to redirect the user to another page.
+    <font color="#008080"><i><tt>GOA_PAGE_XML_DOCUMENT_EXTENDED</tt></i></font> includes
+    primitives for generating most HTML constructs and a number of
+    convenience features.  Additionally, form parameters may be easily
+    added to the document by first calling
+    <font color="#008080"><i><tt>start_data_entry_table_element</tt></i></font> and then
+    adding each parameter with
+    <font color="#008080"><i><tt>add_standard_input_row</tt></i></font>.  A data entry table
+    consists of three columns.  Generally, the first column contains the
+    label, the second column the input, and the third column any error
+    messages associated with the parameter. For checkbox and radio button
+    parameter the first two columns are combined and contain the parameter
+    followed by the label.
+    
+    
+   </p>
+   
+   <p>
+    
+    When adding a hyperlink to a servlet to an XML page, use:
+    
+    
+   </p>
+   
+   <p>
+    <font color="#008080"><i><tt>GOA_PAGE_XML_DOCUMENT_EXTENDED</tt></i></font>.<font color="#008080"><i><tt>add_item</tt></i></font>
+    (servlet.hyperlink (processing_result, text)
+    
+   </p>
+   
+   <p>
+    
+    Referring to the servlet's URL directly will cause the servlet to try
+    and process incoming content.  Because no content is included with the
+    URL, this will generally not produce the desired results.  If the
+    developer does want the servlet to process the incoming request, use
+    <font color="#008080"><i><tt>post_url</tt></i></font> instead (taking care to
+    add the appropriate parameter values to the hyperlink before adding it
+    to the XML document).
+    
+    
+   </p>
+   
+   <p>
+    
+    The class <font color="#008080"><i><tt>MESSAGE_CATALOG</tt></i></font> is intended to
+    contain all text displayed to the user.  This design is intended
+    facilitate adding support for multiple languages in the future.  It is
+    not strictly necessary for the developer to use
+    <font color="#008080"><i><tt>MESSAGE_CATALOG</tt></i></font> but some
+    <font color="#008080"><i><tt>GOA_REQUEST_PARAMETER</tt></i></font> classes do generate
+    messages contained in <font color="#008080"><i><tt>GOA_MESSAGE_CATALOG</tt></i></font>.
+    
+    
+   </p>
+   
+  </div>
+  <div><a name="custom_html_generation"></a>
+   
+   <h2>Custom HTML Generation</h2>
+   
+   <p>
+    
+    Goanna Framework Applications generate XML which is then transformed
+    to HTML using XSLT.  Developers can extend or replace the support
+    classes used for this purpose.  Document schemas produce Eiffel
+    objects that may be instantiated and used within an application.
+    Included schemas produce deferred classes and are intended to be
+    incorporated into document schemas or other included schemas.
+    
+   </p>
+   
+   <p>
+    
+    Both document and included schemas are specified using <a href="http://relaxng.org/compact-tutorial-20030326.html">Relax NG
+     Compact Syntax (RNC)</a>. Each schema must be given a unique
+    namespace and prefix and the namespace prefix must match the file name
+    (excluding the extension of course). Each schema must have a matching
+    XSLT transform that generates HTML given an XML document that conforms
+    with that schema.  The document schema and XSLT transform must have
+    the same file name. A document schema and all supporting files
+    (included schemas and XSLT transforms) must be in a single
+    subdirectory. When designing a schema please keep in mind that the
+    full RNC is not currently supported.  A list of known
+    limitations may be found <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/src/goa_build/transform/README?view=markup">here</a>.
+    
+    
+   </p>
+   
+   <p>
+    
+    To get started on a custom schema:
+    
+    
+   </p>
+   
+   <ol>
+    <li>
+     
+     Create a Relax NG Compact Syntax schema (with a rnc extension) for the
+     XML which your web application will generate.
+     
+     	
+    </li>
+    <li>
+     
+     Create a XSLT stylesheet (with an xsl extension) which will transform
+     that XML into HTML (or any other form required).
+     
+     	
+    </li>
+    <li>
+     
+     Create the CSS stylesheet the HTML page will reference (optional).
+     
+     	
+    </li>
+    <li>
+     
+     Place these files in a separate directory and then type:
+     
+     	
+     <p>
+      
+      goa_build -f your_schema.rnc
+      
+      	
+     </p>
+     <p>
+      
+      The files your_schema_xml_document.e, your_schema_attribute_values.e,
+      and your_schema_schema_codes.e will be created in this
+      directory. Create the class YOUR_SCHEMA_XML_DOCUMENT_EXTENDED (with
+      the file name your_schema_xml_document_extended.e) which inherits from
+      YOUR_SCHEMA_XML_DOCUMENT. Use this class in your application.
+      
+      	
+     </p>
+    </li>
+    <li>
+     
+     Additional details and requirements for these files are provided
+     below.
+     
+     	  
+    </li>
+   </ol>
+   
+  </div>
+  <div><a name="creating_document_schemas"></a>
+   
+   <h2>Creating Document Schemas</h2>
+   
+   <p>
+    	 
+    <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/library/application/xml/goa_page/goa_page.rnc?view=markup">goa_page.rnc</a>
+    and the corresponding XSLT transform <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/library/application/xml/goa_page/goa_page.xsl?view=markup">goa_page.xsl</a>
+    provide an example of how to specify a document schema.  The document
+    schema must include the namespace declaration for every included
+    schema (recursively), and (generally):
+    
+    
+   </p>
+   
+   <p>
+    namespace datatypeLibrary ="http://www.w3.org/2001/XMLSchema-datatypes"	
+    
+   </p>
+   
+   <p>
+    
+    The schema must include RNC grammar and start element declarations.
+    Included schemas may be incorporated using the RNC include "filename"
+    declaration. If the developer will use the Goanna library
+    <font color="#008080"><i><tt>GOA_REQUEST_PARAMETER</tt></i></font> objects, then the schema (or
+    an included schema) must include the <font color="#800000"><i><tt>goa_common.rnc</tt></i></font> schema.
+    
+   </p>
+   
+   <p>
+    
+    The <i>goa_build</i> program can automatically
+    create an attribute value declaration for the attribute named "class"
+    from a CSS stylesheet and insert it into a document schema. To use
+    this facility, add a stylesheet declaration as a comment to the
+    schema, using the syntax:
+    
+    
+   </p>
+   
+   <p>
+    # stylesheet="file_name.css"	
+    
+   </p>
+   
+   <p>
+    
+    The stylesheet does not need to be in the same directory as the
+    schema, and it is the developers responsibility to ensure that the
+    stylesheet is also placed in a directory where it can be served by the
+    web server.  The stylesheet must include at least one style declaration
+    for every CSS class used in the schema and all included schemas
+    (recursively).  If more than one stylesheet are associated with a
+    schema in practice, only one stylesheet is specified in the schema and
+    it must include the superset of classes used with the schema. If the
+    document schema includes (recursively) the goa_common.rnc schema, then
+    a stylesheet declaration is mandatory and the stylesheet must include
+    at least those classes declared in <font color="#800000"><i><tt>goa_common.css</tt></i></font>.
+    	
+    
+   </p>
+   
+   <p>
+    
+    If a stylesheet declaration is used, the RNC schema must also include:
+    	
+    
+   </p>
+   
+   <p>
+    CLASS_ATTRIBUTE_PLACEHOLDER	
+    
+   </p>
+   
+   <p>
+    
+    at a location in the schema where it is legal to include a RNC
+    attribute declaration.  The placeholder will be replaced with the class
+    attribute declaration. For example:
+    
+   </p>
+   
+   <p>
+    
+    class = attribute class { "class_name_1" | "class_name_2" }
+    	
+    
+   </p>
+   
+   <p>
+    
+    The XSLT transform corresponding to a document schema must include the
+    XSLT transform corresponding to every included schema.  For example:
+    	
+    
+   </p>
+   
+   <p>
+    &lt;xsl:include href="goa_common.xsl" /&gt;	
+    
+   </p>
+   
+   <p>
+    
+    If the document schema includes (recursively) <font color="#800000"><i><tt>goa_common.rnc</tt></i></font>, then (in order to provide
+    support for Javascripts provided with the framework) the XSLT
+    transform should also include the following statement within the
+    template generating the HTML "HEAD" portion of the document:
+    	
+    
+   </p>
+   
+   <p>
+    &lt;xsl:call-template name="goa_common_scripts" /&gt;
+    
+   </p>
+   
+   <p>
+    
+    The selections for elements and attributes in included schemas that
+    are defined as a choice (.e.g. elem1 = element ns:elem1 { elem2 |
+    elem3 }) may be expanded by using the rnc combine operator |=.
+    	
+    
+   </p>
+   
+   <p>
+    
+    When the new document schema is ready, invoke
+    <i>goa_build</i> from the directory containing the
+    schema and all supporting files.  Type:
+    	
+    
+   </p>
+   
+   <p>
+    <i>goa_build -h</i>	
+    
+   </p>
+   
+   
+   <p>
+    for more information on using the boa_build tool.  Note that when
+    using the -d --datadirectory switch (recommended) the data directory
+    value given to <i>goa_build -h</i> should match
+    the directory specified in
+    <font color="#008080"><i><tt>APPLICATION_CONFIGURATION</tt></i></font>.<font color="#008080"><i><tt>data_directory</tt></i></font>.
+    When using the -e --eiffeldirectory (recommended) the directory given should be a
+    valid cluster location within the Eiffel project. The build tool will:
+    
+   </p>
+   
+   <ul>
+    <li>
+     
+     Copy all of the necessary Goanna support files to the current
+     directory (unless you have specified the -n (--norefresh) switch).
+     	    
+     	  
+    </li>
+    <li>
+     
+     Write a file <font color="#800000"><i><tt>namespace_prefix.frng</tt></i></font> to the data directory
+     (specified using the -d (--datadirectory) switch or the current
+     directory if none is specified).  This file contains a "flattened"
+     schema (all included files merged into a single file) in <a href="http://www.relaxng.org/">Relax NG syntax</a>. 
+     	    
+     	  
+    </li>
+    <li>
+     	  
+     Create the classes
+     <font color="#008080"><i><tt>NAMESPACE_PREFIX_XML_DOCUMENT</tt></i></font>,
+     <font color="#008080"><i><tt>NAMESPACE_PREFIX_ATTRIBUTE_VALUES</tt></i></font>, and (for
+     document schemas) <font color="#008080"><i><tt>NAMESPACE_PREFIX_SCHEMA_CODES</tt></i></font>
+     in the Eiffel directory (or the current directory if none is
+     specified).  If a stylesheet declaration was included in the schema,
+     then <font color="#008080"><i><tt>NAMESPACE_PREFIX_ATTRIBUTE_VALUES</tt></i></font> this
+     class will include constants for each class contained in the specified
+     stylesheet (e.g. <font color="#008080"><i><tt>class_error_message</tt></i></font>).
+     	    
+     	  
+    </li>
+    <li>
+     
+     Compile the XSLT transform contained in the file <font color="#800000"><i><tt>namespace_prefix.xsl</tt></i></font>. Hint: if this
+     generates errors that are difficult to understand, try running the
+     transform through <a href="http://saxon.sourceforge.net">Saxon</a> which sometimes
+     provides less cryptic error messages.
+     
+     	  
+    </li>
+    <li>
+     
+     Recursively find and process all included schemas (described in
+     more detail <a href="#creating_included_schemas">below</a>).
+     	    
+     	  
+    </li>
+    <li>
+     
+     Recursively find and copy all XSLT files to the data directory (if one
+     was specified).
+     	    
+     	  
+    </li>
+   </ul>
+   
+   <p>
+    	
+    The developer must create a class
+    <font color="#008080"><i><tt>NAMESPACE_PREFIX_XML_DOCUMENT_EXTENDED</tt></i></font> which
+    inherits from
+    <font color="#008080"><i><tt>NAMESPACE_PREFIX_XML_DOCUMENT</tt></i></font>. The developer
+    may add any additional XML generation features to this class and
+    should generally use the <font color="#008080"><i><tt>EXTENDED</tt></i></font> version of an
+    XML document within the application.
+    
+    
+   </p>
+   
+  </div>
+  <div><a name="creating_included_schemas"></a>
+   
+   <h2>Creating Included Schemas</h2>
+   
+   <p>
+    
+    <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/library/application/xml/goa_common/goa_common.rnc?view=markup">goa_common.rnc</a>
+    and the corresponding XSLT transform <a href="http://goanna.svn.sourceforge.net/viewvc/goanna/trunk/goanna/library/application/xml/goa_common/goa_common.xsl?view=markup">goa_common.xsl</a>
+    provide an example of how to specify an included schema.  Included
+    schemas must include a namespace declaration (with the namespace
+    prefix matching the file name) and the namespace declaration for each
+    included schema.  Included schemas must NOT include the RNC grammar
+    and start element declarations. Included schemas should include a
+    stylesheet declaration if the developers require access to
+    <font color="#008080"><i><tt>class_attribute_value</tt></i></font> constants. The
+    stylesheet should contain only those classes which are unique to the
+    schema and not those that are inherited from other included schemas.
+    Included schemas should NOT include a CLASS_ATTRIBUTE_PLACEHOLDER. The
+    developer must also create a file
+    <font color="#008080"><i><tt>NAMESPACE_PREFIX_XML_DOCUMENT_EXTENDED</tt></i></font> which
+    inherits from <font color="#008080"><i><tt>NAMESPACE_PREFIX_XML_DOCUMENT</tt></i></font> for
+    included schemas.
+    	
+    
+   </p>
+   
+   <p>
+    
+    When processing included schemas, the
+    <i>goa_build</i> tool will generate the deferred
+    class <font color="#008080"><i><tt>NAMESPACE_PREFIX_XML_DOCUMENT</tt></i></font>. The tool
+    will also generate the (effective) class
+    <font color="#008080"><i><tt>NAMESPACE_PREFIX_ATTRIBUTE_VALUES</tt></i></font> which will
+    contain string constants for all attributes declared as a choice of
+    string values.  However, class attribute value constants will NOT be
+    included in <font color="#008080"><i><tt>NAMESPACE_PREFIX_ATTRIBUTE_VALUES</tt></i></font>.  Instead, deferred
+    features for each class name present the stylesheet will be added
+    to the class <font color="#008080"><i><tt>NAMESPACE_PREFIX_XML_DOCUMENT.</tt></i></font>  
+    	
+    
+   </p>
+   
+  </div>
+  <hr size="1" />
+  <table border="0" width="100%">
+   <tr>
+    <td>
+     <address><font size="2"><b>Copyright © 2007, Neal L. Lester and others</b><br /><b>mailto:</b><a href="mailto:neallester@users.sourceforge.net">neallester@users.sourceforge.net</a><br /><b>http://</b><a href="http://goanna.sourceforge.net">goanna.sourceforge.net</a><br /><b>Last Updated: </b>June 28, 2007</font></address>
+    </td>
+    <td align="right" valign="top"><a href="http://www.gobosoft.com"></a></td>
+   </tr>
+  </table>
+ </body>
+</html>

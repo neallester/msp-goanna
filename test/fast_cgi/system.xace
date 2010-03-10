@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<system name="xfast_cgi">
+	<description>
+		system: "Goanna fast_cgi Library Tester"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+	</description>
+
+	<root class="XFAST_CGI" creation="make"/>
+	<cluster>
+		<option unless="${DEBUG}">
+			<require enable="False"/>
+			<ensure enable="False"/>
+			<invariant enable="False"/>
+			<loop enable="False"/>
+			<check enable="False"/>
+			<optimize enable="True"/>
+		</option>
+		<option if="${DEBUG}">
+			<require enable="True"/>
+			<ensure enable="True"/>
+			<invariant enable="True"/>
+			<loop enable="True"/>
+			<check enable="True"/>
+			<debug enable="True" name="base64_encoding"/>
+			<optimize enable="False"/>
+		</option>
+
+		<cluster name="fast_cgi_tester" location="${GOANNA}/test/fast_cgi">
+			<cluster name="testgen" location="TESTGEN"/>
+		</cluster>
+		<mount location="${GOANNA}/library/library.xace"/>
+		<mount location="${GOBO}/library/library.xace"/>
+		<mount location="${GOBO}/library/kernel.xace"/>
+	</cluster>
+</system>

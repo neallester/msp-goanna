@@ -1,0 +1,41 @@
+Project Goanna Library
+----------------------
+
+XML Parser
+----------
+
+The XML Parser library provides a simple XML parser that constructs
+a DOM object structure when parsing. The parser uses eXML as the base
+parser and builds DOM elements during the parsing process.
+
+
+Usage
+-----
+
+The class DOM_TREE_BUILDER provides the interface for parsing XML documents.
+The two main features of this class are 'parse_from_file_name' and 'document'.
+Routine 'parse_from_file_name' will parse the XML document stored in the
+specified file and set the attribute 'document' to the resulting DOM object
+structure. If not errors occur, the document is also normalized (ie, all
+adjacent text nodes are combined). The document can then be modified, 
+streamed or stored.
+
+To use the XML parser you need a class that calls the appropriate features:
+
+----------------------------------------------------------------
+class MY_XML_PARSER
+
+creation
+	make
+feature
+	make is
+		local
+			doc: DOM_DOCUMENT
+		do
+			create parser.make
+			parser.parse_from_file_name ("test.xml")
+			doc := parser.document
+		end
+end -- MY_XML_PARSER
+-----------------------------------------------------------------
+

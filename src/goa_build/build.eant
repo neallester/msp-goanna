@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<project name="goa_build" default="help">
+
+	<description>
+		description: "Build XML support files for Goanna Applications"
+		date: "$Date: 2006-12-21 08:40:24 -0800 (Thu, 21 Dec 2006) $"
+		revision: "$Revision: 526 $"
+		author: "Neal L. Lester [neal@3dsafety.com]"
+		copyright: "Copyright (c) Neal L. Lester"
+		license: "Eiffel Forum License v2 (see forum.txt)"		
+	</description>
+
+	<inherit>
+		<parent location="${GOBO}/misc/eiffel.eant">
+			<redefine target="init_system"/>
+			<redefine target="help"/>
+			<redefine target="xace"/>
+		</parent>
+	</inherit>
+
+	<target name="help">
+		<echo message="usage:"/>
+		<echo message="   geant compile"/>
+		<echo message="   geant compile_debug"/>
+		<echo message="   geant clean"/>
+		<echo message="   geant clobber"/>
+	</target>
+	
+<!-- Implementation -->
+
+	<target name="init_system">
+		<set name="system" value="goa_build"/>
+		<set name="system_dir" value="."/>
+        <available resource="/usr/include/crt_externs.h" variable="goa.is_mac_os_x"/>
+	</target>
+
+	<target name="xace" depend="init">
+		<description>
+			Build Ace file or ESD file for Eiffel compiler ${eiffel}.
+			Generate file in ${gexace_output} if specified.
+			Pass $DEBUG option to 'gexace' if ${debug} is defined.
+			Pass $BOOTSTRAP option to 'gexace' if ${bootstrap} is defined.
+			Pass $GOBO_OS value to 'gexace'.
+			Pass $GOBO_CC value to 'gexace' if defined.
+			Pass $GOBO_XML_EXPAT option to 'gexace' if defined.
+			Pass $GOBO_DOTNET option to 'gexace' if defined.
+			To be redefined in descendant if additional options are
+			necessary.
+		</description>
+		<argument name="a_compiler"/>
+		<argument name="a_output"/>
+		<set name="gexace_output" value="" unless="${gexace_output}"/>
+		<gexace system="${a_compiler}" output="${a_output}" xace="${system_dir}/system.xace">
+			<define name="DEBUG" value="${debug}" if="${debug}"/>
+			<define name="GOANNA_WITHOUT_DOM" value="true"/>
+			<define name="BOOTSTRAP" value="${bootstrap}" if="${bootstrap}"/>
+			<define name="GOBO_OS" value="${GOBO_OS}"/>
+			<define name="GOBO_CC" value="${GOBO_CC}" if="${GOBO_CC}"/>
+			<define name="GOBO_XML_EXPAT" value="true" if="${GOBO_XML_EXPAT}"/>
+			<define name="GOBO_DOTNET" value="true" if="${GOBO_DOTNET}"/>
+			<define name="IS_MAC_OS_X" value="true" if="${goa.is_mac_os_x}=true"/>
+		</gexace>
+	</target>
+</project>

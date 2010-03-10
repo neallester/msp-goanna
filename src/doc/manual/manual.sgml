@@ -1,0 +1,79 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
+<!ENTITY intro SYSTEM "intro.sgml">
+<!ENTITY structure SYSTEM "structure.sgml">
+<!ENTITY webservices SYSTEM "webservices.sgml">
+<!ENTITY servlets SYSTEM "servlets.sgml">
+<!ENTITY log4e SYSTEM "log4e.sgml">
+]>
+
+<book>
+  <bookinfo>
+    <title>The Goanna Eiffel Library</title>
+    <authorgroup>
+      <author>
+	<firstname>Glenn</firstname>
+	<surname>Maughan</surname>
+	<affiliation>
+	  <orgname>goanna.info</orgname>
+	</affiliation> 
+      </author>
+    </authorgroup>
+    <edition>Progammer's Guide for Goanna V1.0</edition>
+    <pubdate>2002</pubdate>
+    <copyright>
+      <year>2002</year>
+      <holder>Glenn Maughan</holder>
+    </copyright>
+    <legalnotice>
+
+      <para>Eiffel Forum License, version 1</para>
+
+      <para>Permission is hereby granted to use, copy, modify and/or distribute
+	this package, provided that:</para>
+
+      <itemizedlist>
+	<listitem>
+	  <para>copyright notices are retained unchanged</para>
+	</listitem>
+	<listitem>
+	  <para>any distribution of this package, whether modified or not, 
+	    includes this file</para>
+	</listitem>
+      </itemizedlist>
+
+      <para>Permission is hereby also granted to distribute binary programs
+	which depend on this package, provided that:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>if the binary program depends on a modified version of this
+	    package, you must publicly release the modified version of this 
+	    package
+	  </para>
+	</listitem>
+      </itemizedlist>
+      
+      <para>THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT WARRANTY. ANY EXPRESS 
+	OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+	ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHORS BE LIABLE TO ANY PARTY 
+	FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+	CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT
+	OF THE USE OF THIS PACKAGE.</para>
+    </legalnotice>
+  </bookinfo>
+  
+  <preface>
+    <title>Preface</title>
+    <para>The Goanna library aims to provide a complete web services framework
+    for Eiffel including clusters that support SOAP, XML-RPC and servlet
+    programming. </para>
+  </preface>
+
+  &intro;
+  &structure;
+  &webservices;
+  &servlets;
+  &log4e;
+  
+</book>

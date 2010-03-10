@@ -1,0 +1,198 @@
+system
+	calculator
+
+root
+	CALCULATOR: start
+
+default
+	assertion(no)
+	arguments("localhost 9000")
+	arguments("localhost 8080")
+	arguments("localhost 9090")
+	arguments("www.stuffeddog.com 8080")
+	arguments("www.stuffeddog.com 80")
+	arguments("9000")
+	arguments("80")
+	arguments(" ")
+	disabled_debug(yes)
+	disabled_debug("base64_encode")
+	disabled_debug("calculator")
+	disabled_debug("dlg_dispatcher")
+	disabled_debug("dom_assertions")
+	disabled_debug("gdi_count")
+	disabled_debug("namespace")
+	disabled_debug("normalize")
+	disabled_debug("parser_events")
+	disabled_debug("unhandled_node_types")
+	disabled_debug("vision2_windows")
+	disabled_debug("vision2_windows_gdi")
+	disabled_debug("wel")
+	disabled_debug("wel_gdi_count")
+	disabled_debug("wel_gdi_references")
+	disabled_debug("win_dispatcher")
+	disabled_debug("xlmrpc")
+	disabled_debug("xmlrpc_socket")
+	line_generation(no)
+	profile(no)
+	trace(no)
+	il_verifiable(yes)
+	msil_generation_type("exe")
+	check_vape(yes)
+	console_application(yes)
+	address_expression(yes)
+	array_optimization(yes)
+	dead_code_removal(yes)
+	dynamic_runtime(no)
+	exception_trace(yes)
+	inlining(yes)
+	inlining_size("2")
+	multithreaded(no)
+
+
+cluster
+	root_cluster:		"$GOANNA\examples\xmlrpc\client\calculator"
+
+
+	goanna:		"$GOANNA\library"
+
+	dom (goanna):		"$\dom"
+
+	dom_core (dom):		"$\core"
+
+	dom_traversal_range (dom):		"$\traversal-range"
+
+	dom_impl (dom):		"$\implementation"
+
+	dom_impl_core (dom_impl):		"$\core"
+
+	dom_impl_traversal_range (dom_impl):		"$\traversal-range"
+
+	dom_writer (dom):		"$\writer"
+
+	xmle_doc (dom_impl):		"$\xmle_doc"
+
+	fast_cgi (goanna):		"$\fast_cgi"
+
+	efcgi (fast_cgi):		"$\efcgi"
+
+	efcgi_servlet (fast_cgi):		"$\servlet"
+
+	all httpd (goanna):		"$\httpd"
+
+	servlet (goanna):		"$\servlet"
+
+	servlet_http (servlet):		"$\http"
+
+	all xmlrpc (goanna):		"$\xmlrpc"
+
+	service_registry (goanna):		"$\soap\server"
+
+	utility (goanna):		"$\utility"
+
+	utility_ise (utility):		"$\spec\ise"
+
+	datetime (goanna):		"$\datetime"
+		exclude
+			"date.e"; "date_and_time.e"; "gregorian_functions.e"; "system_clock.e"; 
+		end
+
+	xmle_codegen (goanna):		"$\codegen"
+
+	xml_parser (goanna):		"$\xml_parser"
+
+	logging (goanna):		"$\logging"
+
+	all log4e (goanna):		"$\log4e"
+		exclude
+			"CVS"; "net"; "nt"; 
+		end
+
+	all base:		"$ISE_EIFFEL\library\base"
+		exclude
+			"desc"; "table_eiffel3"; "CVS"; 
+		default
+			assertion(require)
+		end
+
+	all gobo:		"$GOBO/library"
+		exclude
+			"other"; "hact"; "se"; "ve"; 
+		default
+			assertion(require)
+		end
+
+	exml:		"$EXML/library"
+		default
+			assertion(require)
+		end
+
+	all exml_factory (exml):		"$/factory"
+
+	all exml_general (exml):		"$/general"
+
+	all exml_formater (exml):		"$/formater"
+
+	all exml_event (exml):		"$/event"
+
+	all exml_tree (exml):		"$/tree"
+
+	all exml_source (exml):		"$/source"
+
+	all exml_position (exml):		"$/position"
+
+	exml_implementation (exml):		"$/impl"
+
+	all exml_implementation_interface (exml_implementation):		"$/interface"
+
+	exml_expat_implementation (exml_implementation):		"$/expat"
+
+	exml_expat_expat_implementation (exml_expat_implementation):		"$/expat"
+
+	exml_expat_api_implementation (exml_expat_implementation):		"$/api"
+
+	exml_expat_general_implementation (exml_expat_implementation):		"$/general"
+
+	exml_expat_event_implementation (exml_expat_implementation):		"$/event"
+		use
+			".lace"
+		end
+
+	exml_expat_ise_implementation (exml_expat_implementation):		"$/spec/ise"
+
+	ucstring:		"$UCSTRING\lib"
+
+	ucstring_ise (ucstring):		"$\spec\ise"
+
+	all wel:		"$ISE_EIFFEL\library\wel"
+		default
+			assertion(require)
+		end
+
+	all vision2:		"$ISE_EIFFEL\library\vision2"
+		exclude
+			"gtk"; "EIFGEN"; "tmp"; "temp"; "release"; "obsolete"; "bench_used"; 
+		default
+			assertion(require)
+		end
+
+external
+
+	include_path:
+		"$EXPAT\lib",
+		"$GOBO\library\kernel\include",
+		"$GOBO\library\time\include",
+		"$GOANNA\library\utility\spec\ise4\include",
+		"$(ISE_EIFFEL)\library\vision2\spec\include",
+		"$(ISE_EIFFEL)\library\wel\spec\windows\include"
+
+	object:
+		"$YAESOCKETS\C\Debug\cl.lib",
+		"$GOANNA\library\datetime\clib\Debug\datetime.lib",
+		"$EXPAT\lib\Debug\expat.lib",
+		"$EXML/library/impl/expat/spec/c/libexml.lib",
+		"$(ISE_EIFFEL)\library\vision2\spec\$(ISE_C_COMPILER)\lib\vision2.lib",
+		"$(ISE_EIFFEL)\library\wel\spec\$(ISE_C_COMPILER)\lib\wel.lib",
+		"$(ISE_EIFFEL)\library\vision2\spec\$(ISE_C_COMPILER)\lib\libpng.lib",
+		"$(ISE_EIFFEL)\library\vision2\spec\$(ISE_C_COMPILER)\lib\zlib.lib"
+
+end

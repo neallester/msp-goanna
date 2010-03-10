@@ -1,0 +1,102 @@
+system
+	goanna
+
+root
+	GOANNA: make
+
+default
+	assertion(check)
+	assertion(require)
+	assertion(ensure)
+	assertion(loop)
+	assertion(invariant)
+	arguments(" ")
+	disabled_debug(yes)
+	debug("roll_thread")
+	line_generation(no)
+	profile(no)
+	trace(no)
+	il_verifiable(yes)
+	msil_generation_type("exe")
+	check_vape(yes)
+	console_application(yes)
+	address_expression(no)
+	array_optimization(no)
+	dead_code_removal(yes)
+	dynamic_runtime(no)
+	exception_trace(no)
+	inlining(no)
+	multithreaded(yes)
+
+
+cluster
+	goanna_utility:		"$GOANNA\library\utility"
+
+
+	goanna_utility_ise (goanna_utility):		"$\spec\ise"
+
+	goanna_log4e:		"$GOANNA\library\log4e"
+
+	log4e_appenders (goanna_log4e):		"$\appenders"
+
+	log4e_nt_appenders (log4e_appenders):		"$\nt"
+
+	log4e_net_appenders (log4e_appenders):		"$\net"
+
+	log4e_filters (goanna_log4e):		"$\filters"
+
+	log4e_helpers (goanna_log4e):		"$\helpers"
+
+	log4e_layouts (goanna_log4e):		"$\layouts"
+
+	log4e_pattern (log4e_layouts):		"$\pattern"
+
+	all base:		"$ISE_EIFFEL/library/base"
+		exclude
+			"desc"; "table_eiffel3"; "CVS"; "EIFGEN"; 
+		end
+
+	gobo:		"$GOBO\library"
+
+	gobo_kernel (gobo):		"$\kernel"
+		exclude
+			"spec"; "include"; 
+		end
+
+	gobo_ise_kernel (gobo_kernel):		"$\spec\ise"
+
+	all gobo_structures (gobo):		"$\structure"
+
+	all gobo_util (gobo):		"$\utility"
+		exclude
+			"spec"; 
+		end
+
+	gobo_ise_util (gobo_util):		"$\spec\ise"
+
+	all gobo_time (gobo):		"$\time"
+		exclude
+			"spec"; "include"; 
+		end
+
+	gobo_ise_time (gobo_time):		"$\spec\ise"
+
+	gobo_test (gobo):		"$\test\harness"
+
+	log4e_tests:		"$GOANNA\testmt\log4e"
+
+	testgen:		"$GOANNA\testmt\TESTGEN"
+
+	all thread:		"$ISE_EIFFEL/library/thread"
+
+external
+
+	include_path:
+		"$GOBO\library\kernel\include",
+		"$GOBO\library\time\include",
+		"$GOANNA\library\log4e\appenders\nt\lib"
+
+	object:
+		"$YAESOCKETS\C\Multithread\cl.lib"
+
+end

@@ -1,0 +1,127 @@
+system
+	goanna
+
+root
+	ANY
+
+default
+	assertion (all);
+
+cluster
+
+	goanna:					"$GOANNA\library"
+
+	dom (goanna):				"$\dom"
+
+	dom_core (dom):				"$\core"
+
+	dom_traversal_range (dom):		"$\traversal-range"
+
+	dom_impl (dom):				"$\implementation"
+
+	dom_impl_core (dom_impl):		"$\core"
+
+	dom_impl_traversal_range (dom_impl):	"$\traversal-range"
+
+	dom_writer (dom):				"$\writer"
+
+	xmle_doc (dom_impl):			"$\xmle_doc"
+
+	fast_cgi (goanna):			"$\fast_cgi"
+
+	efcgi (fast_cgi):				"$\efcgi"
+
+	efcgi_servlet (fast_cgi):		"$\servlet"
+
+	servlet (goanna):				"$\servlet"
+
+	servlet_http (servlet):			"$\http"
+
+	utility (goanna):				"$\utility"
+
+	utility_ise (utility):			"$\spec\ise"
+
+	datetime (goanna):			"$\datetime"
+		exclude
+			"date.e";
+			"date_and_time.e"; 
+			"gregorian_functions.e";
+			"system_clock.e"
+		end
+
+	xmle_codegen (goanna):			"$\codegen"
+
+	xml_parser (goanna):			"$\xml_parser"
+
+	logging (goanna):				"$\logging"
+
+	all base:					"$ISE_EIFFEL\library\base"
+		exclude
+			"desc"; "table_eiffel3"; "event"; "CVS"; 
+		end
+
+	gobo:						"$GOBO\library"
+
+	gobo_kernel (gobo):			"$\kernel"
+		exclude
+			"spec"; "include"; 
+		end
+
+	gobo_ise_kernel (gobo_kernel): 	"$\spec\ise"
+
+	all gobo_structures (gobo):		"$\structure"
+
+	all gobo_util (gobo):			"$\utility"
+		exclude
+			"spec"; 
+		end
+
+	gobo_ise_util (gobo_util):		"$\spec\ise"
+
+	all gobo_time (gobo):			"$\time"
+		exclude
+			"spec"; "include"; 
+		end
+
+	gobo_ise_time (gobo_time):		"$\spec\ise"
+
+	ucstring:					"$UCSTRING\lib"
+
+	ucstring_ise (ucstring):		"$\spec\ise"
+
+	eXML: 						"$EXML/lib";
+	all eXML_factory (eXML): 			"$/factory";
+	all eXML_interface (eXML): 			"$/interface";
+	eXML_impl (eXML): 				"$/implementation";
+	all eXML_impl_interface (eXML_impl): 	"$/implementation_interface"
+		exclude
+			"xml_start_tag_i.e"
+		end
+	eXML_expat_impl (eXML_impl): 			"$/expat"
+	eXML_expat_api_impl (eXML_expat_impl): 	"$/api"
+	eXML_expat_general_impl (eXML_expat_impl): "$/general"
+		exclude
+			"expat_processing_instruction.e"
+		end
+	eXML_expat_event_impl (eXML_expat_impl): 	"$/event"
+		use
+                    ".lace"
+            end
+	eXML_expat_ise_impl (eXML_expat_impl): 	"$/spec/ise"
+--	eXML_expat_tree_impl (eXML_expat_impl): 	"$/tree"
+--	all eXML_native_impl (eXML_impl): 		"$/native"
+--	all eXML_tree_on_event_impl (eXML_impl): 	"$/tree_on_event"
+
+external
+
+	include_path:
+		"$EXPAT\lib",
+		"$GOBO\library\time\include",
+		"$GOBO\library\kernel\include"
+
+	object:
+		"$EXML\lib\implementation\expat\spec\c\libexml.lib",
+		"$EXPAT\lib\Debug\expat.lib",
+		"$YAESOCKETS\C\Release\cl.lib"
+
+end

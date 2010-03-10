@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<system name="bdv">
+	<description>
+		description: "XAce file for Goanna BDV (Binary DOM Viewer)"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-05-17 10:52:14 -0700 (Wed, 17 May 2006) $"
+		revision: "$Revision: 495 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+		thanks: "Modified version of GOBO ant files"
+	</description>
+
+	<root class="BDV" creation="make"/>
+	<cluster>
+		<option unless="${DEBUG}">
+			<require enable="False"/>
+			<ensure enable="False"/>
+			<invariant enable="False"/>
+			<loop enable="False"/>
+			<check enable="False"/>
+			<optimize enable="True"/>
+		</option>
+		<option if="${DEBUG}">
+			<require enable="True"/>
+			<ensure enable="True"/>
+			<invariant enable="True"/>
+			<loop enable="True"/>
+			<check enable="True"/>
+			<optimize enable="False"/>
+		</option>
+
+		<cluster name="bdv" location="${GOANNA}/src/bdv">
+		</cluster>
+
+		<mount location="${GOBO}/library/library.xace"/>
+		<mount location="${GOBO}/library/kernel.xace"/>
+		<mount location="${GOANNA}/library/library.xace"/>
+
+	</cluster>
+</system>

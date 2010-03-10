@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<system name="calculator">
+	<description>
+		description: "XAce file for Goanna XMLRPC Address Book example"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+		thanks: "Modified version of GOBO ant files"
+	</description>
+
+	<root class="CALCULATOR" creation="start"/>
+
+	<option name="arguments" value="localhost 9000"/>
+	<option name="console_application" value="false"/>
+
+	<option unless="${DEBUG}">
+		<option name="assertion" value="none"/>
+		<option name="finalize" value="true"/>
+	</option>
+	<option if="${DEBUG}">
+		<option name="assertion" value="require"/>
+		<option name="finalize" value="false"/>
+	</option>
+	
+	<cluster name="root_cluster" location="${GOANNA}/examples/xmlrpc/client/calculator"/>
+		
+	<mount location="${GOBO}/library/library.xace"/>
+	<mount location="${GOBO}/library/kernel.xace"/>
+	<mount location="${GOANNA}/library/library.xace"/>
+	<mount location="${GOANNA}/library/wel.xace"/>
+	<mount location="${GOANNA}/library/vision2.xace"/>
+
+</system>
+

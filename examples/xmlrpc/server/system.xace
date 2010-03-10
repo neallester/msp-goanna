@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<system name="server">
+	<description>
+		description: "XAce file for Goanna XMLRPC server example"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+		thanks: "Modified version of GOBO ant files"
+	</description>
+
+	<root class="XMLRPC" creation="make"/>
+
+	<option name="arguments" value="9000 ."/>
+
+	<option unless="${DEBUG}">
+		<option name="assertion" value="none"/>
+		<option name="finalize" value="true"/>
+	</option>
+	<option if="${DEBUG}">
+		<option name="assertion" value="all"/>
+		<option name="finalize" value="false"/>
+	<!--	<option name="debug_tag" value="raw_snoop"/>  -->
+	</option>
+		
+	<cluster name="root_cluster" location=".">
+		<cluster name="servers"/>
+	</cluster>
+		
+	<cluster name="se_number" location="${SmallEiffelDirectory}/lib_number" if="${GOBO_EIFFEL}=se"/>
+	<cluster name="se_iterator" location="${SmallEiffelDirectory}/lib_iterator" if="${GOBO_EIFFEL}=se"/>
+
+	<mount location="${GOBO}/library/library.xace"/>
+	<mount location="${GOBO}/library/kernel.xace"/>
+	<mount location="${GOANNA}/library/library.xace"/>
+
+
+</system>

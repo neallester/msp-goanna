@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<project name="spellchecker" default="help">
+
+	<description>
+		description: "XMLRPC Spell Checker Example"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+		thanks: "Modified version of GOBO ant files"
+	</description>
+
+	<inherit>
+		<parent location="${GOBO}/misc/eiffel.eant">
+			<redefine target="init_system"/>
+			<redefine target="help"/>
+		</parent>
+	</inherit>
+
+	<target name="help">
+		<echo message="usage:"/>
+		<echo message="   geant install"/>
+		<echo message="   geant compile"/>
+		<echo message="   geant compile_ise"/>
+		<echo message="   geant compile_se"/>
+		<echo message="   geant compile_ve"/>
+		<echo message="   geant compile_debug"/>
+		<echo message="   geant compile_debug_ise"/>
+		<echo message="   geant compile_debug_se"/>
+		<echo message="   geant compile_debug_ve"/>
+		<echo message="   geant clean"/>
+		<echo message="   geant clobber"/>
+	</target>
+
+<!-- Implementation -->
+
+	<target name="init_system">
+		<set name="system" value="spellchecker"/>
+		<set name="library" value="xmlrpc/client"/>
+		<set name="system_dir" value="${GOANNA}/examples/${library}/${system}"/>
+	</target>
+
+</project>

@@ -1,0 +1,77 @@
+TODO Items for the Goanna Web Application Framework
+
+author: "Neal L Lester <neallester@users.sourceforge.net>"
+date: "$Date: 2007-04-06 16:31:14 -0700 (Fri, 06 Apr 2007) $"
+revision: "$Revision: 560 $"
+copyright: "(c) Neal L Lester, and others"
+
+Using the |= operator seems to grash goa_build; this is why my script names are currently listed in goa_common.rnc
+
+refactor goa_build.e to break out creation feature into multiple sub features (moving local attributes to class attributes as necessary) in order to reduce deeply nested structure and enhance readibility.
+
+Need a script to re-build the included xslt directories.
+
+goa_build should build a select of valid values for the span element which should be exactly the same as the values for the class element.
+
+goa_build should be able to handle includes that don't involve other schemas (i.e.allow sharing attributes between two different schemas).
+
+goa_build should be able to handle patterns that define groups of elements (i.e. pattern = previous_pattern1 | previous_pattern2)
+
+goa_build should not rely on the XSLT processor to return namespace prefixes in the order defined in the source document.
+
+Documentation (including doc/application.xml) should have a build.eant file, with a target of install, and this should be called from the install target of the build.eant
+file in the parent directory.
+
+Remove generated files from xml/goa_common, xml/goa_page, and xml/goa_redirect directories and instead create a geant install task to create them.
+
+Use a gelex program rather than trang to convert Relax-NG Compact Syntax files to Relax-NG.
+
+The instructions for starting a project include stages where you copy
+files, delete CVS directories, and choose an application name. This
+should all be done by a command, which should prompt the user for an
+application name, target directory names, etc. (command line prompts,
+for portability).
+
+Split application.xml up into 
+multiple files (each a <chapter>, see the build.eant file in
+$GOBO/doc/xml/xslt to see how these are combined without an
+over-arching <book>
+
+Consider adding support for the html id, title, and lang attributes to goa_common
+
+I read through the rest of the documentation, but felt lost most of
+the time. I shall have some further suggestions to make later, but
+first it seems clear to me that we shall need an overview picture.
+Take a look at
+http://cocoon.apache.org/2.1/userdocs/concepts/index.html 
+to see if it gives you some ideas.
+Actually, we also need a similar overview for servlets, and especially
+FastCGI servlets, in $GOANNA/doc/servlets, I think, and you should
+include a broken link to this hypothetical documentation as something
+to be read before reading further with your own overview.
+
+Under some circumstances, common.xsl creates unused local variables
+name_index and value_index.  The template should be smart enough to
+add those variables to feature only when they are actually needed.
+The offending template is:
+
+  <xsl:template match="rng:ref" mode="adding_elements">
+
+Change Goanna design so that connector may be selected at run time
+instead of compile time.
+
+If an item has only { text } as content, then GOA_BUILD should
+add feature start_element as well as add_element (new_text: STRING).
+Currently there is no way to add text except through the attribute.
+Work around: define content as { text | text_item }
+
+GOA_REQUEST_PARAMETER: Add an option to append suffix number to
+on_click_script.  This would allow for creation of suffix specific
+scripts. Currently, schema based validating of on-click script is
+disabled because NL needs suffix specific scripts.
+
+DONE ====================================
+
+goa_build -g option seems to erase the goa_common.rnc and goa_common.css files.  It's shouldn't, and it's quite annoying.
+
+Convert goa_build from eclop to Gobo command line parsing.

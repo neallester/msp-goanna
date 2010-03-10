@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ $# != 1 ]; 
+then
+	echo "Usage: package <tarballname>"
+	exit 1
+fi
+
+echo "Cleaning all build files..."
+(cd $GOANNA; geant -v clobber)
+(cd $GOANNA; geant -v install)
+
+echo "Packaging: $1"
+tar -c -z -f $1 \
+	--exclude "EIFGEN" \
+	--exclude "TESTGEN" \
+	--exclude "CVS" \
+	--exclude "*.epr" \
+	--exclude "*.melted" \
+	--exclude "preferences.wb" \
+	--exclude "*.rc" \
+	--exclude "Metrics" \
+	--exclude "Diagrams" \
+	--exclude "*.exe" \
+	--exclude "*.obj" \
+	--exclude "*.pch" \
+	--exclude "*.idb" \
+	--exclude "*.ncb" \
+	--exclude "*.id" \
+	--exclude "*.pdb" \
+	--exclude "*~" \
+	--exclude "*.ced" \
+	--exclude "Documentation" \
+	--exclude "Repository" \
+	goanna
+

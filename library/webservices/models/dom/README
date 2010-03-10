@@ -1,0 +1,112 @@
+Project Goanna Library
+----------------------
+
+N.B. This library has not been tested in recent years.
+It probably won't work.
+If no-one is using it, then it might be dropped.
+
+Document Object Model Level 2
+-----------------------------
+
+This library includes an implementation of the Core section of the W3C DOM
+Level 2 specification. 
+
+Future versions of this library will include implementations of the remaining
+DOM sections including html. Currently all interfaces of the Core section have
+been coded and the implementation includes enough code for demonstration 
+purposes. Much skeleton code remains that will need to be completed before
+full DOM compliance is reached.
+
+The library also contains a cluster with classes that wrap the document 
+abstractions for use in the XMLE tool.
+
+Usage
+-----
+
+To construct a DOM object structure you first need to start with an 
+implementation of DOM_IMPLEMENTATION. From this class you can then create
+documents and document types. A typical routine for creating a document
+is as follows:
+
+----------------------------------------------------------------------
+doc: DOM_DOCUMENT
+
+build_document is
+	local
+		impl: DOM_IMPLEMENTATION
+		doc_type; DOM_DOCUMENT_TYPE
+		str: DOM_STRING
+	do
+		create {DOM_IMPLEMENTATION_IMPL}.make
+		doc_type := impl.create_document_type (
+			create str.make_from_string ("DocumentName"),
+			create str.make_from_string ("PublicId"),
+			create str.make_from_string ("SystemId")) 
+		doc := impl.create_document (
+			create str.make_from_string ("NamespaceURI"),
+			create str.make_from_string ("QualifiedName"),
+			doc_type)
+	end
+----------------------------------------------------------------------
+
+Note that you need to use instances of DOM_STRING, rather than just
+STRING, because DOM_STRING supports Unicode characters.
+
+You can then add elements to the document by calling the create element
+routines on the document object. For example:
+
+----------------------------------------------------------------------
+add_elements is
+	local
+		root, element: DOM_ELEMENT
+		str: DOM_STRING
+		discard: DOM_NODE
+	do
+		-- create root element
+		root := doc.create_element (
+			create str.make_from_string ("RootElement"))
+		discard := doc.append_child (root)
+		doc.set_document_element (root)
+		-- create child element
+		element := doc.create_element (
+			create str.make_from_string ("ChildElement"))
+		discard := root.append_child (element)
+	end
+-----------------------------------------------------------------------
+
+The root element of the document must be set explicitly with a call to
+'set_document_element'. This element will subsequently be available via
+the feature 'document_element'.
+
+The 'append_child' routine returns the object that it appended. This
+conforms to the DOM specification but does not conform to Eiffel standards.
+The DOM implementation may remove the return result on this routine and
+other similar routines in the future.
+
+Streaming the newly created structure can be performed by utilising a
+DOM_SERIALIZER. A DOM_SERIALIZER allows you to stream a textual representation
+of a DOM to any IO_MEDIUM including. The utility library includes an 
+IO_STRING class that provides a STRING that you can stream to.
+
+To stream the document in the examples above to an IO_STRING, we need:
+
+------------------------------------------------------------------------
+serializer_factory: DOM_SERIALIZER_FACTORY is
+	once
+		create Result
+	end
+
+stream_document is
+	local
+		serializer: DOM_SERIALIZER
+		stream: IO_STRING
+	do
+		serializer := serializer_factory.serializer_for_document (doc)
+		create stream.make (1024)
+		serializer.set_output (stream)
+		serializer.serialize_document (doc)
+		-- the stream variable now contains a STRING representation
+		-- of the document
+	end
+-------------------------------------------------------------------------
+

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<project name="soap" inherit="${GOBO}/misc/test.eant" default="help">
+
+	<description>
+		system:      "Goanna SOAP Library Tester"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+
+	</description>
+
+
+<!-- Implementation -->
+
+	<target name="init_system">
+		<set name="system" value="xsoap"/>
+		<set name="library" value="soap"/>
+		<set name="system_dir" value="${GOANNA}/test/${library}"/>
+	</target>
+
+</project>

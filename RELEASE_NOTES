@@ -1,0 +1,125 @@
+Project Goanna Release Notes
+----------------------------
+
+Release XX
+----------
+
+o Removed YAESOCKETS dependency
+
+o Fixed web site WPME link
+
+o Fixed reading of binary files for BINARY_CONTENT_FILE_HANDLER. (Thanks Paul-Georges Crismer). 
+
+o Fixed LOG_FILE_APPENDER for new GOBO classes. (Thanks Neal Lester).
+
+o Added Web interface example for XMLRPC current time service. Also added current time service
+to server example.
+
+o Fixed decoding of request parameters in HTTP_UTILITY_FUNCTIONS.
+
+o Added rescue to service feature of HTTP_SERVLET to respond with "500 Internal Server Error" 
+when an error occurs.
+
+o Modified yaesockets.xace file to use $YAESOCKETS/C/cl.obj as the library file so that it will
+work for both Visual C++ and Borland C++ compilers.
+
+o Added update-web script for automatically updating web site.
+
+Release 0.4
+-----------
+12 January 2002
+
+o Fixed FastCGI response handling for responses over 65535 bytes. Reported by Harald Erdbrugger.
+
+o Now using geant and gexace build files. This requires the CVS version of GOBO.
+
+o Log4e implemented. Complete port of Jakarta Log4j.
+
+o XMLRPC implemented.
+
+o Restructured source and example trees.
+
+o Many bug fixes.
+
+Release 0.3
+-----------
+20 May 2001
+
+o SOAP proof-of-concept implemented. Request and response envelopes handled. Only basic
+parameter types supported. Requires Eiffel Agent support.
+
+o HTTPD server implemented. Provides working HTTP server and servlet engine for testing and
+development.
+
+o Includes application framework extension and sample application called 'Bachelor' 
+from Neal Lester.
+
+o Ported HTTPD server and servlet library to SmallEiffel.
+
+o Now using GOBO 2.0. Stopped using the Goanna date time cluster in favour of
+the GOBO date time cluster.
+
+o Using updated eXML parser and UCSTRING. Some new parsing hooks are used but further work
+is still required.
+
+o Using new Yaesockets.
+
+
+Release 0.2
+-----------
+4 Feb 2001
+
+o Added argument checking to simple_fast_cgi example.
+
+o Added support for cookies and sessions to servlet library.
+
+o Goanna FastCGI now compiles and executes correctly under SmallEiffel.
+A new class STRING_MANIPULATION was needed to encapsulate different string
+handling between ISE and SmallEiffel. ELKS2000 will hopefully fix this when
+it is supported in all compilers.
+
+o Changed all keywords 'create' to 'creation' for SmallEiffel compliance.
+
+o Started to port all Goanna libraries to SmallEiffel but stopped because
+too much work is involved. Will wait until SmallEiffel is ELKS2000 compliant.
+
+o Added datetime cluster for simple date and timestamp handling.
+
+o Added compiler specific utility classes to help port to SmallEiffel.
+
+o Added Base64 encoder utility class.
+
+Release 0.1 (Proof-of-Concept)
+------------------------------
+6 Jan 2001
+
+The first public release of Project Goanna includes enough implemented
+functionality to demonstrate the capabilities of the technology. The classes
+included with the release have many skeleton code fragments and require
+further development before they will become more widely useful.
+
+The following known bugs and issues need to be resolved:
+
+o The project has only been tested under Windows using ISE Eiffel. Due
+to a few bugs in SmallEiffel and lack of support for creation expressions, 
+the source has not yet been ported. Further development will occur on 
+both Linux and Windows (just as soon as I update my Linux compiler --GM).
+
+o The Apache mod_fastcgi module has a few problems. Especially under
+Windows. 
+
+o Error handling is not performed in all areas. Integration with a standard
+error handling mechanism (eg, EEL) needs to be done.
+
+o The DOM interface utilises assertions to remove the need for exception 
+handling. The implementation therefore does not conform to the standard
+exactly. However, it does simplify the API. (I believe this is the right
+decision, but time will tell. -- GM).
+
+o The DS_HASH_TABLE class is used in a number of areas to handle named
+collections. The hash table implementation is a little heavy weight for some
+of the areas it has been used. In particular, as the implementation for
+DOM_NAMED_NODE_LIST. A more light-weight associative array could be used in
+these cases.
+
+

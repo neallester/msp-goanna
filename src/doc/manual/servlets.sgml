@@ -1,0 +1,51 @@
+<chapter>
+  <title>Eiffel Servlets</title>
+  <para>Describe implementation of Servlet API.</para>
+  <section>
+    <title>Overview</title>
+    <para>Overview of Servlet API.</para>
+  </section>
+  <section>
+    <title>Servlet API</title>
+    <para>Describe basic servlet API.</para>
+  </section>
+  <section>
+    <title>Servlet Connectors</title>
+    <para>Describe design and structure of servlet connectors</para>
+    <section>
+      <title>Standalone Servlet Connector</title>
+      <para>Describe standalone servlet connector.</para>
+    </section>
+    <section>
+      <title>FastCGI Servlet Connector</title>
+      <para>Describe FastCGI servlet connector.</para>
+    </section>
+    <section>
+      <title>CGI Servlet Connector</title>
+      <para>Describe CGI servlet connector.</para>
+    </section>
+  </section>
+  <section>
+    <title>Examples</title>
+    <para>Describe examples included in distribution.</para>
+    <section>
+	<title>Standalone Server</title>
+      <para>Describe standalone server.</para>
+    </section>
+    <section>
+      <title>FastCGI Server</title>
+      <para>Describe FastCGI server.</para>
+    </section>
+    <section>
+      <title>CGI Server</title>
+      <para>Describe CGI server.</para>
+    </section>
+  </section>
+</chapter>
+
+
+<!--
+    Local Variables:
+        sgml-parent-document: ("manual.sgml" "book" "chapter")
+    End:
+-->

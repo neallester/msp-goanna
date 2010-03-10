@@ -1,0 +1,72 @@
+# Common elements for Goanna Web Application output xml
+# www.freesafetyprogram.com
+# Author:	Neal L Lester [neal@3dsafety.com]
+# date: 	$Date: 2009-04-30 21:11:49 -0700 (Thu, 30 Apr 2009) $
+# revision: 	$Revision: 615 $
+# copyright: 	(c) Neal L Lester
+# License: "Eiffel Forum License Version 2 (see forum.txt)"
+
+# stylesheet="goa_common.css"
+
+
+namespace goa_common="http://www.sourceforge.net/projects/goanna/goa_common"
+
+paragraph = element goa_common:paragraph { class?, ( text_item | popup_hyperlink | hyperlink | submit | input | radio | select | text_area | image )+ }
+	text_item = element goa_common:text_item { ( class | span)?, text? }
+		span = attribute span { text }
+	division = element goa_common:division { class?, ( paragraph | submit | division | hyperlink | text_item | input | hidden | radio | select | text_area | table | image | ordered_list | unordered_list )+ }
+	ordered_list = element goa_common:ordered_list { class?, list_item+ }
+		list_item = element goa_common:list_item { class?, ( division | paragraph | text_item | hyperlink | popup_hyperlink )+ }
+	unordered_list = element goa_common:unordered_list { class?, list_item+ }
+	hyperlink = element goa_common:hyperlink { class?, url, tool_tip?, text }
+	popup_hyperlink = element goa_common:popup_hyperlink { class?, url, text }
+		palette = attribute palette { text }
+table = element goa_common:table { class?, cellspacing?, cellpadding?, summary, header, footer, body }
+	summary = attribute summary { text }
+	cellspacing = attribute cellspacing { xsd:nonNegativeInteger }
+	cellpadding = attribute cellpadding { xsd:nonNegativeInteger }
+	header = element goa_common:header { class?, row* }
+		row = element goa_common:row { class?, cell+ }
+			cell = element goa_common:cell { class?, colspan, (text_item | popup_hyperlink | hyperlink | submit | input | radio | checkbox | select | text_area | division )* }
+				colspan = attribute colspan { xsd:nonNegativeInteger }
+	footer = element goa_common:footer { class?, row* }
+	body = element goa_common:body { class?, row* }
+hidden = element goa_common:hidden { name, value }
+	name = attribute name { text }
+input = element goa_common:input { class?, name, type, disabled, maxlength?, size?, value }
+	type = attribute type { "text" | "password" }
+	maxlength = attribute maxlength { xsd:nonNegativeInteger }
+	size = attribute size { xsd:nonNegativeInteger }
+	disabled = attribute disabled { "yes" | "no" }
+submit = element goa_common:submit { class?, name, value, on_click_script? }
+
+radio = element goa_common:radio { class?, name, value, checked, disabled }
+	value = attribute value { text }
+	checked = attribute checked { "yes" | "no" }
+
+checkbox = element goa_common:checkbox { class? , name, checked, disabled, on_click_script? }
+	on_click_script = attribute on_click_script { text }
+
+#"update_safety_suggestion_box_location" | "update_reminder_email" | "window.close()" | "update_safety_meeting_requirements_with_departments" | "update_safety_meeting_requirements_no_departments" | "checkbox_update_startup_meetings" | "select_update_startup_meetings" | "update_coordination_meetings" | "update_employees_permit_spaces" }
+#Validating on click scripts isn't possible right now; I need dynamic scripts which include suffix number.  Perhaps I should add a feature
+#Append suffix to script name
+
+select = element goa_common:select { class?, name, disabled, multiple?, size?, on_click_script?, option+ }
+	multiple = attribute multiple { "yes" | "no" }
+	option = element goa_common:option { value, selected?, text }
+		selected = attribute selected { "yes" | "no" }
+text_area = element goa_common:text_area { class?, name, rows, columns, text? }
+	rows = attribute rows { xsd:nonNegativeInteger }
+	columns = attribute columns { xsd:nonNegativeInteger }
+
+url = attribute url { text }
+
+image = element goa_common:image { class?, url, alternate_text, height, width }
+	alternate_text = attribute alternate_text { text }
+	height = attribute height { xsd:nonNegativeInteger }
+	width = attribute width { xsd:nonNegativeInteger }
+
+tool_tip = element goa_common:tool_tip { class, text }
+
+page_title = attribute page_title { text }
+style_sheet = attribute style_sheet { text }

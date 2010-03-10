@@ -1,0 +1,26 @@
+Project Goanna Tools
+--------------------
+
+The tools distributed with Project Goanna include:
+
+	httpd - A HTTP server and servlet engine. This tool provides functional
+		HTTP server facilities and servlet management. HTTPD can server up 
+		standard internet files via a FILE_SERVLET and can perform dynamic
+		page creation via standard servlets.
+
+	xmle - The XML/HTML to Eiffel compiler. This tool is similar to the
+		XMLC tool from the Enhydra Java framework 
+		(http://www.enhydra.org). XMLE provides the means to convert
+		an XML or HTML file into a DOM object representation. XMLE
+		can then store the DOM object structure in a binary form
+		on disk, called a BDOM file. This structure can be retrieved
+		and modified in memory before streaming to a client.
+
+		NOTE: Currently the XMLE tool only supports XML parsing. We
+		still have to build an HTML parser to support HTML.
+
+	bdom_viewer - This tool can read a BDOM file and stream it to 
+		standard out.
+
+See the individual tools directories for more details.
+

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<project name="utility" default="help">
+
+	<description>
+		system:      "Goanna Utility Library Tester"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+	</description>
+
+	<inherit>
+		<parent location="${GOBO}/misc/test.eant">
+		  <redefine target="init_system"/>
+		</parent>
+	</inherit>
+
+<!-- Implementation -->
+
+	<target name="init_system">
+		<set name="system" value="xfast_cgi"/>
+		<set name="library" value="fast_cgi"/>
+		<set name="system_dir" value="${GOANNA}/test/${library}"/>
+	</target>
+
+</project>

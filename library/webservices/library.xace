@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<library name="webservices" prefix="g_ws_">
+
+	<description>
+		description: "Cluster definition for Goanna webservices library classes"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@sourceforge.users.net]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum License v2 (see forum.txt)."
+	</description>
+
+	<cluster name="webservices" location="${GOANNA}/library/webservices">
+		<option name="abstract" value="true"/>
+		<cluster name="application" if="${GOBO_EIFFEL}=ise" />
+		<cluster name="connectors">
+			<cluster name="cgi"/>
+			<cluster name="fast_cgi">
+				<cluster name="protocol"/>
+			</cluster>
+			<cluster name="stand_alone"/>
+		</cluster>
+		<cluster name="security"/>
+		<cluster name="services"/>
+		<cluster name="servlet">
+			<cluster name="http"/>
+			<cluster name="servlets">
+				<cluster name="content_handlers"/>
+			</cluster>
+		</cluster>
+		<!-- <cluster name="models" unless="$GOANNA_WITHOUT_DOM">
+			<option name="abstract" value="true"/>
+			<cluster name="dom">
+				<cluster name="core"/>
+				<cluster name="traversal_range"/>
+				<cluster name="writer"/>
+				<cluster name="parser"/>
+				<cluster name="impl">
+					<cluster name="core" prefix="impl_"/>
+					<cluster name="traversal_range" prefix="impl_"/>
+					<cluster name="xmle_doc"/>
+				</cluster>
+			</cluster>
+		</cluster> --> 
+		<cluster name="protocols" unless="${GOBO_EIFFEL}=ve">
+			<cluster name="soap">
+				<cluster name="encoding"/>
+				<cluster name="server" prefix="soap_">
+					<cluster name="servlet"/>
+				</cluster>
+				<cluster name="utility"/>
+			</cluster>
+			<cluster name="xmlrpc">
+				<cluster name="client"/>
+				<cluster name="server" prefix="xmlrpc_">
+					<cluster name="servlet"/>
+				</cluster>
+			</cluster>
+		</cluster>
+	</cluster>
+	<mount location="${EPOSIX}/src/library.xace"/>
+
+</library>

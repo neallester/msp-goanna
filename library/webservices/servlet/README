@@ -1,0 +1,54 @@
+Project Goanna Library
+----------------------
+
+Servlet API
+-----------
+
+The Servlet API provides a Java Servlet compatible API for programming
+servlet applications in Eiffel. This library contains classes compatible with
+the servlet API. It does not provide a complete working implementation. See
+the fcgi/servlet library for an implementation.
+
+Usage
+-----
+
+The GOA_SERVLET class and its descendant GOA_HTTP_SERVLET provide the central
+functionality of a servlet application. Each servlet you need to implement
+should implement one of these classes. 
+
+If you are developing an application for the internet you will typically
+inherit from GOA_HTTP_SERVLET and redefine one or more of the 'do_' routines, 
+such as, 'do_get' or 'do_post'. Each of these routines is passed an instance
+of GOA_HTTP_SERVLET_REQUEST and GOA_HTTP_SERVLET_RESPONSE that
+represent the initiating request and the response to send back.
+
+For example, a basic servlet that responds with a simple HTML page could
+be coded as follows:
+
+------------------------------------------------------------------------
+class MY_SERVLET
+
+inherit
+	GOA_HTTP_SERVLET
+		redefine
+			do_get
+		end
+creation
+	init
+feature
+	do_get (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+		do
+			resp.send ("<html><head>%R%N")
+			resp.send ("<title>Test Servlet</title>%R%N")
+			resp.send ("</head>%R%N")
+			resp.send ("<body><h1>This is a test.</h1>%R%N")
+			resp.send ("</body></html>%R%N")
+		end
+end -- class MY_SERVLET
+------------------------------------------------------------------------
+
+MY_SERVLET will respond with a simple HTML page with a title and short
+message, "This is a test". The servlet framework will send the appropriate
+HTTP headers for the response when it is sent back to the client.
+
+

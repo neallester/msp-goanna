@@ -1,0 +1,27 @@
+# Schema for xml representing redirect content.  Intended for transformation to html by page.xsl
+# www.freesafetyprogram.com
+# Author:	Neal L Lester [neal@3dsafety.com]
+# date: 	$Date: 2005-10-06 22:01:03 -0700 (Thu, 06 Oct 2005) $
+# revision: 	$Revision: 442 $
+# copyright: 	(c) Neal L Lester
+# License: "Eiffel Forum License Version 2 (see forum.txt)"
+
+# stylesheet="goa_redirect.css"
+
+namespace goa_redirect = "http://www.sourceforge.net/projects/goanna/goa_redirect"
+namespace goa_common="http://www.sourceforge.net/projects/goanna/goa_common"
+namespace datatypeLibrary ="http://www.w3.org/2001/XMLSchema-datatypes"
+grammar
+{
+   start = redirect
+   
+   include "goa_common.rnc"
+   						
+	redirect = element goa_redirect:redirect {page_title, delay, url, style_sheet?, ( paragraph | division | hyperlink | text_item | table | popup_hyperlink | hyperlink | image )* }
+			delay = attribute delay { xsd:nonNegativeInteger }
+			
+dummy = attribute dummy { xsd:nonNegativeInteger }
+
+CLASS_ATTRIBUTE_PLACEHOLDER
+
+}

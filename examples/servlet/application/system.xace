@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<system name="app">
+	<description>
+		description: "XAce file for Goanna servlet application example"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+		thanks: "Modified version of GOBO ant files"
+	</description>
+
+	<root class="APPLICATION" creation="default_create"/>
+
+	<option unless="${DEBUG}">
+		<option name="assertion" value="none"/>
+		<option name="finalize" value="true"/>
+	</option>
+	<option if="${DEBUG}">
+		<option name="assertion" value="require"/>
+		<option name="finalize" value="false"/>
+	</option>
+
+	<option name="console_application" value="true"/>
+	<option name="multithreaded" value="true"/>
+
+	<cluster name="root_cluster" location="${GOANNA}/examples/servlet/application">
+	</cluster>
+	
+	<mount location="${GOBO}/library/kernel.xace"/>
+	<mount location="${GOBO}/library/library.xace"/>
+	<mount location="${GOANNA}/library/library.xace"/>
+	<mount location="${GOANNA}/library/thread.xace"/>
+
+</system>

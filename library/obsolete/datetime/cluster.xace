@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<cluster name="log4e" location="${GOANNA}/library/log4e">
+
+	<description>
+		description: "Cluster definition for Goanna log4e"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+		thanks: "Modified version of GOBO cluster.xace files"
+	</description>
+
+	<cluster name="appenders">
+		<cluster name="net"/>
+		<cluster name="nt"/>
+	</cluster>
+	<cluster name="config"/>
+	<cluster name="filters"/>
+	<cluster name="helpers"/>
+	<cluster name="layouts">
+		<cluster name="pattern"/>
+	</cluster>
+
+</cluster>

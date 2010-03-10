@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<library name="yaesockets" prefix="ys_">
+
+	<description>
+		description: "Cluster definition for Yaesockets classes"
+		project: "Goanna [http://sourceforge.net/projects/goanna]"
+		library: "log4e"
+		author: "Glenn Maughan [mailto:glennmaughan@goanna.info]"
+		copyright: "Copyright (c) 2002, Glenn Maughan"
+		license: "Eiffel Freeware License v1 (see forum.txt)"
+		date: "$Date: 2002-07-14 04:42:40 +0000 (Sun, 14 Jul 2002) $"
+		revision: "$Revision: 376 $"
+	</description>
+
+	<cluster name="yaesockets" location="${YAESOCKETS}">
+		<cluster name="spec">
+			<cluster name="${GOBO_EIFFEL}"/>
+		</cluster>
+	</cluster>
+
+	<option name="link" value="$(YAESOCKETS)/C/cl.obj" if="${GOBO_OS}=windows"/>
+	<option name="link" value="WSOCK32.lib" if="${GOBO_OS}=windows"/>
+	<option name="link" value="$(YAESOCKETS)/C/cl.o" if="${GOBO_OS}=unix"/>
+
+</library>

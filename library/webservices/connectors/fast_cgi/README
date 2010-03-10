@@ -1,0 +1,111 @@
+Project Goanna Library
+----------------------
+
+See below for FastCGI Servlet Library instructions.
+
+Eiffel FastCGI
+--------------
+
+The FastCGI library provides a pure Eiffel implementation of the FastCGI
+protocol (http://www.fastcgi.com). FastCGI is an extension to the standard
+CGI protocol that allows servers to be persistent and provides efficient,
+multiplexed communication between a web server and the FastCGI server.
+
+The Eiffel implementation of FastCGI allows you to write FastCGI servers
+entirely in Eiffel. The library conforms to the FastCGI specification and
+currently has enough functionality implemented to work with the Apache
+mod_fastcgi module.
+
+Only FastCGI connections are supported, standard CGI invocation of 
+Eiffel FastCGI servers are not supported. Future versions may support this
+type of execution.
+
+Usage
+-----
+
+The FastCGI protocol is handled by the class GOA_FAST_CGI which provides similar
+features to the standard FastCGI API including 'accept' and 'finish'. This
+class can be used to perform standard FastCGI operations.
+
+Class GOA_FAST_CGI_APP provides a higher-level abstraction for FastCGI 
+applications. This class provides a standard application request processing
+loop and a deferred feature 'process_request' that is typically overridden
+to perform appropriate request handling.
+
+To use GOA_FAST_CGI_APP, all you need to do is create a decendant class that
+implements 'process_request':
+
+------------------------------------------------------------------
+class MY_FAST_CGI_APP
+
+inherit
+	GOA_FAST_CGI_APP
+creation
+	make
+feature
+	process_request is
+		do
+			putstr ("Content-type: text/html%R%N%R%N")
+			putstr ("TESTING<br>%R%N")
+		end
+
+end -- class MY_FAST_CGI_APP
+-------------------------------------------------------------------
+
+FastCGI Servlets
+----------------
+
+The Fast CGI Servlets library implements the Servlet API using FastCGI
+as the connection mechanism. This library provides a wrapper on top of 
+FastCGI that can be used to build servlet compliant applications.
+
+The library extends GOA_FAST_CGI_APP to provide a GOA_FAST_CGI_SERVLET_APP
+that manages the registration of servlets and dispatch of servlet
+requests.
+
+See the Servlet API library for more details.
+
+Usage
+-----
+
+To build a FastCGI servlet application you need to create a descendant of
+GOA_FAST_CGI_SERVLET_APP, register instances of your servlets (descendants of
+GOA_HTTP_SERVLET) and call run. For example:
+
+---------------------------------------------------------------------
+class MY_FAST_CGI_SERVLET_APP
+
+inherit
+	GOA_FAST_CGI_SERVLET_APP
+		rename
+			make as parent_make
+		end
+creation
+	make
+feature
+	make is
+		local
+			config: GOA_SERVLET_CONFIG
+			servlet: GOA_HTTP_SERVLET
+		do
+			parent_make (8000, 5) -- port 8000, 5 backlog requests
+			create config
+			create {MY_HTTP_SERVLET} servlet.init (config)
+			register_servlet (servlet, "test")
+			run
+		end
+
+end
+-----------------------------------------------------------------------
+
+You then need to register the server with Apache using mod_fastcgi. See 
+the mod_fastcgi documentation for details. For example, if you register
+the server on the localhost with the name 'servlet_app', you can execute
+the registered servlet by accessing:
+
+	http://localhost/fcgi-bin/servlet_app/test
+
+in a browser. Additional servlets can be registered by giving a path name
+that is mapped to the 'path_info' attribure of the servlet request.
+
+

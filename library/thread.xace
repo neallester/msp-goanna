@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<library name="thread" prefix="ise_">
+
+	<description>
+		description: "Cluster definition for ISE EiffelThread classes"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+	</description>
+
+	<cluster name="eiffel_thread" location="${ISE_EIFFEL}/library/thread">
+	  <option name="recursive" value="true"/>
+	  <option name="read_only" value="true"/>
+	</cluster>
+
+</library>

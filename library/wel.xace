@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<library name="wel" prefix="wel_">
+
+	<description>
+		description: "Cluster definition for ISE WEL classes"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+	</description>
+
+	<option name="abstract" value="true"/>
+
+	<cluster name="wel" location="${ISE_EIFFEL}/library/wel">
+		<cluster name="consts">
+			<cluster name="new_consts"/>
+		</cluster>
+		<cluster name="controls"/>
+		<cluster name="extra"/>
+		<cluster name="gdi"/>
+		<cluster name="gdistock"/>
+		<cluster name="messages"/>
+		<cluster name="shared"/>
+		<cluster name="stddlgs"/>
+		<cluster name="structs"/>
+		<cluster name="support"/>
+		<cluster name="windows"/>
+	</cluster>
+
+	<option name="header" value="$(ISE_EIFFEL)/library/wel/spec/$(ISE_PLATFORM)/include"/>
+	<option name="link" value="$(ISE_EIFFEL)/library/wel/spec/$(ISE_C_COMPILER)/lib/wel.lib"/>
+
+</library>

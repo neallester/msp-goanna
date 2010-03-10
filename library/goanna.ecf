@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><system xmlns="http://www.eiffel.com/developers/xml/configuration-1-1-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-1-0 http://www.eiffel.com/developers/xml/configuration-1-1-0.xsd" name="goanna" uuid="7643A549-5318-9847-73B5-87EF12EF9742" library_target="goanna">
+	<target name="goanna">
+		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<library name="eposix" location="$EPOSIX\eposix.ecf" readonly="true"/>
+		<library name="gobo" location="$ISE_LIBRARY\library\gobo\gobo.ecf" readonly="true"/>
+		<library name="log4e" location="$LOG4E\library\log4e.ecf" readonly="true"/>
+		<library name="thread" location="$ISE_LIBRARY\library\thread\thread.ecf"/>
+		<cluster name="g_ut_utility" location="${GOANNA}\library\utility\">
+			<cluster name="g_ut_spec" location="$|spec\">
+				<cluster name="g_ut_ise" location="$|ise\"/>
+			</cluster>
+			<cluster name="g_ut_thread" location="$|thread\"/>
+		</cluster>
+		<cluster name="g_ws_webservices" location="${GOANNA}\library\webservices\">
+			<cluster name="g_ws_application" location="$|application\"/>
+			<cluster name="g_ws_connectors" location="$|connectors\">
+				<cluster name="g_ws_cgi" location="$|cgi\"/>
+				<cluster name="g_ws_fast_cgi" location="$|fast_cgi\">
+					<cluster name="g_ws_protocol" location="$|protocol\"/>
+				</cluster>
+				<cluster name="g_ws_stand_alone" location="$|stand_alone\"/>
+			</cluster>
+			<cluster name="g_ws_protocols" location="$|protocols\">
+				<cluster name="g_ws_soap" location="$|soap\">
+					<cluster name="g_ws_encoding" location="$|encoding\"/>
+					<cluster name="g_ws_soap_server" location="$|server\">
+						<cluster name="g_ws_soap_servlet" location="$|servlet\"/>
+					</cluster>
+					<cluster name="g_ws_utility" location="$|utility\"/>
+				</cluster>
+				<cluster name="g_ws_xmlrpc" location="$|xmlrpc\">
+					<cluster name="g_ws_client" location="$|client\"/>
+					<cluster name="g_ws_xmlrpc_server" location="$|server\">
+						<cluster name="g_ws_xmlrpc_servlet" location="$|servlet\"/>
+					</cluster>
+				</cluster>
+			</cluster>
+			<cluster name="g_ws_security" location="$|security\"/>
+			<cluster name="g_ws_services" location="$|services\"/>
+			<cluster name="g_ws_servlet" location="$|servlet\">
+				<cluster name="g_ws_http" location="$|http\"/>
+				<cluster name="g_ws_servlets" location="$|servlets\">
+					<cluster name="g_ws_content_handlers" location="$|content_handlers\"/>
+				</cluster>
+			</cluster>
+		</cluster>
+		<cluster name="g_application" location="${GOANNA}\library\application" recursive="true"/>
+	</target>
+</system>

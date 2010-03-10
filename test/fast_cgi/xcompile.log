@@ -1,0 +1,1716 @@
+Eiffel Compilation Manager
+Version 6.5.8.1777 GPL Edition - linux-x86
+
+Degree 6: Examining System
+Degree 5: Parsing Classes
+Degree 4: Analyzing Inheritance
+Degree 3: Checking Types
+Degree 2: Generating Byte Code
+Freezing System Changes
+Degree -1: Generating Code
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 24 in class STDC_EXIT_SWITCH
+Use keyword `create' instead.
+
+
+creation {STDC_EXIT_SWITCH_ACCESSOR}
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 24 in class STDC_SIGNAL_SWITCH
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 22 in class STDC_SIGNAL
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 101 in class STDC_BASE
+Make an expanded version of the base class associated with this type.
+
+
+    exceptions: expanded EXCEPTIONS
+----------------^
+            -- Access to developer raised exceptions.
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 33 in class DS_SEARCHABLE [G]
+Use the `detachable' keyword instead of ?.
+
+        local
+            v: ?G
+---------------^
+            l_current: ?DS_SEARCHABLE [?G]
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 34 in class DS_SEARCHABLE [G]
+Use the `detachable' keyword instead of ?.
+
+            v: ?G
+            l_current: ?DS_SEARCHABLE [?G]
+---------------------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 34 in class DS_SEARCHABLE [G]
+Use the `detachable' keyword instead of ?.
+
+            v: ?G
+            l_current: ?DS_SEARCHABLE [?G]
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 26 in class KL_ANY_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+
+    same_objects (obj1, obj2: ?ANY): BOOLEAN is
+------------------------------^
+            -- Are `obj1' and `obj2' the same object?
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 39 in class KL_ANY_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+
+    equal_objects (obj1, obj2: ?ANY): BOOLEAN is
+-------------------------------^
+            -- Are `obj1' and `obj2' considered equal?
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 53 in class KL_ANY_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+
+    to_any (an_any: ?ANY): ?ANY is
+--------------------^
+            -- Return `an_any';
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 53 in class KL_ANY_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+
+    to_any (an_any: ?ANY): ?ANY is
+---------------------------^
+            -- Return `an_any';
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 21 in class KL_EQUALITY_TESTER [G]
+Use the `detachable' keyword instead of ?.
+
+
+    test (v, u: ?G): BOOLEAN is
+----------------^
+            -- Are `v' and `u' considered equal?
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 27 in class GOA_FAST_CGI_REQUEST
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+    make
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 200 in class KL_INPUT_FILE
+Use the `detachable' keyword instead of ?.
+
+        local
+            char_buffer: ?KL_CHARACTER_BUFFER
+-------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 255 in class KL_INPUT_FILE
+Use the `detachable' keyword instead of ?.
+
+
+    character_buffer: ?KL_LINKABLE [CHARACTER]
+----------------------^
+            -- Unread characters
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 17 in class KL_IMPORTED_ARRAY_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+
+    ANY_ARRAY_: KL_ARRAY_ROUTINES [?ANY] is
+-----------------------------------^
+            -- Routines that ought to be in class ARRAY
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 41 in class KL_IMPORTED_ARRAY_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+
+    STRING_ARRAY_: KL_ARRAY_ROUTINES [?STRING] is
+--------------------------------------^
+            -- Routines that ought to be in class ARRAY
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 49 in class KL_IMPORTED_ARRAY_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+
+    ARRAY_SPECIAL_INTEGER_: KL_ARRAY_ROUTINES [?SPECIAL [INTEGER]] is
+-----------------------------------------------^
+            -- Routines that ought to be in class ARRAY
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 279 in class KI_CHARACTER_OUTPUT_STREAM
+Use the `detachable' keyword instead of ?.
+
+        local
+            a_character_input: ?KI_CHARACTER_INPUT_STREAM
+-------------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 52 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+            i, j, nb: INTEGER
+            uc_string: ?UC_STRING
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 311 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            uc_string: ?UC_STRING
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 337 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+            i, nb, a_code, a_high, a_low, a_surrogate: INTEGER
+            uc_string: ?UC_STRING
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 384 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+            i, nb, a_code, a_high, a_low, a_surrogate: INTEGER
+            uc_string: ?UC_STRING
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 431 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+            i, j, k, l, m, nb, a_code: INTEGER
+            uc_string: ?UC_STRING
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 471 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+            i, j, k, l, m, nb, a_code: INTEGER
+            uc_string: ?UC_STRING
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 522 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+            a_code: INTEGER
+            other_unicode: ?UC_STRING
+---------------------------^
+            k, end_index: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 671 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            uc_string: ?UC_STRING
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 732 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            uc_string: ?UC_STRING
+-----------------------^
+            i, nb: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 852 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            uc_string: ?UC_STRING
+-----------------------^
+            i, nb, nb1, nb2: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1084 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            uc_string: ?UC_STRING
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1129 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            uc_string: ?UC_STRING
+-----------------------^
+            i: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1185 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            uc_string: ?UC_STRING
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1215 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            uc_string: ?UC_STRING
+-----------------------^
+            i: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1319 in class KL_STRING_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            uc_string: ?UC_STRING
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 201 in class ABSTRACT_STRING_HELPER
+Loop variant should appear just before the end keyword of the loop.
+
+                variant
+                    (s.count + 1) - start
+---------------------^
+                until
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 57 in class UC_UNICODE_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            a_unicode: ?UC_STRING
+-----------------------^
+            i, nb: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 24 in class KL_STRING_EQUALITY_TESTER
+Use the `detachable' keyword instead of ?.
+
+
+    test (v, u: ?STRING): BOOLEAN is
+----------------^
+            -- Are `v' and `u' considered equal?
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 26 in class KL_CASE_INSENSITIVE_STRING_EQUALITY_TESTER
+Use the `detachable' keyword instead of ?.
+
+
+    test (s1, s2: ?STRING): BOOLEAN is
+------------------^
+            -- Are `s1' and `s2' considered equal?
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 659 in class RX_PCRE_COMPILER
+Use the `detachable' keyword instead of ?.
+
+            a_position: INTEGER
+            a_position_map: ?like new_position_map
+----------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1260 in class RX_PCRE_COMPILER
+Use the `detachable' keyword instead of ?.
+
+
+    start_bits: ?RX_CHARACTER_SET
+----------------^
+            -- A set of starting characters. This will be filled in by the optimizer
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 23 in class KI_BUFFER [G]
+Use the `detachable' keyword instead of ?.
+
+        local
+            r: ?G
+---------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 25 in class KL_LINKABLE [G]
+Use the `detachable' keyword instead of ?.
+
+
+    right: ?like Current
+-----------^
+            -- Right neighbor
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 152 in class KL_FILE
+Use the `detachable' keyword instead of ?.
+
+            a_name: STRING
+            saved_string_name: ?STRING
+-------------------------------^
+            string_other_name: STRING
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 264 in class KL_FILE
+Use the `detachable' keyword instead of ?.
+
+            string_new_name: STRING
+            saved_string_name: ?STRING
+-------------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 76 in class KL_DIRECTORY
+Use the `detachable' keyword instead of ?.
+
+
+    filenames: ?ARRAY [STRING] is
+---------------^
+            -- Names of readable files in current directory;
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 123 in class KL_DIRECTORY
+Use the `detachable' keyword instead of ?.
+
+
+    directory_names: ?ARRAY [STRING] is
+---------------------^
+            -- Names of readable subdirectories in current directory;
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 577 in class KL_DIRECTORY
+Use the `detachable' keyword instead of ?.
+
+        local
+            l_last_entry: ?STRING
+--------------------------^
+            l_entry_buffer: like entry_buffer
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 618 in class KL_DIRECTORY
+Use the `detachable' keyword instead of ?.
+
+
+    entry_buffer: ?KL_LINKABLE [STRING]
+------------------^
+            -- Unread entries
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 72 in class KL_ARRAY_ROUTINES [G]
+Use the `detachable' keyword instead of ?.
+
+            i, nb: INTEGER
+            l_array: ?ARRAY [?G]
+-----------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 72 in class KL_ARRAY_ROUTINES [G]
+Use the `detachable' keyword instead of ?.
+
+            i, nb: INTEGER
+            l_array: ?ARRAY [?G]
+---------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 17 in class KI_EXCEPTIONS
+Use the `detachable' keyword instead of ?.
+
+
+    exception_trace: ?STRING is
+---------------------^
+            -- String representation of the exception trace;
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 35 in class KI_EXCEPTIONS
+Use the `detachable' keyword instead of ?.
+
+
+    is_developer_exception_of_name (name: ?STRING): BOOLEAN is
+------------------------------------------^
+            -- Is the last exception originally due to a developer
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 41 in class KI_EXCEPTIONS
+Use the `detachable' keyword instead of ?.
+
+
+    developer_exception_name: ?STRING is
+------------------------------^
+            -- Name of last developer-raised exception
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 50 in class KI_EXCEPTIONS
+Use the `detachable' keyword instead of ?.
+
+
+    raise (a_name: ?STRING) is
+-------------------^
+            -- Raise a developer exception of name `a_name'.
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 312 in class KL_STDIN_FILE
+Use the `detachable' keyword instead of ?.
+
+        local
+            char_buffer: ?KL_CHARACTER_BUFFER
+-------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 332 in class KL_STDIN_FILE
+Use the `detachable' keyword instead of ?.
+
+
+    character_buffer: ?KL_LINKABLE [CHARACTER]
+----------------------^
+            -- Unread characters
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 387 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+        local
+            l_uc_string: ?UC_STRING
+-------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 439 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+            str: STRING_GENERAL
+            l_uc_string: ?UC_STRING
+-------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 685 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+            a_code, a_code2: INTEGER
+            other_unicode: ?UC_STRING
+---------------------------^
+            k, z, end_index: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 857 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+            a_code, a_code2: INTEGER
+            other_unicode: ?UC_STRING
+---------------------------^
+            k, z, end_index: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1605 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+        local
+            uc_string: ?UC_STRING
+-----------------------^
+            i, nb, nb1, nb2: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1794 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+
+    prepend_string (s: ?STRING) is
+-----------------------^
+            -- Prepend a copy of `s', if not void, at front.
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1805 in class UC_STRING
+Use the new syntax for object test `attached {T} exp as x'.
+
+        do
+            if {ls: STRING} s then
+---------------^
+                append (ls)
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1883 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+
+    append_string (s: ?READABLE_STRING_8) is
+----------------------^
+            -- Append a copy of `s' at end.
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1907 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+            new_count: INTEGER
+            a_utf8_string: ?UC_UTF8_STRING
+---------------------------^
+            a_uc_string: ?UC_STRING
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 1908 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+            a_utf8_string: ?UC_UTF8_STRING
+            a_uc_string: ?UC_STRING
+-------------------------^
+            b: BOOLEAN
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 3483 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+            a_code: INTEGER
+            a_utf8_string: ?UC_UTF8_STRING
+---------------------------^
+            a_uc_string: ?UC_STRING
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 3484 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+            a_utf8_string: ?UC_UTF8_STRING
+            a_uc_string: ?UC_STRING
+-------------------------^
+            l_string_8: ?STRING
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 3485 in class UC_STRING
+Use the `detachable' keyword instead of ?.
+
+            a_uc_string: ?UC_STRING
+            l_string_8: ?STRING
+------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 6 in class STDC_BUFFER
+Keyword `note' is used as identifier.
+
+
+    note: "If you treat this as an array, it is zero based."
+----^
+    author: "Berend de Boer"
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 48 in class STDC_BUFFER
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 282 in class STDC_BUFFER
+Use the alias form of the infix routine.
+
+
+    peek_uint8, infix "@" (index: INTEGER): INTEGER is
+----------------^
+            -- consider memory an array of 8 bit values.
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 659 in class STDC_BUFFER
+Loop variant should appear just before the end keyword of the loop.
+
+            variant
+                (end_index - i) + 1
+-----------------^
+            until
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 713 in class STDC_BUFFER
+Loop variant should appear just before the end keyword of the loop.
+
+            variant
+                (end_index + 1) - i
+-----------------^
+            until
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 836 in class STDC_BUFFER
+Loop variant should appear just before the end keyword of the loop.
+
+                variant
+                    (capacity + 1) - i1
+---------------------^
+                until
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 26 in class STDC_SECURITY_CPU
+Use keyword `create' instead.
+
+   
+creation
+^---------------------------
+   
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 22 in class STDC_SECURITY_ERROR_HANDLING
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 23 in class STDC_SECURITY_FILES
+Use keyword `create' instead.
+
+
+creation {STDC_SECURITY}
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 97 in class STDC_SECURITY_FILES
+Make an expanded version of the base class associated with this type.
+
+
+    memory: expanded MEMORY
+------------^
+            -- Ensuring that resource counting is correct, works only
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 22 in class STDC_SECURITY_MEMORY
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 105 in class STDC_SECURITY_MEMORY
+Make an expanded version of the base class associated with this type.
+
+
+    memory: expanded MEMORY
+------------^
+            -- Ensuring that resource counting is correct, works only
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 31 in class POSIX_FILE_DESCRIPTOR
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 27 in class SUS_TIME_VALUE
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 80 in class ABSTRACT_CURRENT_PROCESS
+Loop variant should appear just before the end keyword of the loop.
+
+            variant
+                raw.count - i
+----------------^
+            until
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 31 in class KL_EXECUTION_ENVIRONMENT
+Use the `detachable' keyword instead of ?.
+
+
+    variable_value (a_variable: STRING): ?STRING is
+-----------------------------------------^
+            -- Value of environment variable `a_variable',
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 85 in class KI_CHARACTER_BUFFER
+Use the `detachable' keyword instead of ?.
+
+
+    as_special: ?SPECIAL [CHARACTER] is
+----------------^
+            -- 'SPECIAL [CHARACTER]' version of current character buffer;
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 53 in class KI_DIRECTORY
+Use the `detachable' keyword instead of ?.
+
+
+    filenames: ?ARRAY [STRING] is
+---------------^
+            -- Names of readable files in current directory;
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 62 in class KI_DIRECTORY
+Use the `detachable' keyword instead of ?.
+
+
+    directory_names: ?ARRAY [STRING] is
+---------------------^
+            -- Names of readable subdirectories in current directory;
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 21 in class KL_OPERATING_SYSTEM
+Use the `detachable' keyword instead of ?.
+
+            cwd: STRING
+            gobo_os, os: ?STRING
+-------------------------^
+        once
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 49 in class KL_OPERATING_SYSTEM
+Use the `detachable' keyword instead of ?.
+
+            cwd: STRING
+            gobo_os: ?STRING
+---------------------^
+        once
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 86 in class KL_OPERATING_SYSTEM
+Use the `detachable' keyword instead of ?.
+
+
+    variable_value (a_variable: STRING): ?STRING is
+-----------------------------------------^
+            -- Value of environment variable `a_variable',
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 19 in class KL_STRING
+Use the alias form of the infix routine.
+
+        rename
+            infix "<" as is_less alias "<",
+------------^
+            infix "<=" as is_less_equal alias "<=",
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 20 in class KL_STRING
+Use the alias form of the infix routine.
+
+            infix "<" as is_less alias "<",
+            infix "<=" as is_less_equal alias "<=",
+------------^
+            infix ">" as is_greater alias ">",
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 21 in class KL_STRING
+Use the alias form of the infix routine.
+
+            infix "<=" as is_less_equal alias "<=",
+            infix ">" as is_greater alias ">",
+------------^
+            infix ">=" as is_greater_equal alias ">=",
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 22 in class KL_STRING
+Use the alias form of the infix routine.
+
+            infix ">" as is_greater alias ">",
+            infix ">=" as is_greater_equal alias ">=",
+------------^
+            infix "@" as at alias "@",
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 23 in class KL_STRING
+Use the alias form of the infix routine.
+
+            infix ">=" as is_greater_equal alias ">=",
+            infix "@" as at alias "@",
+------------^
+            infix "+" as plus alias "+"
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 24 in class KL_STRING
+Use the alias form of the infix routine.
+
+            infix "@" as at alias "@",
+            infix "+" as plus alias "+"
+------------^
+        end
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 19 in class KL_COMPARABLE
+Use the alias form of the infix routine.
+
+        rename
+            infix "<" as is_less alias "<",
+------------^
+            infix "<=" as is_less_equal alias "<=",
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 20 in class KL_COMPARABLE
+Use the alias form of the infix routine.
+
+            infix "<" as is_less alias "<",
+            infix "<=" as is_less_equal alias "<=",
+------------^
+            infix ">" as is_greater alias ">",
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 21 in class KL_COMPARABLE
+Use the alias form of the infix routine.
+
+            infix "<=" as is_less_equal alias "<=",
+            infix ">" as is_greater alias ">",
+------------^
+            infix ">=" as is_greater_equal alias ">="
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 22 in class KL_COMPARABLE
+Use the alias form of the infix routine.
+
+            infix ">" as is_greater alias ">",
+            infix ">=" as is_greater_equal alias ">="
+------------^
+        end
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 307 in class STDC_HANDLE [H]
+Make an expanded version of the base class associated with this type.
+
+
+    memory: expanded MEMORY
+------------^
+            -- Ensuring that resource counting is correct, works only
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 20 in class EPX_HOST_PORT
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 19 in class EPX_SOCKET_ADDRESS_IN
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 20 in class EPX_SOCKET_ADDRESS_IN6
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 22 in class POSIX_LOCK
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+   
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 22 in class POSIX_TERMIOS
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 38 in class EPX_FILE_DESCRIPTOR
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 20 in class EPX_TIME_VALUE
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 39 in class KL_STRING_VALUES
+Use the `detachable' keyword instead of ?.
+
+            l_name: STRING
+            l_value: ?STRING
+---------------------^
+            i, nb: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 621 in class KL_WINDOWS_FILE_SYSTEM
+Use the `detachable' keyword instead of ?.
+
+            i, nb: INTEGER
+            a_drive: ?STRING
+---------------------^
+            a_hostname: ?STRING
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 622 in class KL_WINDOWS_FILE_SYSTEM
+Use the `detachable' keyword instead of ?.
+
+            a_drive: ?STRING
+            a_hostname: ?STRING
+------------------------^
+            a_sharename: ?STRING
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 623 in class KL_WINDOWS_FILE_SYSTEM
+Use the `detachable' keyword instead of ?.
+
+            a_hostname: ?STRING
+            a_sharename: ?STRING
+-------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 230 in class UC_UTF8_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            a_utf8: ?UC_UTF8_STRING
+--------------------^
+            a_uc_string: ?UC_STRING
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 231 in class UC_UTF8_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+            a_utf8: ?UC_UTF8_STRING
+            a_uc_string: ?UC_STRING
+-------------------------^
+            s, e: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 236 in class UC_UTF8_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+            c: CHARACTER
+            l_string_8: ?STRING
+------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 394 in class UC_UTF8_ROUTINES
+Use the `detachable' keyword instead of ?.
+
+        local
+            uc_string: ?UC_STRING
+-----------------------^
+            i, nb: INTEGER
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 27 in class STDC_TEXT_FILE
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 25 in class EPX_HOST
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 25 in class EPX_SERVICE
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 27 in class ABSTRACT_NET_BASE
+Make an expanded version of the base class associated with this type.
+
+
+    abstract_api: expanded EPX_NET_API
+------------------^
+            -- Access to API available at abstract level.
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 20 in class EPX_IP4_ADDRESS
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 36 in class EPX_IP6_ADDRESS
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 41 in class EPX_SOCKET_MULTIPLEXER
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 55 in class DS_TABLE [G, K]
+Use the `detachable' keyword instead of ?.
+
+        local
+            k: ?K
+---------------^
+            l_current: ?DS_TABLE [G, ?K]
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 56 in class DS_TABLE [G, K]
+Use the `detachable' keyword instead of ?.
+
+            k: ?K
+            l_current: ?DS_TABLE [G, ?K]
+-------------------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 56 in class DS_TABLE [G, K]
+Use the `detachable' keyword instead of ?.
+
+            k: ?K
+            l_current: ?DS_TABLE [G, ?K]
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 74 in class DS_TABLE [G, K]
+Use the `detachable' keyword instead of ?.
+
+        local
+            k: ?K
+---------------^
+            l_current: ?DS_TABLE [G, ?K]
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 75 in class DS_TABLE [G, K]
+Use the `detachable' keyword instead of ?.
+
+            k: ?K
+            l_current: ?DS_TABLE [G, ?K]
+-------------------------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 75 in class DS_TABLE [G, K]
+Use the `detachable' keyword instead of ?.
+
+            k: ?K
+            l_current: ?DS_TABLE [G, ?K]
+-----------------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 21 in class STDC_FILE_POSITION
+Use keyword `create' instead.
+
+
+creation {STDC_FILE}
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 24 in class POSIX_STATUS_FILDES
+Use keyword `create' instead.
+
+
+creation {EPX_FILE_DESCRIPTOR}
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 31 in class EPX_DESCRIPTOR
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 21 in class POSIX_ENV_VAR
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 20 in class POSIX_DIRECTORY
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 28 in class POSIX_STATUS_PATH
+Use keyword `create' instead.
+
+
+creation {EPX_FILE_SYSTEM}
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 189 in class ABSTRACT_FILE_SYSTEM
+Loop variant should appear just before the end keyword of the loop.
+
+            variant
+                a_paths.count - (i - a_paths.lower)
+----------------^
+            until
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 17 in class KL_VALUES [G, K]
+Use the `detachable' keyword instead of ?.
+
+
+    value (k: K): ?G is
+------------------^
+            -- Item associated with `k';
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 131 in class KI_PATHNAME
+Use the `detachable' keyword instead of ?.
+
+
+    drive: ?STRING is
+-----------^
+            -- Drive of pathname if present,
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 137 in class KI_PATHNAME
+Use the `detachable' keyword instead of ?.
+
+
+    hostname: ?STRING is
+--------------^
+            -- Hostname of pathname if present,
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 144 in class KI_PATHNAME
+Use the `detachable' keyword instead of ?.
+
+
+    sharename: ?STRING is
+---------------^
+            -- Sharename of pathname if present,
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 68 in class KL_PATHNAME
+Use the `detachable' keyword instead of ?.
+
+        local
+            s: ?STRING
+---------------^
+        do
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 78 in class KL_PATHNAME
+Use the `detachable' keyword instead of ?.
+
+
+    drive: ?STRING
+-----------^
+            -- Drive of pathname if present,
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 82 in class KL_PATHNAME
+Use the `detachable' keyword instead of ?.
+
+
+    hostname: ?STRING
+--------------^
+            -- Hostname of pathname if present,
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 87 in class KL_PATHNAME
+Use the `detachable' keyword instead of ?.
+
+
+    sharename: ?STRING
+---------------^
+            -- Sharename of pathname if present,
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 249 in class KL_PATHNAME
+Use the `detachable' keyword instead of ?.
+
+
+    components: ARRAY [?STRING]
+-----------------------^
+            -- Components in pathname
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 25 in class EPX_SELECT
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 25 in class EPX_PARTIAL_BUFFER
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 22 in class POSIX_PERMISSIONS_FILDES
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 21 in class STDC_ENV_VAR
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 26 in class POSIX_PERMISSIONS_PATH
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 26 in class STDC_PATH
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 29 in class EPX_DIRECTORY_HANDLE
+Use keyword `create' instead.
+
+
+creation {ABSTRACT_DIRECTORY}
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 23 in class EPX_EXTENSION_FILTER
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 69 in class EPX_EXTENSION_FILTER
+Loop variant should appear just before the end keyword of the loop.
+
+                    variant
+                        (extension.count - j) + 1
+-------------------------^
+                    until
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 21 in class STDC_BINARY_FILE
+Use keyword `create' instead.
+
+
+creation
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 26 in class UC_STRING_EQUALITY_TESTER
+Use the `detachable' keyword instead of ?.
+
+
+    test (v, u: ?STRING): BOOLEAN is
+----------------^
+            -- Are `v' and `u' considered equal?
+
+-------------------------------------------------------------------------------
+
+Obsolete syntax used at line 20 in class EPX_DESCRIPTOR_SET
+Use keyword `create' instead.
+
+
+creation {ABSTRACT_SELECT}
+^---------------------------
+
+
+-------------------------------------------------------------------------------
+
+Warning code: Obsolete Call
+
+Warning: call uses obsolete feature.
+What to do: update to new feature at your earliest convenience. The
+  feature is still available but may be removed in the future.
+
+Class: STDC_SIGNAL_SWITCH
+Feature: assert_can_store_signal
+Obsolete feature: resize (min_index, max_index: INTEGER_32) (class ARRAY)
+Obsolete message: Use `conservative_resize' instead as future versions will implement `resize' as specified in ELKS.
+
+-------------------------------------------------------------------------------
+
+Warning code: Obsolete Call
+
+Warning: call uses obsolete feature.
+What to do: update to new feature at your earliest convenience. The
+  feature is still available but may be removed in the future.
+
+Class: ABSTRACT_STRING_HELPER
+Feature: split_on
+Obsolete feature: resize (min_index, max_index: INTEGER_32) (class ARRAY)
+Obsolete message: Use `conservative_resize' instead as future versions will implement `resize' as specified in ELKS.
+
+-------------------------------------------------------------------------------
+
+Warning code: Obsolete Call
+
+Warning: call uses obsolete feature.
+What to do: update to new feature at your earliest convenience. The
+  feature is still available but may be removed in the future.
+
+Class: STDC_PATH
+Feature: parse
+Obsolete feature: clone (other: ANY): [like arg #1] ANY (class STDC_PATH)
+Obsolete message: Use `twin' instead.
+
+-------------------------------------------------------------------------------
+
+Warning code: Obsolete Call
+
+Warning: call uses obsolete feature.
+What to do: update to new feature at your earliest convenience. The
+  feature is still available but may be removed in the future.
+
+Class: ABSTRACT_FILE_SYSTEM
+Feature: find_program_in_path
+Obsolete feature: clone (other: ANY): [like arg #1] ANY (class ABSTRACT_FILE_SYSTEM)
+Obsolete message: Use `twin' instead.
+
+-------------------------------------------------------------------------------
+
+Warning code: Unused_local_warning
+
+Warning: unreferenced local variable(s)
+What to do: Remove it if you don't plan to use it in the future.
+
+Class: GOA_FAST_CGI_RECORD_HEADER
+Feature: write
+Unused locals are: 
+	retries: INTEGER_32
+	header_contents: STRING_8
+
+-------------------------------------------------------------------------------
+
+Warning code: Unused_local_warning
+
+Warning: unreferenced local variable(s)
+What to do: Remove it if you don't plan to use it in the future.
+
+Class: GOA_FAST_CGI_END_REQUEST_BODY
+Feature: write
+Unused local is: 
+	retries: INTEGER_32
+
+-------------------------------------------------------------------------------
+
+Warning code: Unused_local_warning
+
+Warning: unreferenced local variable(s)
+What to do: Remove it if you don't plan to use it in the future.
+
+Class: GOA_FAST_CGI_RAW_BODY
+Feature: write
+Unused local is: 
+	retries: INTEGER_32
+
+-------------------------------------------------------------------------------
+Degree -2: Constructing Polymorphic Table
+Removing Unused Code
+
+Degree -3: Generating Optimized Code
+System Recompiled.
+You must now run "finish_freezing" in:
+	/home/neal/goanna/test/fast_cgi/EIFGENs/xfast_cgi/F_code
+Eiffel C/C++ Compilation Tool - Version 6.5
+Copyright Eiffel Software 1985-2009. All Rights Reserved
+
+Preparing C compilation
+Compiling C code in E1
+Compiling C code in C19
+Compiling C code in C18
+Compiling C code in C17
+Compiling C code in C16
+Compiling C code in C15
+Compiling C code in C14
+Compiling C code in C13
+Compiling C code in C12
+Compiling C code in C11
+Compiling C code in C10
+Compiling C code in C9
+Compiling C code in C8
+Compiling C code in C7
+Compiling C code in C6
+Compiling C code in C5
+In file included from big_file_C6_c.c:23:
+uc274.c: In function `F606_5191':
+uc274.c:264: warning: comparison is always true due to limited range of data type
+Compiling C code in C4
+Compiling C code in C3
+Compiling C code in C2
+Compiling C code in C1
+Compiling C code in E2
+C compilation completed

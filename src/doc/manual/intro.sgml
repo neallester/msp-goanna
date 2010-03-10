@@ -1,0 +1,115 @@
+<chapter>
+  <title>Introduction</title>
+  <para>With the proliferation of the internet, web-based application development 
+    has become the norm, with dynamic internet sites being produced by hundreds of 
+    programmers in a variety of programming languages and environments. Most 
+    popular amongst the web development languages is Java; with extensive library support
+    for <firstterm>servlet</firstterm> development and enterprise connectivity via Enterprise
+    Java Beans.
+  </para>
+  <para>
+    The Eiffel programming language has long had the reputation of a language that focuses 
+    on the construction of quality software. With support for Design by Contract(TM), 
+    clean syntax and powerfull pure object-oriented constructs, Eiffel can be used to
+    effectively build robust applications, ranging from large business software through to
+    complex engineering systems. However, support for web applications has been
+    poor. Few Eiffel libraries exist that assist in the development of web applications. 
+  </para>
+  <para>
+    The Goanna library provides a comprehensive web application programming library
+    for Eiffel programmers, including a servlet API that will be familiar to existing Java
+    programmers and easy to understand for non-Java programmers.
+  </para>
+
+  <section>
+    <title>Why Goanna?</title>
+    <para>
+      Existing web libraries, such as EiffelWeb(TM) and clusters of ePosix, 
+      are limited to Common Gateway Interface (CGI) style applications which only allows
+      stateless requests &emdash; typically a client makes a request via HTTP and the 
+      server executes the CGI application passing the input via stdin and retrieving
+      the output via stdout. The result of the request is sent back to the client. Executing
+      the CGI application for every request implies a great deal of operating system overhead.
+      The Java servlet API is a framework for building long-lived statefull
+      web-applications that allow multiple requests to be handled by one executing application.
+    </para>
+    <para>
+      I have been programming with the Java servlet API for many years and have
+      been waiting patiently for the time when I could move over to commercial web site
+      development in Eiffel. I waited and waited for the right libraries to come along, but
+      it never happened. As they say, I bit the bullet and started writing Goanna. Initially,
+      the library was based loosly on the Enhydra Java framework from Lutris, however, it has
+      since moved closer to the Java servlet API and its future lies in providing a framework
+      for <firstterm>web services</firstterm>.
+    </para>
+  </section>
+
+  <section>
+    <title>Platforms</title>
+    <para>
+      Goanna is a multi-platform library and should run on all platforms on which an Eiffel
+      compiler is available. However, it has only been thoroughly tested on Linux and Windows
+      2000.
+    </para>
+  </section>
+
+  <section>
+    <title>Compilers</title>
+    <para>
+      The development of Goanna has been primarily performed using ISE EiffelStudio. All library
+      classes and examples work with ISE Eiffel 5.1 and onwards. Support for SmallEiffel is 
+      progressing. Due to the use of <firstterm>agents</firstterm> some facilities of Goanna
+      will not compile, such as XML-RPC. Many of the examples also use EiffelVision to provide
+      a portable GUI; these examples will only compile with ISE Eiffel.
+    </para>
+  </section>
+
+  <section>
+    <title>Required Libraries</title>
+    <para>
+      Goanna relies on a number of third-party libraries and tools for it to compile and 
+      execute correctly. The following sections describe each of the required tools and
+      briefly describes there installation. Consult the documentation that comes with each
+      library for more details.
+    </para>
+
+    <section>
+      <title>GOBO</title>
+      <para>
+	Goanna makes extensive use of the <firstterm>GOBO</firstterm> library to 
+	ensure that it is portable. GOBO, developed by Eric Bezault and many others,
+	provides a comprehensive set of data structure and support classes that hide the 
+	differences in compiler implementation. The GOBO tools, <application>geant</application>
+	and <application>gexace</application> are used to simply the build process dramatically.
+      </para>
+      <para>
+	A recent version of GOBO is required to build and use Goanna. I also recommend its use
+	in any libraries and applications you develop. GOBO is available at 
+	<link>http://www.gobosoft.com</link> and should be installed as per the instructions
+	found at the Gobosoft site. Make sure you have set the <envar>GOBO</envar> environment 
+	variable to point to the top level directory of the GOBO installation. 
+	Also make sure you add the GOBO <filename>bin</filename> directory to your path.
+      </para>
+    </section>
+  </section>
+  
+  <section>
+    <title>Installation and Compilation</title>
+    <para>
+      Goanna can be installed from a packaged distribution file or directly from the CVS repository.
+      The pre-packaged distributions represent stable releases that are suitable for general use, 
+      while the CVS repository contains the very latest source versions and should be used 
+      only for development and beta testing of new features. 
+    </para>
+    <para>
+      If you are installing from a pre-packaged distribution you only need to extract the archive 
+      into a directory of your choice. 
+    </para>
+  </section>
+</chapter>
+
+<!--
+    Local Variables:
+        sgml-parent-document: ("manual.sgml" "book" "chapter")
+    End:
+-->
