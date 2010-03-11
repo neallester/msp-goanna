@@ -17,52 +17,10 @@ feature {NONE} -- Creation
 
 	make is
 		local
-			request: GOA_FAST_CGI_REQUEST
-			socket: EPX_TCP_CLIENT_SOCKET
-			host: EPX_HOST
-			service: EPX_SERVICE
-			ip_address: EPX_IP4_ADDRESS
-			host_port: EPX_HOST_PORT
-			request_string, response_line, response: STRING
-			content_length, content_read: INTEGER
-			split_content_length: LIST [STRING]
+		
 		do
-			create ip_address.make_from_components (192, 168, 1, 35)
-			create service.make_from_port (3783, "tcp")
-			create host.make_from_address (ip_address)
-			create host_port.make (host, service)
-			create socket.open_by_address (host_port)
-			create request.make
-			request.add_parameter_record ("GATEWAY_INTERFACE", "CGI/1.1")
-  			request.add_parameter_record ("SERVER_PROTOCOL", "HTTP/1.1")
-  			request.add_parameter_record ("REQUEST_METHOD", "GET")
-  			request.add_parameter_record ("REQUEST_URI", "/program/creator/go_to.htm?page=greeting")
-  			request_string := request.as_fast_cgi_string (1)
-			socket.put_string (request_string)
-			from
-			until
-				response_line /= Void and then response_line.is_empty
-			loop
-				socket.read_line
-				response_line := socket.last_string
-				prune_line (response_line)
-				if content_length = 0 and then response_line.has_substring ("Content-Length") then
-					split_content_length := response_line.split (' ')
-					content_length := split_content_length.i_th (2).to_integer_32
-				end
-			end
-			from
-				response := ""
-			until
-				content_read > content_length
-			loop
-				socket.read_line
-				response_line := socket.last_string
-				prune_line (response_line)
-				response.append (response_line + "%N")
-				content_read := content_read + response_line.count + 1
-			end
-			io.put_string (response)
+			--create ip_address.make_from_components (192, 168, 1, 35)
+			-- create service.make_from_port (3783, "tcp")
 		end
 
 	prune_line (a_line: STRING) is

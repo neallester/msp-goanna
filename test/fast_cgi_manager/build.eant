@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<project name="fast_cgi_manager_test" default="help">
+
+	<description>
+		system:      "Goanna FastCgiManager Tester"
+		project: "Project Goanna [http://sourceforge.net/projects/goanna]"
+		date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
+		revision: "$Revision: 491 $"
+		author: "Glenn Maughan [glennmaughan@optushome.com.au]"
+		copyright: "Copyright (c) 2001 Glenn Maughan and others"
+		license: "Eiffel Forum Freeware License v1 (see forum.txt)."
+	</description>
+
+	<inherit>
+		<parent location="${GOBO}/misc/test.eant">
+		  <redefine target="init_system"/>
+		</parent>
+	</inherit>
+
+<!-- Implementation -->
+
+	<target name="init_system">
+		<set name="system" value="fast_cgi_manager_test"/>
+		<set name="library" value="fast_cgi_manager_test" />
+		<set name="system_dir" value="${GOANNA}/test/fast_cgi_manager"/>
+	</target>
+
+</project>
