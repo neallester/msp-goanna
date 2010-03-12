@@ -38,12 +38,15 @@
 		<cluster name="fast_cgi_manager" location="${GOANNA}/src/fast_cgi_manager">
 			<cluster name="test_server" location="server" />
 		</cluster>
-
+		<cluster name="thread" location="${ISE_EIFFEL}/library/thread">
+		</cluster>
+			<cluster name="thread_classic" location="${ISE_EIFFEL}/library/thread/classic" />
 		<mount location="${GOANNA}/library/library.xace"/>
 		<mount location="${GOANNA}/library/application/library.xace"/>
 		<mount location="${LOG4E}/library/library.xace" />
 		<mount location="${GOBO}/library/library.xace"/>
 		<mount location="${GOBO}/library/kernel.xace"/>
+		
 		
 	</cluster>
 </system>

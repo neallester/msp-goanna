@@ -333,8 +333,8 @@ feature -- Request Processing
 			end
 		rescue
 			if 	exception_is_shutdown_signal then
-				processing_result.response.send ("Server Will Be Shut Down</br>")
-				processing_result.response.flush_buffer
+--				processing_result.response.send ("Server Will Be Shut Down</br>")
+--				processing_result.response.flush_buffer
 			elseif exceptions.is_developer_exception_of_name (connection_reset_by_peer_message) then
 				cgi_response ?= response
 				if cgi_response /= Void then

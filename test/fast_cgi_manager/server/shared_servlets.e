@@ -12,8 +12,17 @@ class
 inherit
 
 	GOA_SHARED_SERVLETS
+		redefine
+			shut_down_server_servlet
+		end
 
 feature -- Servlets
+
+	shut_down_server_servlet: GOA_SHUT_DOWN_SERVER_SERVLET_MULTI_THREADED is
+		once
+			create Result.make
+		end
+
 
 
 end -- class SHARED_SERVLETS

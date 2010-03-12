@@ -78,6 +78,7 @@ feature
 				register_servlet (go_to_servlet)
 				register_servlet (shut_down_server_servlet)
 				register_servlet (secure_redirection_servlet)
+				register_servlet (ping_servlet)
 				register_servlets
 				if configuration.install_snoop_servlet then
 					create snoop_servlet.init (configuration.servlet_configuration)

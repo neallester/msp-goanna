@@ -13,6 +13,7 @@ inherit
 
 	GOA_FAST_CGI_PROBE_FACILITIES
 	KL_SHARED_EXCEPTIONS
+	GOA_CGI_VARIABLES
 
 create
 
@@ -49,7 +50,6 @@ feature -- Probe
 			Retry
 		end
 
-
 	get (a_page: STRING): STRING is
 		require
 			valid_a_page: a_page /= Void
@@ -60,11 +60,15 @@ feature -- Probe
 			content_length, content_read: INTEGER
 			split_content_length: LIST [STRING]
 		do
+			if not is_connected then
+				connect
+			end
 			create request.make
-			request.add_parameter_record ("GATEWAY_INTERFACE", "CGI/1.1")
-  			request.add_parameter_record ("SERVER_PROTOCOL", "HTTP/1.1")
+			request.add_parameter_record (gateway_interface_var, "CGI/1.1")
+  			request.add_parameter_record (Server_protocol_var, "HTTP/1.1")
   			request.add_parameter_record ("REQUEST_METHOD", "GET")
   			request.add_parameter_record ("REQUEST_URI", script_path + a_page)
+  			request.add_parameter_record (path_info_var, "/" + a_page)
   			request_string := request.as_fast_cgi_string (1)
 			socket.put_string (request_string)
 			from
@@ -82,15 +86,24 @@ feature -- Probe
 			from
 				response := ""
 			until
-				content_read > content_length
+				not response.is_empty
 			loop
-				socket.read_line
-				response_line := socket.last_string
-				prune_line (response_line)
-				response.append (response_line + "%N")
-				content_read := content_read + response_line.count + 1
+				socket.read_character
+				response := socket.last_character.out
+				prune_line (response)
+			end
+			from
+				content_read := 1
+			until
+				content_read >= content_length
+			loop
+				socket.read_character
+				response.extend (socket.last_character)
+				content_read := content_read + 1
 			end
 			Result := Response
+			socket.close
+			socket := Void
 		end
 
 feature -- Facilities

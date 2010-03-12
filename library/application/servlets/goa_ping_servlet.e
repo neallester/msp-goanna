@@ -15,6 +15,10 @@ inherit
 		end
 	GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT
 
+create
+
+	make
+
 feature
 
 	name: STRING is "ping.htm"
@@ -23,6 +27,7 @@ feature
 		do
 			response.set_content_type ("text/html")
 			response.set_status (sc_ok)
+			response.set_content_length (2)
 			response.send ("OK")
 		end
 

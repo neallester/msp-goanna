@@ -29,6 +29,8 @@ feature
 
 	perform_final_processing (processing_result: REQUEST_PROCESSING_RESULT) is
 		do
+			processing_result.response.send ("Server Will Be Shut Down")
+			processing_result.response.flush_buffer
 			configuration.set_bring_down_server
 			exceptions.raise (configuration.bring_down_server_exception_description)
 		end

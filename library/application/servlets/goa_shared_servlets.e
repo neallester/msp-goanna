@@ -8,7 +8,7 @@ indexing
 
 class
 	GOA_SHARED_SERVLETS
-	
+
 feature -- Servlets
 
 	go_to_servlet: GOA_GO_TO_SERVLET is
@@ -16,19 +16,25 @@ feature -- Servlets
 		once
 			create Result.make
 		end
-		
+
 	secure_redirection_servlet: GOA_SECURE_REDIRECTION_SERVLET is
 			-- Servlet used to redirect user to a secure page
 		once
 			create Result.make
 		end
-		
+
 	shut_down_server_servlet: GOA_SHUT_DOWN_SERVER_SERVLET is
 			-- Servlet used to shut down the server
 		once
 			create Result.make
 		end
-		
+
+	ping_servlet: GOA_PING_SERVLET is
+		once
+			create Result.make
+		end
+
+
 feature {NONE} -- Registration
 
 	servlet_by_name: DS_HASH_TABLE [GOA_APPLICATION_SERVLET, STRING] is
