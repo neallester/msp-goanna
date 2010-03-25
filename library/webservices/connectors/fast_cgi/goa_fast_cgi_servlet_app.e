@@ -45,8 +45,8 @@ feature -- Basic operations
 	process_request is
 			-- Process a request.
 		local
-			req: GOA_FAST_CGI_SERVLET_REQUEST
-			resp: GOA_FAST_CGI_SERVLET_RESPONSE
+			req: like request_template
+			resp: like response_template
 			path, servlet_name: STRING
 			servlet_found, failed: BOOLEAN
 			slash_index, an_index: INTEGER
@@ -147,6 +147,10 @@ feature -- Basic operations
 		end
 
 feature {NONE} -- Implementation
+
+	request_template: GOA_FAST_CGI_SERVLET_REQUEST
+	response_template: GOA_FAST_CGI_SERVLET_RESPONSE
+
 
 	handle_missing_servlet (resp: GOA_FAST_CGI_SERVLET_RESPONSE) is
 			-- Send error page indicating missing servlet

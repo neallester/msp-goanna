@@ -22,7 +22,18 @@ feature -- tests
 		local
 			probe: GOA_FAST_CGI_PROBE
 			response, shut_down_response: STRING
+
+			delayed_thread: A_DELAYED_TRHEAD
+			mutex: MUTEX
 		do
+			create mutex.make
+			mutex.lock
+			io.put_string ("Locked%N")
+			create delayed_thread.make (mutex)
+			delayed_thread.launch
+			mutex.unlock
+			io.put_string ("unlockedLocked%N")
+			io.put_string ("a_result: " + delayed_thread.a_result.out + "%N")
 			create active_configuration
 			touch_configuration
 			create probe.make_local_host (configuration.port, configuration.fast_cgi_directory)

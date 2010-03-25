@@ -174,11 +174,14 @@ feature {NONE} -- Implementation
 			date := system_clock.date_time_now
 			create formatter
 			Result := ""
-			Result.append_string (formatter.format_compact_sortable (date) + a_random_number.out)
+			Result.append_string (formatter.format_compact_sortable (date) + a_random_number.out + counter.out)
 			Result := base64_encoder.encode (Result)
+			counter := counter + 1
 		ensure
 			new_session_id_exists: Result /= Void
 		end
+
+	counter: INTEGER_64
 
 	base64_encoder: GOA_BASE64_ENCODER is
 			-- Base64 encoder
