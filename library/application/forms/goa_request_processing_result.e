@@ -278,7 +278,7 @@ feature {NONE} -- Creation
 			valid_new_response: new_response /= Void
 			valid_new_session_status: new_session_status /= Void
 			valid_new_processing_servlet: new_processing_servlet /= Void
-			session_status_belongs_to_request: new_request.session.get_attribute (configuration.session_status_attribute_name) = new_session_status
+			--session_status_belongs_to_request: new_request.session.get_attribute (configuration.session_status_attribute_name) = new_session_status
 		do
 			all_parameters_are_valid := True
 			request := new_request

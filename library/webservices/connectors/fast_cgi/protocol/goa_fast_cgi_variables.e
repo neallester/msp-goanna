@@ -11,7 +11,11 @@ indexing
 class GOA_FAST_CGI_VARIABLES
 
 inherit
-	
+
 	GOA_CGI_VARIABLES
-	
+
+feature
+
+	request_uri_var: STRING is "REQUEST_URI"
+
 end -- class GOA_FAST_CGI_VARIABLES

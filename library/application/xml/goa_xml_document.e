@@ -171,8 +171,7 @@ feature -- Output
 					until
 						no_conflict_with_input_name and no_conflict_with_output_name and (file_name_retries < 100)
 					loop
-						now := system_clock.date_time_now
-						temp_file_name :=  now.hash_code.out
+						temp_file_name := new_temp_file_name
 						saxon_input_file_name := configuration.temp_directory + temp_file_name + "_input.xml"
 						saxon_output_file_name := configuration.temp_directory + temp_file_name + "_output.xml"
 						no_conflict_with_input_name := not file_system.file_exists (saxon_input_file_name)
@@ -216,6 +215,15 @@ feature -- Output
  			retries := retries + 1
  			retry
 		end
+
+	new_temp_file_name: STRING is
+		local
+			now: DT_DATE_TIME
+		do
+			now := system_clock.date_time_now
+			Result := now.hash_code.out
+		end
+
 
 	put_xml_to_file (file_name: STRING) is
 			-- Put current document to file named file_name; will generate exception

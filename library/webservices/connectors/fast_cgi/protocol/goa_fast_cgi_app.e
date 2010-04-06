@@ -26,6 +26,9 @@ feature -- Basic operations
 		local
 			request_read, ending_listening: BOOLEAN
 		do
+			debug ("thread_control")
+				io.put_string (generating_type + ".run%N")
+			end
 			if not ending_listening then
 				initialize_listening
 				retries := retries + 1

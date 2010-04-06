@@ -145,7 +145,7 @@ feature -- Request Processing
 --				io.put_string ("Request: " + name + client_info (request) + "%N")
 
 				-- Obtain session status and initialize if necessary
-				session_status ?= request.session.get_attribute (configuration.session_status_attribute_name)
+				session_status := get_session_status (request, response)
 				check
 					valid_session_status: session_status /= Void
 				end
@@ -365,6 +365,11 @@ feature -- Request Processing
 				failed_twice := True
 				retry
 			end
+		end
+
+	get_session_status (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE): SESSION_STATUS is
+		do
+			Result ?= request.session.get_attribute (configuration.session_status_attribute_name)
 		end
 
 	exception_html (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE): STRING is

@@ -34,6 +34,21 @@ feature
 			end
 		end
 
+	reset_content is
+		do
+			set_content_length (0)
+			content_buffer := ""
+		end
+
+
+feature
+
+	set_content_buffer (new_content_buffer: STRING) is
+		do
+			content_buffer := new_content_buffer
+		end
+
+
 feature {NONE}-- Initialization
 
 	make (fcgi_request: GOA_FAST_CGI_REQUEST) is

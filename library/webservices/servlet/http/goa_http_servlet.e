@@ -73,13 +73,21 @@ feature -- Basic operations
 			else
 				resp.send_error (Sc_not_implemented)
 			end
-			resp.flush_buffer
+			if flush_buffer_after_service then
+				resp.flush_buffer
+			end
 			if not resp.write_ok then
 				log_write_error (resp)
 			end
 		rescue
 			log_service_error
 		end
+
+	flush_buffer_after_service: BOOLEAN is
+		once
+			Result := True
+		end
+
 
 	destroy is
 			-- Called by the servlet manager to indicate that the servlet

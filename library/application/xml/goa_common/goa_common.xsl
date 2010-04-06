@@ -8,7 +8,7 @@
 	License: "Eiffel Forum License Version 2 (see forum.txt)"
 -->
 
-<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
   xmlns:goa_common="http://www.sourceforge.net/projects/goanna/goa_common"
   exclude-result-prefixes="goa_common"
   >

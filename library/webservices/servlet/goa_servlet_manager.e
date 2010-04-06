@@ -10,6 +10,10 @@ indexing
 
 class GOA_SERVLET_MANAGER [K -> GOA_SERVLET]
 
+inherit
+
+	SHARED_DATABASE_SESSION
+
 create
 
 	make
@@ -130,10 +134,12 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	servlets: DS_HASH_TABLE [K, STRING]
-			-- Managed servlets.
 
 	internal_default_servlet: K
 			-- Default servlet
+
+	servlets: DS_HASH_TABLE [K, STRING]
+			-- Managed servlets.
+
 
 end -- class GOA_SERVLET_MANAGER

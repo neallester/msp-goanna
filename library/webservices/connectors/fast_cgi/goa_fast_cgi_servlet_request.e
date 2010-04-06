@@ -103,10 +103,7 @@ feature -- Access
 
 	close_socket is
 			-- Close the socket used to communicate with web server
-		local
-			socket: ABSTRACT_TCP_SOCKET
 		do
-			socket := internal_request.socket
 			if socket /= Void and then socket.is_owner and then socket.is_open then
 				socket.close
 			end
@@ -121,7 +118,16 @@ feature -- Status report
 			Result := internal_request.parameters.has (name)
 		end
 
+feature {GOA_FAST_CGI_SERVLET_APP} -- Socket
+
+	socket: ABSTRACT_TCP_SOCKET is
+		do
+			Result := internal_request.socket
+		end
+
+
 feature {GOA_FAST_CGI_SERVLET_REQUEST} -- Implementation
+
 
 	internal_request: GOA_FAST_CGI_REQUEST
 		-- Internal request information and stream functionality.

@@ -15,7 +15,6 @@ inherit
 		redefine
 			all_servlets_registered
 		end
-	GOA_SHARED_SERVLET_MANAGER
 	GOA_SHARED_HTTP_SESSION_MANAGER
 	GOA_HTTP_SESSION_EVENT_LISTENER
 	GOA_HTTP_UTILITY_FUNCTIONS
@@ -23,8 +22,8 @@ inherit
 	KL_SHARED_EXCEPTIONS
 	L4E_SHARED_HIERARCHY
 	L4E_SYSLOG_APPENDER_CONSTANTS
-	SHARED_SERVLETS
 	GOA_APPLICATION_EXCEPTION_HANDLING
+	GOA_SERVLET_REGISTRATION
 
 feature
 
@@ -75,11 +74,6 @@ feature
 				-- create a server listening for 'host:port'
 				make (configuration.host, configuration.port, 10)
 				-- Register built in servlets
-				register_servlet (go_to_servlet)
-				register_servlet (shut_down_server_servlet)
-				register_servlet (secure_redirection_servlet)
-				register_servlet (ping_servlet)
-				register_servlets
 				if configuration.install_snoop_servlet then
 					create snoop_servlet.init (configuration.servlet_configuration)
 					servlet_manager.register_servlet (snoop_servlet, configuration.snoop_servlet_name)
@@ -131,15 +125,6 @@ feature
 		do
 			-- Nothing
         end
-
-	register_servlet (servlet: GOA_APPLICATION_SERVLET) is
-			-- Register servlet
-		require
-			valid_servlet: servlet /= Void
-			not_has_servlet: not servlet_manager.has_registered_servlet (servlet.name)
-		do
-			servlet_manager.register_servlet (servlet, servlet.name)
-		end
 
 	command_line_ok: BOOLEAN is
 			-- Command line has been parsed and is valid
@@ -205,33 +190,6 @@ feature
 			-- Prioty designates no events
 		once
 			create Result.make (1000000, "NONE")
-		end
-
-	all_servlets_registered: BOOLEAN is
-		local
-			has_this_servlet: BOOLEAN
-		do
-			Result := 	servlet_by_name.has (go_to_servlet.name_without_extension) and then
-						servlet_manager.has_registered_servlet (go_to_servlet.name) and then
-						servlet_by_name.has (secure_redirection_servlet.name_without_extension) and then
-						servlet_manager.has_registered_servlet (secure_redirection_servlet.name) and then
-						servlet_by_name.has (shut_down_server_servlet.name_without_extension) and then
-						servlet_manager.has_registered_servlet (shut_down_server_servlet.name)
-			if not Result then
-				log_hierarchy.logger (configuration.application_log_category).error ("Missing A Standard Goanna Application Servlet (See GOA_APPLICATION_SERVER.all_servlets_registered)")
-			end
-			from
-				servlet_by_name.start
-			until
-				servlet_by_name.after
-			loop
-				has_this_servlet := servlet_manager.has_registered_servlet (servlet_by_name.item_for_iteration.name)
-				Result := Result and has_this_servlet
-				if not has_this_servlet then
-					log_hierarchy.logger (configuration.application_log_category).error ("Servlet " + servlet_by_name.key_for_iteration + " is not registered with GOA_APPLICATION_SERVER.servlet_manager")
-				end
-				servlet_by_name.forth
-			end
 		end
 
 

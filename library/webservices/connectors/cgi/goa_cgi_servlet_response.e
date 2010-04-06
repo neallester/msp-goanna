@@ -160,6 +160,10 @@ feature -- Basic operations
 				write_headers
 				is_committed := True
 			end
+			debug ("thread_control")
+				io.put_string ("Buffer count: " + content_buffer.count.out + "%N")
+				--io.put_string (content_buffer + "%N%N")
+			end
 			if not content_buffer.is_empty then
 				write (content_buffer)
 			end
@@ -238,7 +242,7 @@ feature -- Basic operations
 			content_buffer.append_string (data)
 		end
 
-feature {GOA_APPLICATION_SERVLET} -- Exported to debug connection reset by peer error
+feature {GOA_APPLICATION_SERVLET}
 
 	content_buffer: STRING
 		-- Buffer for writing output for response. Not used when error or redirect
