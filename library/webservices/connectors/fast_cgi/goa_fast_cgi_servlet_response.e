@@ -40,6 +40,11 @@ feature
 			content_buffer := ""
 		end
 
+	reset_cookies is
+		do
+			cookies.wipe_out
+		end
+
 
 feature
 

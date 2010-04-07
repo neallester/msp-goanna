@@ -55,6 +55,9 @@ feature -- Status report
 	last_session_id: STRING
 			-- Id of last session bound or touched.
 
+	Session_cookie_name: STRING is "GSESSIONID"
+			-- Name of session cookie
+
 feature -- Status setting
 
 	session_count: INTEGER is
@@ -144,9 +147,6 @@ feature {NONE} -- Implementation
 
 	sessions: DS_HASH_TABLE [like session_anchor, STRING]
 			-- Active sessions.
-
-	Session_cookie_name: STRING is "GSESSIONID"
-			-- Name of session cookie
 
 	create_new_session (resp: GOA_HTTP_SERVLET_RESPONSE) is
 			-- Create a new session and set the session cookie

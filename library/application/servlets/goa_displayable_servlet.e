@@ -101,8 +101,15 @@ feature
 		do
 			response := processing_result.response
 			processing_result.set_generating_servlet (Current)
-			log_hierarchy.logger (configuration.application_log_category).info ("Generating servlet: " + name)
+			log_hierarchy.logger (configuration.application_log_category).info (on_response_log_entry (processing_result))
 			response.send (new_page (processing_result).as_html)
+		end
+
+	on_response_log_entry (processing_result: REQUEST_PROCESSING_RESULT): STRING is
+		require
+			valid_processing_result: processing_result /= Void
+		do
+			Result := "Generating servlet: " + name
 		end
 
 	new_page (processing_result: REQUEST_PROCESSING_RESULT): GOA_XML_DOCUMENT is
