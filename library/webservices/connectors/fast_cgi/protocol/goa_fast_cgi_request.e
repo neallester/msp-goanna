@@ -38,7 +38,7 @@ feature -- Initialization
 			app_status := 0
 			num_writers := 0
 			failed := False
-			create parameters.make (20)
+			create parameters.make_equal (20)
 		end
 
 feature -- Access

@@ -16,7 +16,7 @@ inherit
 		redefine
 			to_string
 		end
-	
+
 feature -- Access
 
 	get_header (name: STRING): STRING is
@@ -41,7 +41,7 @@ feature -- Access
 		ensure
 			result_exists: Result /= Void
 		end
-	
+
 	get_header_names: DS_LINEAR [STRING] is
 			-- Get all header names.
 		deferred
@@ -57,20 +57,20 @@ feature -- Status report
 			name_exists: name /= Void
 		deferred
 		end
-	
+
 	auth_type: STRING is
 			-- The name of the authentication scheme used to protect the servlet,
 			-- for example, "BASIC" or "SSL" or Void if the servlet was not protected.
 		deferred
 		end
-	
+
 	cookies: DS_LINEAR [GOA_COOKIE] is
 			-- Cookies sent with this request.
 		deferred
 		ensure
 			cookies_exist: Result /= Void
 		end
-	
+
 	session: GOA_HTTP_SESSION is
 			-- Return the session associated with this request. Create a new session
 			-- if one does not already exist.
@@ -78,42 +78,42 @@ feature -- Status report
 		ensure
 			session_exists: Result /= Void
 		end
-	
+
 	method: STRING is
 			-- The name of the HTTP method with which this request was made, for
 			-- example, GET, POST, or HEAD.
 		deferred
 		end
-	
+
 	path_info: STRING is
 			-- Any extra path information associated with the URL the client sent
 			-- when it made the request.
 		deferred
 		end
-	
+
 	path_translated: STRING is
 			-- Any extra path information after the servlet name but before
 			-- the query string translated to a real path.
 		deferred
 		end
-	
+
 	query_string: STRING is
 			-- The query string that is contained in the request URL after the path.
 			-- Returns Void if no query string is sent.
 		deferred
 		end
-	
+
 	remote_user: STRING is
 			-- The login of the user making this request, if the user has been
 			-- authenticated, or Void if the user has not been authenticated.
 		deferred
 		end
-	
+
 	servlet_path: STRING is
 			-- The part of this request's URL that calls the servlet. This includes
 			-- either the servlet name or a path to the servlet, but does not include
 			-- any extra path information or a query string.
-		deferred	
+		deferred
 		end
 
 feature -- Output
@@ -144,5 +144,19 @@ feature -- Output
 			Result.append_string (servlet_path)
 			Result.append_string ("%R%N")
 		end
-		
+
+	cookies_to_string: STRING is
+		do
+			Result := ""
+			cookies.do_all (agent append_cookie_to_string (Result, ?))
+		end
+
+	append_cookie_to_string (a_string: STRING; a_cookie: GOA_COOKIE) is
+			-- Append string representation of a_cookie to a_string
+		do
+			a_string.append (a_cookie.name + " | " + a_cookie.value + "%N")
+		end
+
+
+
 end -- class GOA_HTTP_SERVLET_REQUEST

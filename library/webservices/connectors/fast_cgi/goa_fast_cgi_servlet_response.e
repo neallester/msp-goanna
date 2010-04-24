@@ -27,7 +27,7 @@ feature
 	socket_error: STRING is
 			-- A string describing the socket error which occurred
 		do
-			if internal_request.socket.errno.first_value /= 0 then
+			if internal_request.socket /= Void and then internal_request.socket.errno.first_value /= 0 then
 				Result := internal_request.socket.errno.message
 			else
 				Result := "No Socket Error"

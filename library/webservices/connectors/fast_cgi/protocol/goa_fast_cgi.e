@@ -302,7 +302,6 @@ feature {NONE} -- Implementation
 				end
 			end
 			Result := request_read
-			io.put_string ("GOA_FAST_CGI.accept_request finished%N")
 		end
 
 	peer_address_ok (peer_address: STRING): BOOLEAN is
