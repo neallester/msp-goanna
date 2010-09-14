@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a FastCGI begin request record body"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI protocol"
@@ -20,25 +20,25 @@ feature -- Access
 
 	role, flags: INTEGER
 
-	header_type_code: INTEGER is 1
+	header_type_code: INTEGER = 1
 
 feature -- Attribute Setting
 
-	set_role (new_role: like role) is
+	set_role (new_role: like role)
 		do
 			role := new_role
 		ensure
 			role_updated: role = new_role
 		end
 
-	set_flags (new_flags: like flags) is
+	set_flags (new_flags: like flags)
 		do
 			flags := new_flags
 		ensure
 			flags_updated: flags = new_flags
 		end
 
-	as_fast_cgi_string: STRING is
+	as_fast_cgi_string: STRING
 			-- Formatted as a STRING per FastCGI protocol
 		do
 			Result := as_16_bit_string (role)
@@ -48,7 +48,7 @@ feature -- Attribute Setting
 
 feature {TS_TEST_CASE} -- Testing
 
-	set_raw_content_data (new_raw_content_data: like raw_content_data) is
+	set_raw_content_data (new_raw_content_data: like raw_content_data)
 		do
 			raw_content_data := new_raw_content_data
 		ensure
@@ -58,7 +58,7 @@ feature {TS_TEST_CASE} -- Testing
 
 feature {TS_TEST_CASE} -- Implementation
 
-	process_body_fields is
+	process_body_fields
 			-- Extract body fields from raw content data.
 		do
 			role := INTEGER_.bit_shift_left (raw_content_data.item (1).code, 8)

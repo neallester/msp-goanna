@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent and can read FastCGI record headers from a socket"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI protocol"
@@ -38,7 +38,7 @@ create
 
 feature -- Initialization
 
-	make (new_version, new_request_id, new_type, new_content_length, new_padding_length: INTEGER) is
+	make (new_version, new_request_id, new_type, new_content_length, new_padding_length: INTEGER)
 			-- Create a new record header for the specified request.	
 		require
 			valid_version: new_version >= 1
@@ -65,7 +65,7 @@ feature -- Access
 
 feature -- Basic operations
 
-	read (socket: ABSTRACT_TCP_SOCKET) is
+	read (socket: ABSTRACT_TCP_SOCKET)
     			-- Read header data from 'socket'
     		local
     			buffer: STRING
@@ -97,7 +97,7 @@ feature -- Basic operations
     			end
     		end
 
-	write (socket: ABSTRACT_TCP_SOCKET) is
+	write (socket: ABSTRACT_TCP_SOCKET)
 			-- Write this header to 'socket'
 		require
 			socket_exists: socket /= Void
@@ -176,7 +176,7 @@ feature -- Basic operations
 			end
 		end
 
-	as_fast_cgi_string: STRING is
+	as_fast_cgi_string: STRING
 			-- This record formatted in accordance with the FastCGI Protocol
 		do
 			Result := ""
@@ -190,7 +190,7 @@ feature -- Basic operations
 
 feature {TS_TEST_CASE} -- Implementation
 
-	process_header_bytes (buffer: STRING) is
+	process_header_bytes (buffer: STRING)
 			-- Extract the header data from 'buffer'
 		require
 			buffer_exists: buffer /= Void

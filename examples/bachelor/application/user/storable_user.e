@@ -1,4 +1,4 @@
-indexing
+note
 	description: "User objects that can be stored in an ISE RAW_FILE"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -21,7 +21,7 @@ inherit
 
 feature
 
-	store is
+	store
 		-- Store this user in persistent media
 --		local
 --			a_file: RAW_FILE
@@ -40,13 +40,13 @@ feature
 
 feature {NONE}	-- Implementation
 
-	user_file_name_factory : USER_FILE_NAME_FACTORY is
+	user_file_name_factory : USER_FILE_NAME_FACTORY
 		-- Where unique user_file_names come from.
 		once
 			create result.make
 		end
 
-	full_file_name : STRING is
+	full_file_name : STRING
 		-- The full file name where this user is stored, including drive/directory & extension
 		do
 			result := data_directory + directory_separator + user_file_name + file_extension
@@ -54,7 +54,7 @@ feature {NONE}	-- Implementation
 
 feature {NONE} -- Creation
 
-	make (new_page_sequencer : PAGE_SEQUENCER) is
+	make (new_page_sequencer : PAGE_SEQUENCER)
 		do
 			precursor (new_page_sequencer)
 			user_file_name_factory.forth

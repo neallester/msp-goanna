@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP Fault Subcode element."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -33,7 +33,7 @@ create
 
 feature -- Initialisation
 
-	construct (a_parent: GOA_SOAP_ELEMENT; a_value: STRING) is
+	construct (a_parent: GOA_SOAP_ELEMENT; a_value: STRING)
 			-- Establish invariant.
 		require
 			parent_not_void: a_parent /= Void
@@ -53,7 +53,7 @@ feature -- Access
 
 feature -- Status setting
 
-	validate (an_identity: UT_URI) is
+	validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		local
 			child_elements: DS_LIST [XM_ELEMENT]

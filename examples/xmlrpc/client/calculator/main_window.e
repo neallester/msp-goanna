@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Main calculator window"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples xmlrpc calculator"
@@ -32,7 +32,7 @@ create
 
 feature -- Initialisation
 
-	make (calc: CALCULATOR) is
+	make (calc: CALCULATOR)
 			-- Initialise this window to call back into 'calc' on button events
 		require
 			calc_exists: calc /= Void
@@ -41,7 +41,7 @@ feature -- Initialisation
 			default_create
 		end
 		
-	initialize is
+	initialize
 			-- Initialize `Current' to set up calculator widgets.
 		local
 			vb: EV_VERTICAL_BOX
@@ -149,7 +149,7 @@ feature -- Initialisation
 	
 feature -- Status setting
 
-	update_value (value: STRING) is
+	update_value (value: STRING)
 			-- Update the 'LCD' widget text to 'value'
 		require
 			value_exists: value /= Void
@@ -157,13 +157,13 @@ feature -- Status setting
 			text.set_text (value)
 		end
 		
-	clear_value  is
+	clear_value
 			-- Clear the 'LCD' widget text
 		do
 			text.set_text (" ")
 		end
 		
-	update_error_message (message: STRING) is
+	update_error_message (message: STRING)
 			-- Update the error widget text to 'message'
 		require
 			message_exists: message /= Void

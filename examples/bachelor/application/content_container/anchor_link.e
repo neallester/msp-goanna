@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Links to anchors within a page"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -22,7 +22,7 @@ create
 
 feature -- implement redefined features
 
-	a_tag : STRING is
+	a_tag : STRING
 		-- The tag for an HREF link
 		do
 			result := "HREF=%"#"

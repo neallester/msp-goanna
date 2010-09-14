@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A servlet that links to an application"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -22,7 +22,7 @@ create
 
 feature -- operations
 
-	do_get (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_get (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Called to allow the servlet to handle a GET request.
 		local
 			selected_url : DYNAMIC_URL
@@ -46,7 +46,7 @@ feature -- operations
 			page_sequencer.build_response
 		end
 	
-	do_head (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_head (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Called to allow the servlet to handle a HEAD request.
 		do
 			debug
@@ -56,7 +56,7 @@ feature -- operations
 
 		end
 		
-	do_post (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_post (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Called to allow the servlet to handle a POST request.
 		do
 			debug

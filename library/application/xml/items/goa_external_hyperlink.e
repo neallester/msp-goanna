@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Links to external websites"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-01-12 21:41:12 -0800 (Fri, 12 Jan 2007) $"
@@ -14,13 +14,13 @@ inherit
 	GOA_HYPERLINK
 	KL_IMPORTED_STRING_ROUTINES
 
-creation
+create
 
 	make
 
 feature {NONE} -- Creation
 
-	make (new_host_and_path, new_text: STRING) is
+	make (new_host_and_path, new_text: STRING)
 			-- Creation
 		require
 			valid_new_host_and_path: new_host_and_path /= Void

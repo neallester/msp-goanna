@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -13,7 +13,7 @@ deferred class DOM_IMPLEMENTATION
 feature
 
 	create_document (namespace_uri, qualified_name: DOM_STRING; 
-		doctype: DOM_DOCUMENT_TYPE): DOM_DOCUMENT is
+		doctype: DOM_DOCUMENT_TYPE): DOM_DOCUMENT
 			-- Creates an XML DOCUMENT object of the specified type with
 			-- its document element. 
 			-- Parameters:
@@ -36,7 +36,7 @@ feature
 				Result.doctype.owner_document = Result
 		end
 		
-	create_document_type (qualified_name, public_id, system_id: DOM_STRING): DOM_DOCUMENT_TYPE is
+	create_document_type (qualified_name, public_id, system_id: DOM_STRING): DOM_DOCUMENT_TYPE
 			-- Creates an empty DOM_DOCUMENT_TYPE node. Entity declarations 
 			-- and notations are not made available. Entity reference expansions
 			-- and default attribute additions do not occur. 
@@ -57,7 +57,7 @@ feature
 			owner_document_void: Result.owner_document = Void
 		end
 		
-	has_feature (feature_name: DOM_STRING; version: DOM_STRING) : BOOLEAN is
+	has_feature (feature_name: DOM_STRING; version: DOM_STRING) : BOOLEAN
 			-- Test if the DOM implementation implements a specific feature.
 			-- Parameters
 			--  'feature_name' - The package name of the feature to test. One of: XML,
@@ -76,7 +76,7 @@ feature
 
 feature -- Non DOM Utility 
 
-	create_empty_document: DOM_DOCUMENT is
+	create_empty_document: DOM_DOCUMENT
 			-- Creates an XML DOCUMENT object of the specified type.
 			-- Non-DOM utility
 		require
@@ -90,21 +90,21 @@ feature -- Non DOM Utility
 
 feature -- Validation Utility 
 
-	valid_qualified_name_chars (qualified_name: DOM_STRING): BOOLEAN is
+	valid_qualified_name_chars (qualified_name: DOM_STRING): BOOLEAN
 			-- Does 'qualified_name' contain valid characters?
 			-- Non-DOM uility
 		do
 			Result := True
 		end
 
-	well_formed_qualified_name (qualified_name: DOM_STRING): BOOLEAN is
+	well_formed_qualified_name (qualified_name: DOM_STRING): BOOLEAN
 			-- Is 'qualified_name' well formed?
 			-- Non-DOM uility
 		do
 			Result := True
 		end
 
-	well_formed_namespace_qualified_name (namespace_uri, qualified_name: DOM_STRING): BOOLEAN is
+	well_formed_namespace_qualified_name (namespace_uri, qualified_name: DOM_STRING): BOOLEAN
 			-- Is 'qualified_name' a well formed name within 'namespace_uri'?
 			-- Check if the 'qualified_name' is malformed, if the 'qualified_name' has a prefix and
 			-- the 'namespace_uri' is Void, or if the 'qualified_name' has a prefix that is "xml"

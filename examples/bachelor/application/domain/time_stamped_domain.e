@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Implement domains time stamping"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -19,13 +19,13 @@ feature
 
 	time_last_modified: DT_DATE_TIME
 
-	initialize is
+	initialize
 		do
 			time_last_modified := system_clock.date_time_now
 			time_initialized := true
 		end
 
-	update is
+	update
 		do
 			time_last_modified := system_clock.date_time_now
 		ensure then
@@ -37,7 +37,7 @@ feature {NONE} -- Implementation
 	domain_initialized : BOOLEAN
 			-- Has the time_last_modified been initialized
 
-	update_time_last_modified (new_time_last_modified: DT_DATE_TIME) is
+	update_time_last_modified (new_time_last_modified: DT_DATE_TIME)
 		do
 			time_last_modified := new_time_last_modified
 		end
@@ -45,7 +45,7 @@ feature {NONE} -- Implementation
 	time_initialized: BOOLEAN
 		-- Has time_last_modified been initialized
 
-	initialized: BOOLEAN is
+	initialized: BOOLEAN
 		do
 			result := time_initialized
 		end

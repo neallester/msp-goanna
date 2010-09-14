@@ -1,4 +1,4 @@
-indexing
+note
 	description: "An eXML event parser for Goanna DOM structures"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML Parser"

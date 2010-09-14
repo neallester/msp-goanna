@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Servlet for testing XMLE generated documents"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples"
@@ -22,19 +22,19 @@ inherit
 			{NONE} all
 		end
 		
-creation
+create
 
 	init
 	
 feature -- Basic operations
 
-	do_get (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE) is
+	do_get (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE)
 			-- Process GET request
 		do
 			send_xmle_document (req, resp)
 		end
 	
-	do_post (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE) is
+	do_post (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE)
 			-- Process GET request
 		do
 			do_get (req, resp)
@@ -42,7 +42,7 @@ feature -- Basic operations
 		
 feature {NONE} -- Implementation
 	
-	send_xmle_document (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE) is
+	send_xmle_document (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE)
 		local
 			element: DOM_ELEMENT
 			str, str2: DOM_STRING

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that store lists of unique strings"
 	author: "Neal L. Lester"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,7 +16,7 @@ create
 
 feature -- Access
 
-	has (a_string: STRING): BOOLEAN is
+	has (a_string: STRING): BOOLEAN
 			-- Does the list contain a_string
 		do
 			result := internal_list.has (a_string)
@@ -25,7 +25,7 @@ feature -- Access
 			not_has_implies_count_zero: not result implies equal (count (a_string), 0)
 		end
 		
-	add (a_string: STRING) is
+	add (a_string: STRING)
 			-- Add a_string to the list, increment count if already present
 		require
 			a_string_exists: a_string /= Void
@@ -45,7 +45,7 @@ feature -- Access
 			count_incremented: count (a_string) = old count (a_string) + 1
 		end
 
-	remove (a_string: STRING) is
+	remove (a_string: STRING)
 			-- Remove a string from the list, decrement count
 		require
 			a_string_exists: a_string /= Void
@@ -69,7 +69,7 @@ feature -- Access
 			count_decremented: equal (count (a_string), old (count (a_string)-1))
 		end
 		
-	count (a_string: STRING): INTEGER is
+	count (a_string: STRING): INTEGER
 			-- The count of strings matching a_string
 		require
 			a_string_exists: a_string /= Void
@@ -90,7 +90,7 @@ feature -- Access
 
 feature {NONE} -- Creation
 
-	make (new_store_file_name: STRING) is
+	make (new_store_file_name: STRING)
 			-- Creation
 		require
 			new_store_file_name_exists: new_store_file_name /= Void

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Extensions to the GOA_COMMON_XML_DOCUMENT"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -18,7 +18,7 @@ feature
 	
 feature -- Document Writing
 
-	add_text_paragraph (new_class, text_to_add: STRING) is
+	add_text_paragraph (new_class, text_to_add: STRING)
 			-- Add a paragraph containing text_to_add to the document
 		require
 			ok_to_add_paragraph: ok_to_add_element_or_text (paragraph_element_code)
@@ -30,7 +30,7 @@ feature -- Document Writing
 			end_current_element
 		end
 		
-	add_text_cell (new_class, new_colspan, new_text: STRING) is
+	add_text_cell (new_class, new_colspan, new_text: STRING)
 			-- Add a cell containing only text to a table
 		require
 			valid_new_colspan: new_colspan /= Void and then new_colspan.is_integer
@@ -42,7 +42,7 @@ feature -- Document Writing
 			end_current_element
 		end
 		
-	add_parameter (suffix: INTEGER; the_parameter: GOA_DEFERRED_PARAMETER; processing_result: REQUEST_PROCESSING_RESULT) is
+	add_parameter (suffix: INTEGER; the_parameter: GOA_DEFERRED_PARAMETER; processing_result: REQUEST_PROCESSING_RESULT)
 		require
 			valid_the_parameter: the_parameter /= Void
 			valid_processing_result: processing_result /= Void
@@ -53,7 +53,7 @@ feature -- Document Writing
 			the_parameter.add_to_document (Current, processing_result, suffix)
 		end
 
-	add_standard_input_row (suffix: INTEGER; the_parameter: GOA_STANDARD_TABLE_PARAMETER; processing_result: REQUEST_PROCESSING_RESULT) is
+	add_standard_input_row (suffix: INTEGER; the_parameter: GOA_STANDARD_TABLE_PARAMETER; processing_result: REQUEST_PROCESSING_RESULT)
 			-- Add a row to the table with three cells: Label | Input | Error Message
 		require
 			valid_the_parameter: the_parameter /= Void
@@ -63,7 +63,7 @@ feature -- Document Writing
 			the_parameter.add_to_standard_data_input_table (Current, processing_result, suffix)
 		end
 		
-	add_list_to_standard_data_input_table (the_parameter: GOA_LABELED_ITEM_LIST_PARAMETER [ANY]; processing_result: REQUEST_PROCESSING_RESULT) is
+	add_list_to_standard_data_input_table (the_parameter: GOA_LABELED_ITEM_LIST_PARAMETER [ANY]; processing_result: REQUEST_PROCESSING_RESULT)
 			-- Add parameters representing entire list of the_parameter in to standard data input table)
 		require
 			valid_the_parameter: the_parameter /= Void
@@ -73,7 +73,7 @@ feature -- Document Writing
 			the_parameter.add_list_to_standard_data_input_table (Current, processing_result)
 		end
 		
-	add_plain_text_item_element (new_text: STRING) is
+	add_plain_text_item_element (new_text: STRING)
 			-- Add text at current point in document
 		require
 			ok_to_add_text: ok_to_add_element_or_text (text_item_element_code)
@@ -81,7 +81,7 @@ feature -- Document Writing
 			add_text_item_element (xml_null_code, Void, new_text)
 		end
 		
-	add_plain_text_list_item_element (new_text: STRING) is
+	add_plain_text_list_item_element (new_text: STRING)
 			-- Add a plain (no class) list item to the document
 		require
 			valid_new_text: new_text /= Void and not new_text.is_empty
@@ -91,7 +91,7 @@ feature -- Document Writing
 			end_current_element
 		end
 	
-	start_plain_table_element (new_class: STRING; new_summary: STRING; ) is
+	start_plain_table_element (new_class: STRING; new_summary: STRING; )
 			-- Start a plain table element (empty header and footer)
 			-- leaves body open to add rows;  use end_current_element twice
 			-- to close the body element and then the table element
@@ -109,7 +109,7 @@ feature -- Document Writing
 				start_body_element (Void)
 		end
 
-	start_formatted_table_element (new_class: STRING; new_summary: STRING; new_cellspacing, new_cellpadding: STRING) is
+	start_formatted_table_element (new_class: STRING; new_summary: STRING; new_cellspacing, new_cellpadding: STRING)
 			-- Start a plain table element (empty header and footer)
 			-- leaves body open to add rows;  use end_current_element twice
 			-- to close the body element and then the table element
@@ -132,7 +132,7 @@ feature -- Document Writing
 	
 	
 
-	start_data_entry_table_element (message_catalog: MESSAGE_CATALOG) is
+	start_data_entry_table_element (message_catalog: MESSAGE_CATALOG)
 			-- STart a plain table element used for data entry
 		require
 			valid_message_catalog: message_catalog /= Void
@@ -140,7 +140,7 @@ feature -- Document Writing
 			start_plain_table_element (Void, message_catalog.data_entry_form_summary)
 		end	
 
-	add_a_space is
+	add_a_space
 			-- Add a space to the current document
 		require
 			ok_to_add_text_item_element: ok_to_add_element_or_text (text_item_element_code)

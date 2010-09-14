@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Parameter that is labeled with a single string (with a single CSS class)"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -15,7 +15,7 @@ inherit
 	
 feature
 	
-	label (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): GOA_USER_MESSAGE is
+	label (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): GOA_USER_MESSAGE
 		do
 			create Result.make
 			Result.add_formatted_message (label_string (processing_result, suffix), label_class (processing_result, suffix))
@@ -25,7 +25,7 @@ feature
 --		deferred
 --		end
 		
-	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 		require
 			valid_processing_result: processing_result /= Void
 			is_suffix_valid: is_suffix_valid (processing_result, suffix)

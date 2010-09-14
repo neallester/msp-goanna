@@ -1,4 +1,4 @@
-indexing
+note
 	description: "SOAP fault constants and utility routines"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -18,21 +18,21 @@ inherit
 
 feature -- Fault constants
 
-	Version_mismatch_fault: INTEGER is 0
-	Must_understand_fault: INTEGER is 1
-	Data_encoding_unknown_fault: INTEGER is 2
-	Sender_fault: INTEGER is 3
-	Receiver_fault: INTEGER is 4
+	Version_mismatch_fault: INTEGER = 0
+	Must_understand_fault: INTEGER = 1
+	Data_encoding_unknown_fault: INTEGER = 2
+	Sender_fault: INTEGER = 3
+	Receiver_fault: INTEGER = 4
 
 feature -- Status report
 
-	is_valid_fault_code (a_fault_code: INTEGER): BOOLEAN is
+	is_valid_fault_code (a_fault_code: INTEGER): BOOLEAN
 			-- is `a_fault_code' valid?
 		do
 			Result := a_fault_code >= Version_mismatch_fault and then a_fault_code <= Receiver_fault
 		end
 
-	is_valid_fault_name (a_fault_name: STRING): BOOLEAN is
+	is_valid_fault_name (a_fault_name: STRING): BOOLEAN
 			-- is `a_fault_name' valid?
 		require
 			fault_name_not_void: a_fault_name /= Void
@@ -46,7 +46,7 @@ feature -- Status report
 
 feature -- Conversions
 
-	fault_code_to_string (a_fault_code: INTEGER): STRING is
+	fault_code_to_string (a_fault_code: INTEGER): STRING
 			-- Serialized representation of `a_fault_code'
 		require
 			valid_fault_code: is_valid_fault_code (a_fault_code)
@@ -69,7 +69,7 @@ feature -- Conversions
 		end
 
 	
-	value_to_fault_code (a_fault_name: STRING): INTEGER is
+	value_to_fault_code (a_fault_name: STRING): INTEGER
 			-- code for `a_fault_name'?
 		require
 			fault_name_not_void: a_fault_name /= Void
@@ -92,7 +92,7 @@ feature -- Conversions
 
 feature -- Faults
 
-	new_validation_fault (a_code: INTEGER; a_text: STRING; a_node_uri: UT_URI): GOA_SOAP_FAULT_INTENT is
+	new_validation_fault (a_code: INTEGER; a_text: STRING; a_node_uri: UT_URI): GOA_SOAP_FAULT_INTENT
 			-- Validation fault
 		require
 			text_not_empty: a_text /= Void and then not a_text.is_empty
@@ -104,7 +104,7 @@ feature -- Faults
 			fault_created: Result /= Void
 		end
 
-	new_fault_message (an_intent: GOA_SOAP_FAULT_INTENT): GOA_SOAP_ENVELOPE is
+	new_fault_message (an_intent: GOA_SOAP_FAULT_INTENT): GOA_SOAP_ENVELOPE
 			-- New SOAP fault message
 		require
 			intent_not_void: an_intent /= Void

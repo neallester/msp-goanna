@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XMLRPC Example Calculator Client."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples xmlrpc calculator"
@@ -22,14 +22,14 @@ inherit
 	
 	EV_APPLICATION
 		
-creation
+create
 
 	start
 
 feature -- Initialization
 
 
-	start is
+	start
 			-- Create the application, set up `main_window'
 			-- and then launch the application.
 		do
@@ -61,101 +61,101 @@ feature -- Status report
 			
 feature -- Calculation routines
 
-	one is
+	one
 			-- Add digit '1' to display value
 		do
 			add_digit ('1')
 		end
 
-	two is
+	two
 			-- Add digit '2' to display value
 		do
 			add_digit ('2')			
 		end
 
-	three is
+	three
 			-- Add digit '3' to display value
 		do
 			add_digit ('3')			
 		end
 
-	four is
+	four
 			-- Add digit '4' to display value
 		do
 			add_digit ('4')			
 		end
 
-	five is
+	five
 			-- Add digit '5' to display value
 		do
 			add_digit ('5')			
 		end
 
-	six is
+	six
 			-- Add digit '6' to display value
 		do
 			add_digit ('6')			
 		end
 	
-	seven is
+	seven
 			-- Add digit '7' to display value
 		do
 			add_digit ('7')
 		end
 
-	eight is
+	eight
 			-- Add digit '8' to display value
 		do
 			add_digit ('8')			
 		end
 
-	nine is
+	nine
 			-- Add digit '9' to display value
 		do
 			add_digit ('9')			
 		end
 
-	zero is
+	zero
 			-- Add digit '0' to display value
 		do
 			add_digit ('0')			
 		end
 
-	decimal is
+	decimal
 			-- Add a decimal point to the display value.
 		do
 			point_pressed := True			
 		end
 		
-	add is
+	add
 			-- Perform last operation and store 'add' as next operation
 		do
 			perform_operation
 			next_operation := Add_op
 		end
 
-	subtract is
+	subtract
 			-- Perform last operation and store 'subtract' as next operation
 		do
 			perform_operation
 			next_operation := Subtract_op
 		end	
 		
-	multiply is
+	multiply
 			-- Perform last operation and store 'multiply' as next operation
 		do
 			perform_operation
 			next_operation := Multiply_op
 		end
 	
-	divide is
+	divide
 			-- Perform last operation and store 'divide' as next operation
 		do
 			perform_operation
 			next_operation := Divide_op
 		end	
 	
-	equals is
+	equals
 			-- Perform last operation.
 		do
 			perform_operation
@@ -163,14 +163,14 @@ feature -- Calculation routines
 			next_operation := Void
 		end
 	
-	clear is
+	clear
 			-- Clear current display value
 		do
 			display_value := 0.0
 			update_display_value
 		end
 		
-	all_clear is
+	all_clear
 			-- Clear display value and current value
 		do
 			value := 0.0
@@ -180,13 +180,13 @@ feature -- Calculation routines
 
 feature {NONE} -- Implementation
 
-	Subtract_op: STRING is "calc.minus"
+	Subtract_op: STRING = "calc.minus"
 	
-	Multiply_op: STRING is "calc.times"
+	Multiply_op: STRING = "calc.times"
 	
-	Divide_op: STRING is "calc.divide"
+	Divide_op: STRING = "calc.divide"
 	
-	Add_op: STRING is "calc.plus"
+	Add_op: STRING = "calc.plus"
 
 	main_window: MAIN_WINDOW
 			-- Calculator window.
@@ -200,7 +200,7 @@ feature {NONE} -- Implementation
 	argument_error: BOOLEAN
 			-- Did an error occur parsing arguments?
 			
-	parse_arguments is
+	parse_arguments
 			-- Parse the command line arguments and store appropriate settings
 		do
 			if Arguments.argument_count < 2 then
@@ -217,7 +217,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	print_usage is
+	print_usage
 			-- Display usage information
 		do
 			print ("Usage: calculator <host> <port-number>%R%N")
@@ -226,7 +226,7 @@ feature {NONE} -- Implementation
 	client: XRPC_LITE_CLIENT
 			-- XML-RPC client
 	
-	add_digit (digit: CHARACTER) is
+	add_digit (digit: CHARACTER)
 			-- Add 'digit' to the current display value. If the addition constitutes
 			-- a valid double then set it, otherwise ignore the request.
 		local
@@ -248,7 +248,7 @@ feature {NONE} -- Implementation
 			update_error_message (" ")
 		end
 		
-	perform_operation is
+	perform_operation
 			-- Create XRPC call and execute it.
 		local
 			call: XRPC_CALL
@@ -304,7 +304,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	update_display_value is
+	update_display_value
 			-- Update display value in main window
 		do
 			if display_value = 0.0 then
@@ -314,7 +314,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	update_value is
+	update_value
 			-- Update value in main window
 		do
 			if value = 0.0 then
@@ -324,7 +324,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	update_error_message (message: STRING) is
+	update_error_message (message: STRING)
 			-- Update error message in main window
 		require
 			message_exists: message /= Void

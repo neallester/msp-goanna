@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent an XML-RPC fault."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -20,7 +20,7 @@ create
 	
 feature -- Initialisation
 
-	make (new_code: INTEGER) is
+	make (new_code: INTEGER)
 			-- Initialise 
 		do
 			code := new_code
@@ -28,7 +28,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 	
-	make_with_detail (new_code: INTEGER; detail: STRING) is
+	make_with_detail (new_code: INTEGER; detail: STRING)
 			-- Initialise with fault code and detailed message
 			-- Fault code message and detail message will be concatenated
 		do
@@ -37,7 +37,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 		
-	unmarshall (node: XM_ELEMENT) is
+	unmarshall (node: XM_ELEMENT)
 			-- Initialise XML-RPC call from DOM element.
 		local
 			value: GOA_XRPC_STRUCT_VALUE
@@ -107,13 +107,13 @@ feature -- Access
 
 feature -- Status setting
 
-	set_code (new_code: INTEGER) is
+	set_code (new_code: INTEGER)
 			-- Set new fault code
 		do
 			code := new_code
 		end
 
-	set_string (new_string: STRING) is
+	set_string (new_string: STRING)
 			-- Set new fault string
 		do
 			string := new_string
@@ -121,7 +121,7 @@ feature -- Status setting
 
 feature -- Marshalling
 
-	marshall: STRING is
+	marshall: STRING
 			-- Serialize this fault to XML format
 		do
 			create Result.make (200)

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that respond to HTTP requests."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "HTTP Servlet API"
@@ -20,7 +20,7 @@ create
 
 feature -- Initialization
 
-	init (config: GOA_SERVLET_CONFIG) is
+	init (config: GOA_SERVLET_CONFIG)
 			-- Called by the servlet manager to indicate that the servlet is being placed
 			-- into service. The servlet manager calls 'init' exactly once after instantiating
 			-- the object. The 'init' method must complete successfully before the servlet can
@@ -32,7 +32,7 @@ feature -- Initialization
 
 feature -- Basic operations
 
-	do_get (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_get (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Called to allow the servlet to handle a GET request.
 			-- Default: do nothing
 		require
@@ -41,7 +41,7 @@ feature -- Basic operations
 		do
 		end
 
-	do_head (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_head (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Called to allow the servlet to handle a HEAD request.
 		require
 			request_exists: req /= Void
@@ -49,7 +49,7 @@ feature -- Basic operations
 		do
 		end
 
-	do_post (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_post (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Called to allow the servlet to handle a POST request.
 			-- Default: do nothing
 		require
@@ -58,7 +58,7 @@ feature -- Basic operations
 		do
 		end
 
-	service (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	service (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Handle a request by dispatching it to the correct method handler.
 		local
 			method: STRING
@@ -83,26 +83,26 @@ feature -- Basic operations
 			log_service_error
 		end
 
-	flush_buffer_after_service: BOOLEAN is
+	flush_buffer_after_service: BOOLEAN
 		once
 			Result := True
 		end
 
 
-	destroy is
+	destroy
 			-- Called by the servlet manager to indicate that the servlet
 			-- is being taken out of service. The servlet can then clean
 			-- up any resources that are being held.
 		do
 		end
 
-	log_service_error is
+	log_service_error
 			-- Called if service routine generates an exception; may be redefined by descendents
 		do
 			-- Nothing by default
 		end
 
-	log_write_error (the_response: GOA_HTTP_SERVLET_RESPONSE) is
+	log_write_error (the_response: GOA_HTTP_SERVLET_RESPONSE)
 			-- Called if there was a problem sending response to the client
 			-- May be redefined by descendents
 		require
@@ -114,8 +114,8 @@ feature -- Basic operations
 
 feature {NONE} -- Implementation
 
-	Method_get: STRING is "GET"
-	Method_post: STRING is "POST"
-	Method_head: STRING is "HEAD"
+	Method_get: STRING = "GET"
+	Method_post: STRING = "POST"
+	Method_head: STRING = "HEAD"
 
 end -- class GOA_HTTP_SERVLET

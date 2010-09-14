@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a FastCGI begin raw record body such as stdin or params"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI protocol"
@@ -27,7 +27,7 @@ create
 
 feature -- Initialization
 
-	make (new_data: STRING; padding: INTEGER) is
+	make (new_data: STRING; padding: INTEGER)
 			-- Create a new raw record body with 'new_data' as the content data and
 			-- 'padding' characters as padding.
 		require
@@ -42,9 +42,9 @@ feature -- Initialization
 
 feature -- Basic operations
 
-	header_type_code: INTEGER is 4
+	header_type_code: INTEGER = 4
 
-	write (socket: ABSTRACT_TCP_SOCKET) is
+	write (socket: ABSTRACT_TCP_SOCKET)
 			-- Write this raw data body to 'socket'
 		require
 			socket_exists: socket /= Void
@@ -90,7 +90,7 @@ feature -- Basic operations
 			end
 		end
 
-	as_fast_cgi_string: STRING is
+	as_fast_cgi_string: STRING
 		do
 			if raw_content_data /= Void then
 				Result := raw_content_data
@@ -102,7 +102,7 @@ feature -- Basic operations
 
 feature {NONE} -- Implementation
 
-	process_body_fields is
+	process_body_fields
 			-- Extract body fields from raw content data.
 		do
 			-- no processing required. Access via raw_content_data.

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that can process FastCGI requests"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI protocol"
@@ -38,7 +38,7 @@ inherit
 
 feature -- Initialisation
 
-	make (new_host: STRING; port, backlog: INTEGER) is
+	make (new_host: STRING; port, backlog: INTEGER)
 			-- Initialise this FCGI application to listen on 'port' with room for 'backlog'
 			-- For new_host, use 'localhost' to listen only to requests from local machine (domain socket)
    			-- Use IP Address of host running the GOA_APPLICATION_SERVER if server
@@ -59,7 +59,7 @@ feature -- Initialisation
 
 feature -- FGCI interface
 
-	initialize_listening is
+	initialize_listening
 			-- Set up port to listen for requests from the web server
 		local
 			service: EPX_SERVICE
@@ -81,7 +81,7 @@ feature -- FGCI interface
 	unable_to_listen: BOOLEAN
 		-- True if the application is unable to listen on host_port
 
-	end_listening is
+	end_listening
 			-- Take down socket used to listen for requests from the server
 		do
 			if srv_socket /= Void and then srv_socket.is_owner and then srv_socket.is_open then
@@ -89,7 +89,7 @@ feature -- FGCI interface
 			end
 		end
 
-	finish is
+	finish
 			-- Finish the current request from the HTTP server. The
 			-- current request was started by the most recent call to
 			-- 'accept'.
@@ -110,12 +110,12 @@ feature -- FGCI interface
 			retry
 		end
 
-	flush is
+	flush
 			-- Flush output and error streams.
 		do
 		end
 
-	putstr (str: STRING) is
+	putstr (str: STRING)
 			-- Print 'str' to standard output stream.
 		require
 			request_exists: request /= Void
@@ -123,7 +123,7 @@ feature -- FGCI interface
 			request.write_stdout (str)
 		end
 
-	warn (str: STRING) is
+	warn (str: STRING)
 			-- Print 'str' to standard error stream.
 		require
 			request_exists: request /= Void
@@ -131,7 +131,7 @@ feature -- FGCI interface
 			request.write_stderr (str)
 		end
 
-	getstr (amount: INTEGER): STRING is
+	getstr (amount: INTEGER): STRING
 			-- Read 'amount' characters from standard input stream.
 		require
 			request_exists: request /= Void
@@ -153,7 +153,7 @@ feature -- FGCI interface
 			end
 		end
 
-	getline (amount: INTEGER): STRING is
+	getline (amount: INTEGER): STRING
 			-- Read up to 'amount' characters from the input stream
 			-- Stops before 'amount' characters have been read
 			-- if '%N' or EOF is read.
@@ -183,7 +183,7 @@ feature -- FGCI interface
 			end
 		end
 
-	getparam (name: STRING): STRING is
+	getparam (name: STRING): STRING
 			-- Get the value of the named environment variable.
 		require
 			request_exists: request /= Void
@@ -193,7 +193,7 @@ feature -- FGCI interface
 			end
 		end
 
-	getparam_integer(name: STRING): INTEGER is
+	getparam_integer(name: STRING): INTEGER
 			-- Fetch and convert environment variable
 	 		-- Returns 0 on failure.
 		require
@@ -240,9 +240,9 @@ feature {NONE} -- Implementation
 		-- in environment variable FCGI_WEB_SERVER_ADDRS.
 		-- Void if all peers can connect.
 
-	Fcgi_web_server_addrs: STRING is "FCGI_WEB_SERVER_ADDRS"
+	Fcgi_web_server_addrs: STRING = "FCGI_WEB_SERVER_ADDRS"
 
-	set_valid_peer_addresses is
+	set_valid_peer_addresses
 			-- Collect valid peer addresses
 		local
 			addrs, address: STRING
@@ -267,7 +267,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	accept_request: BOOLEAN is
+	accept_request: BOOLEAN
 			-- Wait for a request to be received; Returns true if request was successfully read
 		require
 			void_request: request = Void
@@ -304,7 +304,7 @@ feature {NONE} -- Implementation
 			Result := request_read
 		end
 
-	peer_address_ok (peer_address: STRING): BOOLEAN is
+	peer_address_ok (peer_address: STRING): BOOLEAN
 			-- Does 'perr_address' appear in the allowable peer addresses for
 			-- this server as defined in the environment variable FCGI_WEB_SERVER_ADDRS?
 		require
@@ -328,9 +328,9 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	Servlet_app_log_category: STRING is "servlet.app"
+	Servlet_app_log_category: STRING = "servlet.app"
 
-	initialise_logger is
+	initialise_logger
 			-- Set logger appenders
 		local
 			appender: L4E_APPENDER

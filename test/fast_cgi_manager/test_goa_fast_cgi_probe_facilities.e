@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that test GOA_FAST_CGI_PROBE_FACILITIESGOA_FAST_CGI_RECORD_BODY and descendents"
 	author: "Neal Lester"
 	date: "$Date$"
@@ -14,7 +14,7 @@ inherit
 
 feature -- Tests
 
-	test_is_ip4_address is
+	test_is_ip4_address
 		do
 			assert ("ip4 address 1", not facilities.is_ip4_address (<<4, 4, 4, 4, 4>>))
 			assert ("ip4 address 2", not facilities.is_ip4_address (<<4, 4, 4>>))
@@ -23,7 +23,7 @@ feature -- Tests
 			assert ("ip4 address 5", facilities.is_ip4_address (<<4, 4, 4, 4>>))
 		end
 
-	test_is_ip4_octet is
+	test_is_ip4_octet
 		do
 			assert ("ip4 octet 1", facilities.is_ip4_octet (0))
 			assert ("ip4 octet 2", facilities.is_ip4_octet (255))
@@ -32,7 +32,7 @@ feature -- Tests
 			assert ("ip4 octet 5", not facilities.is_ip4_octet (-1))
 		end
 
-	test_is_legal_script_path is
+	test_is_legal_script_path
 		do
 			assert ("script path 1", facilities.is_legal_script_path ("/a/b/"))
 			assert ("script path 2", facilities.is_legal_script_path ("/aa/bb/"))
@@ -46,7 +46,7 @@ feature -- Tests
 
 feature {NONE} -- Implementation
 
-	facilities: GOA_FAST_CGI_PROBE_FACILITIES is
+	facilities: GOA_FAST_CGI_PROBE_FACILITIES
 		once
 			create Result
 		end

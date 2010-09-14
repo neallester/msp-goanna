@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Element"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -16,7 +16,7 @@ inherit
 
 feature
 
-   tag_name: DOM_STRING is
+   tag_name: DOM_STRING
          -- The name of the element. For example, in:
          --    <elementExample id="demo">
          --    ...
@@ -29,7 +29,7 @@ feature
       deferred
       end
 
-   get_attribute (name: DOM_STRING): DOM_STRING is
+   get_attribute (name: DOM_STRING): DOM_STRING
          -- Retrieves an attribute value by `name'.
          -- Parameters
          --    name   The name of the attribute to retrieve.
@@ -43,7 +43,7 @@ feature
 		  result_exists: Result /= Void
       end
 
-	get_attribute_ns (new_namespace_uri, name: DOM_STRING): DOM_STRING is
+	get_attribute_ns (new_namespace_uri, name: DOM_STRING): DOM_STRING
 			-- Retrieves an attribute value by `name' and namespace URI.
 			-- Parameters
 			--    name   The name of the attribute to retrieve.
@@ -59,7 +59,7 @@ feature
 			result_exists: Result /= Void
 		end
       
-   set_attribute (name: DOM_STRING; value: DOM_STRING) is
+   set_attribute (name: DOM_STRING; value: DOM_STRING)
          -- Adds a new attribute. If an attribute with that `name' is
          -- already present in the element, its `value' is changed to be
          -- that of the `value' parameter. This `value' is a simple string,
@@ -84,7 +84,7 @@ feature
 		  attribute_set: get_attribute (name).is_equal (value)
       end
 
-   set_attribute_ns (new_namespace_uri, name: DOM_STRING; value: DOM_STRING) is
+   set_attribute_ns (new_namespace_uri, name: DOM_STRING; value: DOM_STRING)
          -- Adds a new attribute. If an attribute with that `name' and namespace URI is
          -- already present in the element, its `value' is changed to be
          -- that of the `value' parameter. This `value' is a simple string,
@@ -111,7 +111,7 @@ feature
 		  attribute_set: get_attribute (name).is_equal (value)
       end
       
-   remove_attribute (name: DOM_STRING) is
+   remove_attribute (name: DOM_STRING)
          -- Removes an attribute by `name'. If the removed attribute
          -- has a default value it is immediately replaced.
          -- Parameters
@@ -123,7 +123,7 @@ feature
       deferred
       end
 
-   remove_attribute_ns (new_namespace_uri, name: DOM_STRING) is
+   remove_attribute_ns (new_namespace_uri, name: DOM_STRING)
          -- Removes an attribute by 'namespac_uri' and `name'. If 
          -- the removed attribute has a default value it is immediately replaced.
          -- Parameters
@@ -135,7 +135,7 @@ feature
       deferred
       end
       
-   get_attribute_node (name: DOM_STRING): DOM_ATTR is
+   get_attribute_node (name: DOM_STRING): DOM_ATTR
          -- Retrieves an Attr node by `name'.
          -- Parameters
          --    name   The name of the attribute to retrieve.
@@ -151,7 +151,7 @@ feature
 		  result_name_valid: Result.name.is_equal (name)
       end
 
-   set_attribute_node (new_attr: DOM_ATTR): DOM_ATTR is
+   set_attribute_node (new_attr: DOM_ATTR): DOM_ATTR
          -- Adds a new attribute. If an attribute with that name is
          -- already present in the element, it is replaced by the new one.
          -- Parameters
@@ -170,7 +170,7 @@ feature
 		  attribute_set: has_attribute (new_attr.name)
       end
 
-	set_attribute_node_ns (new_attr: DOM_ATTR): DOM_ATTR is
+	set_attribute_node_ns (new_attr: DOM_ATTR): DOM_ATTR
 			-- Adds a new attribute. If an attribute with that name is
 			-- already present in the element, it is replaced by the new one.
 			-- Parameters
@@ -189,7 +189,7 @@ feature
 			attribute_set: has_attribute_ns (new_attr.namespace_uri, new_attr.local_name)
 		end
       
-   remove_attribute_node (old_attr: DOM_ATTR): DOM_ATTR is
+   remove_attribute_node (old_attr: DOM_ATTR): DOM_ATTR
          -- Removes the specified attribute.
          -- Parameters
          --    oldAttr   The Attr node to remove from the attribute list.
@@ -207,7 +207,7 @@ feature
 		  result_removed_node: Result.name = old_attr.name
       end
 
-   get_elements_by_tag_name (name: DOM_STRING): DOM_NODE_LIST is
+   get_elements_by_tag_name (name: DOM_STRING): DOM_NODE_LIST
          -- Returns a NodeList of all descendant elements with a given
          -- tag name, in the order in which they would be encountered
          -- in a preorder traversal of the Element tree.
@@ -226,7 +226,7 @@ feature
 	-- TODO: add getAttributeNS, setAttributeNS, removeAttributeNS,
 	-- getAttributeNodeNS, setAttributeNodeNS, getElementsByTagNameNS.
 
-	has_attribute (name: DOM_STRING): BOOLEAN is
+	has_attribute (name: DOM_STRING): BOOLEAN
 			-- Returns true when an attribute with a given name is specified
 			-- on this element or has a default value, false otherwise.
 			-- DOM Level 2.
@@ -235,7 +235,7 @@ feature
 		deferred
 		end
 
-	has_attribute_ns (new_namespace_uri: DOM_STRING; name: DOM_STRING): BOOLEAN is
+	has_attribute_ns (new_namespace_uri: DOM_STRING; name: DOM_STRING): BOOLEAN
 			-- Returns True when an attirbute with a given local name and namespace
 			-- URI is specified o this element or has a default value, false otherwise.
 			-- DOM Level 2.
@@ -247,7 +247,7 @@ feature
 
 feature -- Validation Utility
 
-	valid_name_chars (new_name: DOM_STRING): BOOLEAN is
+	valid_name_chars (new_name: DOM_STRING): BOOLEAN
 			-- Does 'new_name' consist of valid name characters?
 		require
 			new_name_exists: new_name /= Void

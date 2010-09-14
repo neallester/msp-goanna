@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent an XML-RPC call and response parameter values."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -21,7 +21,7 @@ feature -- Access
 
 feature -- Conversion
 
-	as_object: ANY is
+	as_object: ANY
 			-- Return value as an object. ie, extract the actual 
 			-- object value from the XRPC_VALUE.
 		deferred

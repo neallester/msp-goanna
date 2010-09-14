@@ -1,4 +1,4 @@
-indexing
+note
 	description: "SOAP Example Client."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples xmlrpc"
@@ -23,13 +23,13 @@ inherit
 			{NONE} all
 		end
 	
-creation
+create
 
 	make
 
 feature -- Initialization
 
-	make is
+	make
 			-- Create and initialise
 		do
 --			parse_arguments
@@ -52,7 +52,7 @@ feature {NONE} -- Implementation
 	argument_error: BOOLEAN
 			-- Did an error occur parsing arguments?
 			
-	parse_arguments is
+	parse_arguments
 			-- Parse the command line arguments and store appropriate settings
 		do
 			if Arguments.argument_count < 2 then
@@ -69,7 +69,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	print_usage is
+	print_usage
 			-- Display usage information
 		do
 			print ("Usage: test <host> <port-number>%R%N")

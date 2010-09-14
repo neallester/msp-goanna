@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XMLRPC Example Client."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples xmlrpc"
@@ -33,7 +33,7 @@ create
 
 feature -- Initialization
 
-	make is
+	make
 			-- Create and initialise a new HTTP server that will listen for connections
 			-- on 'port' and serving documents from 'doc_root'.
 			-- Start the server
@@ -61,7 +61,7 @@ feature {NONE} -- Implementation
 	argument_error: BOOLEAN
 			-- Did an error occur parsing arguments?
 			
-	parse_arguments is
+	parse_arguments
 			-- Parse the command line arguments and store appropriate settings
 		do
 			if Arguments.argument_count < 2 then
@@ -78,7 +78,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	print_usage is
+	print_usage
 			-- Display usage information
 		do
 			print ("Usage: test <host> <port-number>%R%N")
@@ -90,7 +90,7 @@ feature {NONE} -- Implementation
 	factory: GOA_XRPC_VALUE_FACTORY
 			-- Value factory
 
-	perform_echo_tests is
+	perform_echo_tests
 			-- Perform all echo tests
 		local
 			encoder: GOA_BASE64_ENCODER
@@ -130,7 +130,7 @@ feature {NONE} -- Implementation
 			execute_test ("test.echoStruct", struct, struct)
 		end
 	
-	perform_introspection_tests is
+	perform_introspection_tests
 			-- Call introspection methods
 		local
 			call: GOA_XRPC_CALL
@@ -156,7 +156,7 @@ feature {NONE} -- Implementation
 			execute_call (call)	
 		end
 		
-	perform_multicall_tests is
+	perform_multicall_tests
 			-- Call multicall methods
 		local
 			multi_call: GOA_XRPC_MULTI_CALL
@@ -179,7 +179,7 @@ feature {NONE} -- Implementation
 			execute_multi_call (multi_call)
 		end
 		
-	execute_call (call: GOA_XRPC_CALL) is
+	execute_call (call: GOA_XRPC_CALL)
 			-- Invoke call and check result
 		require
 			call_exists: call /= Void
@@ -192,7 +192,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	execute_multi_call (multi_call: GOA_XRPC_MULTI_CALL) is
+	execute_multi_call (multi_call: GOA_XRPC_MULTI_CALL)
 			-- Invoke call and check result
 		require
 			call_exists: multi_call /= Void
@@ -205,7 +205,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	execute_test (name: STRING; arg: ANY; expected_result: ANY) is
+	execute_test (name: STRING; arg: ANY; expected_result: ANY)
 			-- Execute call for test named 'name' and report successful result or fault.
 			-- Pass 'arg' as the sole parameter.
 			-- Compare result to 'expected_result'.
@@ -251,7 +251,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	compare_scalar (name: STRING; obj: ANY; expected: ANY) is
+	compare_scalar (name: STRING; obj: ANY; expected: ANY)
 			-- Compare scalar values and report result
 		require
 			name_exists: name /= Void
@@ -267,7 +267,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	compare_array (name: STRING; arg: ANY; expected: ANY) is
+	compare_array (name: STRING; arg: ANY; expected: ANY)
 			-- Compare scalar values and report result
 		require
 			name_exists: name /= Void
@@ -309,7 +309,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	compare_struct (name: STRING; arg: ANY; expected: ANY) is
+	compare_struct (name: STRING; arg: ANY; expected: ANY)
 			-- Compare struct values and report result
 		require
 			name_exists: name /= Void
@@ -359,7 +359,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	display_success (name: STRING) is
+	display_success (name: STRING)
 			-- Display success message for test named 'name'
 		require
 			name_exists: name /= Void
@@ -367,7 +367,7 @@ feature {NONE} -- Implementation
 			print ("Test '" + name + "' successful%N")
 		end
 		
-	display_fail (name, reason: STRING) is
+	display_fail (name, reason: STRING)
 			-- Display failure message for test named 'name'. Display 'reason'
 			-- with message
 		require

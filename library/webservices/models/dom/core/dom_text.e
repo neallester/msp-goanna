@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Text"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -16,7 +16,7 @@ inherit
 	  
 feature
 
-   split_text (offset: INTEGER): DOM_TEXT is
+   split_text (offset: INTEGER): DOM_TEXT
          -- Breaks this Text node into two Text nodes at the specified
          -- `offset', keeping both in the tree as siblings. This node
          -- then only contains all the content up to the `offset' point.
@@ -40,14 +40,14 @@ feature
 
 feature -- from DOM_NODE
 
-   node_type: INTEGER is
+   node_type: INTEGER
       once
       	  Result := Text_node
       end
 
-	node_name: DOM_STRING is
-		once
-			!! Result.make_from_string ("#text")
+	node_name: DOM_STRING
+		once 
+			create Result.make_from_string ("#text")
 		end
 	
 end -- class DOM_TEXT

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Content objects that may be aligned"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -14,7 +14,7 @@ deferred class
 
 feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER, USER} -- Attribute & Attribute Setting
 
-	set_top is
+	set_top
 		-- Set alignment to "TOP" - text outside image aligned with top of image
 		do
 			alignment_code := top
@@ -22,7 +22,7 @@ feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER, USER} -- Attribute & Attribute S
 			alignment_code_set : alignment_code = top
 		end
 
-	set_middle is
+	set_middle
 		-- Set alignment to "MIDDLE" - text outside image aligned with middle of the image
 		do
 			alignment_code := middle
@@ -30,7 +30,7 @@ feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER, USER} -- Attribute & Attribute S
 			alignement_code_set : alignment_code = middle
 		end
 
-	set_bottom is
+	set_bottom
 		-- Set alignment to "BOTTOM" - text outside image aligned with bottom of the image
 		do
 			alignment_code := bottom
@@ -38,7 +38,7 @@ feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER, USER} -- Attribute & Attribute S
 			alignment_code_set : alignment_code = bottom
 		end
 
-	set_left is
+	set_left
 		-- Set alignment to "LEFT" - Image is to left, text flows around it to the right
 		do
 			alignment_code := left
@@ -46,7 +46,7 @@ feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER, USER} -- Attribute & Attribute S
 			alignment_code_set : alignment_code = left
 		end
 
-	set_right is
+	set_right
 		-- Set alignment to "RIGHT" - Image is to the right, text flows around it to the left
 		do
 			alignment_code := right
@@ -54,7 +54,7 @@ feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER, USER} -- Attribute & Attribute S
 			alignment_code_set : alignment_code = right
 		end
 
-	set_center is
+	set_center
 		-- Set alignment to "CENTER" - 	centered
 		do
 			alignment_code := center
@@ -62,13 +62,13 @@ feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER, USER} -- Attribute & Attribute S
 			alignment_code_set : alignment_code = center
 		end
 
-	alignment : STRING is
+	alignment : STRING
 		-- Alignment label describing current alignment
 		do
 			Result := alignment_code_labels.entry(alignment_code)
 		end
 
-	html_alignment : STRING is
+	html_alignment : STRING
 		-- HTML alignment entry
 		do
 			if alignment_code = 0 then
@@ -83,10 +83,10 @@ feature {NONE} -- Implementation
 	alignment_code : INTEGER
 		-- Code defining alignment of image
 
-	top, middle, bottom, left, right, center : INTEGER is UNIQUE
+	top, middle, bottom, left, right, center : INTEGER = UNIQUE
 		-- identifiers for alignment codes
 
-	alignment_code_labels : ARRAY [STRING] is
+	alignment_code_labels : ARRAY [STRING]
 		-- Array containing labels for each alignment code
 		once
 			create result.make (top, center)

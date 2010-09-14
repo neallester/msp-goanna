@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Produces requests from a connector"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -26,7 +26,7 @@ create
 feature -- Initialization
 
 	make (thread_name: STRING; app_context: GOA_SERVLET_CONTEXT; request_connector: GOA_CONNECTOR;
-		queue: GOA_THREAD_SAFE_QUEUE [GOA_QUEUED_REQUEST]) is
+		queue: GOA_THREAD_SAFE_QUEUE [GOA_QUEUED_REQUEST])
 			-- Initialise this request processor
 		require
 			thread_name_not_void: thread_name /= Void
@@ -49,7 +49,7 @@ feature -- Access
 
 feature -- Basic operations
 		
-	terminate is
+	terminate
 			-- Stop this processor from reading requests
 		do
 			stop := True
@@ -57,7 +57,7 @@ feature -- Basic operations
 	
 feature {NONE} -- Implementation
 
-	generate_next: GOA_QUEUED_REQUEST is
+	generate_next: GOA_QUEUED_REQUEST
 			-- Generate the next element for the queue
 		do
 			debugging (generator, name + " generate next request")
@@ -70,7 +70,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	done: BOOLEAN is
+	done: BOOLEAN
 			-- Has the producer finished generating events?
 		do
 			Result := stop

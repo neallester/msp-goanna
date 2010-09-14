@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A hyperlink to a servlet on this website"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,13 +16,13 @@ inherit
 	SHARED_REQUEST_PARAMETERS
 	KL_IMPORTED_STRING_ROUTINES
 	
-creation
+create
 	
 	make
 	
 feature {NONE} -- Creation
 
-	make (processing_result: REQUEST_PROCESSING_RESULT; servlet: GOA_APPLICATION_SERVLET; new_text: STRING) is
+	make (processing_result: REQUEST_PROCESSING_RESULT; servlet: GOA_APPLICATION_SERVLET; new_text: STRING)
 		require
 			valid_processing_result: processing_result /= Void
 			valid_servlet: servlet /= Void

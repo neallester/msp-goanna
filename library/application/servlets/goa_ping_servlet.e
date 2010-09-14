@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Servlet which responds to a ping"
 	author: "Neal Lester"
 	date: "$Date$"
@@ -21,9 +21,9 @@ create
 
 feature
 
-	name: STRING is "ping.htm"
+	name: STRING = "ping.htm"
 
-	do_get (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE) is
+	do_get (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE)
 		do
 			response.set_content_type ("text/html")
 			response.set_status (sc_ok)

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Table cells that contain text"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -30,23 +30,23 @@ inherit
 			html_end_element as html_text_container_end_element
 		end
 
-creation
+create
 
 	make
 
 feature {NONE} -- Creation
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			result := html_body_cell_begin_element + html_text_container_begin_element
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			result := html_text_container_end_element + html_body_cell_end_element
 		end
 
-	make is
+	make
 		do
 			body_make
 			text_make

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Code that goes at the bottom of each response"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -20,11 +20,11 @@ create
 
 feature
 
-	html_begin_element : STRING is ""
+	html_begin_element : STRING = ""
 
-	html_end_element : STRING is ""
+	html_end_element : STRING = ""
 
-	html_element : STRING is
+	html_element : STRING
 		do
 			Result := new_line + "</BODY></HTML>" + new_line
 		end

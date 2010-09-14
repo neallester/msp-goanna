@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Servlets for a Goanna Application"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2010-02-26 11:12:53 -0800 (Fri, 26 Feb 2010) $"
@@ -31,7 +31,7 @@ inherit
 
 feature -- Attributes
 
-	name: STRING is
+	name: STRING
 			-- Name of this servlet; used as file name portion of URL accessing this servlet
 		deferred
 		ensure
@@ -40,7 +40,7 @@ feature -- Attributes
 			-- TODO Add some better validity checks
 		end
 
-	name_without_extension: STRING is
+	name_without_extension: STRING
 			-- The name of this servlet, without the extension
 		local
 			period_index: INTEGER
@@ -52,7 +52,7 @@ feature -- Attributes
 			end
 		end
 
-	ok_to_process_servlet (processing_result: GOA_REQUEST_PROCESSING_RESULT): BOOLEAN is
+	ok_to_process_servlet (processing_result: GOA_REQUEST_PROCESSING_RESULT): BOOLEAN
 			-- Does current user have permission to have this servlet processed?
 			-- May be redefined in descendents as necessary
 		require
@@ -66,7 +66,7 @@ feature -- Attributes
 
 feature -- Parameter Queries
 
-	has_mandatory_parameter (the_parameter: STRING): BOOLEAN is
+	has_mandatory_parameter (the_parameter: STRING): BOOLEAN
 			-- Does servlet include the_parameter as a mandatory parameter?
 		require
 			valid_the_parameter: the_parameter /= Void and then not the_parameter.is_empty
@@ -74,7 +74,7 @@ feature -- Parameter Queries
 			Result := mandatory_parameters.has (the_parameter)
 		end
 
-	has_expected_parameter (the_parameter: STRING): BOOLEAN is
+	has_expected_parameter (the_parameter: STRING): BOOLEAN
 			-- Does servlet include the_parameter as a expected parameter?
 		require
 			valid_the_parameter: the_parameter /= Void and then not the_parameter.is_empty
@@ -82,7 +82,7 @@ feature -- Parameter Queries
 			Result := expected_parameters.has (the_parameter)
 		end
 
-	has_possible_parameter (the_parameter: STRING): BOOLEAN is
+	has_possible_parameter (the_parameter: STRING): BOOLEAN
 			-- Does servlet include the_parameter as a possible parameter?
 		require
 			valid_the_parameter: the_parameter /= Void and then not the_parameter.is_empty
@@ -90,7 +90,7 @@ feature -- Parameter Queries
 			Result := possible_parameters.has (the_parameter)
 		end
 
-	add_database_updated_message (processing_result: REQUEST_PROCESSING_RESULT) is
+	add_database_updated_message (processing_result: REQUEST_PROCESSING_RESULT)
 			-- Add message telling user database was updated
 		require
 			valid_processing_result: processing_result /= Void
@@ -104,7 +104,7 @@ feature -- Parameter Queries
 
 feature -- Request Processing
 
-	do_get (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE) is
+	do_get (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE)
 			-- Called to allow the servlet to handle a GET request.
 			-- Verify form elements in request conform to semantics required by this servlet
 			-- Process each request parameter if request is valid
@@ -367,12 +367,12 @@ feature -- Request Processing
 			end
 		end
 
-	get_session_status (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE): SESSION_STATUS is
+	get_session_status (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE): SESSION_STATUS
 		do
 			Result ?= request.session.get_attribute (configuration.session_status_attribute_name)
 		end
 
-	exception_html (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE): STRING is
+	exception_html (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE): STRING
 		require
 			valid_request: request /= Void
 			valid_response: response /= Void
@@ -381,7 +381,7 @@ feature -- Request Processing
 		do
 		end
 
-	do_get_exception_occurred (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE) is
+	do_get_exception_occurred (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE)
 		require
 			valid_request: request /= Void
 			valid_response: response /= Void
@@ -390,7 +390,7 @@ feature -- Request Processing
 			-- May be redefine by descendents
 		end
 
-	field_exception (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE): BOOLEAN is
+	field_exception (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE): BOOLEAN
 			-- Should GOA_APPLICATION_SERVLET.do_get field the exception?
 		require
 			valid_request: request /= Void
@@ -399,7 +399,7 @@ feature -- Request Processing
 			Result := True
 		end
 
-	do_post (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE) is
+	do_post (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE)
 			-- Called to allow the servlet to handle a POST request.
 		do
 			do_get (request, response)
@@ -407,7 +407,7 @@ feature -- Request Processing
 
 feature -- Linking
 
-	hyperlink (processing_result: REQUEST_PROCESSING_RESULT; text: STRING): GOA_INTERNAL_HYPERLINK is
+	hyperlink (processing_result: REQUEST_PROCESSING_RESULT; text: STRING): GOA_INTERNAL_HYPERLINK
 			-- A hyperlink to this servlet
 		require
 			valid_processing_result: processing_result /= Void
@@ -422,7 +422,7 @@ feature -- Linking
 --			end
 		end
 
-	post_hyperlink (processing_result: REQUEST_PROCESSING_RESULT; text: STRING): GOA_EXTERNAL_HYPERLINK is
+	post_hyperlink (processing_result: REQUEST_PROCESSING_RESULT; text: STRING): GOA_EXTERNAL_HYPERLINK
 			-- A hyperlink to the this servlet
 		require
 			valid_processing_result: processing_result /= Void
@@ -434,7 +434,7 @@ feature -- Linking
 			end
 		end
 
-	post_url (processing_result: REQUEST_PROCESSING_RESULT): STRING is
+	post_url (processing_result: REQUEST_PROCESSING_RESULT): STRING
 			-- URL to which data should be posted for this servlet
 		require
 			valid_processing_result: processing_result /= Void
@@ -449,7 +449,7 @@ feature -- Linking
 
 feature -- Suplementary Processing
 
-	perform_post_mandatory_parameter_processing (processing_result: GOA_REQUEST_PROCESSING_RESULT) is
+	perform_post_mandatory_parameter_processing (processing_result: GOA_REQUEST_PROCESSING_RESULT)
 			-- Called after all mandatory parameters have been processed and verified valid
 			-- but before other types of parameters (e.g. expected_parameters) have been processeed
 			-- Descendents may redefine
@@ -482,7 +482,7 @@ feature -- Suplementary Processing
 --		end
 
 
-	perform_final_processing (processing_result: GOA_REQUEST_PROCESSING_RESULT) is
+	perform_final_processing (processing_result: GOA_REQUEST_PROCESSING_RESULT)
 			-- Called after all parameters in servlet form have completed their processing
 			-- Note this means that all mandatory parameters must be valid for this to fire.
 			-- Descendents may redefine
@@ -496,7 +496,7 @@ feature -- Suplementary Processing
 			not_ok_to_read_write_data: implements_transaction_and_version_access implies not (ok_to_read_data (processing_result) or ok_to_write_data (processing_result))
 		end
 
-	perform_invalid_mandatory_parameters_processing (processing_result: GOA_REQUEST_PROCESSING_RESULT) is
+	perform_invalid_mandatory_parameters_processing (processing_result: GOA_REQUEST_PROCESSING_RESULT)
 			-- Called after parameters in servlet form have completed their processing
 			-- if one or more mandatory parameters in the servlet are invalid
 			-- Note this means that other parameters (e.g. expected parameters) will not have performed their processing
@@ -530,7 +530,7 @@ feature {GOA_PARAMETER_PROCESSING_RESULT} -- Parameter Semantics
 
 feature -- Logging Facilities
 
-	client_info (req: GOA_HTTP_SERVLET_REQUEST): STRING is
+	client_info (req: GOA_HTTP_SERVLET_REQUEST): STRING
 			-- A string describing the client the sent req
 		require
 			valid_req: req /= Void
@@ -592,20 +592,20 @@ feature -- Logging Facilities
 			Retry
 		end
 
-	log_request_content: BOOLEAN is
+	log_request_content: BOOLEAN
 			-- Should content/query string of request be logged?
 			-- Default is not to log content received from secure servlets
 		do
 			Result := not receive_secure
 		end
 
-	log_write_error (response: GOA_FAST_CGI_SERVLET_RESPONSE) is
+	log_write_error (response: GOA_FAST_CGI_SERVLET_RESPONSE)
 		do
 			info (configuration.application_log_category, response.socket_error)
 		end
 
 
-	log_service_error is
+	log_service_error
 			-- Called if service routine generates an exception; may be redefined by descendents
 		do
 			if not exception_is_shutdown_signal then
@@ -613,13 +613,13 @@ feature -- Logging Facilities
 			end
 		end
 
-	exception_is_shutdown_signal: BOOLEAN is
+	exception_is_shutdown_signal: BOOLEAN
 			-- Was the last developer exception a signal to shutdown the application
 		do
 			Result := exceptions.is_developer_exception_of_name (configuration.bring_down_server_exception_description)
 		end
 
-	service (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	service (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Handle a request by dispatching it to the correct method handler.
 		local
 			socket_error: STRING
@@ -632,7 +632,7 @@ feature -- Logging Facilities
 
 feature {NONE} -- Creation
 
-	make is
+	make
 			-- Creation
 		do
 			check

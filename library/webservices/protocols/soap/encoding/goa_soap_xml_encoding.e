@@ -1,4 +1,4 @@
-indexing
+note
 	description: "SOAP XML encoding corresponds to http://www.w3.org/2003/05/soap-encoding"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -24,7 +24,7 @@ inherit
 
 feature -- Access
 
-	declared_id (an_element: GOA_SOAP_ELEMENT): STRING is
+	declared_id (an_element: GOA_SOAP_ELEMENT): STRING
 			-- Value of enc:id
 		require
 			element_exists: an_element /= Void
@@ -36,7 +36,7 @@ feature -- Access
 			may_not_be_present: True
 		end
 
-	referenced_id (an_element: GOA_SOAP_ELEMENT): STRING is
+	referenced_id (an_element: GOA_SOAP_ELEMENT): STRING
 			-- Value of enc:ref
 		require
 			element_exists: an_element /= Void
@@ -50,7 +50,7 @@ feature -- Access
 
 feature -- Status report
 
-	is_valid_type (a_type: STRING): BOOLEAN is
+	is_valid_type (a_type: STRING): BOOLEAN
 			-- Is `a_type' a known data type in this encoding scheme?
 		do
 			Result := is_valid_type_constant (a_type) -- what about compound values?
@@ -59,24 +59,24 @@ feature -- Status report
 
 feature -- Subcodes
 
-	Duplicate_id: STRING is
+	Duplicate_id: STRING
 		once
 			Result := "DuplicateID"
 		end
 
-	Missing_id: STRING is
+	Missing_id: STRING
 		once
 			Result := "MissingID"
 		end
 
-	Untyped_value: STRING is
+	Untyped_value: STRING
 		once
 			Result := "UntypedValue"
 		end
 
 feature -- Validation
 
-	validate_references (an_element: GOA_SOAP_ELEMENT; unique_identifiers: DS_HASH_TABLE [GOA_SOAP_ELEMENT, STRING]; an_identity: UT_URI) is
+	validate_references (an_element: GOA_SOAP_ELEMENT; unique_identifiers: DS_HASH_TABLE [GOA_SOAP_ELEMENT, STRING]; an_identity: UT_URI)
 			-- Validate references from `an_element' and set `was_valid'.
 		local
 			a_reference: STRING
@@ -88,7 +88,7 @@ feature -- Validation
 			end
 		end
 
-	validate_encoding_information (an_element: GOA_SOAP_ELEMENT; unique_identifiers: DS_HASH_TABLE [GOA_SOAP_ELEMENT, STRING]; an_identity: UT_URI) is
+	validate_encoding_information (an_element: GOA_SOAP_ELEMENT; unique_identifiers: DS_HASH_TABLE [GOA_SOAP_ELEMENT, STRING]; an_identity: UT_URI)
 			-- Validate `an_element' in isolation and set `was_valid'.
 		local
 			an_id, a_message: STRING
@@ -114,7 +114,7 @@ feature -- Validation
 
 feature -- Unmarshalling
 
-	unmarshall (type, value: STRING): SOAP_VALUE is
+	unmarshall (type, value: STRING): SOAP_VALUE
 			-- Unmarshall 'value' according to 'type' using this 
 			-- encoding scheme.
 		local
@@ -145,7 +145,7 @@ feature -- Unmarshalling
 
 feature {NONE} -- Implementation
 
-	unmarshall_int (value: STRING): ANY is
+	unmarshall_int (value: STRING): ANY
 			-- Unmarshall int XML Schema value
 		require
 			value_exists: value /= Void
@@ -161,7 +161,7 @@ feature {NONE} -- Implementation
 			Result := int
 		end
 		
-	unmarshall_boolean (value: STRING): ANY is
+	unmarshall_boolean (value: STRING): ANY
 			-- Unmarshall boolean XML Schema value
 		require
 			value_exists: value /= Void
@@ -181,7 +181,7 @@ feature {NONE} -- Implementation
 			Result := bool
 		end
 	
-	unmarshall_float (value: STRING): ANY is
+	unmarshall_float (value: STRING): ANY
 			-- Unmarshall float XML Schema value
 		require
 			value_exists: value /= Void
@@ -197,7 +197,7 @@ feature {NONE} -- Implementation
 			Result := float
 		end
 	
-	unmarshall_double (value: STRING): ANY is
+	unmarshall_double (value: STRING): ANY
 			-- Unmarshall double XML Schema value
 		require
 			value_exists: value /= Void
@@ -216,7 +216,7 @@ feature {NONE} -- Implementation
 feature {NONE} -- Implementation
 
 
-	sub_code_qname (an_element: GOA_SOAP_ELEMENT; a_sub_code: STRING): STRING is
+	sub_code_qname (an_element: GOA_SOAP_ELEMENT; a_sub_code: STRING): STRING
 			--	QName for `a_sub_code'
 		require
 			element_not_void: an_element /= Void
@@ -228,7 +228,7 @@ feature {NONE} -- Implementation
 			result_not_empty: Result /= Void and then not Result.is_empty
 		end
 
-	set_validation_fault (a_fault_code: INTEGER; a_sub_code, a_text: STRING; a_node_uri: UT_URI) is
+	set_validation_fault (a_fault_code: INTEGER; a_sub_code, a_text: STRING; a_node_uri: UT_URI)
 			-- Set `validation_fault'.
 		require
 			text_not_empty: a_text /= Void and then not a_text.is_empty

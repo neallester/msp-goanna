@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Domains that have parent domains"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -19,13 +19,13 @@ feature
 	parent : DOMAIN_WITH_CHILDREN
 			-- The parent of this domain
 
-	parent_initialized : BOOLEAN is
+	parent_initialized : BOOLEAN
 			-- Has the parent been initialized
 		do
 			result := parent.initialized
 		end
 
-	update is
+	update
 		do
 			parent.receive_child_notification (current)
 		ensure then
@@ -35,7 +35,7 @@ feature
 
 feature {NONE}
 
-	make_with_parent (new_parent: DOMAIN_WITH_CHILDREN) is
+	make_with_parent (new_parent: DOMAIN_WITH_CHILDREN)
 		do
 			parent := new_parent
 			initialize

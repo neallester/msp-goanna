@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XML RPC/Messaging Servlet"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -38,13 +38,13 @@ inherit
 			{ANY} set_custom_log_file
 		end
 
-creation
+create
 
 	init
 
 feature -- Basic operations
 
-	do_get (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_get (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Process GET request
 		local
 			response_text: STRING
@@ -57,7 +57,7 @@ feature -- Basic operations
 			resp.send (response_text)
 		end
 
-	do_post (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_post (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Process POST request
 		local
 			response_text: STRING
@@ -170,7 +170,7 @@ feature {NONE} -- Implementation
 			-- Flag indicating whether the request contains a valid
 			-- XMLRPC call.
 
-	parse_call (req: GOA_HTTP_SERVLET_REQUEST) is
+	parse_call (req: GOA_HTTP_SERVLET_REQUEST)
 			-- Parse XMLRPC call from request data. Will set 'valid_call' 
 			-- if the request contained a valid XMLRPC call. If an error is
 			-- detected then an GOA_XRPC_FAULT element will be created that represents
@@ -210,7 +210,7 @@ feature {NONE} -- Implementation
 	fault: GOA_XRPC_FAULT
 			-- Fault to send to client. Void if a valid response was generated.
 
-	build_assertion_fault is
+	build_assertion_fault
 			-- Initialise 'fault' to explain current assertion violation
 		require
 			assertion_violation: assertion_violation
@@ -234,14 +234,14 @@ feature {NONE} -- Implementation
 
 feature {NONE} -- Logging
 
-	limit: INTEGER is
+	limit: INTEGER
 			-- The nr. of characters of the return value's string representation that are logged
 			-- in `log_method_exit' (the rest is truncated)
 		once
 			Result := 50
 		end
 
-	log_method_entry (method_name: STRING; params: TUPLE) is
+	log_method_entry (method_name: STRING; params: TUPLE)
 			-- Logs an xml rpc method call with debug level INFO
 			-- Example output: "Calling foo ('abc': STRING, '133': INTEGER)"
 		require
@@ -278,7 +278,7 @@ feature {NONE} -- Logging
 			end
 		end
 
-	log_method_exit (method_name: STRING; return_value: ANY) is
+	log_method_exit (method_name: STRING; return_value: ANY)
 			-- Logs an xml rpc method return with debug level DEBUG
 			-- `return_value' is Void if the method has no return value.
 			-- Only `limit' characters of the return value's string representation are logged.
@@ -315,7 +315,7 @@ feature {NONE} -- Logging
 			end
 		end
 
-	make_invalid_operands_detail_msg: STRING is
+	make_invalid_operands_detail_msg: STRING
 			-- Creates the detailed message to be used for a fault of type `Invalid_operands_for_service_action'
 		do
 			Result := call.method_name.out + " (" + call.last_error_msg + ", parameters: "

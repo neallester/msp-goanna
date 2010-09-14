@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Creates unique URL strings"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -20,7 +20,7 @@ create
 
 feature 
 
-	storage_file_name : STRING is
+	storage_file_name : STRING
 		once
 			Result := unique_query_string_factory_file_name
 		end

@@ -13,7 +13,7 @@
 
 -- Class to access the system clock on a UNIX machine.
 
-indexing
+note
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $";
 	revision: "$Revision: 491 $";
 	compiler: "$ISE v3.2$";  
@@ -27,14 +27,14 @@ obsolete "Use GOBO 2.0 datatime cluster"
 
 feature{ANY}
 
-   year : INTEGER is do Result := c_getyear(time); end;
-   month : INTEGER is do Result := c_getmonth(time); end;
-   day : INTEGER is do Result := c_getday(time); end;
-   hour : INTEGER is do Result := c_gethour(time); end;
-   minute : INTEGER is do Result := c_getminute(time); end;
-   second : INTEGER is do Result := c_getsecond(time); end;
+   year : INTEGER do Result := c_getyear(time); end;
+   month : INTEGER do Result := c_getmonth(time); end;
+   day : INTEGER do Result := c_getday(time); end;
+   hour : INTEGER do Result := c_gethour(time); end;
+   minute : INTEGER do Result := c_getminute(time); end;
+   second : INTEGER do Result := c_getsecond(time); end;
    
-   read is
+   read
 	-- Reads system clock and stores year, month, day, hour, minute and
 	-- second in memory.
       do
@@ -44,31 +44,31 @@ feature{ANY}
 feature {SYSTEM_CLOCK}   
    time : INTEGER;
 
-   frozen c_read_time :INTEGER is
+   frozen c_read_time :INTEGER
       external "C"
       end;
    
-   frozen c_getyear (t:INTEGER_REF) :INTEGER is
+   frozen c_getyear (t:INTEGER_REF) :INTEGER
       external "C"
       end;
 	 
-   frozen c_getmonth (t:INTEGER_REF) :INTEGER is
+   frozen c_getmonth (t:INTEGER_REF) :INTEGER
       external "C"
       end;
 	 
-   frozen c_getday (t:INTEGER_REF) :INTEGER is
+   frozen c_getday (t:INTEGER_REF) :INTEGER
       external "C"
       end;
 	 
-   frozen c_gethour(t:INTEGER_REF) :INTEGER is
+   frozen c_gethour(t:INTEGER_REF) :INTEGER
       external "C"
       end;
 	 
-   frozen c_getminute (t:INTEGER_REF) :INTEGER is
+   frozen c_getminute (t:INTEGER_REF) :INTEGER
       external "C"
       end;
 	 
-   frozen c_getsecond (t:INTEGER_REF) :INTEGER is
+   frozen c_getsecond (t:INTEGER_REF) :INTEGER
       external "C"
       end;
 end

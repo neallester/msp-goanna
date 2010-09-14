@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Summary description for {TEST_GOA_FAST_CGI_PROBE}."
 	author: "Neal Lester"
 	date: "$Date$"
@@ -18,7 +18,7 @@ inherit
 
 feature -- tests
 
-	test_probe is
+	test_probe
 		local
 			probe: GOA_FAST_CGI_PROBE
 			response, shut_down_response: STRING

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Cells in the body of a table that contain one or more content_containers"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -32,7 +32,7 @@ create
 
 feature {NONE} -- Creation
 
-	make is
+	make
 		do
 			body_cell_make
 			multi_container_make

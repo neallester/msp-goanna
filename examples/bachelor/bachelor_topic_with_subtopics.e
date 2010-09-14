@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Topics for bachelor advisor application with subtopics"
 	author: "Neal L. Lester (neal@3dsafety.com)"
 	date: "$ May 11, 2001: $"
@@ -18,7 +18,7 @@ feature
 
 	subtopic_list : LINKED_LIST [BACHELOR_TOPIC]
 
-	undo is
+	undo
 		do
 			from
 				subtopic_list.start
@@ -30,7 +30,7 @@ feature
 			end	
 		end
 
-	reset is
+	reset
 		do
 			from
 				subtopic_list.start

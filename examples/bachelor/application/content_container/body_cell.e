@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Table cells in the body of the table"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -17,12 +17,12 @@ inherit
 
 feature {NONE}
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			Result := "<td" + html_alignment + html_vertical_alignment + ">"
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			Result := "</td>"
 		end

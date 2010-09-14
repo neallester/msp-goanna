@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XSLT 2.0 servlet for serving HTTP requests to transform an XML file via XSLT"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "servlets"
@@ -43,7 +43,7 @@ create
 
 feature -- Initialization
 
-	init (config: GOA_SERVLET_CONFIG) is
+	init (config: GOA_SERVLET_CONFIG)
 			-- Called by the servlet manager to indicate that the servlet is being placed
 			-- into service. The servlet manager calls 'init' exactly once after instantiating
 			-- the object. The 'init' method must complete successfully before the servlet can
@@ -85,7 +85,7 @@ feature -- Access
 
 feature -- Basic operations
 
-	do_get (a_req: GOA_HTTP_SERVLET_REQUEST; a_resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_get (a_req: GOA_HTTP_SERVLET_REQUEST; a_resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Process GET request
 		local
 			a_transform_uri, a_source_uri, an_initial_template, an_initial_mode, a_title, a_medium: STRING
@@ -131,7 +131,7 @@ feature -- Basic operations
 			end
 		end
 	
-	do_post (a_req: GOA_HTTP_SERVLET_REQUEST; a_resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_post (a_req: GOA_HTTP_SERVLET_REQUEST; a_resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Process GET request
 		do
 			do_get (a_req, a_resp)
@@ -139,7 +139,7 @@ feature -- Basic operations
 
 feature -- Setting
 
-	set_output_resolver (an_output_resolver: XM_XSLT_OUTPUT_URI_RESOLVER) is
+	set_output_resolver (an_output_resolver: XM_XSLT_OUTPUT_URI_RESOLVER)
 			-- Set `output_resolver'.
 		require
 			output_resolver_not_void: an_output_resolver /= Void
@@ -150,37 +150,37 @@ feature -- Setting
 
 feature {NONE} -- Implementation
 
-	Help_parameter: STRING is "help"
+	Help_parameter: STRING = "help"
 			-- Name of help request parameter
 
-	Transform_parameter: STRING is "transform"
+	Transform_parameter: STRING = "transform"
 			-- Name of transform request parameter
 
-	No_transform_response: STRING is "<html><body><div><p>The transform parameter must be supplied if the source parameter is missing</p></div></body></html>"
+	No_transform_response: STRING = "<html><body><div><p>The transform parameter must be supplied if the source parameter is missing</p></div></body></html>"
 			-- Transform-parameter-not-present response
 
-	Source_parameter: STRING is "source"
+	Source_parameter: STRING = "source"
 			-- Name of source request parameter
 
-	Template_parameter: STRING is "template"
+	Template_parameter: STRING = "template"
 			-- Name of initial-template request parameter
 
-	Mode_parameter: STRING is "mode"
+	Mode_parameter: STRING = "mode"
 			-- Name of initial-mode request parameter
 
-	No_source_response: STRING is "<html><body><div><p>Either the source parameter or the template parameter must be supplied</p></div></body></html>"
+	No_source_response: STRING = "<html><body><div><p>Either the source parameter or the template parameter must be supplied</p></div></body></html>"
 			-- Source-parameter-not-present response
 
-	Title_parameter: STRING is "title"
+	Title_parameter: STRING = "title"
 			-- Name of title request parameter
 
-	Medium_parameter: STRING is "medium"
+	Medium_parameter: STRING = "medium"
 			-- Name of medium request parameter
 
-	Clear_cache_parameter: STRING is "clear-cache"
+	Clear_cache_parameter: STRING = "clear-cache"
 			-- Name of clear-cache request parameter
 
-	apply_transform (a_transform_uri, an_initial_template, an_initial_mode, a_source_uri, a_medium, a_title: STRING; a_clear_cache_request: BOOLEAN; a_resp: GOA_HTTP_SERVLET_RESPONSE) is
+	apply_transform (a_transform_uri, an_initial_template, an_initial_mode, a_source_uri, a_medium, a_title: STRING; a_clear_cache_request: BOOLEAN; a_resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Apply `a_transform_uri' to `a_source_uri'.
 		require
 			transform_uri_not_void: a_transform_uri /= Void or else a_source_uri /= Void
@@ -254,7 +254,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	Help_response: STRING is
+	Help_response: STRING
 			-- Help response
 		once
 			Result :=  "[

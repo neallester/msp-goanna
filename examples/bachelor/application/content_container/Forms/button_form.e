@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Forms consisting of a single button"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -17,13 +17,13 @@ inherit
 			form_handler
 		end
 
-creation
+create
 
 	make_button
 
 feature {NONE} -- Implementation
 
-	build_form is
+	build_form
 		-- Build the form
 		local
 			submit_button : SUBMIT_BUTTON
@@ -33,13 +33,13 @@ feature {NONE} -- Implementation
 			force (submit_button)
 	end
 
-	form_handler is
+	form_handler
 		-- The button has been pressed, activate processor
 		do
 			button_processor.call ([])
 		end
 
-	make_button (client_page : PAGE ; new_button_processor : PROCEDURE [PROCESSOR_HOST, TUPLE]; new_button_text : STRING) is
+	make_button (client_page : PAGE ; new_button_processor : PROCEDURE [PROCESSOR_HOST, TUPLE]; new_button_text : STRING)
 		-- Make the form button
 		require
 			valid_client_page : client_page /= Void
@@ -57,7 +57,7 @@ feature {NONE} -- Implementation
 	button_text : STRING
 		-- Clear text to display on the button
 
-	process_form is 
+	process_form 
 		do
 		end
 

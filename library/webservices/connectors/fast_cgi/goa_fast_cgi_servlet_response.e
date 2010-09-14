@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent Fast CGI request responses"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI servlets"
@@ -24,7 +24,7 @@ create
 
 feature
 
-	socket_error: STRING is
+	socket_error: STRING
 			-- A string describing the socket error which occurred
 		do
 			if internal_request.socket /= Void and then internal_request.socket.errno.first_value /= 0 then
@@ -34,13 +34,13 @@ feature
 			end
 		end
 
-	reset_content is
+	reset_content
 		do
 			set_content_length (0)
 			content_buffer := ""
 		end
 
-	reset_cookies is
+	reset_cookies
 		do
 			cookies.wipe_out
 		end
@@ -48,7 +48,7 @@ feature
 
 feature
 
-	set_content_buffer (new_content_buffer: STRING) is
+	set_content_buffer (new_content_buffer: STRING)
 		do
 			content_buffer := new_content_buffer
 		end
@@ -56,7 +56,7 @@ feature
 
 feature {NONE}-- Initialization
 
-	make (fcgi_request: GOA_FAST_CGI_REQUEST) is
+	make (fcgi_request: GOA_FAST_CGI_REQUEST)
 			-- Build a new Fast CGI response object that provides access to
 			-- 'fcgi_request' information.
 			-- Initialise the response information to allow a successful (Sc_ok) response
@@ -74,7 +74,7 @@ feature {NONE} -- Implementation
 	internal_request: GOA_FAST_CGI_REQUEST
 		-- Internal request information and stream functionality.
 
-	write (data: STRING) is
+	write (data: STRING)
 			-- Write 'data' to the output stream for this response
 		do
 			if write_ok then

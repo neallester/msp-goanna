@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent FastCGI servlet request information"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI servlets"
@@ -25,7 +25,7 @@ create
 
 feature {NONE} -- Initialisation
 
-	make (fcgi_request: GOA_FAST_CGI_REQUEST; resp: GOA_FAST_CGI_SERVLET_RESPONSE) is
+	make (fcgi_request: GOA_FAST_CGI_REQUEST; resp: GOA_FAST_CGI_SERVLET_RESPONSE)
 			-- Create a new fast cgi servlet request wrapper for
 			-- the request information contained in 'fcgi_request'
 		require
@@ -40,13 +40,13 @@ feature {NONE} -- Initialisation
 
 feature -- Access
 
-	get_header (name: STRING): STRING is
+	get_header (name: STRING): STRING
 			-- Get the value of the specified request header.
 		do
 			Result := internal_request.parameters.item (name).twin
 		end
 
-	get_header_names: DS_LINEAR [STRING] is
+	get_header_names: DS_LINEAR [STRING]
 			-- Get all header names.
 		local
 			cursor: DS_HASH_TABLE_CURSOR [STRING, STRING]
@@ -65,7 +65,7 @@ feature -- Access
 			Result := array_list
 		end
 
-	content: STRING is
+	content: STRING
 			-- Content data
 		do
 			debug ("Fast CGI servlet request")
@@ -101,7 +101,7 @@ feature -- Access
 			Result := internal_content
 		end
 
-	close_socket is
+	close_socket
 			-- Close the socket used to communicate with web server
 		do
 			if socket /= Void and then socket.is_owner and then socket.is_open then
@@ -112,7 +112,7 @@ feature -- Access
 
 feature -- Status report
 
-	has_header (name: STRING): BOOLEAN is
+	has_header (name: STRING): BOOLEAN
 			-- Does this request contain a header named 'name'?
 		do
 			Result := internal_request.parameters.has (name)
@@ -120,7 +120,7 @@ feature -- Status report
 
 feature {GOA_FAST_CGI_SERVLET_APP} -- Socket
 
-	socket: ABSTRACT_TCP_SOCKET is
+	socket: ABSTRACT_TCP_SOCKET
 		do
 			Result := internal_request.socket
 		end

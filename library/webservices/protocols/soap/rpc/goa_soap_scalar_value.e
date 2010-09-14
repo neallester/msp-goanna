@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a value in the SOAP Data Model."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -19,7 +19,7 @@ inherit
 
 feature -- Access
 
-	is_scalar: BOOLEAN is
+	is_scalar: BOOLEAN
 			-- Is `Current' a scalar value?
 		do
 			Result := True
@@ -27,7 +27,7 @@ feature -- Access
 	
 feature -- Conversion
 
-	as_scalar: GOA_SOAP_SCALAR_VALUE is
+	as_scalar: GOA_SOAP_SCALAR_VALUE
 			-- `Current' as a scalar value
 		do
 			Reuslt := Current

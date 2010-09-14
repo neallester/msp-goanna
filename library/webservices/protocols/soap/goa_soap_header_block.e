@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP header block"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -35,7 +35,7 @@ feature -- Access
 
 feature -- Status setting
 
-	validate (an_identity: UT_URI) is
+	validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		do
 			scan_attributes (an_identity, False)
@@ -46,7 +46,7 @@ feature -- Status setting
 			validation_complete := True			
 		end
 			
-	set_role (a_role: like role) is
+	set_role (a_role: like role)
 			-- Set `role' to `a_role'
 		require
 			role_exists: a_role /= Void
@@ -67,7 +67,7 @@ feature -- Status setting
 			role_set: role = a_role
 		end
 	
-	set_must_understand (a_flag: BOOLEAN) is
+	set_must_understand (a_flag: BOOLEAN)
 			-- Set `must_understand' to value of `a_flag'.
 			-- Do not call this method to leave unspecified.
 		local
@@ -83,7 +83,7 @@ feature -- Status setting
 			end
 		end
 
-	set_relay (a_flag: BOOLEAN) is
+	set_relay (a_flag: BOOLEAN)
 			-- Set `relay' to value of `a_flag'.
 			-- Do not call this method to leave unspecified.
 		local
@@ -101,7 +101,7 @@ feature -- Status setting
 		
 feature {NONE} -- Implementation
 
-	check_role_attribute (an_identifying_uri: UT_URI) is
+	check_role_attribute (an_identifying_uri: UT_URI)
 			-- Search for optional role attribute, unmarshall and set`role' if found. 
 			-- Notify of unmarshalling error by setting `validated'.
 			--| role attribute is explicitly encoded as an XMLSchema anyURI.
@@ -122,7 +122,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	check_must_understand_attribute (an_identifying_uri: UT_URI) is
+	check_must_understand_attribute (an_identifying_uri: UT_URI)
 			-- Search for optional mustUnderstand attribute, unmarshall and set `must_understand' if found.
 			-- Notify of unmarshalling error by setting `validated'.
 			--| mustUnderstand attribute is explicitly encoded as an XMLSchema boolean.
@@ -141,7 +141,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	check_relay_attribute (an_identifying_uri: UT_URI) is
+	check_relay_attribute (an_identifying_uri: UT_URI)
 			-- Search for optional relay attribute, unmarshall and set `relay' if found.
 			-- Notify of unmarshalling error by setting `validated'.
 			--| relay attribute is explicitly encoded as an XMLSchema boolean.
@@ -160,7 +160,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	is_boolean (a_str: STRING): BOOLEAN is
+	is_boolean (a_str: STRING): BOOLEAN
 			-- Is `a_str' an xs:boolean?
 		require
 			string_not_void: a_str /= Void
@@ -171,7 +171,7 @@ feature {NONE} -- Implementation
 				or else  STRING_.same_string (a_str, "false")
 		end
 
-	to_boolean (a_str: STRING): BOOLEAN is
+	to_boolean (a_str: STRING): BOOLEAN
 			-- Boolean value of `a_str'
 		require
 			string_not_void: a_str /= Void

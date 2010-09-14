@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Example producer of messages."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples thread"
@@ -20,14 +20,14 @@ create
 
 feature {NONE} -- Implementation
 
-	generate_next: STRING is
+	generate_next: STRING
 			-- Generate the next element for the queue
 		do
 			number_messages := number_messages + 1
 			Result := "Message (" + name + "): " + number_messages.out
 		end
 		
-	done: BOOLEAN is
+	done: BOOLEAN
 			-- Has the producer finished generating events?
 		do
 			Result := number_messages >= Max_number_messages
@@ -36,7 +36,7 @@ feature {NONE} -- Implementation
 	number_messages: INTEGER
 			-- Number of messages sent
 			
-	Max_number_messages: INTEGER is 100
+	Max_number_messages: INTEGER = 100
 	
 			
 end -- class MESSAGE_PRODUCER

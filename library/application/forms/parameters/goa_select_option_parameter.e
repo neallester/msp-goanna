@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Obtain information from the user via an html select/option element"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-06-14 13:46:53 -0700 (Thu, 14 Jun 2007) $"
@@ -16,7 +16,7 @@ inherit
 
 feature
 
-	process (processing_result: PARAMETER_PROCESSING_RESULT) is
+	process (processing_result: PARAMETER_PROCESSING_RESULT)
 		local
 			item_selected: G
 			local_option_list: DS_LINKED_LIST [G]
@@ -35,7 +35,7 @@ feature
 			commit  (processing_result.request_processing_result)
 		end
 
-	display_text_for_item_index (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER; index: INTEGER): STRING is
+	display_text_for_item_index (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER; index: INTEGER): STRING
 			-- Text for the item at index
 		require
 			ok_to_read_data (processing_result)
@@ -45,7 +45,7 @@ feature
 			Result := text_for_item (processing_result, suffix, option_list (processing_result, suffix).item (index))
 		end
 
-	text_for_item (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER; item: G): STRING is
+	text_for_item (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER; item: G): STRING
 			-- Text for the item at index
 		require
 			ok_to_read_data (processing_result)
@@ -54,7 +54,7 @@ feature
 		deferred
 		end
 
-	same_item (a, b: G; processing_result: REQUEST_PROCESSING_RESULT): BOOLEAN is
+	same_item (a, b: G; processing_result: REQUEST_PROCESSING_RESULT): BOOLEAN
 			-- Are a & b the same item?
 		require
 			ok_to_read_data (processing_result)
@@ -64,7 +64,7 @@ feature
  			ok_to_read_data (processing_result)
  		end
 
- 	show_the_item_as_selected (the_item: G; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN is
+ 	show_the_item_as_selected (the_item: G; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN
 		require
 			valid_the_item: the_item /= Void
 			valid_processing_result: processing_result /= Void
@@ -82,7 +82,7 @@ feature
  			ok_to_read_data (processing_result)
  		end
 
- 	default_selected_item (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): G is
+ 	default_selected_item (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): G
 			-- The item to select in the list if there is not a value selected in the database
 		require
 			valid_processing_result: processing_result /= Void
@@ -92,7 +92,7 @@ feature
  			ok_to_read_data (processing_result)
  		end
 
- 	ok_to_save (processing_result: PARAMETER_PROCESSING_RESULT): BOOLEAN is
+ 	ok_to_save (processing_result: PARAMETER_PROCESSING_RESULT): BOOLEAN
  			-- Is it OK to save this parameter?
 		require
 			valid_processing_result: processing_result /= Void
@@ -103,14 +103,14 @@ feature
  			ok_to_read_data (processing_result.request_processing_result)
  		end
 
-	always_update (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN is
+	always_update (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN
 			-- Should we call set_currently_selected_item_in_database even if database hasn't been updated
 			-- Default is "no"
 		do
 			Result := False
 		end
 
- 	currently_selected_item_in_database (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): G is
+ 	currently_selected_item_in_database (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): G
  			-- The list item that is currently selected in the database
 		require
 			valid_processing_result: processing_result /= Void
@@ -120,7 +120,7 @@ feature
  			ok_to_read_data (processing_result)
  		end
 
- 	set_currently_selected_item_in_database (processing_result: PARAMETER_PROCESSING_RESULT; new_item: G) is
+ 	set_currently_selected_item_in_database (processing_result: PARAMETER_PROCESSING_RESULT; new_item: G)
  			-- Set the currently selected item in the list
 		require
 			valid_processing_result: processing_result /= Void
@@ -131,7 +131,7 @@ feature
  			ok_to_read_data (processing_result.request_processing_result)
  		end
 
-	option_list (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): DS_LINKED_LIST [G] is
+	option_list (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): DS_LINKED_LIST [G]
 			-- The list upon which this parameter will operate
 		require
 			valid_processing_result: processing_result /= Void
@@ -141,13 +141,13 @@ feature
 			ok_to_read_data (processing_result)
 		end
 
-	current_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	current_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- current_value for this parameter (intended for presentation to the user
 		do
 			Result := ""
 		end
 
-	add_to_document (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER) is
+	add_to_document (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER)
 		local
 			local_option_list: DS_LINKED_LIST [G]
 			index: INTEGER
@@ -167,7 +167,7 @@ feature
 			xml.end_current_element
 		end
 
-	ok_to_add (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN is
+	ok_to_add (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN
 		do
 			Result := xml.ok_to_add_element_or_text (xml.select_element_code)
 		end

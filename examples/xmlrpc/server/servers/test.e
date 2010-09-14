@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Test service. Provides test calls for all types"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XMLRPC examples test"
@@ -20,43 +20,43 @@ create
 			
 feature -- Access
 			
-	echo_int (arg: INTEGER_REF): INTEGER_REF is
+	echo_int (arg: INTEGER_REF): INTEGER_REF
 			-- Echo an integer argument
 		do
 			Result := arg
 		end
 	
-	echo_bool (arg: BOOLEAN_REF): BOOLEAN_REF is
+	echo_bool (arg: BOOLEAN_REF): BOOLEAN_REF
 			-- Echo a boolean argument
 		do
 			Result := arg
 		end
 		
-	echo_string (arg: STRING): STRING is
+	echo_string (arg: STRING): STRING
 			-- Echo a string argument
 		do
 			Result := arg
 		end
 		
-	echo_double (arg: DOUBLE_REF): DOUBLE_REF is
+	echo_double (arg: DOUBLE_REF): DOUBLE_REF
 			-- Echo a double argument
 		do
 			Result := arg
 		end
 		
-	echo_date_time (arg: DT_DATE_TIME): DT_DATE_TIME is
+	echo_date_time (arg: DT_DATE_TIME): DT_DATE_TIME
 			-- Echo a date/time argument
 		do
 			Result := arg
 		end
 	
-	echo_base64 (arg: STRING): STRING is
+	echo_base64 (arg: STRING): STRING
 			-- Echo a base64 string.
 		do
 			Result := arg
 		end
 		
-	echo_decoded_base64 (arg: STRING): STRING is
+	echo_decoded_base64 (arg: STRING): STRING
 			-- Echo a base64 string. Return the string decoded.
 		local
 			encoder: GOA_BASE64_ENCODER
@@ -65,13 +65,13 @@ feature -- Access
 			Result := encoder.decode (arg)
 		end
 		
-	echo_array (arg: ARRAY [ANY]): ARRAY [ANY] is
+	echo_array (arg: ARRAY [ANY]): ARRAY [ANY]
 			-- Echo an array.
 		do
 			Result := arg
 		end
 		
-	echo_struct (arg: DS_HASH_TABLE [ANY, STRING]): DS_HASH_TABLE [ANY, STRING] is
+	echo_struct (arg: DS_HASH_TABLE [ANY, STRING]): DS_HASH_TABLE [ANY, STRING]
 			-- Echo a struct
 		do
 			Result := arg
@@ -79,7 +79,7 @@ feature -- Access
 
 feature -- Creation
 
-	new_tuple (a_name: STRING): TUPLE is
+	new_tuple (a_name: STRING): TUPLE
 			--	Tuple of default-valued arguments to pass to call `a_name'.
 		local
 			an_int_tuple: TUPLE [INTEGER_REF]
@@ -113,36 +113,36 @@ feature -- Creation
 
 feature {NONE} -- Implementation
 
-	Echo_int_name: STRING is "echoInt"
+	Echo_int_name: STRING = "echoInt"
 			-- Name of `echo_int' service
 
-	Echo_bool_name: STRING is "echoBool"
+	Echo_bool_name: STRING = "echoBool"
 			-- Name of `echo_bool' service
 
-	Echo_string_name: STRING is "echoString"
+	Echo_string_name: STRING = "echoString"
 			-- Name of `echo_string' service
 
-	Echo_double_name: STRING is "echoDouble"
+	Echo_double_name: STRING = "echoDouble"
 			-- Name of `echo_double' service
 
-	Echo_date_time_name: STRING is "echoDateTime"
+	Echo_date_time_name: STRING = "echoDateTime"
 			-- Name of `echo_date_time' service
 
-	Echo_base64_name: STRING is "echoBase64"
+	Echo_base64_name: STRING = "echoBase64"
 			-- Name of `echo_base64' service
 
-	Echo_decoded_base64_name: STRING is "echoDecodedBase64"
+	Echo_decoded_base64_name: STRING = "echoDecodedBase64"
 			-- Name of `echo_decoded_base64' service
 
-	Echo_array_name: STRING is "echoArray"
+	Echo_array_name: STRING = "echoArray"
 			-- Name of `echo_array' service
 
-	Echo_struct_name: STRING is "echoStruct"
+	Echo_struct_name: STRING = "echoStruct"
 			-- Name of `echo_struct' service
 
 feature {NONE} -- Initialisation
 
-	self_register is
+	self_register
 			-- Register all actions for this service
 		do	
 			register (agent echo_int, 	Echo_int_name)

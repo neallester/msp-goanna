@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Topics that can be undone"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -19,7 +19,7 @@ inherit
 
 feature -- Undoing
 
-	undo is
+	undo
 		-- Undo the last change to the domain
 		do
 			if history.count <= 1 then
@@ -40,7 +40,7 @@ feature {NONE} -- Implementation
 	history : LINKED_LIST [like CURRENT]
 		-- Previous values of the current topic
 
-	initialize (proposed_user : like user_anchor) is
+	initialize (proposed_user : like user_anchor)
 		do
 			precursor (proposed_user)
 			create history.make
@@ -50,7 +50,7 @@ feature {NONE} -- Implementation
 			history.count = 1
 		end
 
-	update is
+	update
 		do
 			precursor
 			history.put_front(clone(current))

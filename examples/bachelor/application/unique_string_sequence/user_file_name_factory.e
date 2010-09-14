@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Unique strings for use as User File Names"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -21,7 +21,7 @@ create
 
 feature -- Implement deferred features
 
-	storage_file_name : STRING is
+	storage_file_name : STRING
 		do
 			result := user_file_name_file
 		end

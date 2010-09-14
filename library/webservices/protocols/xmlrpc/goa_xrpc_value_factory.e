@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Factory that correctly unmarshalls value objects."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -23,7 +23,7 @@ create
 
 feature -- Initialisation
 
-	make is
+	make
 			-- Initialise
 		do
 			unmarshall_ok := True
@@ -40,7 +40,7 @@ feature -- Status report
 
 feature -- Factory
 
-	unmarshall (node: XM_ELEMENT): GOA_XRPC_VALUE is
+	unmarshall (node: XM_ELEMENT): GOA_XRPC_VALUE
 			-- Unmarshall value
 		local
 			type_elem: XM_ELEMENT
@@ -76,7 +76,7 @@ feature -- Factory
 			end
 		end
 
-	build (value: ANY): GOA_XRPC_VALUE is
+	build (value: ANY): GOA_XRPC_VALUE
 			-- Build a new XML-RPC value from 'value'. Return Void if 'value' is not
 			-- a valid XML-RPC type.
 		require

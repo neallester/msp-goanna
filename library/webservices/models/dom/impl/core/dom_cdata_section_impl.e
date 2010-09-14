@@ -1,4 +1,4 @@
-indexing
+note
 	description: "CDATA section implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -19,7 +19,7 @@ inherit
 			node_type, node_name
 		end		
 
-creation
+create
 
 	make
 

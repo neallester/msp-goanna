@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent Companies or Corporations"
 	author: "Neal L. Lester"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -19,7 +19,7 @@ create
 
 feature -- Access
 
-	company: COMPANY is
+	company: COMPANY
 			-- The company associated with this entity
 		do
 			result := current
@@ -27,7 +27,7 @@ feature -- Access
 		
 feature {NONE} -- creation
 	
-	make is
+	make
 			-- Creation
 		do
 			initialize

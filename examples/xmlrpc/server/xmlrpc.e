@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XMLRPC Example Server."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples xmlrpc"
@@ -38,7 +38,7 @@ create {ANY}
 
 feature {ANY} -- Initialization
 
-	make is 
+	make 
 			-- Create and initialise a new HTTP server that will listen for connections
 			-- on 'port' and serving documents from 'doc_root'.
 			-- Start the server
@@ -69,7 +69,7 @@ feature {NONE} -- Implementation
 	config: GOA_SERVLET_CONFIG;
 			-- Configuration for servlets
    
-	parse_arguments is 
+	parse_arguments 
 			-- Parse the command line arguments and store appropriate settings
 		local 
 			dir: KL_DIRECTORY;
@@ -93,13 +93,13 @@ feature {NONE} -- Implementation
 			end
 		end
    
-	print_usage is 
+	print_usage 
 			-- Display usage information
 		do  
 			print("Usage: xmlrpc <port-number> <document-root>%R%N")
 		end
    
-	register_servlets is 
+	register_servlets 
 			-- Initialise servlets
 		local 
 			servlet: GOA_HTTP_SERVLET;
@@ -112,7 +112,7 @@ feature {NONE} -- Implementation
 			servlet_manager.register_default_servlet (servlet)
 		end
    
-	init_xmlrpc is 
+	init_xmlrpc 
 			-- Initialise XML RPC calls
 		local 
 			system_services: GOA_XRPC_SYSTEM;

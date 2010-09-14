@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that provide shared access to a qname tester."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -13,7 +13,7 @@ class GOA_SHARED_QNAME_TESTER
 	
 feature -- Access
 
-	qname_tester: GOA_QNAME_TESTER is
+	qname_tester: GOA_QNAME_TESTER
 			-- QName tester
 		once
 			create Result

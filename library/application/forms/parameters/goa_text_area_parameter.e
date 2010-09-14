@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Parameter that accepts input from the user through an html text_area tag"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-06-14 13:46:53 -0700 (Thu, 14 Jun 2007) $"
@@ -15,17 +15,17 @@ inherit
 
 feature
 
-	add_to_document (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER) is
+	add_to_document (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER)
 		do
 			xml.add_text_area_element (input_class (processing_result, suffix), full_parameter_name (name, suffix), rows (processing_result, suffix).out, columns (processing_result, suffix).out, display_value (processing_result, suffix))
 		end
 
-	ok_to_add (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN is
+	ok_to_add (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN
 		do
 			Result := xml.ok_to_add_element_or_text (xml.text_area_element_code)
 		end
 
-	rows (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): INTEGER is
+	rows (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): INTEGER
 			-- Number of rows in the text area element
 		require
 			valid_processing_result: processing_result /= Void
@@ -33,7 +33,7 @@ feature
 		deferred
 		end
 
-	columns (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): INTEGER is
+	columns (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): INTEGER
 			-- Number of columns in the text area element
 		require
 			valid_processing_result: processing_result /= Void

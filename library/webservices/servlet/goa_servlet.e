@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that run within a web server. Servlets receive and respond to requests from Web clients. "
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -19,7 +19,7 @@ inherit
 
 feature -- Initialization
 
-	init (config: GOA_SERVLET_CONFIG) is
+	init (config: GOA_SERVLET_CONFIG)
 			-- Called by the servlet manager to indicate that the servlet is being placed
 			-- into service. The servlet manager calls 'init' exactly once after instantiating
 			-- the object. The 'init' method must complete successfully before the servlet can
@@ -40,7 +40,7 @@ feature -- Access
 
 feature -- Basic operations
 
-	service (req: GOA_SERVLET_REQUEST; resp: GOA_SERVLET_RESPONSE) is
+	service (req: GOA_SERVLET_REQUEST; resp: GOA_SERVLET_RESPONSE)
 			-- Called by the servlet manager to allow the servlet to
 			-- respond to a request.
 		require
@@ -49,7 +49,7 @@ feature -- Basic operations
 		deferred
 		end
 
-	destroy is
+	destroy
 			-- Called by the servlet manager to indicate that the servlet
 			-- is being taken out of service. The servlet can then clean
 			-- up any resources that are being held.

@@ -1,7 +1,7 @@
 
 
 
-indexing
+note
 
 	description: "Codes constants representing attribute values of the xmlns:goa_page schema"
 	author: ""

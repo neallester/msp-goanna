@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Generic File servlet for serving standard HTTP file requests"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "tools httpd"
@@ -38,7 +38,7 @@ create
 	
 feature -- Basic operations
 
-	do_get (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_get (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Process GET request
 		local
 			file_name, file_extension, file_path, s: STRING
@@ -98,7 +98,7 @@ feature -- Basic operations
 
 		end
 	
-	do_post (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+	do_post (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Process GET request
 		do
 			do_get (req, resp)
@@ -111,7 +111,7 @@ feature -- Status Report
 
 feature -- Status setting
 
-	set_name (nm: STRING) is
+	set_name (nm: STRING)
 			-- Set qualified name of servlet.
 		require
 			valid_name: nm /= Void and then nm.count > 0
@@ -123,7 +123,7 @@ feature -- Status setting
 	
 feature {NONE} -- Implementation
 	
-	content_type_handlers: ARRAY [GOA_CONTENT_FILE_HANDLER] is
+	content_type_handlers: ARRAY [GOA_CONTENT_FILE_HANDLER]
 			-- Array of handlers for content type files
 		local
 			text_file_handler: GOA_TEXT_CONTENT_FILE_HANDLER
@@ -143,7 +143,7 @@ feature {NONE} -- Implementation
 			Result.put (binary_file_handler, Content_type_image_tiff)
 		end	
 		
-	exists (file_name: STRING): BOOLEAN is
+	exists (file_name: STRING): BOOLEAN
 			-- Does a file named 'file_name' exists and is it readable?
 			--| Not called file_exists because a SmallEiffel developer thought
 			--| it was a good idea to put file manipulation routines in GENERAL!

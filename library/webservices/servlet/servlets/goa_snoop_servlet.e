@@ -1,6 +1,5 @@
 indexing
 	description: "Snoop servlet that outputs request information."
-	note: "Includes debug statements labeled 'snoop' to output to stdout"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -22,11 +21,11 @@ inherit
 		export
 			{NONE} all
 		end
-		
+
 create
 
 	init
-	
+
 feature -- Basic operations
 
 	do_get (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
@@ -41,17 +40,17 @@ feature -- Basic operations
 			response.append_string ("<html><head><title>Snoop Servlet</title></head>%R%N")
 			response.append_string ("<h1>Snoop Servlet</h1>")
 			response.append_string (request_html (req, resp))
-			response.append_string ("</body></html>%R%N")	
+			response.append_string ("</body></html>%R%N")
 			resp.set_content_length (response.count)
 			resp.send (response)
 		end
-	
+
 	do_post (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
 			-- Process GET request
 		do
 			do_get (req, resp)
 		end
-		
+
 feature {NONE} -- Implementation
 
 	request_html (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE): STRING is
@@ -66,7 +65,7 @@ feature {NONE} -- Implementation
 			Result.append_string ("</pre>")
 			-- display all headers
 			Result.append_string ("<h2>Headers</h2>")
-			from 
+			from
 				header_names := req.get_header_names
 				header_names.start
 			until
@@ -101,15 +100,15 @@ feature {NONE} -- Implementation
 			until
 				parameter_names.off
 			loop
-				line := parameter_names.item_for_iteration + " = " 
+				line := parameter_names.item_for_iteration + " = "
 					+ quoted_eiffel_string_out (req.get_parameter (parameter_names.item_for_iteration))
 				debug ("snoop")
 					print ("%T" + line + "%R%N")
 				end
 				Result.append_string (line + "<br>%R%N")
 				parameter_names.forth
-			end				
+			end
 
-		end	
-		
+		end
+
 end -- class GOA_SNOOP_SERVLET

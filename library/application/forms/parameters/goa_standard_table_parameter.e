@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A parameter that may be added to a standard input table"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,7 +16,7 @@ inherit
 
 feature
 
-	add_to_standard_data_input_table (xml: GOA_COMMON_XML_DOCUMENT; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER) is
+	add_to_standard_data_input_table (xml: GOA_COMMON_XML_DOCUMENT; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER)
 			-- Add parameter to a standard (3 column) table in xml document
 		require
 			valid_xml: xml /= Void

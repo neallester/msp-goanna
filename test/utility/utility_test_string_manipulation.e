@@ -1,4 +1,4 @@
-indexing
+note
 
 
 
@@ -44,7 +44,7 @@ feature -- Test
 
 
 
-	test_last_index_of is
+	test_last_index_of
 
 		local
 
@@ -78,14 +78,14 @@ feature -- Test
 
 		end
 
-	test_as_16_bit_string is
+	test_as_16_bit_string
 		do
 			assert_equal ("16448.as_16_bit_string", "@@", as_16_bit_string (16448))
 			assert_equal ("5.as_16_bit_string.count", 2, as_16_bit_string (5).count)
 		end
 
 
-	test_as_32_bit_string is
+	test_as_32_bit_string
 		do
 			assert_equal ("1077952576.as_32_bit_string", "@@@@", as_32_bit_string (1077952576))
 			assert_equal ("5.as_16_bit_string.count", 4, as_32_bit_string (5).count)

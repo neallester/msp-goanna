@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XML-RPC constants."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -12,34 +12,34 @@ class GOA_XRPC_CONSTANTS
 
 feature -- Types
 
-	Int_type: STRING is "int"
+	Int_type: STRING = "int"
 			-- Four byte signed integer
 
-	Alt_int_type: STRING is "i4"
+	Alt_int_type: STRING = "i4"
 			-- Alternate integer type. Same as "int"
 
-	Bool_type: STRING is "boolean"
+	Bool_type: STRING = "boolean"
 			-- 0 (false) or 1 (true)
 
-	String_type: STRING is "string"
+	String_type: STRING = "string"
 			-- ASCII string
 
-	Double_type: STRING is "double"
+	Double_type: STRING = "double"
 			-- double-precision signed floaging point number
 
-	Date_time_type: STRING is "dateTime.iso8601"
+	Date_time_type: STRING = "dateTime.iso8601"
 			-- date/time in ISO8601 format (YYYYMMDDTHH:MM:SS)
 
-	Base64_type: STRING is "base64"
+	Base64_type: STRING = "base64"
 			-- Base64-encoded binary
 
-	Array_type: STRING is "array"
+	Array_type: STRING = "array"
 			-- Array
 
-	Struct_type: STRING is "struct"
+	Struct_type: STRING = "struct"
 			-- Structure
 
-	valid_scalar_type (new_value: ANY): BOOLEAN is
+	valid_scalar_type (new_value: ANY): BOOLEAN
 			-- Is `new_value' one of the supported XML-RPC scalar types?
 		require
 			new_value_exists: new_value /= Void
@@ -69,7 +69,7 @@ feature -- Types
 			end
 		end
 
-	valid_array_type (new_value: ANY): BOOLEAN is
+	valid_array_type (new_value: ANY): BOOLEAN
 			-- Is `new_value' a valid XML-RPC array type?
 			-- A valid array type is an 'ARRAY [ANY]' or conforming
 			-- object.
@@ -82,7 +82,7 @@ feature -- Types
 			Result := array /= Void
 		end
 
-	valid_struct_type (new_value: ANY): BOOLEAN is
+	valid_struct_type (new_value: ANY): BOOLEAN
 			-- Is `new_value' a valid XML-RPC struct type?
 			-- A valid struct type is an 'DS_HASH_TABLE [ANY, STRING]' or conforming
 			-- object.
@@ -97,115 +97,115 @@ feature -- Types
 
 feature -- Error codes
 
-	Headerval_content_type: STRING is "text/xml"
+	Headerval_content_type: STRING = "text/xml"
 			-- Content type for request and response
 
-	Unsupported_method_fault_code: INTEGER is 1
+	Unsupported_method_fault_code: INTEGER = 1
 			-- Attempt to call XMLRPC using unsupported method
 
-	Bad_payload_fault_code: INTEGER is 2
+	Bad_payload_fault_code: INTEGER = 2
 			-- Request did not contain a valid XMLRPC payload
 
-	Method_name_element_missing: INTEGER is 3
+	Method_name_element_missing: INTEGER = 3
 			-- Method name element is missing in method call
 
-	Param_value_element_missing: INTEGER is 4
+	Param_value_element_missing: INTEGER = 4
 			-- The value element of a parameter is missing
 
-	Param_value_type_element_missing: INTEGER is 5
+	Param_value_type_element_missing: INTEGER = 5
 			-- The type element of a value is missing.
 
-	Invalid_integer_value: INTEGER is 6
+	Invalid_integer_value: INTEGER = 6
 			-- Invalid integer value
 
-	Invalid_double_value: INTEGER is 7
+	Invalid_double_value: INTEGER = 7
 			-- Invalid double value
 
-	Invalid_boolean_value: INTEGER is 8
+	Invalid_boolean_value: INTEGER = 8
 			-- Invalid boolean value
 
-	Invalid_value_type: INTEGER is 9
+	Invalid_value_type: INTEGER = 9
 			-- Unknown value type specified
 
-	Value_text_element_missing: INTEGER is 10
+	Value_text_element_missing: INTEGER = 10
 			-- Value element does not contain an expected text element
 
-	Array_data_element_missing: INTEGER is 11
+	Array_data_element_missing: INTEGER = 11
 			-- Array data element missing
 
-	Array_contains_no_values: INTEGER is 12
+	Array_contains_no_values: INTEGER = 12
 			-- Array contains no values
 
-	Array_contains_unexpected_element: INTEGER is 13
+	Array_contains_unexpected_element: INTEGER = 13
 			-- Array contains unexpected element
 
-	Unexpected_struct_element: INTEGER is 14
+	Unexpected_struct_element: INTEGER = 14
 			-- Unexpected struct element
 
-	Missing_name_element_for_struct_member: INTEGER is 15
+	Missing_name_element_for_struct_member: INTEGER = 15
 			-- Missing name element for struct member
 
-	Missing_value_element_for_struct_member: INTEGER is 16
+	Missing_value_element_for_struct_member: INTEGER = 16
 			-- Missing value element for struct member
 
-	Invalid_struct_member_name: INTEGER is 17
+	Invalid_struct_member_name: INTEGER = 17
 			-- Invalid strut member name
 
-	Fault_value_element_missing: INTEGER is 18
+	Fault_value_element_missing: INTEGER = 18
 			-- Fault value element missing
 
-	Invalid_fault_value: INTEGER is 19
+	Invalid_fault_value: INTEGER = 19
 			-- Invalid fault value
 
-	Fault_code_member_missing: INTEGER is 20
+	Fault_code_member_missing: INTEGER = 20
 			-- Fault code missing
 
-	Invalid_fault_code: INTEGER is 21
+	Invalid_fault_code: INTEGER = 21
 			-- Invalid fault code
 
-	Invalid_fault_string: INTEGER is 22
+	Invalid_fault_string: INTEGER = 22
 			-- Invalid fault string
 
-	Response_value_missing: INTEGER is 23
+	Response_value_missing: INTEGER = 23
 			-- Response value missing
 
-	Invalid_action_return_type: INTEGER is 24
+	Invalid_action_return_type: INTEGER = 24
 			-- Invalid action return type
 
-	Unable_to_execute_service_action: INTEGER is 25
+	Unable_to_execute_service_action: INTEGER = 25
 			-- Unable to execute service action
 
-	Action_not_found_for_service: INTEGER is 26
+	Action_not_found_for_service: INTEGER = 26
 			-- Action not found for service
 
-	Service_not_found: INTEGER is 27
+	Service_not_found: INTEGER = 27
 			-- Service not found
 
-	Invalid_operands_for_service_action: INTEGER is 28
+	Invalid_operands_for_service_action: INTEGER = 28
 			-- Invalid operands for service action
 
-	Socket_error: INTEGER is 29
+	Socket_error: INTEGER = 29
 			-- A socket error occurred
 
-	Assertion_failure: INTEGER is 30
+	Assertion_failure: INTEGER = 30
 			-- An assertion failed
 
-	Invalid_date_time_value: INTEGER is 31
+	Invalid_date_time_value: INTEGER = 31
 			-- Invalid date time value
 
-	Multi_call_recursion: INTEGER is 32
+	Multi_call_recursion: INTEGER = 32
 			-- Method 'system.multiCall' cannot be called within a multi call invocation.
 
-	Invalid_multi_call_params: INTEGER is 33
+	Invalid_multi_call_params: INTEGER = 33
 			-- Invalid parameters for multi call
 
-	Invalid_multi_call_method_name: INTEGER is 34
+	Invalid_multi_call_method_name: INTEGER = 34
 			-- Invalid method name for multi call
 
-	User_fault: INTEGER is 35
+	User_fault: INTEGER = 35
 			-- User defined fault.
 
-	fault_code_string (code: INTEGER): STRING is
+	fault_code_string (code: INTEGER): STRING
 			-- Return error message for fault 'code'.
 		require
 			valid_fault_code: code >= 0
@@ -217,7 +217,7 @@ feature -- Error codes
 			end
 		end
 
-	Fault_strings: ARRAY [STRING] is
+	Fault_strings: ARRAY [STRING]
 			-- Fault error messages
 		once
 			Result := <<
@@ -261,46 +261,46 @@ feature -- Error codes
 
 feature -- DOM elements
 
-	Method_name_element: STRING is "methodName"
+	Method_name_element: STRING = "methodName"
 			-- Tag <methodName>
 
-	Params_element: STRING is "params"
+	Params_element: STRING = "params"
 			-- Tag <parms>
 
-	Param_element: STRING is "param"
+	Param_element: STRING = "param"
 			-- Tag <param>
 
-	Value_element: STRING is "value"
+	Value_element: STRING = "value"
 			-- Tag <value>
 
-	Array_element: STRING is "array"
+	Array_element: STRING = "array"
 			-- Tag <array>
 
-	Data_element: STRING is "data"
+	Data_element: STRING = "data"
 			-- Tag <data>
 
-	Struct_element: STRING is "struct"
+	Struct_element: STRING = "struct"
 			-- Tag <struct>
 
-	Member_element: STRING is "member"
+	Member_element: STRING = "member"
 			-- Tag <struct>
 
-	Name_element: STRING is "name"
+	Name_element: STRING = "name"
 			-- Tag <struct>
 
-	Fault_element: STRING is "fault"
+	Fault_element: STRING = "fault"
 			-- Tag <fault>
 
-	Fault_code_member: STRING is "faultCode"
+	Fault_code_member: STRING = "faultCode"
 
-	Fault_string_member: STRING is "faultString"
+	Fault_string_member: STRING = "faultString"
 
-	System_multicall_member: STRING is "system.multiCall"
+	System_multicall_member: STRING = "system.multiCall"
 			-- Method name "system.multiCall"
 
 feature -- Factories
 
-	Value_factory: GOA_XRPC_VALUE_FACTORY is
+	Value_factory: GOA_XRPC_VALUE_FACTORY
 			-- Shared value factory
 		once
 			create Result.make
@@ -308,7 +308,7 @@ feature -- Factories
 
 feature -- Logging
 
-	Xmlrpc_category: STRING is "httpd.xmlrpc"
+	Xmlrpc_category: STRING = "httpd.xmlrpc"
 			-- Logging category name for XML-RPC services
 
 end -- class GOA_XRPC_CONSTANTS

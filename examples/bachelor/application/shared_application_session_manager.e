@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Singleton Access to Application Session Manager"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -13,7 +13,7 @@ class
 
 feature -- Access
 
-	session_manager : APPLICATION_SESSION_MANAGER is
+	session_manager : APPLICATION_SESSION_MANAGER
 		-- Singleton access to session manager
 		once
 			create result.make

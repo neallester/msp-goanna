@@ -1,4 +1,4 @@
-indexing
+note
 	description: "The fully deferred version of objects that represent a domain in the application model"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -17,29 +17,29 @@ inherit
 
 feature -- Attributes
 
-	time_last_modified: DT_DATE_TIME is
+	time_last_modified: DT_DATE_TIME
 			-- The date and time the domain was last modified
 		deferred
 		end
 
-	evaluated: BOOLEAN is
+	evaluated: BOOLEAN
 			-- This domain has been evaluated
 		deferred
 		end
 
 feature -- Services
 
-	update is
+	update
 			-- Notification that the domain state has changed
 		deferred
 		end
 
-	reset is
+	reset
 			-- Reset the domain to the default state
 		deferred
 		end
 
-	update_time_last_modified (new_time_last_modified: DT_DATE_TIME) is
+	update_time_last_modified (new_time_last_modified: DT_DATE_TIME)
 		deferred
 		ensure
 			time_last_modified_updated: time_last_modified = new_time_last_modified

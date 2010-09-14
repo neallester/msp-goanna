@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that handle exceptions within applications"
 	author: "Neal L. Lester (neal@3dsafety.com)"
 	date: "$Date$"
@@ -14,14 +14,14 @@ inherit
 
 feature
 
-	broken_pipe_exception_message: STRING is "Broken pipe"
+	broken_pipe_exception_message: STRING = "Broken pipe"
 		-- Possibly Linux only; Not known if this is the same on Windows
 		-- See TODO for broken_pipe_error
 
-	connection_reset_by_peer_message: STRING is "Connection reset by peer"
+	connection_reset_by_peer_message: STRING = "Connection reset by peer"
 		-- Possibly Linux only; Not known if this is the same on Windows
 
-	broken_pipe_error: INTEGER is 32
+	broken_pipe_error: INTEGER = 32
 		-- Currently not used
 		-- Linux Only; probably 10054 on Windows
 		-- TODO Change this to refer to the platform

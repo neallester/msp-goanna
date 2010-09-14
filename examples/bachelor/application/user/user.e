@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A user of a web based application"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -26,7 +26,7 @@ feature -- attributes
 
 feature {PAGE_SEQUENCER, LOGIN_SEQUENCE} --
 
-	set_page_sequencer (new_page_sequencer : PAGE_SEQUENCER) is
+	set_page_sequencer (new_page_sequencer : PAGE_SEQUENCER)
 		-- Register a page_sequencer as active for this user
 		require
 			valid_page_sequencer : new_page_sequencer /= Void
@@ -36,7 +36,7 @@ feature {PAGE_SEQUENCER, LOGIN_SEQUENCE} --
 			page_sequencer_updated : page_sequencer = new_page_sequencer
 		end
 
-	default_page_sequence : PAGE_SEQUENCE_ELEMENT is
+	default_page_sequence : PAGE_SEQUENCE_ELEMENT
 		-- The page sequence to use when no other sequence is specified
 		deferred
 		ensure
@@ -46,7 +46,7 @@ feature {PAGE_SEQUENCER, LOGIN_SEQUENCE} --
 	history:	ARRAYED_STACK [PAGE]
 		-- Pages previously processed for this user
 
-	store is
+	store
 		-- Store this user in persistent media
 		deferred
 		end
@@ -59,7 +59,7 @@ feature {PAGE_SEQUENCER, LOGIN_SEQUENCE}
 	active_sequence : PAGE_SEQUENCE_ELEMENT
 		-- The currently active page_sequence
 
-	set_active_page (new_page : PAGE) is
+	set_active_page (new_page : PAGE)
 		-- Set new_page as the active page
 		require
 			valid_new_page : new_page /= void
@@ -72,7 +72,7 @@ feature {PAGE_SEQUENCER, LOGIN_SEQUENCE}
 	anonymous : BOOLEAN
 		-- This is an anonymous user; the class will ignore requests to store this user.
 
-	set_not_anonymous is
+	set_not_anonymous
 		-- This user is not anonymous - store
 		do
 			anonymous := false
@@ -80,7 +80,7 @@ feature {PAGE_SEQUENCER, LOGIN_SEQUENCE}
 			not anonymous
 		end
 
-	set_up_login is
+	set_up_login
 		-- Set up login_sequence as the active_sequence
 		require
 			login_required : login_required
@@ -93,7 +93,7 @@ feature {PAGE_SEQUENCER, LOGIN_SEQUENCE}
 			login_sequence_active : login_sequence = active_sequence
 		end
 
-	login_required : BOOLEAN is
+	login_required : BOOLEAN
 		-- When new user is created, LOGIN_SEQUENCE is made the active sequence
 		deferred
 		end
@@ -109,7 +109,7 @@ feature {PAGE_SEQUENCER, LOGIN_SEQUENCE, APPLICATION_SESSION_MANAGER}
 
 feature {PAGE_SEQUENCER, TOPIC, PAGE_SEQUENCE_ELEMENT}-- Change active sequence is
 
-	next_page_sequence is
+	next_page_sequence
 		-- Increment active sequence
 		do
 			if not pending_page_sequences.is_empty then
@@ -134,7 +134,7 @@ feature {PAGE_SEQUENCER, TOPIC, PAGE_SEQUENCE_ELEMENT}-- Change active sequence 
 			pending_page_sequence_removed : (not old pending_page_sequences.is_empty) implies not (pending_page_sequences.item = old pending_page_sequences.item)
 		end
 
-	interupt_active_sequence (new_sequence : PAGE_SEQUENCE_ELEMENT) is
+	interupt_active_sequence (new_sequence : PAGE_SEQUENCE_ELEMENT)
 		-- Interupt curernt page_sequence with new_sequence; continue current when new_sequence.done
 		require
 			valid_new_sequence : new_sequence /= Void
@@ -146,7 +146,7 @@ feature {PAGE_SEQUENCER, TOPIC, PAGE_SEQUENCE_ELEMENT}-- Change active sequence 
 			active_sequence_pending : active_sequence = pending_page_sequences.item
 		end
 
-	replace_active_sequence (new_sequence : PAGE_SEQUENCE_ELEMENT) is
+	replace_active_sequence (new_sequence : PAGE_SEQUENCE_ELEMENT)
 		-- Replace active_sequence with new_sequence; discard active_sequence
 		require
 			valid_new_sequence : new_sequence /= Void
@@ -159,7 +159,7 @@ feature {PAGE_SEQUENCER, TOPIC, PAGE_SEQUENCE_ELEMENT}-- Change active sequence 
 
 feature {NONE} -- Initialization
 
-	make (new_page_sequencer : PAGE_SEQUENCER) is
+	make (new_page_sequencer : PAGE_SEQUENCER)
 		do
 			create preference.make
 			page_sequencer := new_page_sequencer
@@ -187,12 +187,12 @@ feature {PAGE} -- Page Headers & Footers
 	page_footer : CONTENT_CONTAINER
 		-- Content to display at the bottom of each page
 
-	set_up_page_header is
+	set_up_page_header
 		-- Set up the page_header
 		deferred
 		end
 
-	set_up_page_footer is
+	set_up_page_footer
 		-- Set up the page_footer
 		deferred
 		end

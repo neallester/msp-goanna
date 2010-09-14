@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A sequence of 16-bit units.";
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -17,13 +17,13 @@ inherit
 --			empty as is_empty
 --		end
 
-creation
+create
 
 	make, make_from_string, make_from_utf8, make_from_ucstring
 
 feature -- Initialisation
 
-	make_from_ucstring (other: UC_STRING) is
+	make_from_ucstring (other: UC_STRING)
 			-- Create a dom string from 'other'
 		require
 			other_exists: other /= Void
@@ -48,7 +48,7 @@ feature -- Initialisation
 
 feature -- Status report
 
-	length: INTEGER is
+	length: INTEGER
 			-- Number of 16-bit units in this string.
 		do
 			Result := count

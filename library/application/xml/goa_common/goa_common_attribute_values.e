@@ -1,7 +1,7 @@
 
 
 
-indexing
+note
 
 	description: "Codes constants representing attribute values of the xmlns:goa_common schema"
 	author: ""
@@ -24,29 +24,29 @@ inherit
 
 feature -- Attribute Values
 
-	type_text: STRING is "text"
+	type_text: STRING = "text"
 
-  	type_password: STRING is "password"
+  	type_password: STRING = "password"
 
-  	disabled_yes: STRING is "yes"
+  	disabled_yes: STRING = "yes"
 
-  	disabled_no: STRING is "no"
+  	disabled_no: STRING = "no"
 
-  	checked_yes: STRING is "yes"
+  	checked_yes: STRING = "yes"
 
-  	checked_no: STRING is "no"
+  	checked_no: STRING = "no"
 
-  	multiple_yes: STRING is "yes"
+  	multiple_yes: STRING = "yes"
 
-  	multiple_no: STRING is "no"
+  	multiple_no: STRING = "no"
 
-  	selected_yes: STRING is "yes"
+  	selected_yes: STRING = "yes"
 
-  	selected_no: STRING is "no"
+  	selected_no: STRING = "no"
 
-  	class_error_message: STRING is "error_message"
+  	class_error_message: STRING = "error_message"
 
-  	class_required: STRING is "required"
+  	class_required: STRING = "required"
 
   
 

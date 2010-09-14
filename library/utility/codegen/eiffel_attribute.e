@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent Eiffel attributes"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Eiffel Code Generator"
@@ -17,13 +17,13 @@ inherit
 			make as feature_make
 		end
 
-creation
+create
 
 	make
 
 feature -- Initialization
 
-	make (new_name, new_type: STRING) is
+	make (new_name, new_type: STRING)
 			-- Create a new attribute
 		require
 			new_name_exists: new_name /= Void
@@ -44,13 +44,13 @@ feature -- Access
 
 feature -- Status setting
 
-	set_type (new_type: STRING) is
+	set_type (new_type: STRING)
 			-- Set the type of this attribute
 		do
 			type := new_type
 		end
 
-	set_value (new_value: STRING) is
+	set_value (new_value: STRING)
 			-- Set the value of this attribute. Makes the attribute
 			-- constant.
 		do
@@ -59,7 +59,7 @@ feature -- Status setting
 
 feature -- Basic operations
 
-	write (output: IO_MEDIUM) is
+	write (output: IO_MEDIUM)
 			-- Print source code representation of this attribute on 'output'
 		do
 			output.put_string ("%T" + name + ": " + type)

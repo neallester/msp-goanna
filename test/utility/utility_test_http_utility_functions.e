@@ -1,4 +1,4 @@
-indexing
+note
 
 	description: "Test features of class HTTP_UTILITY_FUNCTIONS"
 	library:    "Goanna Utility Test Harnesses"
@@ -21,7 +21,7 @@ inherit
 
 feature -- Test
 
-	test_digit_from_hex is
+	test_digit_from_hex
 		do
 			-- note % must be preceeded by another %
 			assert_equal ("empty", "", decode_url(""))
@@ -29,7 +29,7 @@ feature -- Test
 			assert_equal ("decode_percent_chars", "this is a test", decode_url ("this%%20is%%20a%%20test"))
 		end
 
-	test_encode is
+	test_encode
 			-- Test HTTP encoding
 		do
 			-- note % must be preceeded by another %

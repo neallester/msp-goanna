@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Mixin class that provides portable string manipulation routines."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Utility"
@@ -16,7 +16,7 @@ inherit
 
 feature -- Basic operations
 
-	create_blank_buffer (size: INTEGER): STRING is
+	create_blank_buffer (size: INTEGER): STRING
 			-- Create a buffer string filled with blanks.
 		require
 			positive_size: size >= 0
@@ -28,7 +28,7 @@ feature -- Basic operations
 			blank_filled: Result.occurrences (' ') = size
 		end
 	
-	index_of_char (str: STRING; char: CHARACTER; start: INTEGER): INTEGER is
+	index_of_char (str: STRING; char: CHARACTER; start: INTEGER): INTEGER
 			-- Position of first occurrence of `c' in `str' at or after `start';
 			-- 0 if none.
 		require
@@ -39,7 +39,7 @@ feature -- Basic operations
 			Result := str.index_of (char, start)
 		end
 		
-	clear_buffer (buffer: STRING) is
+	clear_buffer (buffer: STRING)
 			-- Clear buffer of all characters
 		require
 			buffer_exists: buffer /= Void
@@ -49,7 +49,7 @@ feature -- Basic operations
 			empty: buffer.is_empty
 		end
 		
-	is_buffer_full (buffer: STRING): BOOLEAN is
+	is_buffer_full (buffer: STRING): BOOLEAN
 			-- Is 'buffer' full to capacity?
 		require
 			buffer_exists: buffer /= Void
@@ -71,7 +71,7 @@ feature -- Basic operations
 
 		end	
 		
-	last_index_of (str: STRING; c: CHARACTER; start_index_from_end: INTEGER): INTEGER is
+	last_index_of (str: STRING; c: CHARACTER; start_index_from_end: INTEGER): INTEGER
 			-- Position of last occurence of `c' in 'str'.
 			-- 0 if none
 		require
@@ -101,7 +101,7 @@ feature -- Basic operations
 			correct_place: Result > 0 implies str.item (Result) = c
 		end
 	
-	prepend_character (c: CHARACTER; s: STRING) is
+	prepend_character (c: CHARACTER; s: STRING)
 			-- Prepend 'c' to 's'
 		require
 			s_exists: s /= Void
@@ -117,7 +117,7 @@ feature -- Basic operations
 			s_one_char_longer: s.count = old s.count + 1
 		end
 	
-	fill_blank (s: STRING) is
+	fill_blank (s: STRING)
 			-- Fill 's' with spaces
 		require
 			s_exists: s /= Void
@@ -132,7 +132,7 @@ feature -- Basic operations
 			s_blank: s.occurrences (' ') = s.count
 		end
 
-	as_16_bit_string (i: INTEGER): STRING is
+	as_16_bit_string (i: INTEGER): STRING
 			-- i represented as two 256 bit characters
 		local
 			digit_1: INTEGER
@@ -143,7 +143,7 @@ feature -- Basic operations
 			Result.extend ((i - INTEGER_.bit_shift_left (digit_1, 8)).to_character_8)
 		end
 
-	as_32_bit_string (i: INTEGER): STRING is
+	as_32_bit_string (i: INTEGER): STRING
 			-- i represented as four 256 bit characters
 		local
 			digit_1, digit_2, digit_3: INTEGER

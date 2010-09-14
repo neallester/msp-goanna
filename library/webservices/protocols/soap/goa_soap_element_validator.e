@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP envelope."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -23,7 +23,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (an_identifier_list: DS_HASH_TABLE [GOA_SOAP_ELEMENT, STRING]; an_encoding: GOA_SOAP_ENCODING; an_identity: UT_URI) is
+	make (an_identifier_list: DS_HASH_TABLE [GOA_SOAP_ELEMENT, STRING]; an_encoding: GOA_SOAP_ENCODING; an_identity: UT_URI)
 			-- Establish invariant.
 		require
 			unique_identifiers_not_void: an_identifier_list /= Void
@@ -53,7 +53,7 @@ feature -- Status report
 
 feature -- Processing
 
-	process_element (e: XM_ELEMENT) is
+	process_element (e: XM_ELEMENT)
 			-- Process element `e'.
 		local
 			an_element: GOA_SOAP_ELEMENT
@@ -75,7 +75,7 @@ feature -- Processing
 			end
 		end
 
-	process_document (a_doc: XM_DOCUMENT) is
+	process_document (a_doc: XM_DOCUMENT)
 			-- Process document `a_doc'.
 		do
 			validated := True

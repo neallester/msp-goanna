@@ -1,5 +1,5 @@
 
-indexing
+note
 
 	description: "An XML Document used to generate HTML within a Web Application"
 	author: "Neal L. Lester <neallester@users.sourceforge.net>"
@@ -24,13 +24,13 @@ feature -- Status
 	root_element_added: BOOLEAN
 			-- Has the root element already been added to the document
 
-	is_complete: BOOLEAN is
+	is_complete: BOOLEAN
 			-- Is the document complete?
 		do
 			Result := root_element_added and element_stack.is_empty
 		end
 
-	current_element_code: INTEGER is
+	current_element_code: INTEGER
 			-- Code representing the current element
 		do
 			if not element_stack.is_empty then
@@ -40,13 +40,13 @@ feature -- Status
 			end
 		end
 
-	current_element_name: STRING is
+	current_element_name: STRING
 		do
 			Result := element_tag_by_code.item (current_element_code).twin
 		end
 
 
-	current_element_contents: ARRAY [INTEGER] is
+	current_element_contents: ARRAY [INTEGER]
 			-- Codes representing the contents (elements and/or text) of the current element
 		do
 			if not contents_stack.is_empty then
@@ -56,7 +56,7 @@ feature -- Status
 			end
 		end
 
-	last_element_is_text: BOOLEAN is
+	last_element_is_text: BOOLEAN
 			-- Was the last element/text added to the current element text?
 		do
 			if current_element_contents.is_empty then
@@ -66,17 +66,17 @@ feature -- Status
 			end
 		end
 
-	xml_text_code: INTEGER is
+	xml_text_code: INTEGER
 			-- Code representing text content of an XML element
 		deferred
 		end
 
-	xml_null_code: INTEGER is
+	xml_null_code: INTEGER
 			-- Code representing no element
 		deferred
 		end
 
-	current_element_contents_as_string: STRING is
+	current_element_contents_as_string: STRING
 		local
 			local_index: INTEGER
 		do
@@ -96,7 +96,7 @@ feature -- Status
 
 feature -- Document Manipulation
 
-	add_text (the_text: STRING) is
+	add_text (the_text: STRING)
 			-- Add the_text to current_element of document
 		require
 			valid_the_text: the_text /= Void and then not the_text.is_empty
@@ -112,7 +112,7 @@ feature -- Document Manipulation
 			text_element_added_to_content: not old last_element_is_text implies current_element_contents.count = (old current_element_contents.count + 1)
 		end
 
-	end_current_element is
+	end_current_element
 			-- End the current open element in the document
 		require
 			open_current_element: current_element_code /= xml_null_code
@@ -127,7 +127,7 @@ feature -- Document Manipulation
 			contents_stack.remove
 		end
 
-	add_item (the_item: GOA_XML_ITEM) is
+	add_item (the_item: GOA_XML_ITEM)
 			-- Add the_item to document
 		require
 			ok_to_add: the_item.ok_to_add (Current)
@@ -137,7 +137,7 @@ feature -- Document Manipulation
 
 feature -- Output
 
-	as_xml: STRING is
+	as_xml: STRING
 			-- The completed document as a string
 		require
 			input_finished: current_element_code = xml_null_code and root_element_added
@@ -147,7 +147,7 @@ feature -- Output
 			is_valid_xml: configuration.validate_xml implies is_valid_xml (Result)
 		end
 
-	as_html: STRING is
+	as_html: STRING
 			-- Transform the_page to html
 		local
 			saxon_input_file, xml_file: KI_TEXT_OUTPUT_FILE
@@ -216,7 +216,7 @@ feature -- Output
  			retry
 		end
 
-	new_temp_file_name: STRING is
+	new_temp_file_name: STRING
 		local
 			now: DT_DATE_TIME
 		do
@@ -225,7 +225,7 @@ feature -- Output
 		end
 
 
-	put_xml_to_file (file_name: STRING) is
+	put_xml_to_file (file_name: STRING)
 			-- Put current document to file named file_name; will generate exception
 			-- if unable to open and write to file_name
 		require
@@ -241,7 +241,7 @@ feature -- Output
 			the_file.close
 		end
 
-	put_html_to_file (file_name: STRING) is
+	put_html_to_file (file_name: STRING)
 			-- Put html version of current document to file named file_name; will generate exception
 			-- if unable to open and write to file_name
 		require
@@ -258,7 +258,7 @@ feature -- Output
 
 feature -- Validity
 
-	ok_to_add_element_or_text (the_element_code: INTEGER): BOOLEAN is
+	ok_to_add_element_or_text (the_element_code: INTEGER): BOOLEAN
 			-- Is code given by the_element a legal element at this position in the document?
 			-- use xml_text_code to determine if text is legal at this position of the document
 		local
@@ -273,7 +273,7 @@ feature -- Validity
 			end
 		end
 
-	are_all_attribute_values_valid (attribute_name_codes: ARRAY[INTEGER]; attribute_values: ARRAY [STRING]): BOOLEAN is
+	are_all_attribute_values_valid (attribute_name_codes: ARRAY[INTEGER]; attribute_values: ARRAY [STRING]): BOOLEAN
 			-- Are all entries in attribute_values valid for the corresponding attribute given by attribute_name_code?
 		require
 			valid_attribute_name_codes: attribute_name_codes /= void and then not attribute_name_codes.has (xml_null_code)
@@ -300,7 +300,7 @@ feature -- Validity
 			end
 		end
 
-	are_all_input_names_valid (input_name_codes, valid_name_codes: ARRAY [INTEGER]): BOOLEAN is
+	are_all_input_names_valid (input_name_codes, valid_name_codes: ARRAY [INTEGER]): BOOLEAN
 			-- Is every entry in input_name_codes contained in valid_name_codes?
 		require
 			valid_input_name_codes: input_name_codes /= Void
@@ -319,7 +319,7 @@ feature -- Validity
 			end
 		end
 
-	is_valid_element_tag (the_tag: STRING): BOOLEAN is
+	is_valid_element_tag (the_tag: STRING): BOOLEAN
 			-- Is the_tag a valid element tag?
 		local
 			local_the_tag: STRING
@@ -332,7 +332,7 @@ feature -- Validity
 			end
 		end
 
-	is_valid_attribute_name (the_name: STRING): BOOLEAN is
+	is_valid_attribute_name (the_name: STRING): BOOLEAN
 			-- Is the_name a valid attribute name?
 		local
 			local_the_name: STRING
@@ -345,34 +345,34 @@ feature -- Validity
 			end
 		end
 
-	is_valid_attribute_value (attribute_name_code: INTEGER; attribute_value: STRING): BOOLEAN is
+	is_valid_attribute_value (attribute_name_code: INTEGER; attribute_value: STRING): BOOLEAN
 			-- is attribute_value valid for athe attribute given by attribute_name_code
 		deferred
 		end
 
-	is_valid_element_tag_code (the_code: INTEGER): BOOLEAN is
+	is_valid_element_tag_code (the_code: INTEGER): BOOLEAN
 			-- Does the_code represent an element code used in this schema?
 		do
 			Result := element_tag_by_code.has (the_code)
 		end
 
-	is_valid_attribute_name_code (the_code: INTEGER): BOOLEAN is
+	is_valid_attribute_name_code (the_code: INTEGER): BOOLEAN
 			-- Does the_code represent an attribute name code used in this schema?
 		do
 			Result := attribute_name_by_code.has (the_code)
 		end
 
-	is_valid_element_content (the_element_code: INTEGER; the_content: ARRAY [INTEGER]): BOOLEAN is
+	is_valid_element_content (the_element_code: INTEGER; the_content: ARRAY [INTEGER]): BOOLEAN
 		deferred
 		end
 
-	is_valid_element_content_fragment (the_element_code: INTEGER; the_content: ARRAY [INTEGER]): BOOLEAN is
+	is_valid_element_content_fragment (the_element_code: INTEGER; the_content: ARRAY [INTEGER]): BOOLEAN
 		deferred
 		end
 
 feature -- Code and Tag/Name Cross Reference
 
-	element_tag_for_code (the_code: INTEGER): STRING is
+	element_tag_for_code (the_code: INTEGER): STRING
 			-- The element tag corresponding with the_code
 		require
 			valid_the_code: is_valid_element_tag_code (the_code)
@@ -380,7 +380,7 @@ feature -- Code and Tag/Name Cross Reference
 			Result := element_tag_by_code.item (the_code)
 		end
 
-	element_code_for_tag (the_tag: STRING): INTEGER is
+	element_code_for_tag (the_tag: STRING): INTEGER
 			-- The element code corresponding to the_tag
 		require
 			is_valid_element_tag: is_valid_element_tag (the_tag)
@@ -392,7 +392,7 @@ feature -- Code and Tag/Name Cross Reference
 			Result := element_code_by_tag.item (local_the_tag)
 		end
 
-	attribute_code_for_name (the_name: STRING): INTEGER is
+	attribute_code_for_name (the_name: STRING): INTEGER
 			-- The attribute code corresponding to the_name
 		require
 			is_valid_attribute_name: is_valid_attribute_name (the_name)
@@ -404,7 +404,7 @@ feature -- Code and Tag/Name Cross Reference
 			Result := attribute_code_by_name.item (local_the_name)
 		end
 
-	attribute_name_for_code (the_code: INTEGER): STRING is
+	attribute_name_for_code (the_code: INTEGER): STRING
 			-- The attribute name corresponding with the_code
 		require
 			valid_the_code: is_valid_attribute_name_code (the_code)
@@ -414,35 +414,35 @@ feature -- Code and Tag/Name Cross Reference
 
 feature {NONE} -- Implementation
 
-	attribute_code_by_name: DS_HASH_TABLE [INTEGER, STRING] is
+	attribute_code_by_name: DS_HASH_TABLE [INTEGER, STRING]
 			-- Attribute codes, keyed by attribute name
 		deferred
 		end
 
-	element_code_by_tag: DS_HASH_TABLE [INTEGER, STRING] is
+	element_code_by_tag: DS_HASH_TABLE [INTEGER, STRING]
 			-- Element codes, keyed by element tag
 		deferred
 		end
 
-	element_tag_by_code: DS_HASH_TABLE [STRING, INTEGER] is
+	element_tag_by_code: DS_HASH_TABLE [STRING, INTEGER]
 			-- Element tags, keyed by element code
 		deferred
 		end
 
-	attribute_name_by_code: DS_HASH_TABLE [STRING, INTEGER] is
+	attribute_name_by_code: DS_HASH_TABLE [STRING, INTEGER]
 			-- Attribute names, keyed by attribute code
 		deferred
 		end
 
 feature -- Options
 
-	reset_to_iso_8859_1_encoded is
+	reset_to_iso_8859_1_encoded
 			-- Reset (clear document); start new as a ISO 8859-1 encoded document
 		do
 			make_iso_8859_1_encoded
 		end
 
-	reset_to__utf8_encoded is
+	reset_to__utf8_encoded
 			-- Reset (clear document); start new as a UTF8 encoded document
 		do
 			make_utf8_encoded
@@ -461,30 +461,30 @@ feature -- {NONE} -- Implementation
 
 feature {NONE} -- Transformation
 
-	use_saxon: BOOLEAN is
+	use_saxon: BOOLEAN
 			-- Should we use Saxon to render the xml using xslt?
 		do
 			Result := configuration.use_saxon
 		end
 
-	transform_file_name: STRING is
+	transform_file_name: STRING
 			-- Name of file containing XSLT transform to generate html version of this document
 		deferred
 		end
 
-	schema_file_name: STRING is
+	schema_file_name: STRING
 			-- Name of file containing Relax NG schema for this document
 		deferred
 		end
 
-	xslt_transformer_factory: GOA_XSLT_TRANSFORMER_FACTORY is
+	xslt_transformer_factory: GOA_XSLT_TRANSFORMER_FACTORY
 			-- Where new XSLT Transformers come from
 		do
 			create Result.make_without_configuration
 			-- If this is a once function, GEXSLT retains references and bloats memory usage
 		end
 
-	transformer: GOA_XSLT_STRING_TRANSFORMER is
+	transformer: GOA_XSLT_STRING_TRANSFORMER
 			-- Transformer used to generate HTML from this pages XML
 		do
 			if transformers.has (transform_file_name) then
@@ -496,13 +496,13 @@ feature {NONE} -- Transformation
 			end
 		end
 
-	transformers: DS_HASH_TABLE [GOA_XSLT_STRING_TRANSFORMER, STRING] is
+	transformers: DS_HASH_TABLE [GOA_XSLT_STRING_TRANSFORMER, STRING]
 			-- Transformers indexed by transform_file_name
 		once
 			create Result.make_equal (5)
 		end
 
-	is_valid_xml (xml: STRING): BOOLEAN is
+	is_valid_xml (xml: STRING): BOOLEAN
 			-- Does xml conform to the relaxng schema at schema_file_name?
 		require
 			valid_xml: xml /= Void
@@ -523,21 +523,21 @@ feature {NONE} -- Transformation
 
 feature {NONE} -- Creation
 
-	make_iso_8859_1_encoded is
+	make_iso_8859_1_encoded
 			-- Creation; as a ISO 8859-1 encoded document
 		do
 			initialize
 			writer.add_header_iso_8859_1_encoding
 		end
 
-	make_utf8_encoded is
+	make_utf8_encoded
 			-- Creation; as a UTF8 encoded document
 		do
 			initialize
 			writer.add_header_utf_8_encoding
 		end
 
-	initialize is
+	initialize
 			-- Establish Invariant
 		do
 			create element_stack.make_equal

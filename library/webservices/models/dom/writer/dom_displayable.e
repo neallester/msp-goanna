@@ -1,4 +1,4 @@
-indexing
+note
 	description: "DOM objects that can be displayed"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "DOM Serialization"
@@ -17,7 +17,7 @@ inherit
 
 feature -- Transformation
 
-	output is
+	output
 			-- Convenience function for debugging.
 			-- String representation of node.
 		do
@@ -26,7 +26,7 @@ feature -- Transformation
 
 feature {DOM_WRITER, DOM_NODE} -- Implementation
 
-	output_indented (level: INTEGER) is
+	output_indented (level: INTEGER)
 			-- Indented string representation of node.
 		require
 			positive_level: level >= 0
@@ -35,12 +35,12 @@ feature {DOM_WRITER, DOM_NODE} -- Implementation
 
 feature {NONE}
 
-	make_indent (level: INTEGER): STRING is
+	make_indent (level: INTEGER): STRING
 			-- Create indentation string for 'level'
 		require
 			positive_level: level >= 0
-		do
-			!! Result.make (level * 2)
+		do 
+			create Result.make (level * 2)
 			if level > 0 then
 				-- SmallEiffel doesn't recognise fill_character
 				Result.fill_character (' ')
@@ -50,13 +50,13 @@ feature {NONE}
 			result_exists: Result /= Void
 		end
 
-	line_separator: STRING is
+	line_separator: STRING
 			-- Platform dependant line separator
 		once
 			Result := "%R%N"
 		end
 
-	node_type_string (type: INTEGER): STRING is
+	node_type_string (type: INTEGER): STRING
 			-- Node type as string
 		do
 			inspect type
@@ -89,12 +89,12 @@ feature {NONE}
 			end
 		end
 
-	non_void_string (str: UC_STRING): UC_STRING is
+	non_void_string (str: UC_STRING): UC_STRING
 			-- If 'str' is Void, return the string "Void"
 			-- Otherwise return 'str'
 		do
-			if str = Void then
-				!! Result.make_from_string ("Void")
+			if str = Void then 
+				create Result.make_from_string ("Void")
 			else
 				Result := str
 			end

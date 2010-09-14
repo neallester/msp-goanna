@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Processing instruction implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -21,13 +21,13 @@ inherit
 			node_value
 		end
 
-creation
+create
 
 	make
 
 feature -- Factory creation
 
-	make (owner_doc: DOM_DOCUMENT; new_target, new_data: DOM_STRING) is
+	make (owner_doc: DOM_DOCUMENT; new_target, new_data: DOM_STRING)
 			-- Create a new processing instruction node
 		require
 			owner_doc_exists: owner_doc /= Void
@@ -47,17 +47,17 @@ feature
 	
 feature -- from DOM_NODE
 
-	node_type: INTEGER is
+	node_type: INTEGER
 		once
 			Result := Processing_instruction_node
 		end
 	
-	node_name: DOM_STRING is
+	node_name: DOM_STRING
 		do
 			Result := target
 		end
 
-	node_value: DOM_STRING is
+	node_value: DOM_STRING
 		do
 			Result := data
 		end

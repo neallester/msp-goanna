@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A factory for creating common XSLT transformers"
 	author: ""
 	date: "$Date: 2009-05-28 22:29:33 -0700 (Thu, 28 May 2009) $"
@@ -17,13 +17,13 @@ inherit
 	UT_SHARED_FILE_URI_ROUTINES
 	KL_SHARED_FILE_SYSTEM
 
-creation
+create
 
 	make_without_configuration
 
 feature
 
-	new_string_transformer_from_file_name (new_file_name: STRING): GOA_XSLT_STRING_TRANSFORMER is
+	new_string_transformer_from_file_name (new_file_name: STRING): GOA_XSLT_STRING_TRANSFORMER
 			-- Create a new transformer given the name of the file containing the stylesheet
 			-- Call this from a once function to improve performance as the stylesheet is then
 			-- Compiled only once (the first time it is called)
@@ -54,7 +54,7 @@ feature
 				-- Just to make sure the string_resolver is created and registered
 		end
 
-	string_resolver: XM_STRING_URI_RESOLVER is
+	string_resolver: XM_STRING_URI_RESOLVER
 			-- Resolver used to resolve strings
 		once
 			create Result.make
@@ -63,7 +63,7 @@ feature
 
 feature {NONE} -- Creation
 
-	make_without_configuration is
+	make_without_configuration
 		local
 			xslt_configuration: XM_XSLT_CONFIGURATION
 		do

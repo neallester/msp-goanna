@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Mixin class that provides portable reference type routines."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Utility"
@@ -15,7 +15,7 @@ obsolete "ISE and SmallEiffel now have the same BOOLEAN_REF creation interface."
 
 feature
 	
-	make_boolean_ref (bool: BOOLEAN): BOOLEAN_REF is
+	make_boolean_ref (bool: BOOLEAN): BOOLEAN_REF
 			-- Create a new boolean reference type from 'bool'.
 		do
 

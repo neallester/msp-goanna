@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that create pages"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -16,7 +16,7 @@ inherit
 	SYSTEM_CONSTANTS
 	SEQUENCE_ELEMENT_FACTORY
 
-creation
+create
 
 	make
 
@@ -25,7 +25,7 @@ feature {PAGE_SEQUENCE_ELEMENT} -- Pages
 
 -- Login
 
-	login (login_sequence : LOGIN_SEQUENCE) : PAGE is
+	login (login_sequence : LOGIN_SEQUENCE) : PAGE
 		-- Page that provides for user login
 			local
 				form : LOGIN_FORM
@@ -37,7 +37,7 @@ feature {PAGE_SEQUENCE_ELEMENT} -- Pages
 		end
 
 
-	new_user_login (login_sequence : LOGIN_SEQUENCE) : PAGE is
+	new_user_login (login_sequence : LOGIN_SEQUENCE) : PAGE
 		-- Page that allows new users to apply to system
 		local
 			form : NEW_USER_LOGIN_FORM
@@ -48,7 +48,7 @@ feature {PAGE_SEQUENCE_ELEMENT} -- Pages
 			result.add_content (form)
 		end
 
-	yes_no (new_topic : YES_NO) : PAGE is
+	yes_no (new_topic : YES_NO) : PAGE
 		-- A page that can display a yes_no_topic
 		local
 			button : BUTTON_FORM
@@ -72,7 +72,7 @@ feature {PAGE_SEQUENCE_ELEMENT} -- Pages
 			result.add_content (container)
 		end	
 			
-	advice (topic : CHOOSING_A_WIFE) : PAGE is
+	advice (topic : CHOOSING_A_WIFE) : PAGE
 		local
 			text_paragraph : TEXT_PARAGRAPH
 			text : TEXT_LIST
@@ -110,7 +110,7 @@ feature {PAGE_SEQUENCE_ELEMENT} -- Pages
 
 feature {NONE} -- Creation
 
-	make is
+	make
 		do
 		end
 

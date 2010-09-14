@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A sequence of pages"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -18,12 +18,12 @@ deferred class
 
 feature -- Implement Deferred Features
 
-	create_sequence is
+	create_sequence
 		-- Create the page sequence
 		deferred
 		end
 
-	initialize is
+	initialize
 		do
 			if not sequence_initialized then
 				create_sequence
@@ -31,7 +31,7 @@ feature -- Implement Deferred Features
 			end
 		end
 
-	initialized: BOOLEAN is
+	initialized: BOOLEAN
 		do
 			result := sequence_initialized
 		end

@@ -35,23 +35,23 @@ feature {GOA_HTTP_SESSION_MANAGER} -- Events
         end
 
     attribute_bound (session: GOA_HTTP_SESSION; name: STRING;
-        attribute: ANY) is
-            -- 'attribute' has been bound in 'session' to 'name'
+        a_attribute: ANY) is
+            -- 'a_attribute' has been bound in 'session' to 'name'
         require
             session_exists: session /= Void
             name_exists: name /= Void
-            attribute_exists: attribute /= Void
-            attribute_bound: session.get_attribute (name) = attribute
+            a_attribute_exists: a_attribute /= Void
+            attribute_bound: session.get_attribute (name) = a_attribute
         deferred
         end
 
     attribute_unbound (session: GOA_HTTP_SESSION; name: STRING;
-        attribute: ANY) is
-            -- 'attribute' has been unbound in 'session' from 'name'
+        a_attribute: ANY) is
+            -- 'a_attribute' has been unbound in 'session' from 'name'
         require
             session_exists: session /= Void
             name_exists: name /= Void
-            attribute_exists: attribute /= Void
+            a_attribute_exists: a_attribute /= Void
             attribute_unbound: not session.has_attribute (name)
         deferred
         end

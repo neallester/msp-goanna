@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Generic notion of a pool of objects. May be bounded or unbounded."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "utility"
@@ -13,20 +13,20 @@ class
 
 		-- TODO: this is only used by the test cases - delete it perhaps
 
-creation
+create
 
 	make, make_bounded
 
 feature -- Initialization
 
-	make is
+	make
 			-- Initialise empty pool
 		do
 			create {DS_LINKED_STACK [K]} free_pool.make_default
 			create {DS_LINKED_LIST [K]} busy_pool.make_default
 		end
 	
-	make_bounded (new_maximum: like maximum) is
+	make_bounded (new_maximum: like maximum)
 			-- Initialise bounded pool
 		do
 			make
@@ -35,7 +35,7 @@ feature -- Initialization
 		
 feature -- Access
 
-	item: K is
+	item: K
 			-- Retrieve item from the free pool. Create   
 			-- new item if necessary.
 		require
@@ -48,7 +48,7 @@ feature -- Access
 			busy: is_busy (Result)
 		end
 		
-	return (i: K) is
+	return (i: K)
 			-- Make 'i' available on free pool.
 		require
 			is_busy: is_busy (i)
@@ -59,7 +59,7 @@ feature -- Access
 			free: is_free (i)
 		end
 	
-	is_full: BOOLEAN is
+	is_full: BOOLEAN
 			-- Is the pool full?
 		do
 			Result := maximum /= 0 and then count = maximum
@@ -69,19 +69,19 @@ feature -- Access
 		
 feature -- Measurement
 
-	free_count: INTEGER is
+	free_count: INTEGER
 			-- Number of items available on free pool.
 		do
 			Result := free_pool.count
 		end
 		
-	busy_count: INTEGER is
+	busy_count: INTEGER
 			-- Number of items currently being used.
 		do
 			Result := busy_pool.count
 		end
 		
-	count: INTEGER is
+	count: INTEGER
 			-- Total number of items in pool, free or busy.
 		do
 			Result := free_count + busy_count
@@ -95,7 +95,7 @@ feature -- Measurement
 
 feature -- Status report
 
-	is_free (i: K): BOOLEAN is
+	is_free (i: K): BOOLEAN
 			-- Is 'i' currently available for use?
 		require
 			valid_i: i /= Void
@@ -103,7 +103,7 @@ feature -- Status report
 			Result := free_pool.has (i)
 		end
 		
-	is_busy (i: K): BOOLEAN is
+	is_busy (i: K): BOOLEAN
 			-- Is 'i' currently being used?
 		require
 			valid_i: i /= Void
@@ -111,7 +111,7 @@ feature -- Status report
 			Result := busy_pool.has (i)
 		end
 	
-	has (i: K): BOOLEAN is
+	has (i: K): BOOLEAN
 			-- Is 'i' in pool? 'i' may be busy or free.
 		require
 			valid_i: i /= Void
@@ -121,7 +121,7 @@ feature -- Status report
 	
 feature -- Status setting
 	
-	put (i: K) is
+	put (i: K)
 			-- Add 'i' to pool.
 		require
 			not_full: not is_full
@@ -132,7 +132,7 @@ feature -- Status setting
 			new_item_is_free: is_free (i)
 		end
 			
-	set_maximum (new_maximum: like maximum) is
+	set_maximum (new_maximum: like maximum)
 			-- Set 'maximum to 'new_maximum'
 		require
 			valid_maximum: new_maximum > 0

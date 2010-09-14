@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Demo calculator"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -12,7 +12,7 @@ class	CALCULATOR
 
 feature -- Basic operations
 
-	times (arg1, arg2: DOUBLE_REF): DOUBLE_REF is
+	times (arg1, arg2: DOUBLE_REF): DOUBLE_REF
 			-- Multiply 'arg1' by 'arg2'
 		require
 			arg1_exists: arg1 /= Void
@@ -23,7 +23,7 @@ feature -- Basic operations
 			multiplied: Result.item = (arg1 * arg2).item
 		end
 	
-	divide (arg1, arg2: DOUBLE_REF): DOUBLE_REF is
+	divide (arg1, arg2: DOUBLE_REF): DOUBLE_REF
 			-- Divide 'arg1' by 'arg2'
 		require
 			arg1_exists: arg1 /= Void
@@ -34,7 +34,7 @@ feature -- Basic operations
 			divided: Result.item = (arg1 / arg2).item
 		end
 	
-	minus (arg1, arg2: DOUBLE_REF): DOUBLE_REF is
+	minus (arg1, arg2: DOUBLE_REF): DOUBLE_REF
 			-- Subtract 'arg2' from 'arg1'.
 		require
 			arg1_exists: arg1 /= Void
@@ -45,7 +45,7 @@ feature -- Basic operations
 			subtracted: Result.item = (arg1 - arg2).item
 		end
 		
-	plus (arg1, arg2: DOUBLE_REF): DOUBLE_REF is
+	plus (arg1, arg2: DOUBLE_REF): DOUBLE_REF
 			-- Add 'arg1' to 'arg2'
 		require
 			arg1_exists: arg1 /= Void

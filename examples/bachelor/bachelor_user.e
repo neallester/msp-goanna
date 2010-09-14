@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Bachelors who use this system for advice"
 	author: "Neal L. Lester (neal@3dsafety.com)"
 	date: "$ May 11, 2001: $"
@@ -18,12 +18,12 @@ create
 
 feature -- implement deferred features
 
-	login_required : BOOLEAN is
+	login_required : BOOLEAN
 		do
 			result := true
 		end
 
-	set_up_page_header is
+	set_up_page_header
 		local
 			text_paragraph : TEXT_PARAGRAPH
 		do
@@ -33,7 +33,7 @@ feature -- implement deferred features
 			page_header := text_paragraph
 		end
 
-	set_up_page_footer is
+	set_up_page_footer
 		local
 			text_paragraph : TEXT_PARAGRAPH
 			container : MULTI_CONTAINER
@@ -54,7 +54,7 @@ feature -- implement deferred features
 			page_footer := container
 		end
 
-	default_page_sequence : PAGE_SEQUENCE_ELEMENT is
+	default_page_sequence : PAGE_SEQUENCE_ELEMENT
 		do
 			result := choosing_a_wife
 			result.start
@@ -66,7 +66,7 @@ feature -- Attributes
 
 feature -- Creation
 
-	make (new_page_sequencer : PAGE_SEQUENCER) is
+	make (new_page_sequencer : PAGE_SEQUENCER)
 		do
 			precursor (new_page_sequencer)
 			create choosing_a_wife.make_with_user (current)

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that filter nodes with 'id' attributes"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XMLE Tool"
@@ -16,7 +16,7 @@ inherit
 
 feature -- Basic opterations
 
-	accept_node (node: DOM_NODE): INTEGER is
+	accept_node (node: DOM_NODE): INTEGER
 			-- Test whether a specified node is visible in the logical view of a 
      		-- DOM_TREE_WALKER or DOM_NODE_ITERATOR. This function will be called by the 
      		-- implementation of DOM_TREE_WALKER and DOM_NODE_ITERATOR; it is not intended to 
@@ -30,7 +30,7 @@ feature -- Basic opterations
 		
 feature {NONE} -- Implementation
 
-	Id_attribute: DOM_STRING is
+	Id_attribute: DOM_STRING
 	 	once
 	 		create Result.make_from_string ("id") 	
 	 	end

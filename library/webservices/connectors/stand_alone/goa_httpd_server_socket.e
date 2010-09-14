@@ -1,4 +1,4 @@
-indexing
+note
 
 	author:      "Marcio Marchini <mqm@users.sourceforge.net>"
 	copyright:   "Copyright (c) 2000, Marcio Marchini"
@@ -36,7 +36,7 @@ create
 
 feature
 
-	accept: ABSTRACT_TCP_SOCKET is
+	accept: ABSTRACT_TCP_SOCKET
 			-- Return the next completed connection from the front of the
 			-- completed connection queue. If there are no completed
 			-- connections, the process is put to sleep.
@@ -57,7 +57,7 @@ feature
 			end
 		end
 
-	multiplexer_read_callback (a_multiplexer: EPX_SOCKET_MULTIPLEXER) is
+	multiplexer_read_callback (a_multiplexer: EPX_SOCKET_MULTIPLEXER)
 			-- we got a new client. Register the socket that talks to this client as a
 			-- managed socket so that a select can work on it too
 		local
@@ -82,7 +82,7 @@ feature
 
 feature {NONE} -- Implementation
 
-	listen_by_address_and_backlog (hp: EPX_HOST_PORT; a_backlog: INTEGER_32) is
+	listen_by_address_and_backlog (hp: EPX_HOST_PORT; a_backlog: INTEGER_32)
 			-- does the same as `listen_by_address' except that it allows to set a user defined backlog
 		require
 			closed: not is_open
@@ -98,7 +98,7 @@ feature {NONE} -- Implementation
 
 	private_backlog: INTEGER_32
 
-	backlog_default: INTEGER_32 is
+	backlog_default: INTEGER_32
 			-- redefined to support a user defined backlog
 		do
 			if private_backlog < 0 then

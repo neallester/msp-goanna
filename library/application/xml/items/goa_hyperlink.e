@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A html hyperlink"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-01-12 21:41:12 -0800 (Fri, 12 Jan 2007) $"
@@ -22,7 +22,7 @@ feature
 
 feature {GOA_COMMON_XML_DOCUMENT_EXTENDED} -- Services
 
-	add_to_document (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED) is
+	add_to_document (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED)
 			-- Add an xml representation of this hyperlink to the_documnet
 		do
 			the_document.start_hyperlink_element (css_class, url)
@@ -35,13 +35,13 @@ feature {GOA_COMMON_XML_DOCUMENT_EXTENDED} -- Services
 
 feature -- Queries
 
-	ok_to_add (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN is
+	ok_to_add (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN
 			-- Is it OK to add this hyperlink to the_document
 		do
 			Result := the_document.ok_to_add_element_or_text (the_document.hyperlink_element_code)
 		end
 
-	url: STRING is
+	url: STRING
 			-- The URL for this hyperlink
 
 		do
@@ -60,7 +60,7 @@ feature -- Queries
 
 feature -- Status Setting
 
-	add_parameter (name, value: STRING) is
+	add_parameter (name, value: STRING)
 			-- Add a parameter to the hyperlink
 			-- n.b. Does not do any escaping on name or value
 		require
@@ -71,7 +71,7 @@ feature -- Status Setting
 			parameter_values.force_last (value)
 		end
 
-	set_anchor (new_anchor: STRING) IS
+	set_anchor (new_anchor: STRING)
 			-- Add an anchor to the hyperlink
 		require
 			valid_new_anchor_implies_not_is_empty: new_anchor /= Void implies not new_anchor.is_empty
@@ -79,7 +79,7 @@ feature -- Status Setting
 			anchor := new_anchor
 		end
 
-	set_secure is
+	set_secure
 			-- Use https (default is no)
 		do
 			is_secure := True
@@ -87,7 +87,7 @@ feature -- Status Setting
 			is_secure: is_secure
 		end
 
-	set_css_class (new_class: STRING) is
+	set_css_class (new_class: STRING)
 			-- Set css_class to new_class
 		do
 			css_class := new_class
@@ -95,7 +95,7 @@ feature -- Status Setting
 			equal (css_class, new_class)
 		end
 
-	set_tool_tip (new_tool_tip_class, new_tool_tip: STRING) is
+	set_tool_tip (new_tool_tip_class, new_tool_tip: STRING)
 			-- Add a tool_tip to this hyperlink
 		require
 			valid_tool_tip_class_implies_valid_new_tool_tip: new_tool_tip_class /= Void implies new_tool_tip /= Void
@@ -136,14 +136,14 @@ feature {NONE} -- Implementation
 	parameter_names, parameter_values: DS_LINKED_LIST [STRING]
 			-- Names and values for all parameters for the hyperlink
 
-	initialize is
+	initialize
 			-- Intiialize the object
 		do
 			create parameter_names.make_equal
 			create parameter_values.make_equal
 		end
 
-	query_string: STRING is
+	query_string: STRING
 			-- The query string portion of the hyperlink
 		do
 			if parameter_names.is_empty then

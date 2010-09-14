@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Mixin class of HTTP utility functions"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "HTTP Servlet API"
@@ -25,7 +25,7 @@ inherit
 
 feature -- Basic operations
 
-	decode_url (url: STRING): STRING is
+	decode_url (url: STRING): STRING
 			-- Decode a urlencoded string by replacing '+' with space ' ',
 	     	-- and "%xx" to the Latin1 character specified by the hex digits
 	     	-- "xx".  The input string is assumed to have been broken up into
@@ -69,7 +69,7 @@ feature -- Basic operations
 			result_exists: Result /= Void
 		end
 
-	encode (str: STRING): STRING is
+	encode (str: STRING): STRING
 			-- Translate 'str' into HTML safe format.
 		require
 			str_exists: str /= Void
@@ -108,7 +108,7 @@ feature -- Basic operations
 			result_exists: Result /= Void
 		end
 
-	digit_from_hex (ch: CHARACTER): INTEGER is
+	digit_from_hex (ch: CHARACTER): INTEGER
 			-- Return the integer representation of the hexadecimal character 'ch'
 		require
 			hex_character: (ch >= '0' and ch <= '9') or (ch >= 'A' and ch <= 'F') or (ch >= 'a' and ch <= 'f')

@@ -1,6 +1,6 @@
 
 
-indexing
+note
 
 	description: "An XML Document conforming with the xmlns:goa_redirect schema"
 	author: ""
@@ -23,13 +23,13 @@ inherit
 	GOA_XML_DOCUMENT
 	GOA_COMMON_XML_DOCUMENT_EXTENDED
 	
-creation
+create
 
 	make_iso_8859_1_encoded, make_utf8_encoded
 
 feature -- Adding Elements
 
-	start_paragraph_element (new_class: STRING; ) is
+	start_paragraph_element (new_class: STRING; )
 			-- Start a new goa_common:paragraph element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -44,7 +44,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	add_text_item_element (choice_N19N23N0_name_code: INTEGER; choice_N19N23N0_value: STRING; text_to_add: STRING) is
+	add_text_item_element (choice_N19N23N0_name_code: INTEGER; choice_N19N23N0_value: STRING; text_to_add: STRING)
 			--Add a new goa_common:text_item element to the xml document
 			-- Use the attribute name code xml_null_code to indicate a null attribute for the choice
 		local
@@ -61,7 +61,7 @@ feature -- Adding Elements
 			writer.stop_tag
 		end
 
-	start_division_element (new_class: STRING; ) is
+	start_division_element (new_class: STRING; )
 			-- Start a new goa_common:division element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -76,7 +76,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	start_ordered_list_element (new_class: STRING; ) is
+	start_ordered_list_element (new_class: STRING; )
 			-- Start a new goa_common:ordered_list element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -91,7 +91,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	start_list_item_element (new_class: STRING; ) is
+	start_list_item_element (new_class: STRING; )
 			-- Start a new goa_common:list_item element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -106,7 +106,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	start_unordered_list_element (new_class: STRING; ) is
+	start_unordered_list_element (new_class: STRING; )
 			-- Start a new goa_common:unordered_list element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -121,7 +121,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	start_hyperlink_element (new_class: STRING; new_url: STRING; ) is
+	start_hyperlink_element (new_class: STRING; new_url: STRING; )
 			-- Start a new goa_common:hyperlink element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -139,7 +139,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	add_popup_hyperlink_element (new_class: STRING; new_url: STRING; text_to_add: STRING) is
+	add_popup_hyperlink_element (new_class: STRING; new_url: STRING; text_to_add: STRING)
 			--Add a new goa_common:popup_hyperlink element to the xml document
 		local
 			name_index, value_index: INTEGER
@@ -158,7 +158,7 @@ feature -- Adding Elements
 			writer.stop_tag
 		end
 
-	start_table_element (new_class: STRING; new_cellspacing: STRING; new_cellpadding: STRING; new_summary: STRING; ) is
+	start_table_element (new_class: STRING; new_cellspacing: STRING; new_cellpadding: STRING; new_summary: STRING; )
 			-- Start a new goa_common:table element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -182,7 +182,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	start_header_element (new_class: STRING; ) is
+	start_header_element (new_class: STRING; )
 			-- Start a new goa_common:header element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -197,7 +197,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	start_row_element (new_class: STRING; ) is
+	start_row_element (new_class: STRING; )
 			-- Start a new goa_common:row element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -212,7 +212,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	start_cell_element (new_class: STRING; new_colspan: STRING; ) is
+	start_cell_element (new_class: STRING; new_colspan: STRING; )
 			-- Start a new goa_common:cell element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -230,7 +230,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	start_footer_element (new_class: STRING; ) is
+	start_footer_element (new_class: STRING; )
 			-- Start a new goa_common:footer element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -245,7 +245,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	start_body_element (new_class: STRING; ) is
+	start_body_element (new_class: STRING; )
 			-- Start a new goa_common:body element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -260,7 +260,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	add_hidden_element (new_name: STRING; new_value: STRING; ) is
+	add_hidden_element (new_name: STRING; new_value: STRING; )
 			--Add a new goa_common:hidden element to the xml document
 		local
 			name_index, value_index: INTEGER
@@ -276,7 +276,7 @@ feature -- Adding Elements
 			writer.stop_tag
 		end
 
-	add_input_element (new_class: STRING; new_name: STRING; new_type: STRING; new_disabled: STRING; new_maxlength: STRING; new_size: STRING; new_value: STRING; ) is
+	add_input_element (new_class: STRING; new_name: STRING; new_type: STRING; new_disabled: STRING; new_maxlength: STRING; new_size: STRING; new_value: STRING; )
 			--Add a new goa_common:input element to the xml document
 		local
 			name_index, value_index: INTEGER
@@ -307,7 +307,7 @@ feature -- Adding Elements
 			writer.stop_tag
 		end
 
-	add_submit_element (new_class: STRING; new_name: STRING; new_value: STRING; new_on_click_script: STRING; ) is
+	add_submit_element (new_class: STRING; new_name: STRING; new_value: STRING; new_on_click_script: STRING; )
 			--Add a new goa_common:submit element to the xml document
 		local
 			name_index, value_index: INTEGER
@@ -329,7 +329,7 @@ feature -- Adding Elements
 			writer.stop_tag
 		end
 
-	add_radio_element (new_class: STRING; new_name: STRING; new_value: STRING; new_checked: STRING; new_disabled: STRING; ) is
+	add_radio_element (new_class: STRING; new_name: STRING; new_value: STRING; new_checked: STRING; new_disabled: STRING; )
 			--Add a new goa_common:radio element to the xml document
 		local
 			name_index, value_index: INTEGER
@@ -354,7 +354,7 @@ feature -- Adding Elements
 			writer.stop_tag
 		end
 
-	add_checkbox_element (new_class: STRING; new_name: STRING; new_checked: STRING; new_disabled: STRING; new_on_click_script: STRING; ) is
+	add_checkbox_element (new_class: STRING; new_name: STRING; new_checked: STRING; new_disabled: STRING; new_on_click_script: STRING; )
 			--Add a new goa_common:checkbox element to the xml document
 		local
 			name_index, value_index: INTEGER
@@ -379,7 +379,7 @@ feature -- Adding Elements
 			writer.stop_tag
 		end
 
-	start_select_element (new_class: STRING; new_name: STRING; new_disabled: STRING; new_multiple: STRING; new_size: STRING; new_on_click_script: STRING; ) is
+	start_select_element (new_class: STRING; new_name: STRING; new_disabled: STRING; new_multiple: STRING; new_size: STRING; new_on_click_script: STRING; )
 			-- Start a new goa_common:select element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		local
@@ -409,7 +409,7 @@ feature -- Adding Elements
 			contents_stack.put (<<>>)
 		end
 
-	add_option_element (new_value: STRING; new_selected: STRING; text_to_add: STRING) is
+	add_option_element (new_value: STRING; new_selected: STRING; text_to_add: STRING)
 			--Add a new goa_common:option element to the xml document
 		local
 			name_index, value_index: INTEGER
@@ -428,7 +428,7 @@ feature -- Adding Elements
 			writer.stop_tag
 		end
 
-	add_text_area_element (new_class: STRING; new_name: STRING; new_rows: STRING; new_columns: STRING; text_to_add: STRING) is
+	add_text_area_element (new_class: STRING; new_name: STRING; new_rows: STRING; new_columns: STRING; text_to_add: STRING)
 			--Add a new goa_common:text_area element to the xml document
 		local
 			name_index, value_index: INTEGER
@@ -453,7 +453,7 @@ feature -- Adding Elements
 			writer.stop_tag
 		end
 
-	add_image_element (new_class: STRING; new_url: STRING; new_alternate_text: STRING; new_height: STRING; new_width: STRING; ) is
+	add_image_element (new_class: STRING; new_url: STRING; new_alternate_text: STRING; new_height: STRING; new_width: STRING; )
 			--Add a new goa_common:image element to the xml document
 		local
 			name_index, value_index: INTEGER
@@ -478,7 +478,7 @@ feature -- Adding Elements
 			writer.stop_tag
 		end
 
-	add_tool_tip_element (new_class: STRING; text_to_add: STRING) is
+	add_tool_tip_element (new_class: STRING; text_to_add: STRING)
 			--Add a new goa_common:tool_tip element to the xml document
 		local
 			name_index, value_index: INTEGER
@@ -494,7 +494,7 @@ feature -- Adding Elements
 			writer.stop_tag
 		end
 
-	start_redirect_element (new_page_title: STRING; new_delay: STRING; new_url: STRING; new_style_sheet: STRING; ) is
+	start_redirect_element (new_page_title: STRING; new_delay: STRING; new_url: STRING; new_style_sheet: STRING; )
 			-- Start a new goa_redirect:redirect element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -539,7 +539,7 @@ feature -- Adding Elements
 
 feature -- Element Validity
 		
-	is_valid_element_content_fragment (the_element_code: INTEGER; the_fragment: ARRAY [INTEGER]): BOOLEAN is
+	is_valid_element_content_fragment (the_element_code: INTEGER; the_fragment: ARRAY [INTEGER]): BOOLEAN
 			-- Is the_fragment a valid valid element/text sequence in element given by the_element_code
 		do
 			inspect the_element_code
@@ -576,7 +576,7 @@ feature -- Element Validity
 			end
 		end
 
-	is_valid_element_content (the_element_code: INTEGER; the_content: ARRAY [INTEGER]): BOOLEAN is
+	is_valid_element_content (the_element_code: INTEGER; the_content: ARRAY [INTEGER]): BOOLEAN
 			-- Is the_content a valid complete and valid element/text sequence in element given by the_element_code
 		do
 			inspect the_element_code
@@ -615,7 +615,7 @@ feature -- Element Validity
 
 feature -- {NONE} -- Element Content Validity
 
-	paragraph_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	paragraph_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) paragraph element
 		once
 			create Result.make (
@@ -634,7 +634,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	division_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	division_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) division element
 		once
 			create Result.make (
@@ -656,7 +656,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	ordered_list_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	ordered_list_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) ordered_list element
 		once
 			create Result.make (
@@ -664,7 +664,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	list_item_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	list_item_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) list_item element
 		once
 			create Result.make (
@@ -679,7 +679,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	unordered_list_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	unordered_list_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) unordered_list element
 		once
 			create Result.make (
@@ -687,7 +687,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	hyperlink_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	hyperlink_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) hyperlink element
 		once
 			create Result.make (
@@ -695,7 +695,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	table_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	table_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) table element
 		once
 			create Result.make (
@@ -708,7 +708,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	header_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	header_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) header element
 		once
 			create Result.make (
@@ -716,7 +716,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	row_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	row_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) row element
 		once
 			create Result.make (
@@ -724,7 +724,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	cell_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	cell_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) cell element
 		once
 			create Result.make (
@@ -744,7 +744,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	footer_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	footer_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) footer element
 		once
 			create Result.make (
@@ -752,7 +752,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	body_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	body_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) body element
 		once
 			create Result.make (
@@ -760,7 +760,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	select_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	select_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) select element
 		once
 			create Result.make (
@@ -768,7 +768,7 @@ feature -- {NONE} -- Element Content Validity
 			)
 		end
 
-	redirect_content_validity: GOA_XML_ELEMENT_SCHEMA is
+	redirect_content_validity: GOA_XML_ELEMENT_SCHEMA
 			-- Schema representing valid contents of a(n) redirect element
 		once
 			create Result.make (
@@ -790,13 +790,13 @@ feature -- {NONE} -- Element Content Validity
 	
 feature {NONE} -- Transformation
 
-	transform_file_name: STRING is
+	transform_file_name: STRING
 			-- Name of file containing the XSLT transform to produce an HTML version of this document
 		once
 			Result := configuration.xslt_directory + "goa_redirect.xsl"
 		end
 
-	schema_file_name: STRING is
+	schema_file_name: STRING
 			-- Name of the file containing the Relax NG Schema for this document
 		once
 			Result := configuration.xslt_directory + "goa_redirect.frng"

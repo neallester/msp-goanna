@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Anchors to a particular point on the page"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -22,17 +22,17 @@ create
 
 feature -- implement deferred features
 
-	html_begin_element : STRING is 
+	html_begin_element : STRING 
 		do
 			result := "<A " + a_tag + name + "%">" + precursor
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			result := precursor + "</A>"
 		end
 
-	a_tag : STRING is
+	a_tag : STRING
 		-- Text for the Name tag 
 		do
 			result := "NAME=%""
@@ -43,7 +43,7 @@ feature {NONE}
 	name : STRING
 		-- The name associated with the anchor
 
-	make_anchor (new_name : STRING) is
+	make_anchor (new_name : STRING)
 		require
 			valid_new_name : new_name /= Void
 			new_name_not_empty : not new_name.empty

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Comment implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -16,7 +16,7 @@ inherit
 
 	DOM_CHARACTER_DATA_IMPL
 
-creation
+create
 
 	make
 

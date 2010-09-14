@@ -1,4 +1,4 @@
-indexing
+note
 	description: "content_containers that contain one or more content_containers"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -25,23 +25,23 @@ inherit
 			all
 		end
 
-creation
+create
 
 	make
 
 feature
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			result := ""
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			result := ""
 		end
 
-	html_element : STRING is
+	html_element : STRING
 		do
 			result := ""
 			from
@@ -56,7 +56,7 @@ feature
 
 feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER, TOPIC, USER}
 
-	force (new_container : CONTENT_CONTAINER) is
+	force (new_container : CONTENT_CONTAINER)
 		-- Add a new content container
 		require
 			valid_new_container : new_container /= Void

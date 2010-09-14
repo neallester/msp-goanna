@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XMLE BDV DOM document retriever and displayer"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "BDOM Viewer Tool"
@@ -18,12 +18,12 @@ inherit
 			{NONE} all
 		end
       
-creation
+create
 	make
 
 feature -- Initialization
 
-	make is
+	make
 		local
 			doc: XMLE_DOCUMENT_WRAPPER
 			writer: DOM_SERIALIZER
@@ -56,7 +56,7 @@ feature {NONE} -- Implementation
 	file: FILE
 			-- File to read document from.
 
-	parse_arguments is
+	parse_arguments
 			-- Parse and validate the command line arguments
 		do
 			if arguments.argument_count = 1 then
@@ -69,7 +69,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	show_usage is
+	show_usage
 			-- Output usage message to user
 		local
 			str: STRING
@@ -78,7 +78,7 @@ feature {NONE} -- Implementation
 			print (str)
 		end 
 
-	serializer_factory: DOM_SERIALIZER_FACTORY is
+	serializer_factory: DOM_SERIALIZER_FACTORY
 		once
 			create Result
 		end

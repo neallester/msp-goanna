@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent an XML-RPC call and response scalar parameter value."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -20,7 +20,7 @@ create
 
 feature -- Initialisation
 
-	make (new_value: like value) is
+	make (new_value: like value)
 			-- Create scalar type from 'new_value'. 'new_value' must be one of the following
 			-- types: INTEGER_REF, BOOLEAN_REF, STRING, DOUBLE_REF or DT_DATE_TIME.
 		require
@@ -77,7 +77,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 
-	make_base64 (buffer: STRING) is
+	make_base64 (buffer: STRING)
 			-- Create scalar base64 type from 'buffer'. Encode value.
 		require
 			buffer_exists: buffer /= Void
@@ -90,7 +90,7 @@ feature -- Initialisation
 			create string_value.make_from_string (encoder.encode (buffer))
 		end
 
-	unmarshall (node: XM_ELEMENT) is
+	unmarshall (node: XM_ELEMENT)
 			-- Unmarshall scalar value from XML node.
 		local
 			int_ref: INTEGER_REF
@@ -182,7 +182,7 @@ feature -- Initialisation
 
 feature -- Mashalling
 
-	marshall: STRING is
+	marshall: STRING
 			-- Serialize this scalar param to XML format
 		do
 			create Result.make (100)
@@ -217,7 +217,7 @@ feature -- Status report
 
 feature -- Conversion
 
-	as_object: ANY is
+	as_object: ANY
 			-- Return value as an object. ie, extract the actual
 			-- object value from the XRPC_VALUE.
 		do
@@ -226,7 +226,7 @@ feature -- Conversion
 
 feature {NONE} -- Implementation
 
-	escape_xml (str: STRING): STRING is
+	escape_xml (str: STRING): STRING
 			-- Escape special xml characters in str.
 		require
 			str_exists: str /= Void
@@ -242,7 +242,7 @@ feature {NONE} -- Implementation
 		end
 
 
-	format_date_iso8601 (date: DT_DATE_TIME): STRING is
+	format_date_iso8601 (date: DT_DATE_TIME): STRING
 			-- Format a date time in ISO8601 format
 			-- YYYYMMDD'T'HH:MM:SS
 		require
@@ -265,7 +265,7 @@ feature {NONE} -- Implementation
 			formatted_string_exists: Result /= Void
 		end
 
-	unmarshall_date_iso8601 (str: STRING): DT_DATE_TIME is
+	unmarshall_date_iso8601 (str: STRING): DT_DATE_TIME
 			-- Create a date time object from the ISO8601 'str'
 			-- Return Void if 'str' does not conform to ISO8601 format.
 		require

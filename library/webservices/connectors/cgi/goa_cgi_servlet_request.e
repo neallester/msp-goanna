@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent CGI servlet request information"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "CGI servlets"
@@ -50,7 +50,7 @@ create
 
 feature {NONE} -- Initialisation
 
-	make (resp: GOA_CGI_SERVLET_RESPONSE) is
+	make (resp: GOA_CGI_SERVLET_RESPONSE)
 			-- Create a new cgi servlet request wrapper
 		require
 			response_exists: resp /= Void
@@ -62,19 +62,19 @@ feature {NONE} -- Initialisation
 
 feature -- Access
 
-	get_parameter (name: STRING): STRING is
+	get_parameter (name: STRING): STRING
 			-- Returns the value of a request parameter
 		do
 			Result := clone (parameters.item (name).last)
 		end
 
-	get_multiple_parameter (name: STRING): DS_LINKED_LIST [STRING] is
+	get_multiple_parameter (name: STRING): DS_LINKED_LIST [STRING]
 			-- Returns the value of a request parameter
 		do
 			Result := clone (parameters.item (name))
 		end
 
-	get_parameter_names: DS_LINEAR [STRING] is
+	get_parameter_names: DS_LINEAR [STRING]
 			-- Return all parameter names
 		local
 			cursor: DS_HASH_TABLE_CURSOR [DS_LINKED_LIST [STRING], STRING]
@@ -93,7 +93,7 @@ feature -- Access
 			Result := array_list
 		end
 
-	get_parameter_values: DS_LINEAR [STRING] is
+	get_parameter_values: DS_LINEAR [STRING]
 			-- Return all parameter values
 		local
 			cursor: DS_HASH_TABLE_CURSOR [DS_LINKED_LIST [STRING], STRING]
@@ -121,13 +121,13 @@ feature -- Access
 			Result := array_list
 		end
 
-	get_header (name: STRING): STRING is
+	get_header (name: STRING): STRING
 			-- Get the value of the specified request header.
 		do
 			Result := clone (Execution_environment.variable_value (name))
 		end
 
-	get_headers (name: STRING): DS_LINEAR [STRING] is
+	get_headers (name: STRING): DS_LINEAR [STRING]
 			-- Get all values of the specified request header. If the
 			-- header has comma-separated values they are separated and added to the
 			-- result. If only one value exists, it is added as the sole entry in the
@@ -149,7 +149,7 @@ feature -- Access
 			Result := list
 		end
 
-	get_header_names: DS_LINEAR [STRING] is
+	get_header_names: DS_LINEAR [STRING]
 			-- Get all header names.
 		local
 			array_list: DS_ARRAYED_LIST [STRING]
@@ -184,13 +184,13 @@ feature -- Access
 
 feature -- Status report
 
-	has_parameter (name: STRING): BOOLEAN is
+	has_parameter (name: STRING): BOOLEAN
 			-- Does this request have a parameter named 'name'?
 		do
 			Result := parameters.has (name)
 		end
 
-	content_length: INTEGER is
+	content_length: INTEGER
 			-- The length in bytes of the request body or -1 if the length is
 			-- not known.
 		local
@@ -205,7 +205,7 @@ feature -- Status report
 			end
 		end
 
-	content_type: STRING is
+	content_type: STRING
 			-- The MIME type of the body of the request, or Void if the type is
 			-- not known.
 		do
@@ -216,7 +216,7 @@ feature -- Status report
 			end
 		end
 
-	protocol: STRING is
+	protocol: STRING
 			-- The name and version of the protocol the request uses in the form
 			-- 'protocol/majorVersion.minorVrsion', for example, HTTP/1.1.
 		do
@@ -227,7 +227,7 @@ feature -- Status report
 			end
 		end
 
-	scheme: STRING is
+	scheme: STRING
 			-- The name of the scheme used to make this request. Such as, http, https
 			-- or ftp.
 		do
@@ -235,7 +235,7 @@ feature -- Status report
 			-- TODO: may need to change this when we support https	
 		end
 
-	server_name: STRING is
+	server_name: STRING
 			-- The host name of the server that received the request.
 		do
 			if has_header (Server_name_var) then
@@ -245,7 +245,7 @@ feature -- Status report
 			end
 		end
 
-	server_port: STRING is
+	server_port: STRING
 			-- The port number on which this request was received.
 		do
 			if has_header (Server_port_var) then
@@ -255,7 +255,7 @@ feature -- Status report
 			end
 		end
 
-	remote_address: STRING is
+	remote_address: STRING
 			-- The internet protocol (IP) address of the client that sent the request.
 		do
 			if has_header (Remote_addr_var) then
@@ -266,7 +266,7 @@ feature -- Status report
 
 		end
 
-	remote_host: STRING is
+	remote_host: STRING
 			-- The fully qualified name of the client that sent the request, or the
 			-- IP address of the client if the name cannot be determined.
 		do
@@ -277,7 +277,7 @@ feature -- Status report
 			end
 		end
 
-	is_secure: BOOLEAN is
+	is_secure: BOOLEAN
 			-- Was this request made using a secure channel, such as HTTPS?
 		do
 			if has_header (Https_var) and then equal (get_header (Https_var), "on") then
@@ -285,13 +285,13 @@ feature -- Status report
 			end
 		end
 
-	has_header (name: STRING): BOOLEAN is
+	has_header (name: STRING): BOOLEAN
 			-- Does this request contain a header named 'name'?
 		do
 			Result := Execution_environment.variable_value (name) /= Void
 		end
 
-	auth_type: STRING is
+	auth_type: STRING
 			-- The name of the authentication scheme used to protect the servlet,
 			-- for example, "BASIC" or "SSL" or Void if the servlet was not protected.
 		do
@@ -302,7 +302,7 @@ feature -- Status report
 			end
 		end
 
-	cookies: DS_LINKED_LIST [GOA_COOKIE] is
+	cookies: DS_LINKED_LIST [GOA_COOKIE]
 			-- Cookies sent with this request.
 		do
 			if internal_cookies = Void then
@@ -313,7 +313,7 @@ feature -- Status report
 			Result := internal_cookies
 		end
 
-	session: GOA_HTTP_SESSION is
+	session: GOA_HTTP_SESSION
 			-- Return the session associated with this request. Create a new session
 			-- if one does not already exist.
 		do
@@ -324,7 +324,7 @@ feature -- Status report
 			Result := Session_manager.get_session (session_id)
 		end
 
-	method: STRING is
+	method: STRING
 			-- The name of the HTTP method with which this request was made, for
 			-- example, GET, POST, or HEAD.
 		do
@@ -335,7 +335,7 @@ feature -- Status report
 			end
 		end
 
-	path_info: STRING is
+	path_info: STRING
 			-- Any extra path information associated with the URL the client sent
 			-- when it made the request.
 		do
@@ -346,7 +346,7 @@ feature -- Status report
 			end
 		end
 
-	path_translated: STRING is
+	path_translated: STRING
 			-- Any extra path information after the servlet name but before
 			-- the query string translated to a real path.
 		do
@@ -357,7 +357,7 @@ feature -- Status report
 			end
 		end
 
-	query_string: STRING is
+	query_string: STRING
 			-- The query string that is contained in the request URL after the path.
 			-- Returns Void if no query string is sent.
 		do
@@ -368,7 +368,7 @@ feature -- Status report
 			end
 		end
 
-	remote_user: STRING is
+	remote_user: STRING
 			-- The login of the user making this request, if the user has been
 			-- authenticated, or Void if the user has not been authenticated.
 		do
@@ -379,7 +379,7 @@ feature -- Status report
 			end
 		end
 
-	servlet_path: STRING is
+	servlet_path: STRING
 			-- The part of this request's URL that calls the servlet. This includes
 			-- either the servlet name or a path to the servlet, but does not include
 			-- any extra path information or a query string.
@@ -391,7 +391,7 @@ feature -- Status report
 			end
 		end
 
-	content: STRING is
+	content: STRING
 			-- Content data
 		do
 			debug ("CGI servlet request")
@@ -452,7 +452,7 @@ feature {CGI_SERVLET_REQUEST} -- Implementation
 
 feature {NONE} -- Implementation
 
-	parse_parameters is
+	parse_parameters
 			-- Parse the query string or stdin data for parameters and
 			-- store in params structure.			
 		local
@@ -476,7 +476,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	parse_parameter_string (str: STRING) is
+	parse_parameter_string (str: STRING)
 			-- Parse the parameter string 'str' and build parameter structure.
 			-- Parameters are of the form 'name=value' separated by '&' with all
 			-- spaces and special characters encoded. An exception is an image map
@@ -515,7 +515,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	add_parameter (name, value: STRING) is
+	add_parameter (name, value: STRING)
 			-- Set decoded 'value' for the parameter 'name' to the parameters structure.
 			-- Append to the list if the name already exists in the hashtable
 		do
@@ -530,7 +530,7 @@ feature {NONE} -- Implementation
 			parameters.item (name).put_last (value)
 		end
 
-	parse_cookie_header is
+	parse_cookie_header
 			-- Parse the cookie header, if it exists and construct the 'internal_cookies'
 			-- collection.
 			-- This routine parsed the cookies using version 0 of the cookie spec (RFC 2109).
@@ -595,7 +595,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	tester: GOA_COOKIE is
+	tester: GOA_COOKIE
 			-- Used to test validity of values
 		once
 			create result.make ("test", "test")

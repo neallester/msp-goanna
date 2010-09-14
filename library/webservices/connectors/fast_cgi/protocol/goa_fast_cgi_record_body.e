@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Abstract notion of a FastCGI record body"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI protocol"
@@ -31,7 +31,7 @@ inherit
 
 feature -- Initialization
 
-	read (header: GOA_FAST_CGI_RECORD_HEADER; socket: ABSTRACT_TCP_SOCKET) is
+	read (header: GOA_FAST_CGI_RECORD_HEADER; socket: ABSTRACT_TCP_SOCKET)
 			-- Construct this request record body from the data provided in header
 		require
 			header_exists: header /= Void
@@ -87,11 +87,11 @@ feature -- Access
 	padding_length: INTEGER
 			-- Length of padding to write.
 
-	as_fast_cgi_string: STRING is
+	as_fast_cgi_string: STRING
 		deferred
 		end
 
-	record_header (request_id: INTEGER): GOA_FAST_CGI_RECORD_HEADER is
+	record_header (request_id: INTEGER): GOA_FAST_CGI_RECORD_HEADER
 		local
 			content_length: INTEGER
 		do
@@ -101,13 +101,13 @@ feature -- Access
 			create Result.make (1, request_id, header_type_code, content_length, padding_length)
 		end
 
-	header_type_code: INTEGER is
+	header_type_code: INTEGER
 		deferred
 		end
 
 feature {NONE} -- Implementation
 
-	process_body_fields is
+	process_body_fields
 			-- Extract body fields from raw content data.
 		deferred
 		end

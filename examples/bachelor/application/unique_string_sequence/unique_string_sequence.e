@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that create a sequence of strings each unique"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -17,7 +17,7 @@ inherit
 
 feature -- Access
 
-	forth is
+	forth
 		-- increment counter, reset if over maximum_counter
 		do
 			counter := counter + increment
@@ -31,7 +31,7 @@ feature -- Access
 			counter_reset : old counter = maximum_counter implies counter = minimum_counter
 		end
 
-	unique_string : STRING is
+	unique_string : STRING
 		-- A unique string (to limit of maximum_counter) call 'forth' to increment
 		-- To_Do; make this more secure, rather than looking like a sequence of integers
 		do
@@ -45,23 +45,23 @@ feature {NONE} -- implementation
 	counter : INTEGER
 		-- A counter that records the current number of a URL to issue
 
-	minimum_counter : INTEGER is 1000
+	minimum_counter : INTEGER = 1000
 
-	maximum_counter : INTEGER is 100000000
+	maximum_counter : INTEGER = 100000000
 
-	increment : INTEGER is 1
+	increment : INTEGER = 1
 
 	storage_file : PLAIN_TEXT_FILE
 		-- The file where persistent counter values are stored
 
-	storage_file_name : STRING is 
+	storage_file_name : STRING 
 		-- The file name used to store this class
 		deferred
 		end
 
 feature {NONE} -- creation	
 
-	make is
+	make
 		local
 			last_string : STRING
 			last_string_as_integer : INTEGER

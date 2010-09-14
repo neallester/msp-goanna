@@ -1,4 +1,4 @@
-indexing
+note
 
 class GOA_HTTPD_LOGGER
 
@@ -16,7 +16,7 @@ inherit
 
 feature -- Access
 
-	log_hierarchy: L4E_HIERARCHY is
+	log_hierarchy: L4E_HIERARCHY
 			-- Shared log hierarchy with predefined
 			-- categories for HTTPD server logging
 		local
@@ -30,7 +30,7 @@ feature -- Access
 			Result.root.add_appender (appender)
 		end
 
-	set_custom_log_file (log_file: STRING) is
+	set_custom_log_file (log_file: STRING)
 			-- Sets a custom log file, where log_file must be the complete path + name.
 			-- This must be set before the logger is used for the first time otherwise
 			-- the default log file is used.
@@ -43,14 +43,14 @@ feature -- Access
 
 feature {NONE} -- Implementation
 
-	Internal_category: STRING is "httpd.internal"
+	Internal_category: STRING = "httpd.internal"
 
-	Access_category: STRING is "httpd.access"
+	Access_category: STRING = "httpd.access"
 
 	custom_log_file: STRING
 			-- Complete custom log file path e.g. /home/apps/myapp/errors.log
 
-	Application_log: STRING is
+	Application_log: STRING
 			-- Construct application log from system name and ".log" extension.
 			-- Any leading path and extension will be removed. eg. The log file
 			-- for 'd:\dev\httpd.exe' will be 'httpd.log' not 'd:\dev\httpd.exe.log'

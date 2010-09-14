@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a value in the SOAP Data Model."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -16,19 +16,19 @@ inherit
 
 feature -- Access
 
-	is_scalar: BOOLEAN is
+	is_scalar: BOOLEAN
 			-- Is `Current' a scalar value?
 		do
 			Result := False
 		end
 
-	is_array: BOOLEAN is
+	is_array: BOOLEAN
 			-- Is `Current' an array value?
 		do
 			Result := False
 		end
 
-	is_struct: BOOLEAN is
+	is_struct: BOOLEAN
 			-- Is `Current' a struct value?
 		do
 			Result := False
@@ -36,7 +36,7 @@ feature -- Access
 
 feature -- Conversion
 
-	as_scalar: GOA_SOAP_SCALAR_VALUE is
+	as_scalar: GOA_SOAP_SCALAR_VALUE
 			-- `Current' as a scalar value
 		require
 			scalar_value: is_scalar
@@ -45,7 +45,7 @@ feature -- Conversion
 			same_object: ANY_.same_objects (Result, Current)
 		end
 
-	as_array: GOA_SOAP_ARRAY_VALUE is
+	as_array: GOA_SOAP_ARRAY_VALUE
 			-- `Current' as an array value
 		require
 			array_value: is_array
@@ -54,7 +54,7 @@ feature -- Conversion
 			same_object: ANY_.same_objects (Result, Current)
 		end
 
-	as_struct: GOA_SOAP_STRUCT_VALUE is
+	as_struct: GOA_SOAP_STRUCT_VALUE
 			-- `Current' as a struct value
 		require
 			struct_value: is_struct

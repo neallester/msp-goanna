@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent CGI request responses"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "CGI servlets"
@@ -29,7 +29,7 @@ create
 
 feature {NONE}-- Initialization
 
-	make is
+	make
 			-- Build a new CGI response object.
 			-- Initialise the response information to allow a successful (Sc_ok) response
 			-- to be sent immediately.
@@ -45,7 +45,7 @@ feature -- Access
 	buffer_size: INTEGER
 			-- Actual size of response buffer. -- Warning: Changed for VE - was content_buffer.capacity
 
-	contains_header (name: STRING): BOOLEAN is
+	contains_header (name: STRING): BOOLEAN
 			-- Has the header named 'name' already been set?
 		do
 			Result := headers.has (name)
@@ -59,7 +59,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_buffer_size (size: INTEGER) is
+	set_buffer_size (size: INTEGER)
 			-- Set the preferred buffer size for the body of the response.
 			--| If the buffer has not already been created, this routine will do so.
 		do
@@ -70,14 +70,14 @@ feature -- Status setting
 			end
 		end
 
-	add_cookie (cookie: GOA_COOKIE) is
+	add_cookie (cookie: GOA_COOKIE)
 			-- Add 'cookie' to the response. Can be called multiple times
 			-- to add more than one cookie.
 		do
 			cookies.force_last (cookie)
 		end
 
-	add_header (name, value: STRING) is
+	add_header (name, value: STRING)
 			-- Adds a response header with the given naem and value. This
 			-- method allows response headers to have multiple values.
 		local
@@ -92,14 +92,14 @@ feature -- Status setting
 			end
 		end
 
-	set_content_length (length: INTEGER) is
+	set_content_length (length: INTEGER)
 			-- Set the length of the content body in the response.
 		do
 			content_length := length
 			set_header ("Content-Length", length.out)
 		end
 
-	set_content_type (type: STRING) is
+	set_content_type (type: STRING)
 			-- Set hte content type of the response being sent to the client.
 			-- The content type may include the type of character encoding used, for
 			-- example, 'text/html; charset=ISO-885904'
@@ -112,7 +112,7 @@ feature -- Status setting
 			end
 		end
 
-	set_header (name, value: STRING) is
+	set_header (name, value: STRING)
 			-- Set a response header with the given name and value. If the
 			-- header already exists, the new value overwrites the previous
 			-- one.
@@ -124,7 +124,7 @@ feature -- Status setting
 			headers.force (new_values, name)
 		end
 
-	set_status (sc: INTEGER) is
+	set_status (sc: INTEGER)
 			-- Set the status code for this response. This method is used to
 			-- set the return status code when there is no error (for example,
 			-- for the status codes Sc_ok or Sc_moved_temporarily). If there
@@ -133,7 +133,7 @@ feature -- Status setting
 			set_status_message (sc, status_code_message (sc))
 		end
 
-	set_status_message (sc: INTEGER; message: STRING) is
+	set_status_message (sc: INTEGER; message: STRING)
 			-- Set the status code to 'sc' with 'message' as the text message to
 			-- send to the client.			
 		do
@@ -143,7 +143,7 @@ feature -- Status setting
 
 feature -- Basic operations
 
-	flush_buffer is
+	flush_buffer
 			-- Force any content in the buffer to be written to the client. A call
 			-- to this method automatically commits the response, meaning the status
 			-- code and headers will be written.
@@ -169,7 +169,7 @@ feature -- Basic operations
 			end
 		end
 
-	reset is
+	reset
 			-- Clear any data that exists in the buffer as well as the status code
 			-- and headers.
 		do
@@ -183,7 +183,7 @@ feature -- Basic operations
 			is_committed := False
 		end
 
-	send_error (sc: INTEGER) is
+	send_error (sc: INTEGER)
 			-- Send an error response to the client using the specified
 			-- status code. The server generally creates the response to
 			-- look like a normal server error page.
@@ -191,7 +191,7 @@ feature -- Basic operations
 			send_error_msg (sc, status_code_message (sc))
 		end
 
-	send_error_msg (sc: INTEGER; msg: STRING) is
+	send_error_msg (sc: INTEGER; msg: STRING)
 			-- Send an error response to the client using the specified
 			-- status code and descriptive message. The server generally
 			-- creates the response to look like a normal server error page.
@@ -206,7 +206,7 @@ feature -- Basic operations
 			write (page)
 		end
 
-	send_redirect (location: STRING) is
+	send_redirect (location: STRING)
 			-- Send a temporary redirect response to the client using the
 			-- specified redirect location URL.
 		local
@@ -230,7 +230,7 @@ feature -- Basic operations
 			end
 		end
 
-	send (data: STRING) is
+	send (data: STRING)
 			-- Send 'data' to the client. The data is buffered for writing. It will not be
 			-- physically sent to the client until 'flush_buffer' is called.
 		do
@@ -253,7 +253,7 @@ feature {NONE} -- Implementation
 	content_length: INTEGER
 		-- The length of the content that will be sent with this response.
 
-	Default_buffer_size: INTEGER is 4096
+	Default_buffer_size: INTEGER = 4096
 		-- Default size of output buffer
 
 	initial_buffer_size: INTEGER
@@ -271,7 +271,7 @@ feature {NONE} -- Implementation
 	headers: DS_HASH_TABLE [DS_LINKED_LIST [STRING], STRING]
 		-- The headers that will be sent with this response.
 
-	build_error_page (sc: INTEGER; msg: STRING): STRING is
+	build_error_page (sc: INTEGER; msg: STRING): STRING
 			-- Build a standard error page for status code 'sc' and message 'msg'
 		require
 			msg_exists: msg /= Void
@@ -287,7 +287,7 @@ feature {NONE} -- Implementation
 			Result.append_string ("</BODY></HTML>")
 		end
 
-	build_redirect_page (location: STRING): STRING is
+	build_redirect_page (location: STRING): STRING
 			-- Build a temporary redirect page to redirect to 'location'
 		require
 			location_exists: location /= Void
@@ -303,7 +303,7 @@ feature {NONE} -- Implementation
         	Result.append_string ("</BODY></HTML>")
 		end
 
-	build_headers: STRING is
+	build_headers: STRING
 			-- Build string representation of headers suitable for sending as a response.			
 		local
 			header_keys: DS_HASH_TABLE_CURSOR [DS_LINKED_LIST [STRING], STRING]
@@ -337,7 +337,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	set_default_headers is
+	set_default_headers
 			-- Set default headers for all responses including the Server and Date headers.	
 		do
 			if not contains_header ("Server") then
@@ -348,9 +348,9 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	Expired_date: STRING is "Tue, 01-Jan-1970 00:00:00 GMT"
+	Expired_date: STRING = "Tue, 01-Jan-1970 00:00:00 GMT"
 
-	set_cookie_headers is
+	set_cookie_headers
 			-- Add 'Set-Cookie' header for cookies. Add a separate 'Set-Cookie' header
 			-- for each new cookie.
 			-- Also add cookie caching directive headers.
@@ -375,7 +375,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	write_headers is
+	write_headers
 			-- Write the response headers to the output stream.
 		require
 			not_committed: not is_committed
@@ -391,7 +391,7 @@ feature {NONE} -- Implementation
 			is_committed: is_committed
 		end
 
-	write (data: STRING) is
+	write (data: STRING)
 			-- Write 'data' to the output stream for this response
 		require
 			data_exists: data /= Void
@@ -402,7 +402,7 @@ feature {NONE} -- Implementation
 
 feature {NONE} -- Implementation
 
-	latin1: STRING is "; charset=ISO-8859-1"
+	latin1: STRING = "; charset=ISO-8859-1"
 			-- Define the Latin-1 character set.
 
 end -- class GOA_CGI_SERVLET_RESPONSE

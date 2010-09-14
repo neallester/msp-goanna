@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP SupportedEnvelope."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -28,7 +28,7 @@ create
 
 feature {NONE} -- Initialisation
 
-	construct (a_parent: GOA_SOAP_UPGRADE; a_qname: STRING) is
+	construct (a_parent: GOA_SOAP_UPGRADE; a_qname: STRING)
 			-- Establish invariant.
 		require
 			parent_not_void: a_parent /= Void
@@ -45,7 +45,7 @@ feature {NONE} -- Initialisation
 		
 feature -- Status setting
 
-	validate (an_identity: UT_URI) is
+	validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		do
 			if elements.count > 0 then

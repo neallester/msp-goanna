@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent user session information."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "HTTP Servlet API"
@@ -28,7 +28,7 @@ create
 
 feature {GOA_HTTP_SESSION_MANAGER}-- Initialization
 
-	make (session_id: STRING) is
+	make (session_id: STRING)
 			-- Create a new session with 'id' set to 'session_id'
 		require
 			session_id_exists: session_id /= Void			
@@ -50,7 +50,7 @@ feature {GOA_HTTP_SESSION_MANAGER}-- Initialization
 	
 feature -- Access
 
-	get_attribute (name: STRING): ANY is
+	get_attribute (name: STRING): ANY
 			-- Returns the object bound to 'name'
 		require
 			valid_session: validated
@@ -60,7 +60,7 @@ feature -- Access
 			Result := attributes.item (name)
 		end
 		
-	get_attribute_names: DS_ARRAYED_LIST [STRING] is
+	get_attribute_names: DS_ARRAYED_LIST [STRING]
 			-- Return a list of all attribute names bound in this session 
 		require
 			valid_session: validated
@@ -97,7 +97,7 @@ feature -- Status report
 	validated: BOOLEAN
 			-- Is the session valid?
 			
-	has_attribute (name: STRING): BOOLEAN is
+	has_attribute (name: STRING): BOOLEAN
 			-- Is a value bound to 'name'
 		require
 			valid_session: validated
@@ -108,7 +108,7 @@ feature -- Status report
 		
 feature -- Status setting
 
-	set_max_inactive_interval (new_interval: like max_inactive_interval) is
+	set_max_inactive_interval (new_interval: like max_inactive_interval)
 			-- Set the maximum inactive interval			
 		require
 			valid_session: validated
@@ -116,7 +116,7 @@ feature -- Status setting
 			max_inactive_interval := new_interval
 		end
 	
-	invalidate is
+	invalidate
 			-- Invalidates the session and unbinds any objects bound to it			
 		require
 			valid_session: validated
@@ -129,7 +129,7 @@ feature -- Status setting
 	
 feature -- Element change
 
-	set_attribute (name: STRING; value: ANY) is
+	set_attribute (name: STRING; value: ANY)
 			-- Bind 'name' to 'value' in this session
 		require
 			valid_session: validated
@@ -144,7 +144,7 @@ feature -- Element change
 	
 feature -- Removal
 
-	remove_attribute (name: STRING) is
+	remove_attribute (name: STRING)
 			-- Unbind the value bound to 'name'
 		require
 			valid_session: validated
@@ -162,7 +162,7 @@ feature -- Removal
 	
 feature {GOA_HTTP_SESSION_MANAGER}
 
-	set_old is
+	set_old
 			-- Register that the client has joined the session.
 		do
 			is_new := False
@@ -170,7 +170,7 @@ feature {GOA_HTTP_SESSION_MANAGER}
 			not_new: not is_new
 		end
 	
-	touch is
+	touch
 			-- Update the last accessed time.
 		require
 			valid_session: validated

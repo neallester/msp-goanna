@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XML RPC/Messaging Client"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -22,13 +22,13 @@ inherit
 			{NONE} all
 		end
 
-creation
+create
 
 	make
 
 feature -- Initialisation
 
-	make (connect_host: STRING; connect_port: INTEGER; connect_uri: STRING) is
+	make (connect_host: STRING; connect_port: INTEGER; connect_uri: STRING)
 			-- Initialise XML-RPC client that will send calls using 'connect_uri' to
 			-- the server listening on 'connect_host:connect_port'
 		require
@@ -43,7 +43,7 @@ feature -- Initialisation
 
 feature -- Basic routines
 
-	invoke (call: GOA_XRPC_CALL) is
+	invoke (call: GOA_XRPC_CALL)
 			-- Send 'call' to server to be executed. Make 'invocation_ok' True if call is
 			-- successful and make result available in 'response'. Make 'invocation_ok' False
 			-- if the call failed and make the fault
@@ -85,7 +85,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_exception_on_failure (flag: BOOLEAN) is
+	set_exception_on_failure (flag: BOOLEAN)
 			-- Set 'exception_on_failure' to 'flag'
 		do
 			exception_on_failure := flag
@@ -107,7 +107,7 @@ feature {NONE} -- Implementation
 
 	socket: EPX_TCP_CLIENT_SOCKET
 
-	send_call (call: GOA_XRPC_CALL) is
+	send_call (call: GOA_XRPC_CALL)
 			-- Send 'call' over the wire
 		require
 			call_exists: call /= Void
@@ -146,7 +146,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	connect is
+	connect
 			-- Open socket connected to service
 		do
 			create socket.open_by_name_and_port (host, port)
@@ -155,7 +155,7 @@ feature {NONE} -- Implementation
 			socket_ready: socket_ok = socket.is_open
 		end
 
-	disconnect is
+	disconnect
 			-- Open socket connected to service
 		do
 			if socket /= Void then
@@ -166,7 +166,7 @@ feature {NONE} -- Implementation
 			socket_closed: socket = Void
 		end
 
-	receive_response is
+	receive_response
 			-- Recieve response from server and determine type
 		local
 			buffer: STRING
@@ -215,7 +215,7 @@ feature {NONE} -- Implementation
 	content_length, end_header_index: INTEGER
 	content: STRING
 
-	check_response (buffer: STRING; more_bytes: BOOLEAN): BOOLEAN is
+	check_response (buffer: STRING; more_bytes: BOOLEAN): BOOLEAN
 			-- Check response to determine if all headers and body has been read. 'more_bytes' 
 			-- indicates if more bytes were read before entering this routine. If this is false
 			-- the check can assume that the entire message has been read.
@@ -267,7 +267,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	process_response is
+	process_response
 			-- Parse response and determine if it is a response or fault. Store in
 			-- appropriate attribute and set 'invokation_ok' flag.
 		require

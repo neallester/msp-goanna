@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Topics that include one or more subtopics"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -21,7 +21,7 @@ inherit
 
 Feature {TOPIC} -- Implementation
 
-	registered (subtopic : TOPIC) : BOOLEAN is
+	registered (subtopic : TOPIC) : BOOLEAN
 		-- Is the subtopic registered in current
 		require
 			valid_subtopic : subtopic /= Void
@@ -34,14 +34,14 @@ feature {NONE} -- Implementation
 	subtopic_list : LINKED_LIST [TOPIC]
 		-- list of the subdomains in this exposure
 
-	initialize (proposed_user : like user_anchor) is
+	initialize (proposed_user : like user_anchor)
 		do
 			precursor (proposed_user)
 			Create subtopic_list.make
 			add_subtopics
 		end
 
-	add_subtopics is
+	add_subtopics
 		-- Add subtopics to the sub_topic list
 		deferred
 		end

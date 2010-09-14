@@ -1,4 +1,4 @@
-indexing
+note
 	description: "The result of processing a request from the user"
 	author: "Neal L. Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -15,7 +15,7 @@ inherit
 	SHARED_REQUEST_PARAMETERS
 	SHARED_SERVLETS
 	
-creation
+create
 	
 	make
 

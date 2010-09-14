@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Threaded producer."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "utility thread"
@@ -32,7 +32,7 @@ inherit
 		
 feature {NONE} -- Initialisation
 
-	make (new_name: STRING; queue: like request_queue) is
+	make (new_name: STRING; queue: like request_queue)
 			-- Initialise this producer to write to 'queue'
 		require
 			new_name_not_void: new_name /= Void
@@ -44,7 +44,7 @@ feature {NONE} -- Initialisation
 		
 feature {GOA_PRODUCER_CONSUMER_CONTROL} -- Basic operations
 
-	execute is
+	execute
 			-- Feed threads
 		do
 			from
@@ -64,12 +64,12 @@ feature {GOA_PRODUCER_CONSUMER_CONTROL} -- Basic operations
 
 feature {NONE} -- Implementation
 
-	generate_next: K is
+	generate_next: K
 			-- Generate the next element for the queue
 		deferred
 		end
 		
-	done: BOOLEAN is
+	done: BOOLEAN
 			-- Has the producer finished generating events?
 		deferred
 		end

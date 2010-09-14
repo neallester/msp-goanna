@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that manage servlets."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -20,7 +20,7 @@ create
 
 feature -- Initialization
 
-	make is
+	make
 			-- Initialise with no servlets.
 		do
 			create servlets.make (5)
@@ -29,7 +29,7 @@ feature -- Initialization
 
 feature -- Access
 
-	servlet (name: STRING): K is
+	servlet (name: STRING): K
 			-- Retrieve the servlet registered under 'name'
 		require
 			name_exists: name /= Void
@@ -40,7 +40,7 @@ feature -- Access
 			result_exists: Result /= Void
 		end
 
-	default_servlet: K is
+	default_servlet: K
 			-- Retrieve the default servlet
 		require
 			default_servlet_registered: has_default_servlet
@@ -48,7 +48,7 @@ feature -- Access
 			Result := internal_default_servlet
 		end
 
-	count: INTEGER is
+	count: INTEGER
 			-- Number of registered servlets, not including the default servlet
 			-- if any.
 		do
@@ -63,7 +63,7 @@ feature -- Access
 
 feature -- Status report
 
-	has_registered_servlet (name: STRING): BOOLEAN is
+	has_registered_servlet (name: STRING): BOOLEAN
 			-- Is a servlet registered under 'name'?
 		require
 			name_exists: name /= Void
@@ -71,7 +71,7 @@ feature -- Status report
 			Result := servlets.has (name)
 		end
 
-	has_default_servlet: BOOLEAN is
+	has_default_servlet: BOOLEAN
 			-- Is a default servlet registered?
 		do
 			Result := internal_default_servlet /= Void
@@ -79,7 +79,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	register_servlet (new_servlet: K; name: STRING) is
+	register_servlet (new_servlet: K; name: STRING)
 			-- Register 'servlet' for 'name'
 		require
 			servlet_exists: new_servlet /= Void
@@ -88,7 +88,7 @@ feature -- Status setting
 			servlets.force (new_servlet, virtual_servlet_name (name))
 		end
 
-	register_default_servlet (def_servlet: K) is
+	register_default_servlet (def_servlet: K)
 			-- REgister 'servlet' as the default servlet
 		require
 			servlet_exists: def_servlet /= Void
@@ -96,7 +96,7 @@ feature -- Status setting
 			internal_default_servlet := def_servlet
 		end
 
-	set_servlet_mapping_prefix (virtual_prefix: STRING) is
+	set_servlet_mapping_prefix (virtual_prefix: STRING)
 			-- Set the servlet mapping prefix to `virtual_prefix'. This is used to set
 			-- a virtual prefix name for accessing servlets. eg. "servlet". The
 			-- prefix should not begin or end in a slash. It will always be relative
@@ -112,7 +112,7 @@ feature -- Status setting
 			servlet_mapping_prefix := virtual_prefix + "/"
 		end
 
-	set_config (new_config: GOA_SERVLET_CONFIG) is
+	set_config (new_config: GOA_SERVLET_CONFIG)
 			-- Set the configuration information
 		require
 			config_exists: new_config /= Void
@@ -122,7 +122,7 @@ feature -- Status setting
 
 feature {NONE} -- Implementation
 
-	virtual_servlet_name (name: STRING): STRING is
+	virtual_servlet_name (name: STRING): STRING
 			-- Construct the actual mapping name for a servlet 'name' using
 			-- the virtual prefix if set.
 		require

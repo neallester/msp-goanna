@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent and can read a FastCGI request"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI protocol"
@@ -24,12 +24,12 @@ inherit
 	POSIX_CONSTANTS
 	GOA_STRING_MANIPULATION
 
-creation
+create
 	make
 
 feature -- Initialization
 
-	make is
+	make
 			-- Clear all request fields	
 		do
 			socket := Void
@@ -83,7 +83,7 @@ feature -- Access
 
 feature -- Status setting
 
-	set_socket (new_socket: like socket) is
+	set_socket (new_socket: like socket)
 			-- Set the socket for this request.
 			-- Can be set to Void to invalidate the request.
 		require
@@ -94,7 +94,7 @@ feature -- Status setting
 
 feature -- Basic operations
 
-	read is
+	read
 			-- Read a complete request including its begin request, params and stdin records.
 			-- Process management records as they are encountered.
 			--| Can be called recursively to read parts of a stream.
@@ -132,13 +132,13 @@ feature -- Basic operations
 			end
 		end
 
-	print_parameter (a_value, a_key: STRING) is
+	print_parameter (a_value, a_key: STRING)
 		do
 			io.put_string ("  " + a_key + " | " + a_value + "%N")
 		end
 
 
-	write_stderr (str: STRING) is
+	write_stderr (str: STRING)
 			-- Write 'str' as a stderr record to the socket
 		require
 			socket_exists: socket /= Void
@@ -176,7 +176,7 @@ feature -- Basic operations
 			end
 		end
 
-	write_stdout (str: STRING) is
+	write_stdout (str: STRING)
 			-- Write 'str' as a stdout record to the socket
 		require
 			socket_exists: socket /= Void
@@ -227,7 +227,7 @@ feature -- Basic operations
 			end
 		end
 
-	end_request is
+	end_request
 			-- Notify the web server that this request has completed.
 		require
 			socket_exists: socket /= Void
@@ -254,7 +254,7 @@ feature -- Basic operations
 			end
 		end
 
-	as_fast_cgi_string (new_request_id: INTEGER): STRING is
+	as_fast_cgi_string (new_request_id: INTEGER): STRING
 		local
 			begin_record: GOA_FAST_CGI_BEGIN_REQUEST_BODY
 			raw_record: GOA_FAST_CGI_RAW_BODY
@@ -276,7 +276,7 @@ feature -- Basic operations
 
 feature {NONE} -- Implementation
 
-	append_to_fast_cgi_string (raw_record: GOA_FAST_CGI_RAW_BODY; new_request_id: INTEGER; fast_cgi_string: STRING) is
+	append_to_fast_cgi_string (raw_record: GOA_FAST_CGI_RAW_BODY; new_request_id: INTEGER; fast_cgi_string: STRING)
 			-- Append representation of raw_record to fast_cgi_string
 		require
 			valid_raw_record: raw_record /= Void
@@ -293,7 +293,7 @@ feature {NONE} -- Implementation
 	raw_param_content: STRING
 			-- Buffers to hold raw data collected from stream records.
 
-	read_header: GOA_FAST_CGI_RECORD_HEADER is
+	read_header: GOA_FAST_CGI_RECORD_HEADER
 			-- Read record header from the socket.
 		do
 			debug ("fcgi_protocol")
@@ -306,7 +306,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	read_body (record_header: GOA_FAST_CGI_RECORD_HEADER) is
+	read_body (record_header: GOA_FAST_CGI_RECORD_HEADER)
 			-- Read the body of the record depending on the type of the
 			-- record
 		require
@@ -336,7 +336,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	read_begin_request_body (record_header: GOA_FAST_CGI_RECORD_HEADER) is
+	read_begin_request_body (record_header: GOA_FAST_CGI_RECORD_HEADER)
 			-- Read body of begin request record and process data.
 		local
 			record_body: GOA_FAST_CGI_BEGIN_REQUEST_BODY
@@ -369,7 +369,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	read_param_request_body (record_header: GOA_FAST_CGI_RECORD_HEADER) is
+	read_param_request_body (record_header: GOA_FAST_CGI_RECORD_HEADER)
 			-- Read body of param request record and process data.
 		local
 			record_body: GOA_FAST_CGI_RAW_BODY
@@ -401,7 +401,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	read_stdin_request_body (record_header: GOA_FAST_CGI_RECORD_HEADER) is
+	read_stdin_request_body (record_header: GOA_FAST_CGI_RECORD_HEADER)
 			-- Read body of stdin request record and process data.
 		local
 			record_body: GOA_FAST_CGI_RAW_BODY
@@ -438,7 +438,7 @@ feature {NONE} -- Implementation
 
 feature {TS_TEST_CASE} -- Process Raw Parameter Data
 
-	process_parameter_raw_data is
+	process_parameter_raw_data
 			-- Extract parameters from 'raw_param_content'
 		local
 			short_name, short_value: BOOLEAN
@@ -499,7 +499,7 @@ feature {TS_TEST_CASE} -- Process Raw Parameter Data
 
 feature
 
-	add_parameter_record (a_name, a_value: STRING) is
+	add_parameter_record (a_name, a_value: STRING)
 		require
 			valid_a_name: a_name /= Void
 			valid_a_value: a_value /= Void
@@ -513,7 +513,7 @@ feature
 			parameter_records.force_last (new_record)
 		end
 
-	add_parameter_to_raw_content (a_name, a_value: STRING) is
+	add_parameter_to_raw_content (a_name, a_value: STRING)
 		require
 			valid_a_name: a_name /= Void
 			valid_a_value: a_value /= Void
@@ -524,7 +524,7 @@ feature
 			raw_param_content.append (parameter_as_raw_content (a_name, a_value))
 		end
 
-	parameter_as_raw_content (a_name, a_value: STRING): STRING is
+	parameter_as_raw_content (a_name, a_value: STRING): STRING
 		require
 			valid_a_name: a_name /= Void
 			valid_a_value: a_value /= Void
@@ -536,7 +536,7 @@ feature
 			Result.append (a_value)
 		end
 
-	encode_length (a_length: INTEGER): STRING is
+	encode_length (a_length: INTEGER): STRING
 		require
 			non_negative_a_length: a_length >= 0
 		do

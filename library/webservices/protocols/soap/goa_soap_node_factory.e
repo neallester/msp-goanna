@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that create SOAP nodes."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -18,7 +18,7 @@ inherit
 
 feature -- Creation
 
-	new_document_element (a_document: XM_DOCUMENT; ns_prefix: STRING): GOA_SOAP_ENVELOPE is
+	new_document_element (a_document: XM_DOCUMENT; ns_prefix: STRING): GOA_SOAP_ENVELOPE
 			-- New SOAP Envelope
 		require
 			document_not_void: a_document /= Void
@@ -31,7 +31,7 @@ feature -- Creation
 			document_element_not_void: Result /= Void
 		end
 
-	new_element (a_parent: XM_ELEMENT; a_name, namespace, ns_prefix: STRING; is_header_block, is_body_block: BOOLEAN):  GOA_SOAP_ELEMENT is
+	new_element (a_parent: XM_ELEMENT; a_name, namespace, ns_prefix: STRING; is_header_block, is_body_block: BOOLEAN):  GOA_SOAP_ELEMENT
 			-- New element
 		require
 			parent_not_void: a_parent /= Void

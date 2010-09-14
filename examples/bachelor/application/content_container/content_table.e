@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Content displayed as a rows and columns"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -24,7 +24,7 @@ create
 
 feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER}
 
-	add_row (new_row : TABLE_ROW) is
+	add_row (new_row : TABLE_ROW)
 		-- Add new_row to the table
 		require
 			 valid_new_row : new_row /= Void
@@ -34,12 +34,12 @@ feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER}
 
 feature {NONE} -- Implement deferred features
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			Result := "<table BORDER=0 WIDTH=%"100%%%"><COL WIDTH = %"0*%">" + new_line
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			result := "</TABLE>" + new_line
 		end

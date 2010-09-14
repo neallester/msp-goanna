@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Applications that run as FastCGI Servlets"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -22,13 +22,13 @@ inherit
 --			make as parent_make
 --		end
 
-creation
+create
 
 	make
 
 feature
 
-	make is
+	make
 		local
 
 		do
@@ -38,7 +38,7 @@ feature
 			run
 		end
 
-	register_servlets is
+	register_servlets
 		local
 			application_config: GOA_SERVLET_CONFIG
 			application_servlet: APPLICATION_SERVLET
@@ -52,7 +52,7 @@ feature
 			servlet_manager.register_default_servlet (application_servlet)	
 		end
 		
-	field_exception: BOOLEAN is
+	field_exception: BOOLEAN
 			-- 
 		do
 			Result := False

@@ -273,27 +273,27 @@ feature  -- Listeners
 
 feature {GOA_HTTP_SESSION} -- Attribute Binding Event Notification
 
-	attribute_bound_notification (session: like session_anchor; name: STRING; attribute: ANY) is
+	attribute_bound_notification (session: like session_anchor; name: STRING; a_attribute: ANY) is
 			-- receive notification from session that an attribute was bound
 		require
 			session_exists: session /= Void
 			name_exists: name /= Void
-			attribute_exists: attribute /= Void
+			a_attribute_exists: a_attribute /= Void
 		do
 			event_attribute_name := name
-			event_attribute := attribute
+			event_attribute := a_attribute
 			notify_listeners (session, Attribute_bound_code)
 		end
 
-	attribute_unbound_notification (session: like session_anchor; name: STRING; attribute: ANY) is
+	attribute_unbound_notification (session: like session_anchor; name: STRING; a_attribute: ANY) is
 			-- Receive notification from session that an attribute was unbound
 		require
 			session_exists: session /= Void
 			name_exists: name /= Void
-			attribute_exists: attribute /= Void
+			a_attribute_exists: a_attribute /= Void
 		do
 			event_attribute_name := name
-			event_attribute := attribute
+			event_attribute := a_attribute
 			notify_listeners (session, Attribute_unbound_code)
 		end
 

@@ -1,4 +1,4 @@
-indexing
+note
 	description : "Collections that can be accessed by name. %
       	%NamedMaps are not maintained in any particular order. %
       	%Objects contained in an object implementing NamedMap %
@@ -22,7 +22,7 @@ inherit
 		
 feature
 
-   get_named_item (name: DOM_STRING): G is
+   get_named_item (name: DOM_STRING): G
          -- Retrieves a node specified by `name'. 
          -- Parameters 
          --    name   Name of a node to retrieve.
@@ -34,7 +34,7 @@ feature
       deferred
       end
 
-   set_named_item (arg: G): G is
+   set_named_item (arg: G): G
          -- Adds a node using its nodeName attribute.
          -- As the nodeName attribute is used to derive the name
          -- which the node must be stored under, multiple nodes
@@ -63,7 +63,7 @@ feature
 		  --arg_set: get_named_item (arg.node_name) = arg
       end
 
-   remove_named_item (name: DOM_STRING): G is
+   remove_named_item (name: DOM_STRING): G
          -- Removes a node specified by `name'. If the removed node
          -- is an Attr with a default value it is immediately replaced.
          -- Parameters
@@ -81,14 +81,14 @@ feature
 		  result_named_item: Result.node_name.is_equal (name)
       end
 
-	has_named_item (name: DOM_STRING): BOOLEAN is
+	has_named_item (name: DOM_STRING): BOOLEAN
 			-- Does an item named 'name' exist in this map?
 		require
 			name_exists: name /= Void
 		deferred
 		end
 
-   item (index: INTEGER): G is
+   item (index: INTEGER): G
          -- Returns the `index'th item in the map. If index is greater
          -- than or equal to the number of nodes in the map,
          -- this returns null.
@@ -102,13 +102,13 @@ feature
       deferred
       end
 	
-	length: INTEGER is
+	length: INTEGER
 			-- The number of nodes in the map.
 			-- The range of valid child node indices is 0 to `length'-1 inclusive.
 		deferred
 		end
 
-	get_named_item_ns (namespace_uri, local_name: DOM_STRING): G is
+	get_named_item_ns (namespace_uri, local_name: DOM_STRING): G
 			-- Retrieves a node specified by local name and namespace URI.
 			-- DOM Level 2.
 			-- Note: precondition 'has_item' is not standard DOM.
@@ -123,7 +123,7 @@ feature
 				Result.local_name.is_equal (local_name)
 		end
 
-	set_named_item_ns (arg: G): G is
+	set_named_item_ns (arg: G): G
 			-- Adds a node using its namespace_uri and local_name. If a node
 			-- with that namespace URI and local name is already present in this
 			-- map, it is replaced by the new one.
@@ -139,7 +139,7 @@ feature
 		  arg_set: get_named_item_ns (arg.namespace_uri, arg.local_name) = arg
       end
 
-	remove_named_item_ns (namespace_uri, local_name: DOM_STRING): G is
+	remove_named_item_ns (namespace_uri, local_name: DOM_STRING): G
 			-- Removes a node specified by local name and namespace URI.
 			-- A removed attribute may be known to have a default value when
 			-- this map contains the attributes attached to an element,
@@ -160,7 +160,7 @@ feature
 				Result.local_name.is_equal (local_name)
       	end
 		
-	has_named_item_ns (namespace_uri, local_name: DOM_STRING): BOOLEAN is
+	has_named_item_ns (namespace_uri, local_name: DOM_STRING): BOOLEAN
 			-- Does an item named 'local_name' in 'namespace_uri' 
 			-- exist in this map?
 		require
@@ -171,7 +171,7 @@ feature
 	
 feature -- Validation Utility
 
-	empty: BOOLEAN is
+	empty: BOOLEAN
 			-- Does this node list have no elements?
 		deferred
 		end

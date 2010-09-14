@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Example servlet server for dispatching servlet requests."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples"
@@ -28,7 +28,7 @@ create
 
 feature -- Initialization
 
-	make is
+	make
 			-- Create and initialise a new server that will listen for connections
 			-- on 'port' and serving documents from 'doc_root'.
 			-- Start the server
@@ -58,7 +58,7 @@ feature {NONE} -- Implementation
 	config: GOA_SERVLET_CONFIG
 			-- Configuration for servlets
 			
-	parse_arguments is
+	parse_arguments
 			-- Parse the command line arguments and store appropriate settings
 		local
 			dir: KL_DIRECTORY
@@ -83,14 +83,14 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	print_usage is
+	print_usage
 			-- Display usage information
 		do
 			print ("Usage: servlet_server <port-number> <document-root>%R%N")
 		end
 	
 
-	register_servlets is
+	register_servlets
 			-- Initialise servlets
 		local
 			servlet: GOA_HTTP_SERVLET	

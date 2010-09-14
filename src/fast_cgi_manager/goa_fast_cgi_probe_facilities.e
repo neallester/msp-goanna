@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Facilities for GOA_FAST_CGI_PROBE"
 	author: "Neal Lester"
 	date: "$Date$"
@@ -11,7 +11,7 @@ class
 
 feature -- Facilities
 
-	is_ip4_address (a_ip_address: ARRAY [INTEGER]): BOOLEAN is
+	is_ip4_address (a_ip_address: ARRAY [INTEGER]): BOOLEAN
 			-- Does a_ip_address represent a valid ip4 address?
 		require
 			valid_a_ip_address: a_ip_address /= Void
@@ -19,13 +19,13 @@ feature -- Facilities
 			Result := a_ip_address.count = 4 and then a_ip_address.for_all (agent is_ip4_octet (?))
 		end
 
-	is_ip4_octet (a_integer: INTEGER): BOOLEAN is
+	is_ip4_octet (a_integer: INTEGER): BOOLEAN
 			-- Is a_integer a valid ip4 octet value?
 		do
 			Result := a_integer >= 0 and a_integer <= 255
 		end
 
-	is_legal_script_path (a_script_path: STRING): BOOLEAN is
+	is_legal_script_path (a_script_path: STRING): BOOLEAN
 			-- Is a_script_path a legal fast_cgi script path?
 		require
 			valid_a_script_path: a_script_path /= Void

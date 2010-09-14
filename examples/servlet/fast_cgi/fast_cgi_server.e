@@ -1,4 +1,4 @@
-indexing
+note
 	description: "FastCGI Server."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples Fast CGI server"
@@ -23,13 +23,13 @@ inherit
 			{NONE} all
 		end
 	
-creation
+create
 
 	make
 
 feature -- Initialization
 
-	make is
+	make
 			-- Create and initialise a new FAST_CGI server that will listen for connections
 			-- on 'port' and serving documents from 'doc_root'.
 			-- Start the server
@@ -59,7 +59,7 @@ feature {NONE} -- Implementation
 	config: GOA_SERVLET_CONFIG
 			-- Configuration for servlets
 			
-	parse_arguments is
+	parse_arguments
 			-- Parse the command line arguments and store appropriate settings
 		local
 			dir: KL_DIRECTORY
@@ -84,13 +84,13 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	print_usage is
+	print_usage
 			-- Display usage information
 		do
 			print ("Usage: fast_cgi <port-number> <document-root>%R%N")
 		end
 	
-	register_servlets is
+	register_servlets
 			-- Initialise servlets
 		local
 			servlet: GOA_HTTP_SERVLET
@@ -107,7 +107,7 @@ feature {NONE} -- Implementation
 			servlet_manager.register_servlet (servlet, "snoop")
 		end
 
-	field_exception: BOOLEAN is
+	field_exception: BOOLEAN
 			-- Should we attempt to retry?
 		do
 		end

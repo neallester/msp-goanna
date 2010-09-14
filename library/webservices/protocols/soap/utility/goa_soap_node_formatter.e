@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that serialise SOAP block nodes with optional attributes."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -27,7 +27,7 @@ create
 
 feature -- Tree processor routines
 
-	process_document (a_document: XM_DOCUMENT) is
+	process_document (a_document: XM_DOCUMENT)
 			-- Process document using xmlns generator and pretty print filters.
 		local
 			pretty_print: XM_PRETTY_PRINT_FILTER

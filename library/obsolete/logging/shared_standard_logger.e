@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that provide shared access to a standard logger"
 
 class
@@ -12,7 +12,7 @@ inherit
 	
 feature -- Access
 
-	Logger: LOGGER is
+	Logger: LOGGER
 			-- Shared logger
 		local
 			std_logger: STANDARD_LOGGER
@@ -21,10 +21,10 @@ feature -- Access
 			Result := std_logger
 		end
 	
-	Standard_facility: STRING is "general"
+	Standard_facility: STRING = "general"
 			-- Standard logging facility	
 	
-	log (level: INTEGER; message: STRING) is
+	log (level: INTEGER; message: STRING)
 			-- Log 'message' at 'level' to the standard logger.
 			-- Convenience routine.
 		require

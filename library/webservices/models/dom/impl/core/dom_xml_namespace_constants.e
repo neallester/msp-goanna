@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XML namespace constants"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -13,31 +13,31 @@ class
 
 feature -- Constants
 
-	Xml_prefix: DOM_STRING is
+	Xml_prefix: DOM_STRING
 			-- String "xml"
 		once
 			create Result.make_from_string ("xml")
 		end
 
-	Xmlns_qname: DOM_STRING is
+	Xmlns_qname: DOM_STRING
 			-- String "xmlns"
 		once
 			create Result.make_from_string ("xmlns")		
 		end
 		
-	Xml_namespace_uri: DOM_STRING is
+	Xml_namespace_uri: DOM_STRING
 			-- String "http://www.w3.org/XML/1998/namespace"
 		once
 			create Result.make_from_string ("http://www.w3.org/XML/1998/namespace")
 		end
 		
-	Xmlns_default_uri: DOM_STRING is
+	Xmlns_default_uri: DOM_STRING
 			-- String "http://www.w3.org/2000/xmlns"
 		once
 			create Result.make_from_string ("http://www.w3.org/2000/xmlns")			
 		end
 	
-	Qname_separator: UC_CHARACTER is
+	Qname_separator: UC_CHARACTER
 			-- Separator used between prefix and localname of qualified name.
 			-- Character ':'.
 		once

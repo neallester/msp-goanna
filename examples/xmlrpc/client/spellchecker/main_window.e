@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Main spell checker window"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples xmlrpc spellchecker"
@@ -32,7 +32,7 @@ create
 
 feature -- Initialisation
 
-	make (new_model: SPELL_CHECKER) is
+	make (new_model: SPELL_CHECKER)
 			-- Initialise this window to call back into 'new_model' on button events
 		require
 			model_exists: new_model /= Void
@@ -41,7 +41,7 @@ feature -- Initialisation
 			default_create
 		end
 		
-	initialize is
+	initialize
 			-- Initialize `Current' to set up calculator widgets.
 		local
 			vb: EV_VERTICAL_BOX
@@ -101,7 +101,7 @@ feature -- Initialisation
 	
 feature -- Status setting
 		
-	update_error_message (message: STRING) is
+	update_error_message (message: STRING)
 			-- Update the error widget text to 'message'
 		require
 			message_exists: message /= Void
@@ -109,14 +109,14 @@ feature -- Status setting
 			error.set_text (message)
 		end
 	
-	update_suggested_words (new_words: DS_LINKED_LIST [STRING]) is
+	update_suggested_words (new_words: DS_LINKED_LIST [STRING])
 			-- Set list of suggested words to 'words'
 		require
 			words_exists: new_words /= Void
 		do
 		end
 	
-	clear is
+	clear
 			-- Clear text and words fields
 		do
 			text.remove_text

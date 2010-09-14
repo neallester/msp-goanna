@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that host processors"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"

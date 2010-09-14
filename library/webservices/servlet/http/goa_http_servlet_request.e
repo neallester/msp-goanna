@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent HTTP request information."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "HTTP Servlet API"
@@ -19,7 +19,7 @@ inherit
 
 feature -- Access
 
-	get_header (name: STRING): STRING is
+	get_header (name: STRING): STRING
 			-- Get the value of the specified request header.
 		require
 			name_exists: name /= Void
@@ -29,7 +29,7 @@ feature -- Access
 			result_exists: Result /= Void
 		end
 
-	get_headers (name: STRING): DS_LINEAR [STRING] is
+	get_headers (name: STRING): DS_LINEAR [STRING]
 			-- Get all values of the specified request header. If the
 			-- header has comma-separated values they are separated and added to the
 			-- result. If only one value exists, it is added as the sole entry in the
@@ -42,7 +42,7 @@ feature -- Access
 			result_exists: Result /= Void
 		end
 
-	get_header_names: DS_LINEAR [STRING] is
+	get_header_names: DS_LINEAR [STRING]
 			-- Get all header names.
 		deferred
 		ensure
@@ -51,27 +51,27 @@ feature -- Access
 
 feature -- Status report
 
-	has_header (name: STRING): BOOLEAN is
+	has_header (name: STRING): BOOLEAN
 			-- Does this request contain a header named 'name'?
 		require
 			name_exists: name /= Void
 		deferred
 		end
 
-	auth_type: STRING is
+	auth_type: STRING
 			-- The name of the authentication scheme used to protect the servlet,
 			-- for example, "BASIC" or "SSL" or Void if the servlet was not protected.
 		deferred
 		end
 
-	cookies: DS_LINEAR [GOA_COOKIE] is
+	cookies: DS_LINEAR [GOA_COOKIE]
 			-- Cookies sent with this request.
 		deferred
 		ensure
 			cookies_exist: Result /= Void
 		end
 
-	session: GOA_HTTP_SESSION is
+	session: GOA_HTTP_SESSION
 			-- Return the session associated with this request. Create a new session
 			-- if one does not already exist.
 		deferred
@@ -79,37 +79,37 @@ feature -- Status report
 			session_exists: Result /= Void
 		end
 
-	method: STRING is
+	method: STRING
 			-- The name of the HTTP method with which this request was made, for
 			-- example, GET, POST, or HEAD.
 		deferred
 		end
 
-	path_info: STRING is
+	path_info: STRING
 			-- Any extra path information associated with the URL the client sent
 			-- when it made the request.
 		deferred
 		end
 
-	path_translated: STRING is
+	path_translated: STRING
 			-- Any extra path information after the servlet name but before
 			-- the query string translated to a real path.
 		deferred
 		end
 
-	query_string: STRING is
+	query_string: STRING
 			-- The query string that is contained in the request URL after the path.
 			-- Returns Void if no query string is sent.
 		deferred
 		end
 
-	remote_user: STRING is
+	remote_user: STRING
 			-- The login of the user making this request, if the user has been
 			-- authenticated, or Void if the user has not been authenticated.
 		deferred
 		end
 
-	servlet_path: STRING is
+	servlet_path: STRING
 			-- The part of this request's URL that calls the servlet. This includes
 			-- either the servlet name or a path to the servlet, but does not include
 			-- any extra path information or a query string.
@@ -118,7 +118,7 @@ feature -- Status report
 
 feature -- Output
 
-	to_string: STRING is
+	to_string: STRING
 			-- String representation of this request
 		do
 			Result := Precursor
@@ -145,13 +145,13 @@ feature -- Output
 			Result.append_string ("%R%N")
 		end
 
-	cookies_to_string: STRING is
+	cookies_to_string: STRING
 		do
 			Result := ""
 			cookies.do_all (agent append_cookie_to_string (Result, ?))
 		end
 
-	append_cookie_to_string (a_string: STRING; a_cookie: GOA_COOKIE) is
+	append_cookie_to_string (a_string: STRING; a_cookie: GOA_COOKIE)
 			-- Append string representation of a_cookie to a_string
 		do
 			a_string.append (a_cookie.name + " | " + a_cookie.value + "%N")

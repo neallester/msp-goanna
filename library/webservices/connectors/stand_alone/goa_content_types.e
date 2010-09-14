@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Content type information"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "tools httpd"
@@ -13,20 +13,20 @@ class GOA_CONTENT_TYPES
 feature -- Access
 
 
-	Content_type_text_html: INTEGER is 1
-	Content_type_text_xml: INTEGER is 2
-	Content_type_text_css: INTEGER is 3
-	Content_type_text_xsl: INTEGER is 4
-	Content_type_text_rtf: INTEGER is 5
-	Content_type_image_gif: INTEGER is 6
-	Content_type_image_jpeg: INTEGER is 7
-	Content_type_image_png: INTEGER is 8
-	Content_type_image_tiff: INTEGER is 9
+	Content_type_text_html: INTEGER = 1
+	Content_type_text_xml: INTEGER = 2
+	Content_type_text_css: INTEGER = 3
+	Content_type_text_xsl: INTEGER = 4
+	Content_type_text_rtf: INTEGER = 5
+	Content_type_image_gif: INTEGER = 6
+	Content_type_image_jpeg: INTEGER = 7
+	Content_type_image_png: INTEGER = 8
+	Content_type_image_tiff: INTEGER = 9
 	
-	First_content_type: INTEGER is 1
-	Last_content_type: INTEGER is 9
+	First_content_type: INTEGER = 1
+	Last_content_type: INTEGER = 9
 	
-	content_type_codes: DS_HASH_TABLE [INTEGER, STRING] is
+	content_type_codes: DS_HASH_TABLE [INTEGER, STRING]
 			-- Table of content type codes. Codes map into content_types table
 		once
 			create Result.make (30) 
@@ -43,7 +43,7 @@ feature -- Access
 			Result.force (Content_type_image_tiff, "tiff")
 		end
 
-	content_types: ARRAY [STRING] is
+	content_types: ARRAY [STRING]
 			-- Table of content types indexed by code.
 		once
 			create Result.make (First_content_type, Last_content_type) 
@@ -58,7 +58,7 @@ feature -- Access
 			Result.put ("image/tiff", Content_type_image_tiff)
 		end
 			
-	extension (uri: STRING): STRING is
+	extension (uri: STRING): STRING
 			-- extract extention from a URI
 		local
 			i: INTEGER

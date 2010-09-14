@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XML to Eiffel Compiler"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XMLE Tool"
@@ -18,12 +18,12 @@ inherit
 			{NONE} all
 		end
       
-creation
+create
 	make
 
 feature -- Initialization
 
-	make is
+	make
 		local
 			factory: DOM_TREE_BUILDER_FACTORY
 		do
@@ -63,7 +63,7 @@ feature {NONE} -- Implementation
 	display_xml: BOOLEAN
 			-- Should the resulting DOM be displayed?
 			
-	parse_arguments is
+	parse_arguments
 			-- Parse and validate the command line arguments
 		local
 			str: STRING
@@ -83,7 +83,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	show_usage is
+	show_usage
 			-- Output usage message to user
 		local
 			str: STRING
@@ -92,7 +92,7 @@ feature {NONE} -- Implementation
 			print (str)
 		end 
 
-	display_parser_error is
+	display_parser_error
 			-- Output parsing error
 		do
 			print ("XML parser error: " + parser.last_error_description
@@ -100,7 +100,7 @@ feature {NONE} -- Implementation
 			print ("At position: " + parser.position.out)
 		end
 
-	generate_eiffel_code (document: DOM_DOCUMENT) is
+	generate_eiffel_code (document: DOM_DOCUMENT)
 			-- Generate an XMLE Eiffel class to build the parsed DOM structure
 		require
 			document_exists: document /= Void
@@ -111,7 +111,7 @@ feature {NONE} -- Implementation
 			code_generator.generate (document)
 		end
 
-	display_dom_tree (document: DOM_DOCUMENT) is
+	display_dom_tree (document: DOM_DOCUMENT)
 			-- Display dom tree to standard out.
 		require
 			document_exists: document /= Void	
@@ -123,7 +123,7 @@ feature {NONE} -- Implementation
 			writer.serialize (document)		
 		end
 	
-	serializer_factory: DOM_SERIALIZER_FACTORY is
+	serializer_factory: DOM_SERIALIZER_FACTORY
 		once
 			create Result
 		end

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP envelope."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -17,7 +17,7 @@ inherit
 			validate
 		end
 
-creation
+create
 	
 	make_root
 	
@@ -35,7 +35,7 @@ feature -- Access
 	encoding_styles: DS_HASH_SET [STRING]
 			-- Names of encoding styles used
 
-	is_fault_message: BOOLEAN is
+	is_fault_message: BOOLEAN
 			-- Is this a SOAP Fault message?
 		require
 			validated: validation_complete and then validated
@@ -45,7 +45,7 @@ feature -- Access
 
 feature -- Status Setting
 
-	set_header (a_header: like header) is
+	set_header (a_header: like header)
 			-- Set 'header' to 'a_header'
 		require
 			new_header_exists: a_header /= Void
@@ -55,7 +55,7 @@ feature -- Status Setting
 			header_set: header = a_header
 		end
 		
-	set_body (a_body: like body) is
+	set_body (a_body: like body)
 			-- Set 'body' to 'a_body'
 		require
 			new_body_exists: a_body /= Void
@@ -65,7 +65,7 @@ feature -- Status Setting
 			body_set: body = a_body
 		end
 
-	validate (an_identity: UT_URI) is
+	validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		local
 			child_elements: DS_LIST [XM_ELEMENT]
@@ -117,7 +117,7 @@ feature -- Status Setting
 			post_validate (an_identity)
 		end
 
-	post_validate (an_identity: UT_URI) is
+	post_validate (an_identity: UT_URI)
 			-- Perform post-validation checks on `Current'.
 		require
 			identity_not_void: an_identity /= Void

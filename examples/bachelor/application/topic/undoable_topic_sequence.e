@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Undoable topics that are also page_sequences"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"

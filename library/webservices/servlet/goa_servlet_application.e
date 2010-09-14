@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Abstract servlet application"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -12,7 +12,7 @@ deferred class GOA_SERVLET_APPLICATION
 
 feature {NONE} -- Initialization
 
-	make (new_host: STRING; port, backlog: INTEGER) is
+	make (new_host: STRING; port, backlog: INTEGER)
 			-- Initialise the server to listen on 'port' with
 			-- room for 'backlog' waiting requests. 	
 		require
@@ -27,21 +27,21 @@ feature {NONE} -- Initialization
 
 feature -- Basic operations
 
-	register_servlets is
+	register_servlets
 			-- Register servlets for this application
 		deferred
 		ensure
 			all_servlets_registered: all_servlets_registered
 		end
 
-	run is
+	run
 			-- Run the application and process requests
 		require
 			ok_to_run: ok_to_run
 		deferred
 		end
 
-	ok_to_run: BOOLEAN is
+	ok_to_run: BOOLEAN
 			-- Application in a state in which run may be called
 			-- May be redefined by descendents as necessary
 		do
@@ -50,7 +50,7 @@ feature -- Basic operations
 			result_implies_all_servlets_registered: Result implies all_servlets_registered
 		end
 
-	all_servlets_registered: BOOLEAN is
+	all_servlets_registered: BOOLEAN
 			-- Have all required servlets been registered
 			-- May be redefined by descendents as necessary
 		do

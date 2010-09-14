@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Domains with a state than can be represented by an integer code"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -23,19 +23,19 @@ inherit
 		
 feature
 
-	evaluated : BOOLEAN is
+	evaluated : BOOLEAN
 		-- Has this object been evaluated?
 		do
 			result := not equal (status_code, not_evaluated_code)
 		end
 
-	reset is
+	reset
 		-- reset the status to not_evaluated
 		do
 			set_status_code (not_evaluated_code)
 		end
 
-	undo is
+	undo
 			-- Roll back to previous state
 		do
 			status_code := status_history.first
@@ -52,7 +52,7 @@ feature {NONE} -- implementation
 	status_code : INTEGER
 			-- An integer representing the current status of the object
 
-	set_status_code (new_status_code : INTEGER) is
+	set_status_code (new_status_code : INTEGER)
 			-- set the new status code
 		do
 			status_history.force_first (status_code)
@@ -63,14 +63,14 @@ feature {NONE} -- implementation
 			status_code_updated : status_code = new_status_code
 		end
 
-	not_evaluated_code : INTEGER is 0
+	not_evaluated_code : INTEGER = 0
 			-- The code corresponding to a status of 'not_evaluated'
 			
 	status_history: DS_LINKED_LIST [INTEGER]
 	
 	date_time_history: DS_LINKED_LIST [DT_DATE_TIME]
 	
-	initialize is
+	initialize
 		do
 			create status_history.make
 			create date_time_history.make
@@ -78,13 +78,13 @@ feature {NONE} -- implementation
  			precursor {TIME_STAMPED_DOMAIN} 
 		end
 		
-	update is
+	update
 			-- Update the domain
 		do
 			precursor {TIME_STAMPED_DOMAIN} 
 		end
 		
-	initialized: BOOLEAN is
+	initialized: BOOLEAN
 			-- Has the domain been initialized?
 		do
 			result := status_initialized and precursor {TIME_STAMPED_DOMAIN} 

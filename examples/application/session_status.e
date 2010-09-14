@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Access to information associated with the user session"
 	author: "Neal L. Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,7 +16,7 @@ inherit
 			initialize
 		end
 
-creation
+create
 	
 	make
 	
@@ -32,7 +32,7 @@ feature -- Attributes
 	
 feature -- Setting Attributes
 
-	set_name (new_name: STRING) is
+	set_name (new_name: STRING)
 		require
 			valid_new_name: new_name /= Void
 		do
@@ -41,21 +41,21 @@ feature -- Setting Attributes
 			name_updated: equal (name, new_name)
 		end
 		
-	set_is_male is
+	set_is_male
 		do
 			is_male := True
 		ensure
 			is_male: is_male
 		end
 		
-	set_is_female is
+	set_is_female
 		do
 			is_male := False
 		ensure
 			is_female: not is_male
 		end
 
-	set_programming_language (new_programming_language: PROGRAMMING_LANGUAGE_SELECTION) is
+	set_programming_language (new_programming_language: PROGRAMMING_LANGUAGE_SELECTION)
 		require
 			valid_new_programming_language: new_programming_language /= Void
 		do
@@ -64,7 +64,7 @@ feature -- Setting Attributes
 			programming_language_updated: equal (programming_language, new_programming_language)
 		end
 	
-	set_thinks_goanna_is_cool (new_value: BOOLEAN) is
+	set_thinks_goanna_is_cool (new_value: BOOLEAN)
 		do
 			thinks_goanna_is_cool := new_value
 		ensure
@@ -74,7 +74,7 @@ feature -- Setting Attributes
 
 feature {GOA_APPLICATION_SERVLET} -- Initialization
 
-	initialize (processing_result: REQUEST_PROCESSING_RESULT) is
+	initialize (processing_result: REQUEST_PROCESSING_RESULT)
 		do
 			set_is_male
 			set_name ("")

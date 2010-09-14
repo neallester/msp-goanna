@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Notation implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -28,7 +28,7 @@ feature
 		
 feature -- from DOM_NODE
 
-	node_type: INTEGER is
+	node_type: INTEGER
 		once
 			Result := Notation_node
 		end

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Parameters that may be displayed as html input elements"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,40 +16,40 @@ inherit
 	
 feature
 	
-	size: INTEGER is
+	size: INTEGER
 			-- The size of the input element
 		deferred
 		end
 		
-	maxlength: INTEGER is 
+	maxlength: INTEGER 
 			-- The maxlength for the input element
 		once
 			Result := 0
 		end
 	
-	type: STRING is
+	type: STRING
 			-- Type of the input
 		once
 			Result := text_input_type
 		end
 		
-	add_to_document (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER) is
+	add_to_document (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER)
 		do
 			xml.add_input_element (input_class (processing_result, suffix), full_parameter_name (name, suffix), type, yes_no_string_for_boolean (is_disabled (processing_result, suffix)), maxlength_string_for_integer (maxlength), size.out, display_value (processing_result, suffix))
 		end
 		
-	ok_to_add (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN is
+	ok_to_add (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN
 		do
 			Result := xml.ok_to_add_element_or_text (xml.input_element_code)
 		end
 
 feature -- Input Types
 
-	text_input_type: STRING is "text"
+	text_input_type: STRING = "text"
 	
-	password_input_type: STRING is "password"
+	password_input_type: STRING = "password"
 		
-	valid_input_types: DS_LINKED_LIST [STRING] is
+	valid_input_types: DS_LINKED_LIST [STRING]
 			-- Valid input types for a PAGE_XML_DOCUMENT input_element
 		once
 			create Result.make_equal
@@ -57,7 +57,7 @@ feature -- Input Types
 			Result.force_last (password_input_type)
 		end
 		
-	is_valid_input_type (new_type: STRING): BOOLEAN is
+	is_valid_input_type (new_type: STRING): BOOLEAN
 			-- Is new_type a valid_input_type
 		require
 			valid_new_type: new_type /= Void

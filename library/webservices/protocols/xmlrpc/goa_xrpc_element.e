@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Abstract objects that represent general XML-RPC element facilities."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -20,7 +20,7 @@ inherit
 	
 feature -- Initialization
 
-	unmarshall (node: XM_ELEMENT) is
+	unmarshall (node: XM_ELEMENT)
 			-- Initialise XML-RPC element from DOM node.
 		require
 			node_exists: node /= Void
@@ -38,14 +38,14 @@ feature -- Status report
 			
 feature -- Mashalling
 
-	marshall: STRING is
+	marshall: STRING
 			-- Serialize this element to XML format
 		deferred	
 		end
 
 feature {NONE} -- Implementation
 
-	get_named_element (parent: XM_ELEMENT; name: STRING): XM_ELEMENT is
+	get_named_element (parent: XM_ELEMENT; name: STRING): XM_ELEMENT
 			-- Search for and return first element with tag name 'name'. Return
 			-- Void if not found.
 		require

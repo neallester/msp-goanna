@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that compare cookie names for equality"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "HTTP Servlet API"
@@ -19,7 +19,7 @@ inherit
 
 feature -- Status report
 
-	test (v, u: GOA_COOKIE): BOOLEAN is
+	test (v, u: GOA_COOKIE): BOOLEAN
 			-- Do 'v' and 'u' have the same cookie name?
 		do
 			if v = void then

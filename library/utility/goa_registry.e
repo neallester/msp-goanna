@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Registry of objects keyed by name"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Utility"
@@ -16,7 +16,7 @@ create
 
 feature -- Initialization
 
-	make is
+	make
 			-- Initialise empty registry
 		do
 			create elements.make_default
@@ -24,7 +24,7 @@ feature -- Initialization
 		
 feature -- Access
 	
-	get (a_name: STRING): G is
+	get (a_name: STRING): G
 			-- Retrieve element registered under `a_name'
 		require
 			name_not_empty: a_name /= Void and then not a_name.is_empty
@@ -35,7 +35,7 @@ feature -- Access
 			result_not_void: Result /= Void
 		end
 	
-	has (a_name: STRING): BOOLEAN is
+	has (a_name: STRING): BOOLEAN
 			-- Is a element registered under `a_name'?
 		require
 			name_not_empty: a_name /= Void and then not a_name.is_empty
@@ -48,7 +48,7 @@ feature -- Access
 			
 feature -- Status setting
 
-	register (an_element: G; a_name: STRING) is
+	register (an_element: G; a_name: STRING)
 			-- Register `an_element' with `a_name'
 		require
 			name_not_empty: a_name /= Void and then not a_name.is_empty

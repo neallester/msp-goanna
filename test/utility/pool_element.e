@@ -1,4 +1,4 @@
-indexing
+note
 
 	description: "Empty object for testing POOL"
 	library:    "Goanna Utility Test Harnesses"

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Node types"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -12,40 +12,40 @@ class DOM_NODE_TYPE
 
 feature -- Constants
 
-	Element_node: INTEGER is 1
+	Element_node: INTEGER = 1
          -- The node is an Element
 
-	Attribute_node: INTEGER is 2
+	Attribute_node: INTEGER = 2
          -- The node is an Attr
 
-	Text_node: INTEGER is 3
+	Text_node: INTEGER = 3
          -- The node is a Text
 
-	Cdata_section_node: INTEGER is 4
+	Cdata_section_node: INTEGER = 4
          -- The node is a CDATASection
 
-	Entity_reference_node: INTEGER is 5
+	Entity_reference_node: INTEGER = 5
          -- The node is an EntityReference
 
-	Entity_node: INTEGER is 6
+	Entity_node: INTEGER = 6
          -- The node is an Entity
 
-	Processing_instruction_node: INTEGER is 7
+	Processing_instruction_node: INTEGER = 7
          -- The node is a ProcessingInstruction
 
-	Comment_node: INTEGER is 8
+	Comment_node: INTEGER = 8
          -- The node is a Comment
 
-	Document_node: INTEGER is 9
+	Document_node: INTEGER = 9
          -- The node is a Document
 
-	Document_type_node: INTEGER is 10
+	Document_type_node: INTEGER = 10
          -- The node is a DocumentType
 
-	Document_fragment_node: INTEGER is 11
+	Document_fragment_node: INTEGER = 11
          -- The node is a DocumentFragment
 
-	Notation_node: INTEGER is 12
+	Notation_node: INTEGER = 12
          -- The node is a Notation
 	
 end -- class DOM_NODE_TYPE

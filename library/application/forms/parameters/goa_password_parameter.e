@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Password input parameters"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-06-14 13:46:53 -0700 (Thu, 14 Jun 2007) $"
@@ -18,13 +18,13 @@ inherit
 
 feature
 
-	type: STRING is
+	type: STRING
 			-- Type of the input
 		once
 			Result := password_input_type
 		end
 
-	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- label for this parameter (intended for presentation to the user
 		do
 			Result := processing_result.session_status.message_catalog.password_label

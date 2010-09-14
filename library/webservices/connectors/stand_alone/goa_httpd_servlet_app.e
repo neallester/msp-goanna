@@ -1,4 +1,4 @@
-indexing
+note
 	description: "HTTP Servlet application."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "tools httpd"
@@ -34,7 +34,7 @@ inherit GOA_SERVLET_APPLICATION
 
 feature {NONE} -- Initialization
 
-	make (new_host: STRING; port, a_backlog: INTEGER) is
+	make (new_host: STRING; port, a_backlog: INTEGER)
 			-- Set up the server
 		local
 			a_hp: EPX_HOST_PORT
@@ -73,7 +73,7 @@ feature {NONE} -- Implementation
 	server_socket: GOA_HTTPD_SERVER_SOCKET
 			-- Socket for accepting of new connections
 
-	run is
+	run
 			-- Start serving requests
 		do
 			from

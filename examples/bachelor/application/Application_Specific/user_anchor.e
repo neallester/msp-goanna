@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that define the type of USER in the system"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"

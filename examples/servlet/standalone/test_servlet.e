@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Example servlet that outputs hard-coded HTML page."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples"
@@ -23,13 +23,13 @@ inherit
 			{NONE} all
 		end
 		
-creation
+create
 
 	init
 	
 feature -- Basic operations
 
-	do_get (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE) is
+	do_get (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE)
 			-- Process GET request
 		do
 			visit_count := visit_count + 1
@@ -38,7 +38,7 @@ feature -- Basic operations
 			modify_session (req, resp)
 		end
 	
-	do_post (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE) is
+	do_post (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE)
 			-- Process GET request
 		do
 			do_get (req, resp)
@@ -46,7 +46,7 @@ feature -- Basic operations
 		
 feature {NONE} -- Implementation
 
-	send_basic_html (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE) is
+	send_basic_html (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE)
 		local
 			parameter_names: DS_LINEAR [STRING]
 			header_names: DS_LINEAR [STRING]
@@ -83,7 +83,7 @@ feature {NONE} -- Implementation
 
 	visit_count: INTEGER
 		
-	set_cookie (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE) is
+	set_cookie (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE)
 			-- Set/unset a cookie for this session	
 		local
 			found: BOOLEAN	
@@ -117,7 +117,7 @@ feature {NONE} -- Implementation
 			resp.add_cookie (cookie)
 		end
 	
-	modify_session (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE) is
+	modify_session (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE)
 			-- Add an attribute to session and display it if it is there.	
 		local
 			str: STRING

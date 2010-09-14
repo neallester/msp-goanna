@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XMLRPC Example Address Book Client."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples xmlrpc addressbook"
@@ -29,13 +29,13 @@ inherit
 			copy, default_create
 		end
 		
-creation
+create
 
 	start
 
 feature -- Initialization
 
-	start is
+	start
 			-- Create the application, set up `main_window'
 			-- and then launch the application.
 		do
@@ -54,7 +54,7 @@ feature -- Initialization
 			
 feature -- Basic routines
 
-	add is
+	add
 			-- Add new name and address to address book
 		local
 			call: XRPC_CALL
@@ -86,7 +86,7 @@ feature -- Basic routines
 			end				
 		end
 	
-	exists: BOOLEAN is
+	exists: BOOLEAN
 			-- Check if selected name already exists in address book
 		local
 			call: XRPC_CALL
@@ -115,7 +115,7 @@ feature -- Basic routines
 			end	
 		end
 		
-	remove is
+	remove
 			-- Remove name (and its address) from address book.
 			-- NOTE: This will fail if an attempt is made to remove a name
 			-- that doesn't exist. Used to demonstrate assertion faults.
@@ -140,7 +140,7 @@ feature -- Basic routines
 			end	
 		end	
 		
-	get is
+	get
 			-- Get address for selected name
 		local
 			call: XRPC_CALL
@@ -169,7 +169,7 @@ feature -- Basic routines
 			end
 		end	
 		
-	refresh is
+	refresh
 			-- Collect all names and refresh UI
 		local
 			call: XRPC_CALL
@@ -218,7 +218,7 @@ feature {NONE} -- Implementation
 	argument_error: BOOLEAN
 			-- Did an error occur parsing arguments?
 			
-	parse_arguments is
+	parse_arguments
 			-- Parse the command line arguments and store appropriate settings
 		do
 			if Arguments.argument_count < 2 then
@@ -235,13 +235,13 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	print_usage is
+	print_usage
 			-- Display usage information
 		do
 			print ("Usage: addressbook <host> <port-number>%R%N")
 		end
 
-	update_error_message (message: STRING) is
+	update_error_message (message: STRING)
 			-- Update error message in main window
 		require
 			message_exists: message /= Void

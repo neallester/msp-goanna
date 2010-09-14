@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Topics that are page sequences and domain_with_children"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -29,19 +29,19 @@ inherit
 
 feature
 
-	initialize is
+	initialize
 		do
 			precursor {TIME_STAMPED_DOMAIN} 
 			precursor {DOMAIN_WITH_CHILDREN} 
 			precursor {BRANCHING_PAGE_SEQUENCE} 
 		end
 
-	update is
+	update
 		do
 			precursor {TIME_STAMPED_DOMAIN} 
 		end
 
-	initialized: BOOLEAN is
+	initialized: BOOLEAN
 		do
 			result := precursor {TIME_STAMPED_DOMAIN}  and precursor {DOMAIN_WITH_CHILDREN} and precursor {BRANCHING_PAGE_SEQUENCE} 
 		end

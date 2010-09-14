@@ -1,4 +1,4 @@
-indexing
+note
 	description: "An element in the user_list"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -26,7 +26,7 @@ feature {SESSION, USER_LIST, LOGIN_SEQUENCE}
 	file_name : STRING
 		-- The file name where the user's data is stored.
 
-	set_password (new_password : STRING) is
+	set_password (new_password : STRING)
 		-- Set password
 		require
 			valid_new_password : new_password /= Void
@@ -38,7 +38,7 @@ feature {SESSION, USER_LIST, LOGIN_SEQUENCE}
 
 feature {NONE} -- Implementation and Creation 
 
-	make (new_user_id, new_password, new_file_name : STRING) is
+	make (new_user_id, new_password, new_file_name : STRING)
 		require
 			valid_new_user_id : new_user_id /= Void
 			new_user_id_not_empty : not new_user_id.is_empty

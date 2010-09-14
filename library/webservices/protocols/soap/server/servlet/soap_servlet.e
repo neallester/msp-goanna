@@ -1,4 +1,4 @@
-indexing
+note
 	description: "SOAP RPC/Messaging Servlet"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -33,13 +33,13 @@ inherit
 			{NONE} all
 		end
 		
-creation
+create
 
 	init
 	
 feature -- Initialisation
 
-	init (config: SERVLET_CONFIG) is
+	init (config: SERVLET_CONFIG)
 			-- Initialise encoding registry
 		do
 			Precursor (config)
@@ -48,7 +48,7 @@ feature -- Initialisation
 		
 feature -- Basic operations
 
-	do_get (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE) is
+	do_get (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE)
 			-- Process GET request
 		do			
 			resp.set_content_type("text/html");
@@ -58,7 +58,7 @@ feature -- Basic operations
 			resp.send ("</p></body></html>");
 		end
 	
-	do_post (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE) is
+	do_post (req: HTTP_SERVLET_REQUEST; resp: HTTP_SERVLET_RESPONSE)
 			-- Process POST request
 		local
 			service_name, action: STRING
@@ -132,8 +132,8 @@ feature {NONE} -- Implementation
 			-- Xsi version. This is used to send the reponse using the same 
 			-- schema version.
 			
-	Xsi_1999: INTEGER is 1
-	Xsi_2001: INTEGER is 2
+	Xsi_1999: INTEGER = 1
+	Xsi_2001: INTEGER = 2
 	
 	last_error: STRING
 			-- Last error message
@@ -141,10 +141,10 @@ feature {NONE} -- Implementation
 	fault: SOAP_FAULT
 			-- Fault element created for an error. Void if no error.
 
-	Soap_service: STRING is "service"
-	Soap_action: STRING is "action"
+	Soap_service: STRING = "service"
+	Soap_action: STRING = "action"
 	
-	parse_envelope (req: HTTP_SERVLET_REQUEST) is
+	parse_envelope (req: HTTP_SERVLET_REQUEST)
 			-- Parse SOAP envelope from request data. Will set 'valid_envelope' 
 			-- if the request contained a valid SOAP envelope. If an error is
 			-- detected then a SOAP_FAULT element will be created that represents
@@ -171,7 +171,7 @@ feature {NONE} -- Implementation
 			fault_exists_if_invalid: not valid_envelope implies fault /= Void
 		end
 		
-	build_response (service_name, action: STRING; last_result: ANY): STRING is
+	build_response (service_name, action: STRING; last_result: ANY): STRING
 			-- Build response for 'action' called on 'service_name' with
 			-- the result 'last_result'.
 		require
@@ -229,7 +229,7 @@ feature {NONE} -- Implementation
 			Result := serialize_dom_tree (doc)
 		end
 		
-	build_fault_response: STRING is
+	build_fault_response: STRING
 			-- Build fault response
 		require
 			fault_exists: fault /= Void
@@ -275,7 +275,7 @@ feature {NONE} -- Implementation
 			Result := serialize_dom_tree (doc)
 		end
 		
-	serialize_dom_tree (document: DOM_DOCUMENT): STRING is
+	serialize_dom_tree (document: DOM_DOCUMENT): STRING
 			-- Display dom tree to standard out.
 		require
 			document_exists: document /= Void	
@@ -290,12 +290,12 @@ feature {NONE} -- Implementation
 			Result := string_stream.to_string
 		end
 	
-	serializer_factory: DOM_SERIALIZER_FACTORY is
+	serializer_factory: DOM_SERIALIZER_FACTORY
 		once
 			create Result
 		end
 
-	extract_service_name (first: DOM_ELEMENT): STRING is
+	extract_service_name (first: DOM_ELEMENT): STRING
 			-- Find the service name in the envelope's first body entry. Void if not found.
 		require
 			first_exists: first /= Void
@@ -303,7 +303,7 @@ feature {NONE} -- Implementation
 			Result := first.namespace_uri.out
 		end
 		
-	extract_action_name (first: DOM_ELEMENT): STRING is
+	extract_action_name (first: DOM_ELEMENT): STRING
 			-- Find the action name in the envelope's first body entry. Void if not found.
 		require
 			first_exists: first /= Void
@@ -311,7 +311,7 @@ feature {NONE} -- Implementation
 			Result := first.local_name.out
 		end
 	
-	extract_parameters (body_elem: DOM_ELEMENT): TUPLE [ANY] is
+	extract_parameters (body_elem: DOM_ELEMENT): TUPLE [ANY]
 			-- Unserialize parameters from the envelope body and construct
 			-- appropriate argument tuple for the agent call.
 		require
@@ -389,7 +389,7 @@ feature {NONE} -- Implementation
 			end
 		end		
 		
-	marshall_return_element (doc: DOM_DOCUMENT; last_result: ANY): DOM_ELEMENT is
+	marshall_return_element (doc: DOM_DOCUMENT; last_result: ANY): DOM_ELEMENT
 			-- Determine type of 'last_result' and create return element
 			-- with appropriate xsi:type and marshalled value.
 		require
@@ -411,7 +411,7 @@ feature {NONE} -- Implementation
 			discard := Result.append_child (value_node)
 		end
 	
-	find_encoding_style (body_elem: DOM_ELEMENT): STRING is
+	find_encoding_style (body_elem: DOM_ELEMENT): STRING
 			-- Search 'body_elem' and its parents for encoding style attribute
 		require
 			first_exists: body_elem /= Void
@@ -435,9 +435,9 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	Soap_action_header: STRING is "HTTP_SOAPACTION"
+	Soap_action_header: STRING = "HTTP_SOAPACTION"
 
-	validate_request_header (req: HTTP_SERVLET_REQUEST) is
+	validate_request_header (req: HTTP_SERVLET_REQUEST)
 			-- Validate the HTTP request for valid header elements for a 
 			-- SOAP request.
 		require

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "The content of a comment, i.e., all the characters between %
       	%the starting '<!--' and ending '-->'. Note that this is %
       	%the definition of a comment in XML, and, in practice, HTML, %
@@ -21,14 +21,14 @@ inherit
 feature -- from DOM_NODE
 
 
-	node_type: INTEGER is
+	node_type: INTEGER
 		once
 			Result := Comment_node
 		end
 
-	node_name: DOM_STRING is
-		once
-			!! Result.make_from_string ("#comment")
+	node_name: DOM_STRING
+		once 
+			create Result.make_from_string ("#comment")
 		end
 
 end -- class DOM_COMMENT

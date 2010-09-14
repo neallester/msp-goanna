@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that define log level constants"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "logging"
@@ -15,49 +15,49 @@ obsolete "Use log4e instead"
 
 feature -- Log levels
 
-	Emergency: INTEGER is 0
+	Emergency: INTEGER = 0
 		-- Urgent condition that requires immediate attention and indicates
 		-- that the system is no longer functioning.
 			
-	Alert: INTEGER is 1
+	Alert: INTEGER = 1
 		-- A condition that should be corrected immediately.
 		
-	Critical: INTEGER is 2
+	Critical: INTEGER = 2
 		-- Critical conditions.
 		
-	Error: INTEGER is 3
+	Error: INTEGER = 3
 		-- Errors that have been correctly handled.
 		
-	Warning: INTEGER is 4
+	Warning: INTEGER = 4
 		-- Warning messages.
 		
-	Notice: INTEGER is 5
+	Notice: INTEGER = 5
 		-- Conditions that are not error conditions, but should possibly be
 		-- handled specially.
 		
-	Info: INTEGER is 6
+	Info: INTEGER = 6
 		-- Informational messages
 		
-	Debug0: INTEGER is 7
+	Debug0: INTEGER = 7
 		-- Messages that contain information normally of use only when debugging.
 		-- This is the basic level of debugging. Levels Debug1 through Debug9
 		-- are defined to allow more debugging messages.
 		
-	Debug1: INTEGER is 8
-	Debug2: INTEGER is 9
-	Debug3: INTEGER is 10
-	Debug4: INTEGER is 11
-	Debug5: INTEGER is 12
-	Debug6: INTEGER is 13
-	Debug7: INTEGER is 14
-	Debug8: INTEGER is 15
-	Debug9: INTEGER is 16
+	Debug1: INTEGER = 8
+	Debug2: INTEGER = 9
+	Debug3: INTEGER = 10
+	Debug4: INTEGER = 11
+	Debug5: INTEGER = 12
+	Debug6: INTEGER = 13
+	Debug7: INTEGER = 14
+	Debug8: INTEGER = 15
+	Debug9: INTEGER = 16
 	
-	Debugtmp: INTEGER is 17
+	Debugtmp: INTEGER = 17
 		-- Temporary debugging; should be contained within a debug statement so that
 		-- it is not left in shipped code.
 		
-	log_level_name (level: INTEGER): STRING is
+	log_level_name (level: INTEGER): STRING
 			-- Symbolic name for log 'level'.
 		require
 			valid_log_level: valid_log_level (level)
@@ -65,7 +65,7 @@ feature -- Log levels
 			Result := symbolic_log_level_names.item (level + 1)	
 		end
 	
-	valid_log_level (level: INTEGER): BOOLEAN is
+	valid_log_level (level: INTEGER): BOOLEAN
 			-- Is 'level' a valid log level?
 		do
 			Result := level >= 0 and level <= Debugtmp
@@ -73,7 +73,7 @@ feature -- Log levels
 		
 feature {NONE} -- Implementation
 
-	symbolic_log_level_names: ARRAY [STRING] is
+	symbolic_log_level_names: ARRAY [STRING]
 			-- Symbolic names for log levels.
 		once
 			Result := << "EMERGENCY", "ALERT", "CRITICAL", "ERROR", "WARNING", "NOTICE", "INFO",

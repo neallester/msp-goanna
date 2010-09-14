@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Callback server socket that processes servlet requests."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "tools httpd"
@@ -45,7 +45,7 @@ create
 
 feature
 
-	multiplexer_read_callback (a_multiplexer: EPX_SOCKET_MULTIPLEXER) is
+	multiplexer_read_callback (a_multiplexer: EPX_SOCKET_MULTIPLEXER)
 			-- this routine is called if there is data ready for
 			-- reading on our socket
 		local
@@ -99,7 +99,7 @@ feature
 
 feature {NONE}
 
-	receive_request: STRING is
+	receive_request: STRING
 			-- Recieve request from client
 		local
 			done: BOOLEAN
@@ -135,7 +135,7 @@ feature {NONE}
 	content_length_found: BOOLEAN
 	content_length, end_header_index: INTEGER
 
-	check_request (buffer: STRING): BOOLEAN is
+	check_request (buffer: STRING): BOOLEAN
 			-- Check request to determine if all headers and body have been read
 		require
 			buffer /= Void
@@ -176,7 +176,7 @@ feature {NONE}
 	socket_ok: BOOLEAN
 			-- Was last socket operation successful?
 
-	handle_missing_servlet (resp: GOA_HTTPD_SERVLET_RESPONSE) is
+	handle_missing_servlet (resp: GOA_HTTPD_SERVLET_RESPONSE)
 			-- Send error page indicating missing servlet
 		require
 			resp_exists: resp /= Void
@@ -184,7 +184,7 @@ feature {NONE}
 			resp.send_error (Sc_not_found)
 		end
 
-	check_socket_error (message: STRING) is
+	check_socket_error (message: STRING)
 			-- Check for socket error and print
 		require
 			message_exists: message /= Void

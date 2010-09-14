@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Shared service registry."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -12,7 +12,7 @@ class GOA_SHARED_SERVICE_REGISTRY
 
 feature -- Access
 
-	registry: GOA_SERVICE_REGISTRY is
+	registry: GOA_SERVICE_REGISTRY
 			-- Shared registry
 		once
 			create Result.make

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Rows of table"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -20,13 +20,13 @@ inherit
 			html_begin_element, html_end_element
 		end
 
-creation
+create
 
 	make
 
 feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER}
 
-	add_cell (cell_to_add : TABLE_CELL) is
+	add_cell (cell_to_add : TABLE_CELL)
 		-- add cell_to_add to the row
 		require
 			valid_cell_to_add : cell_to_add /= Void
@@ -38,12 +38,12 @@ feature {PAGE, PAGE_FACTORY, CONTENT_CONTAINER}
 
 feature {NONE} -- Implement deferred features
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			Result := "<tr>" + new_line
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			Result := "</tr>"
 		end

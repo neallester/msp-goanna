@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Introspection services for XML-RPC servers."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -37,7 +37,7 @@ create
 	
 feature -- Access
 
-	list_methods: ARRAY [STRING] is
+	list_methods: ARRAY [STRING]
 			-- List all available methods
 		local
 			service_cursor: DS_HASH_TABLE_CURSOR [GOA_SERVICE_PROXY, STRING]
@@ -75,7 +75,7 @@ feature -- Access
 			method_list_exists: Result /= Void
 		end
 	
-	method_signature (method_name: STRING): ARRAY [ARRAY [STRING]] is
+	method_signature (method_name: STRING): ARRAY [ARRAY [STRING]]
 			-- List the signatures for the method named 'method_name'.
 			-- TIt returns an array of possible signatures for this method. 
 			-- A signature is an array of types. The first of these types is 
@@ -98,7 +98,7 @@ feature -- Access
 			signature_exists: Result /= Void
 		end
 	
-	method_help (method_name: STRING): STRING is
+	method_help (method_name: STRING): STRING
 			-- Return the documentation for the named method.
 		require
 			method_name_exists: method_name /= Void
@@ -115,7 +115,7 @@ feature -- Access
 			help_exists: Result /= Void
 		end
 		
-	has_method (method_name: STRING): BOOLEAN_REF is
+	has_method (method_name: STRING): BOOLEAN_REF
 			-- Is a service registered with the name 'method_name'?
 			-- This routine is a non-standard extension to the XML-RPC 
 			-- introspection API.
@@ -138,7 +138,7 @@ feature -- Access
 			result_exists: Result /= Void
 		end
 		
-	multi_call (calls: ARRAY [ANY]): ARRAY [ANY] is
+	multi_call (calls: ARRAY [ANY]): ARRAY [ANY]
 			-- Execute all 'calls' and return results in an array.
 		require
 			calls_exist: calls /= Void
@@ -231,7 +231,7 @@ feature -- Access
 
 feature -- Creation
 
-	new_tuple (a_name: STRING): TUPLE is
+	new_tuple (a_name: STRING): TUPLE
 			--	Tuple of default-valued arguments to pass to call `a_name'.
 		local
 			a_tuple: TUPLE []
@@ -251,21 +251,21 @@ feature -- Creation
 
 feature {NONE} -- Implementation
 
-	List_methods_name: STRING is "listMethods"
+	List_methods_name: STRING = "listMethods"
 			-- Name of `list_methods' service
 
-	Method_help_name: STRING is "methodHelp"
+	Method_help_name: STRING = "methodHelp"
 			-- Name of `method_help' service
 
-	Has_method_name: STRING is "hasMethod"
+	Has_method_name: STRING = "hasMethod"
 			-- Name of `has_method' service
 
-	Multi_call_name: STRING is "multiCall"
+	Multi_call_name: STRING = "multiCall"
 			-- Name of `multi_call' service
 				
 feature {NONE} -- Initialisation
 
-	self_register is
+	self_register
 			-- Register all actions for this service
 		do		
 			register_with_help (agent list_methods, List_methods_name, "Enumerate all methods implemented by this server")

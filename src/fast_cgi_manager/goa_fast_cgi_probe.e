@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Probes a Goanna FastCgi Servlet Application"
 	author: "Neal Lester"
 	date: "$Date$"
@@ -21,7 +21,7 @@ create
 
 feature -- Status
 
-	is_connected: BOOLEAN is
+	is_connected: BOOLEAN
 		do
 			Result := socket /= Void and then socket.is_open_write
 		end
@@ -32,7 +32,7 @@ feature -- Status
 
 feature -- Probe
 
-	connect is
+	connect
 		local
 			exception_occurred: BOOLEAN
 		do
@@ -50,7 +50,7 @@ feature -- Probe
 			Retry
 		end
 
-	get (a_page: STRING): STRING is
+	get (a_page: STRING): STRING
 		require
 			valid_a_page: a_page /= Void
 			no_leading_slash: not (a_page.item (1) = '/')
@@ -108,7 +108,7 @@ feature -- Probe
 
 feature -- Facilities
 
-	prune_line (a_line: STRING) is
+	prune_line (a_line: STRING)
 			-- a_line cleaned of hidden characters
 		require
 			valid_a_line: a_line /= Void
@@ -131,7 +131,7 @@ feature -- Facilities
 
 feature {NONE} -- Creation
 
-	make_local_host (a_port: INTEGER; a_script_path: STRING) is
+	make_local_host (a_port: INTEGER; a_script_path: STRING)
 		require
 			valid_a_script_path: a_script_path /= Void
 			is_legal_script_path: is_legal_script_path (a_script_path)
@@ -143,7 +143,7 @@ feature {NONE} -- Creation
 			make_from_host (host, a_port, a_script_path)
 		end
 
-	make (a_ip_address: ARRAY [INTEGER]; a_port: INTEGER; a_script_path: STRING) is
+	make (a_ip_address: ARRAY [INTEGER]; a_port: INTEGER; a_script_path: STRING)
 			-- creation
 		require
 			valid_a_ip_address: a_ip_address /= Void
@@ -160,7 +160,7 @@ feature {NONE} -- Creation
 			make_from_host (host, a_port, a_script_path)
 		end
 
-	make_from_host (host: EPX_HOST; a_port: INTEGER; a_script_path: STRING) is
+	make_from_host (host: EPX_HOST; a_port: INTEGER; a_script_path: STRING)
 		require
 			valid_host: host /= Void
 			valid_a_script_path: a_script_path /= Void

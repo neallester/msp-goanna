@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Goanna Required Access to Objects associated with the user session; SESSION_STATUS should inherit from this class"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-07-12 10:36:43 -0700 (Thu, 12 Jul 2007) $"
@@ -24,7 +24,7 @@ feature -- Server Information
 
 feature -- Access
 
-	message_catalog: MESSAGE_CATALOG is
+	message_catalog: MESSAGE_CATALOG
 			-- System messages displayed to the user
 		once
 			create Result
@@ -42,14 +42,14 @@ feature -- Access
 
 feature -- Status Setting
 
-	set_secure_page (new_secure_page: GOA_DISPLAYABLE_SERVLET) is
+	set_secure_page (new_secure_page: GOA_DISPLAYABLE_SERVLET)
 		do
 			secure_page := new_secure_page
 		ensure
 			secure_page_updated: secure_page = new_secure_page
 		end
 
-	set_server_name (new_server_name: STRING) is
+	set_server_name (new_server_name: STRING)
 			-- Set server_name to new_server_name
 		require
 			valid_new_server_name: new_server_name /= Void and then not new_server_name.is_empty
@@ -59,13 +59,13 @@ feature -- Status Setting
 			server_name_updated: server_name = new_server_name
 		end
 
-	set_has_served_a_page is
+	set_has_served_a_page
 			-- Set has_served_a_page to true
 		do
 			has_served_a_page := True
 		end
 
-	set_virtual_domain_host (new_virtual_domain_host: VIRTUAL_DOMAIN_HOST) is
+	set_virtual_domain_host (new_virtual_domain_host: VIRTUAL_DOMAIN_HOST)
 			-- Set virtual_domain_host for this session
 		require
 			valid_new_virtual_domain_host: new_virtual_domain_host /= Void
@@ -75,7 +75,7 @@ feature -- Status Setting
 
 feature {GOA_APPLICATION_SERVLET} -- Initialization
 
-	initialize (processing_result: REQUEST_PROCESSING_RESULT) is
+	initialize (processing_result: REQUEST_PROCESSING_RESULT)
 			-- Extract session status from req; initializing if necessary
 		require
 			valid_processing_result: processing_result /= Void
@@ -99,7 +99,7 @@ feature {GOA_APPLICATION_SERVLET} -- Initialization
 
 feature {NONE}
 
-	make is
+	make
 			-- Creation
 		do
 

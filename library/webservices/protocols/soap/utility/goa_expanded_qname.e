@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a fully qualified name."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -35,7 +35,7 @@ create
 
 feature -- Initialization
 
-	make (new_namespace, new_local_name: STRING) is
+	make (new_namespace, new_local_name: STRING)
 			-- Initialise a new fully qualified name with 'namespace'
 			-- and 'localName
 		require
@@ -46,7 +46,7 @@ feature -- Initialization
 			local_name := new_local_name
 		end
 
-	make_from_node (a_node: XM_NAMED_NODE) is
+	make_from_node (a_node: XM_NAMED_NODE)
 			-- Initialise a new fully qualified name from the namespace
 			-- and localname of 'node'.
 		require
@@ -56,7 +56,7 @@ feature -- Initialization
 			local_name := a_node.name
 		end
 
-	make_from_qname (an_expanded_qname: STRING) is
+	make_from_qname (an_expanded_qname: STRING)
 			-- Initialise a new fully qualified name from `an_expanded_qname'
 		require
 			qname_exists: an_expanded_qname /= Void
@@ -87,7 +87,7 @@ feature -- Access
 	local_name: STRING
 			-- Local part of this qualified name
 
-	hash_code: INTEGER is
+	hash_code: INTEGER
 			-- Hash code value
 		do
 			Result := (namespace.hash_code.out + "_" + local_name.hash_code.out).hash_code
@@ -95,7 +95,7 @@ feature -- Access
 
 feature -- Status report
 
-	same_qname (other: like Current): BOOLEAN is
+	same_qname (other: like Current): BOOLEAN
 			-- Does `other' represent the same expanded QName?
 		do
 			Result := STRING_.same_string (local_name, other.local_name)
@@ -104,7 +104,7 @@ feature -- Status report
 
 feature -- Element change
 
-	set_namespace (new_namespace: STRING) is
+	set_namespace (new_namespace: STRING)
 			-- Set 'namespace' to 'new_namespace'
 		require
 			namespace_exists: new_namespace /= Void
@@ -114,7 +114,7 @@ feature -- Element change
 			namespace_set: namespace = new_namespace
 		end
 		
-	set_local_name (new_local_name: STRING) is
+	set_local_name (new_local_name: STRING)
 			-- Set 'local_name' to 'new_local_name'
 		require
 			local_name_exists: new_local_name /= Void
@@ -126,7 +126,7 @@ feature -- Element change
 
 feature -- Comparison
 
-	is_equal (other: like Current): BOOLEAN is
+	is_equal (other: like Current): BOOLEAN
 			-- Is `other' attached to an object considered
 			-- equal to current object?
 		do
@@ -137,7 +137,7 @@ feature -- Comparison
 		
 feature -- Transformation
 
-	out: STRING is
+	out: STRING
 			-- String representation of this qualified name
 		do
 			if namespace.is_empty then
@@ -149,7 +149,7 @@ feature -- Transformation
 			out_exists: Result /= Void
 		end
 	
-	matches (a_node: XM_NAMED_NODE): BOOLEAN is
+	matches (a_node: XM_NAMED_NODE): BOOLEAN
 			-- Does this qualified name match the qualified name of 'node'?
 		require
 			node_exists: a_node /= Void

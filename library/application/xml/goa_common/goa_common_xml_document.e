@@ -1,5 +1,5 @@
 
-indexing
+note
 
 	description: "An XML Document conforming with the xmlns:goa_common schema"
 	author: ""
@@ -23,7 +23,7 @@ inherit
 	
 feature -- Adding Elements
 
-	start_paragraph_element (new_class: STRING; ) is
+	start_paragraph_element (new_class: STRING; )
 			-- Start a new goa_common:paragraph element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -36,7 +36,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	add_text_item_element (choice_N7N21N0_name_code: INTEGER; choice_N7N21N0_value: STRING; text_to_add: STRING) is
+	add_text_item_element (choice_N7N21N0_name_code: INTEGER; choice_N7N21N0_value: STRING; text_to_add: STRING)
 			--Add a new goa_common:text_item element to the xml document
 			-- Use the attribute name code xml_null_code to indicate a null attribute for the choice
 		require
@@ -51,7 +51,7 @@ feature -- Adding Elements
 			current_element_contents_updated: current_element_contents.count = (old current_element_contents.count + 1) and current_element_contents @ current_element_contents.upper = text_item_element_code
 		end
 
-	start_division_element (new_class: STRING; ) is
+	start_division_element (new_class: STRING; )
 			-- Start a new goa_common:division element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -64,7 +64,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	start_ordered_list_element (new_class: STRING; ) is
+	start_ordered_list_element (new_class: STRING; )
 			-- Start a new goa_common:ordered_list element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -77,7 +77,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	start_list_item_element (new_class: STRING; ) is
+	start_list_item_element (new_class: STRING; )
 			-- Start a new goa_common:list_item element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -90,7 +90,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	start_unordered_list_element (new_class: STRING; ) is
+	start_unordered_list_element (new_class: STRING; )
 			-- Start a new goa_common:unordered_list element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -103,7 +103,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	start_hyperlink_element (new_class: STRING; new_url: STRING; ) is
+	start_hyperlink_element (new_class: STRING; new_url: STRING; )
 			-- Start a new goa_common:hyperlink element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -118,7 +118,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	add_popup_hyperlink_element (new_class: STRING; new_url: STRING; text_to_add: STRING) is
+	add_popup_hyperlink_element (new_class: STRING; new_url: STRING; text_to_add: STRING)
 			--Add a new goa_common:popup_hyperlink element to the xml document
 		require
 			ok_to_add_popup_hyperlink: ok_to_add_element_or_text (popup_hyperlink_element_code)
@@ -133,7 +133,7 @@ feature -- Adding Elements
 			current_element_contents_updated: current_element_contents.count = (old current_element_contents.count + 1) and current_element_contents @ current_element_contents.upper = popup_hyperlink_element_code
 		end
 
-	start_table_element (new_class: STRING; new_cellspacing: STRING; new_cellpadding: STRING; new_summary: STRING; ) is
+	start_table_element (new_class: STRING; new_cellspacing: STRING; new_cellpadding: STRING; new_summary: STRING; )
 			-- Start a new goa_common:table element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -150,7 +150,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	start_header_element (new_class: STRING; ) is
+	start_header_element (new_class: STRING; )
 			-- Start a new goa_common:header element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -163,7 +163,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	start_row_element (new_class: STRING; ) is
+	start_row_element (new_class: STRING; )
 			-- Start a new goa_common:row element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -176,7 +176,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	start_cell_element (new_class: STRING; new_colspan: STRING; ) is
+	start_cell_element (new_class: STRING; new_colspan: STRING; )
 			-- Start a new goa_common:cell element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -191,7 +191,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	start_footer_element (new_class: STRING; ) is
+	start_footer_element (new_class: STRING; )
 			-- Start a new goa_common:footer element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -204,7 +204,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	start_body_element (new_class: STRING; ) is
+	start_body_element (new_class: STRING; )
 			-- Start a new goa_common:body element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -217,7 +217,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	add_hidden_element (new_name: STRING; new_value: STRING; ) is
+	add_hidden_element (new_name: STRING; new_value: STRING; )
 			--Add a new goa_common:hidden element to the xml document
 		require
 			ok_to_add_hidden: ok_to_add_element_or_text (hidden_element_code)
@@ -232,7 +232,7 @@ feature -- Adding Elements
 			current_element_contents_updated: current_element_contents.count = (old current_element_contents.count + 1) and current_element_contents @ current_element_contents.upper = hidden_element_code
 		end
 
-	add_input_element (new_class: STRING; new_name: STRING; new_type: STRING; new_disabled: STRING; new_maxlength: STRING; new_size: STRING; new_value: STRING; ) is
+	add_input_element (new_class: STRING; new_name: STRING; new_type: STRING; new_disabled: STRING; new_maxlength: STRING; new_size: STRING; new_value: STRING; )
 			--Add a new goa_common:input element to the xml document
 		require
 			ok_to_add_input: ok_to_add_element_or_text (input_element_code)
@@ -254,7 +254,7 @@ feature -- Adding Elements
 			current_element_contents_updated: current_element_contents.count = (old current_element_contents.count + 1) and current_element_contents @ current_element_contents.upper = input_element_code
 		end
 
-	add_submit_element (new_class: STRING; new_name: STRING; new_value: STRING; new_on_click_script: STRING; ) is
+	add_submit_element (new_class: STRING; new_name: STRING; new_value: STRING; new_on_click_script: STRING; )
 			--Add a new goa_common:submit element to the xml document
 		require
 			ok_to_add_submit: ok_to_add_element_or_text (submit_element_code)
@@ -271,7 +271,7 @@ feature -- Adding Elements
 			current_element_contents_updated: current_element_contents.count = (old current_element_contents.count + 1) and current_element_contents @ current_element_contents.upper = submit_element_code
 		end
 
-	add_radio_element (new_class: STRING; new_name: STRING; new_value: STRING; new_checked: STRING; new_disabled: STRING; ) is
+	add_radio_element (new_class: STRING; new_name: STRING; new_value: STRING; new_checked: STRING; new_disabled: STRING; )
 			--Add a new goa_common:radio element to the xml document
 		require
 			ok_to_add_radio: ok_to_add_element_or_text (radio_element_code)
@@ -291,7 +291,7 @@ feature -- Adding Elements
 			current_element_contents_updated: current_element_contents.count = (old current_element_contents.count + 1) and current_element_contents @ current_element_contents.upper = radio_element_code
 		end
 
-	add_checkbox_element (new_class: STRING; new_name: STRING; new_checked: STRING; new_disabled: STRING; new_on_click_script: STRING; ) is
+	add_checkbox_element (new_class: STRING; new_name: STRING; new_checked: STRING; new_disabled: STRING; new_on_click_script: STRING; )
 			--Add a new goa_common:checkbox element to the xml document
 		require
 			ok_to_add_checkbox: ok_to_add_element_or_text (checkbox_element_code)
@@ -310,7 +310,7 @@ feature -- Adding Elements
 			current_element_contents_updated: current_element_contents.count = (old current_element_contents.count + 1) and current_element_contents @ current_element_contents.upper = checkbox_element_code
 		end
 
-	start_select_element (new_class: STRING; new_name: STRING; new_disabled: STRING; new_multiple: STRING; new_size: STRING; new_on_click_script: STRING; ) is
+	start_select_element (new_class: STRING; new_name: STRING; new_disabled: STRING; new_multiple: STRING; new_size: STRING; new_on_click_script: STRING; )
 			-- Start a new goa_common:select element to the xml document
 			-- Use end_current_element when done adding sub-elements to this element
 		require
@@ -330,7 +330,7 @@ feature -- Adding Elements
 			current_element_content_is_empty: current_element_contents.is_empty
 		end
 
-	add_option_element (new_value: STRING; new_selected: STRING; text_to_add: STRING) is
+	add_option_element (new_value: STRING; new_selected: STRING; text_to_add: STRING)
 			--Add a new goa_common:option element to the xml document
 		require
 			ok_to_add_option: ok_to_add_element_or_text (option_element_code)
@@ -345,7 +345,7 @@ feature -- Adding Elements
 			current_element_contents_updated: current_element_contents.count = (old current_element_contents.count + 1) and current_element_contents @ current_element_contents.upper = option_element_code
 		end
 
-	add_text_area_element (new_class: STRING; new_name: STRING; new_rows: STRING; new_columns: STRING; text_to_add: STRING) is
+	add_text_area_element (new_class: STRING; new_name: STRING; new_rows: STRING; new_columns: STRING; text_to_add: STRING)
 			--Add a new goa_common:text_area element to the xml document
 		require
 			ok_to_add_text_area: ok_to_add_element_or_text (text_area_element_code)
@@ -363,7 +363,7 @@ feature -- Adding Elements
 			current_element_contents_updated: current_element_contents.count = (old current_element_contents.count + 1) and current_element_contents @ current_element_contents.upper = text_area_element_code
 		end
 
-	add_image_element (new_class: STRING; new_url: STRING; new_alternate_text: STRING; new_height: STRING; new_width: STRING; ) is
+	add_image_element (new_class: STRING; new_url: STRING; new_alternate_text: STRING; new_height: STRING; new_width: STRING; )
 			--Add a new goa_common:image element to the xml document
 		require
 			ok_to_add_image: ok_to_add_element_or_text (image_element_code)
@@ -383,7 +383,7 @@ feature -- Adding Elements
 			current_element_contents_updated: current_element_contents.count = (old current_element_contents.count + 1) and current_element_contents @ current_element_contents.upper = image_element_code
 		end
 
-	add_tool_tip_element (new_class: STRING; text_to_add: STRING) is
+	add_tool_tip_element (new_class: STRING; text_to_add: STRING)
 			--Add a new goa_common:tool_tip element to the xml document
 		require
 			ok_to_add_tool_tip: ok_to_add_element_or_text (tool_tip_element_code)
@@ -401,99 +401,99 @@ feature -- Adding Elements
 
 feature -- Element Tags
 
-		paragraph_element_tag: STRING is 
+		paragraph_element_tag: STRING 
 		deferred
 		end
 
-	text_item_element_tag: STRING is 
+	text_item_element_tag: STRING 
 		deferred
 		end
 
-	division_element_tag: STRING is 
+	division_element_tag: STRING 
 		deferred
 		end
 
-	ordered_list_element_tag: STRING is 
+	ordered_list_element_tag: STRING 
 		deferred
 		end
 
-	list_item_element_tag: STRING is 
+	list_item_element_tag: STRING 
 		deferred
 		end
 
-	unordered_list_element_tag: STRING is 
+	unordered_list_element_tag: STRING 
 		deferred
 		end
 
-	hyperlink_element_tag: STRING is 
+	hyperlink_element_tag: STRING 
 		deferred
 		end
 
-	popup_hyperlink_element_tag: STRING is 
+	popup_hyperlink_element_tag: STRING 
 		deferred
 		end
 
-	table_element_tag: STRING is 
+	table_element_tag: STRING 
 		deferred
 		end
 
-	header_element_tag: STRING is 
+	header_element_tag: STRING 
 		deferred
 		end
 
-	row_element_tag: STRING is 
+	row_element_tag: STRING 
 		deferred
 		end
 
-	cell_element_tag: STRING is 
+	cell_element_tag: STRING 
 		deferred
 		end
 
-	footer_element_tag: STRING is 
+	footer_element_tag: STRING 
 		deferred
 		end
 
-	body_element_tag: STRING is 
+	body_element_tag: STRING 
 		deferred
 		end
 
-	hidden_element_tag: STRING is 
+	hidden_element_tag: STRING 
 		deferred
 		end
 
-	input_element_tag: STRING is 
+	input_element_tag: STRING 
 		deferred
 		end
 
-	submit_element_tag: STRING is 
+	submit_element_tag: STRING 
 		deferred
 		end
 
-	radio_element_tag: STRING is 
+	radio_element_tag: STRING 
 		deferred
 		end
 
-	checkbox_element_tag: STRING is 
+	checkbox_element_tag: STRING 
 		deferred
 		end
 
-	select_element_tag: STRING is 
+	select_element_tag: STRING 
 		deferred
 		end
 
-	option_element_tag: STRING is 
+	option_element_tag: STRING 
 		deferred
 		end
 
-	text_area_element_tag: STRING is 
+	text_area_element_tag: STRING 
 		deferred
 		end
 
-	image_element_tag: STRING is 
+	image_element_tag: STRING 
 		deferred
 		end
 
-	tool_tip_element_tag: STRING is 
+	tool_tip_element_tag: STRING 
 		deferred
 		end
 
@@ -501,103 +501,103 @@ feature -- Element Tags
  	
 feature -- Attribute Names
 
-		span_attribute_name: STRING is
+		span_attribute_name: STRING
 		deferred
 		end
 
-	palette_attribute_name: STRING is
+	palette_attribute_name: STRING
 		deferred
 		end
 
-	summary_attribute_name: STRING is
+	summary_attribute_name: STRING
 		deferred
 		end
 
-	cellspacing_attribute_name: STRING is
+	cellspacing_attribute_name: STRING
 		deferred
 		end
 
-	cellpadding_attribute_name: STRING is
+	cellpadding_attribute_name: STRING
 		deferred
 		end
 
-	colspan_attribute_name: STRING is
+	colspan_attribute_name: STRING
 		deferred
 		end
 
-	name_attribute_name: STRING is
+	name_attribute_name: STRING
 		deferred
 		end
 
-	type_attribute_name: STRING is
+	type_attribute_name: STRING
 		deferred
 		end
 
-	maxlength_attribute_name: STRING is
+	maxlength_attribute_name: STRING
 		deferred
 		end
 
-	size_attribute_name: STRING is
+	size_attribute_name: STRING
 		deferred
 		end
 
-	disabled_attribute_name: STRING is
+	disabled_attribute_name: STRING
 		deferred
 		end
 
-	value_attribute_name: STRING is
+	value_attribute_name: STRING
 		deferred
 		end
 
-	checked_attribute_name: STRING is
+	checked_attribute_name: STRING
 		deferred
 		end
 
-	on_click_script_attribute_name: STRING is
+	on_click_script_attribute_name: STRING
 		deferred
 		end
 
-	multiple_attribute_name: STRING is
+	multiple_attribute_name: STRING
 		deferred
 		end
 
-	selected_attribute_name: STRING is
+	selected_attribute_name: STRING
 		deferred
 		end
 
-	rows_attribute_name: STRING is
+	rows_attribute_name: STRING
 		deferred
 		end
 
-	columns_attribute_name: STRING is
+	columns_attribute_name: STRING
 		deferred
 		end
 
-	url_attribute_name: STRING is
+	url_attribute_name: STRING
 		deferred
 		end
 
-	alternate_text_attribute_name: STRING is
+	alternate_text_attribute_name: STRING
 		deferred
 		end
 
-	height_attribute_name: STRING is
+	height_attribute_name: STRING
 		deferred
 		end
 
-	width_attribute_name: STRING is
+	width_attribute_name: STRING
 		deferred
 		end
 
-	page_title_attribute_name: STRING is
+	page_title_attribute_name: STRING
 		deferred
 		end
 
-	style_sheet_attribute_name: STRING is
+	style_sheet_attribute_name: STRING
 		deferred
 		end
 
-	class_attribute_name: STRING is
+	class_attribute_name: STRING
 		deferred
 		end
 
@@ -605,199 +605,199 @@ feature -- Attribute Names
 
 feature -- Codes
 
-		span_attribute_code: INTEGER is
+		span_attribute_code: INTEGER
 		deferred
 		end
 
-	palette_attribute_code: INTEGER is
+	palette_attribute_code: INTEGER
 		deferred
 		end
 
-	summary_attribute_code: INTEGER is
+	summary_attribute_code: INTEGER
 		deferred
 		end
 
-	cellspacing_attribute_code: INTEGER is
+	cellspacing_attribute_code: INTEGER
 		deferred
 		end
 
-	cellpadding_attribute_code: INTEGER is
+	cellpadding_attribute_code: INTEGER
 		deferred
 		end
 
-	colspan_attribute_code: INTEGER is
+	colspan_attribute_code: INTEGER
 		deferred
 		end
 
-	name_attribute_code: INTEGER is
+	name_attribute_code: INTEGER
 		deferred
 		end
 
-	type_attribute_code: INTEGER is
+	type_attribute_code: INTEGER
 		deferred
 		end
 
-	maxlength_attribute_code: INTEGER is
+	maxlength_attribute_code: INTEGER
 		deferred
 		end
 
-	size_attribute_code: INTEGER is
+	size_attribute_code: INTEGER
 		deferred
 		end
 
-	disabled_attribute_code: INTEGER is
+	disabled_attribute_code: INTEGER
 		deferred
 		end
 
-	value_attribute_code: INTEGER is
+	value_attribute_code: INTEGER
 		deferred
 		end
 
-	checked_attribute_code: INTEGER is
+	checked_attribute_code: INTEGER
 		deferred
 		end
 
-	on_click_script_attribute_code: INTEGER is
+	on_click_script_attribute_code: INTEGER
 		deferred
 		end
 
-	multiple_attribute_code: INTEGER is
+	multiple_attribute_code: INTEGER
 		deferred
 		end
 
-	selected_attribute_code: INTEGER is
+	selected_attribute_code: INTEGER
 		deferred
 		end
 
-	rows_attribute_code: INTEGER is
+	rows_attribute_code: INTEGER
 		deferred
 		end
 
-	columns_attribute_code: INTEGER is
+	columns_attribute_code: INTEGER
 		deferred
 		end
 
-	url_attribute_code: INTEGER is
+	url_attribute_code: INTEGER
 		deferred
 		end
 
-	alternate_text_attribute_code: INTEGER is
+	alternate_text_attribute_code: INTEGER
 		deferred
 		end
 
-	height_attribute_code: INTEGER is
+	height_attribute_code: INTEGER
 		deferred
 		end
 
-	width_attribute_code: INTEGER is
+	width_attribute_code: INTEGER
 		deferred
 		end
 
-	page_title_attribute_code: INTEGER is
+	page_title_attribute_code: INTEGER
 		deferred
 		end
 
-	style_sheet_attribute_code: INTEGER is
+	style_sheet_attribute_code: INTEGER
 		deferred
 		end
 
-	class_attribute_code: INTEGER is
+	class_attribute_code: INTEGER
 		deferred
 		end
 
-	paragraph_element_code: INTEGER is
+	paragraph_element_code: INTEGER
 		deferred
 		end
 
-	text_item_element_code: INTEGER is
+	text_item_element_code: INTEGER
 		deferred
 		end
 
-	division_element_code: INTEGER is
+	division_element_code: INTEGER
 		deferred
 		end
 
-	ordered_list_element_code: INTEGER is
+	ordered_list_element_code: INTEGER
 		deferred
 		end
 
-	list_item_element_code: INTEGER is
+	list_item_element_code: INTEGER
 		deferred
 		end
 
-	unordered_list_element_code: INTEGER is
+	unordered_list_element_code: INTEGER
 		deferred
 		end
 
-	hyperlink_element_code: INTEGER is
+	hyperlink_element_code: INTEGER
 		deferred
 		end
 
-	popup_hyperlink_element_code: INTEGER is
+	popup_hyperlink_element_code: INTEGER
 		deferred
 		end
 
-	table_element_code: INTEGER is
+	table_element_code: INTEGER
 		deferred
 		end
 
-	header_element_code: INTEGER is
+	header_element_code: INTEGER
 		deferred
 		end
 
-	row_element_code: INTEGER is
+	row_element_code: INTEGER
 		deferred
 		end
 
-	cell_element_code: INTEGER is
+	cell_element_code: INTEGER
 		deferred
 		end
 
-	footer_element_code: INTEGER is
+	footer_element_code: INTEGER
 		deferred
 		end
 
-	body_element_code: INTEGER is
+	body_element_code: INTEGER
 		deferred
 		end
 
-	hidden_element_code: INTEGER is
+	hidden_element_code: INTEGER
 		deferred
 		end
 
-	input_element_code: INTEGER is
+	input_element_code: INTEGER
 		deferred
 		end
 
-	submit_element_code: INTEGER is
+	submit_element_code: INTEGER
 		deferred
 		end
 
-	radio_element_code: INTEGER is
+	radio_element_code: INTEGER
 		deferred
 		end
 
-	checkbox_element_code: INTEGER is
+	checkbox_element_code: INTEGER
 		deferred
 		end
 
-	select_element_code: INTEGER is
+	select_element_code: INTEGER
 		deferred
 		end
 
-	option_element_code: INTEGER is
+	option_element_code: INTEGER
 		deferred
 		end
 
-	text_area_element_code: INTEGER is
+	text_area_element_code: INTEGER
 		deferred
 		end
 
-	image_element_code: INTEGER is
+	image_element_code: INTEGER
 		deferred
 		end
 
-	tool_tip_element_code: INTEGER is
+	tool_tip_element_code: INTEGER
 		deferred
 		end
 

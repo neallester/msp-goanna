@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Input parameter that may not be empty"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"

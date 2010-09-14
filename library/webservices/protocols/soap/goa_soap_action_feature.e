@@ -1,4 +1,4 @@
-indexing
+note
 	description: "SOAP Action feature "
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -22,7 +22,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_value: UT_URI) is
+	make (a_value: UT_URI)
 		require
 			value_exists: a_value /= Void
 		local

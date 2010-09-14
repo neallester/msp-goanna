@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Mixin class that provides portable character manipulation routines."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Utility"
@@ -15,7 +15,7 @@ class
 
 feature -- Basic operations
 
-	set_char_code (ch: CHARACTER_REF; code: INTEGER): CHARACTER is
+	set_char_code (ch: CHARACTER_REF; code: INTEGER): CHARACTER
 			-- Set code of 'ch' to 'code'
 		obsolete "Use int_to_char"
 		require
@@ -30,7 +30,7 @@ feature -- Basic operations
 
 		end
 		
-	int_to_char (code: INTEGER): CHARACTER is
+	int_to_char (code: INTEGER): CHARACTER
 			-- Convert int to character
 		obsolete "Use Gobo's {KL_INTEGER_ROUTINES}.to_character"
 		do
@@ -43,7 +43,7 @@ feature -- Basic operations
 
 		end
 
-	char_to_lower (ch: CHARACTER): CHARACTER is
+	char_to_lower (ch: CHARACTER): CHARACTER
 			-- Convert 'ch' to lower case.
 		obsolete "Use Gobo's {KL_CHARACTER_ROUTINES}.as_lower"
 		do

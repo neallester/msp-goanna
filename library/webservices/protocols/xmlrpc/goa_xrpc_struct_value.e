@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent an XML-RPC call and response struct parameter values."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -20,7 +20,7 @@ create
 
 feature -- Initialisation
 
-	make (new_value: like value) is
+	make (new_value: like value)
 			-- Create struct type from 'new_value'. 
 		require
 			new_value_exists: new_value /= Void
@@ -30,7 +30,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 
-	make_from_struct (struct: DS_HASH_TABLE [ANY, STRING]) is
+	make_from_struct (struct: DS_HASH_TABLE [ANY, STRING])
 			-- Create struct type from 'new_value'. 
 		require
 			struct_exists: struct /= Void
@@ -51,7 +51,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 		
-	unmarshall (node: XM_ELEMENT) is
+	unmarshall (node: XM_ELEMENT)
 			-- Unmarshall struct value from XML node.
 		local
 			member_cursor: DS_BILINEAR_CURSOR [XM_NODE]
@@ -117,7 +117,7 @@ feature -- Initialisation
 
 feature -- Mashalling
 
-	marshall: STRING is
+	marshall: STRING
 			-- Serialize this struct param to XML format
 		local
 			c: DS_HASH_TABLE_CURSOR [GOA_XRPC_VALUE, STRING]
@@ -147,7 +147,7 @@ feature -- Access
 
 feature -- Conversion
 
-	as_object: ANY is
+	as_object: ANY
 			-- Return value as an object. ie, extract the actual 
 			-- object value from the XRPC_VALUE.
 		local

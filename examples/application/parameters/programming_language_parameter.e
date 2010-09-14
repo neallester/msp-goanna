@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Allow user to select their favorate programming language from a pull down"
 	author: "Neal L. Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-10-01 13:33:03 -0700 (Sun, 01 Oct 2006) $"
@@ -15,15 +15,15 @@ inherit
 	GOA_STRING_LABELED_PARAMETER
 	GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT
 	
-creation
+create
 	
 	make
 
 feature
 	
-	name: STRING is "programming_language"
+	name: STRING = "programming_language"
 	
-	option_list (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): DS_LINKED_LIST [PROGRAMMING_LANGUAGE_SELECTION] is
+	option_list (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): DS_LINKED_LIST [PROGRAMMING_LANGUAGE_SELECTION]
 		local
 			new_selection: PROGRAMMING_LANGUAGE_SELECTION
 			message_catalog: MESSAGE_CATALOG
@@ -40,27 +40,27 @@ feature
 			Result.force_last (new_selection)
 		end
 		
-	default_selected_item (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): PROGRAMMING_LANGUAGE_SELECTION is
+	default_selected_item (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): PROGRAMMING_LANGUAGE_SELECTION
 		do
 			Result := option_list (processing_result, suffix).item (1)
 		end
 
-	currently_selected_item_in_database (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): PROGRAMMING_LANGUAGE_SELECTION is
+	currently_selected_item_in_database (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): PROGRAMMING_LANGUAGE_SELECTION
 		do
 			Result := processing_result.session_status.programming_language
 		end
 		
-	text_for_item (processing_result: REQUEST_PROCESSING_RESULT;  suffix: INTEGER; item: PROGRAMMING_LANGUAGE_SELECTION): STRING is
+	text_for_item (processing_result: REQUEST_PROCESSING_RESULT;  suffix: INTEGER; item: PROGRAMMING_LANGUAGE_SELECTION): STRING
 		do
 			Result := item.name
 		end
 	
-	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 		do
 			Result := processing_result.message_catalog.programming_language_label
 		end
 		
-	set_currently_selected_item_in_database (processing_result: PARAMETER_PROCESSING_RESULT; new_item: PROGRAMMING_LANGUAGE_SELECTION) is
+	set_currently_selected_item_in_database (processing_result: PARAMETER_PROCESSING_RESULT; new_item: PROGRAMMING_LANGUAGE_SELECTION)
 		do
 			processing_result.session_status.set_programming_language (new_item)
 		end

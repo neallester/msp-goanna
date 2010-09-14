@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that hold configuration data for a servlet."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -20,7 +20,7 @@ feature -- Access
 				
 feature -- Status setting
 
-	set_document_root (dir: STRING) is
+	set_document_root (dir: STRING)
 			-- Set the document root to 'dir'
 		require
 			dir_exists: dir /= Void
@@ -28,7 +28,7 @@ feature -- Status setting
 			document_root := dir
 		end
 		
-	set_server_port (port: INTEGER) is
+	set_server_port (port: INTEGER)
 			-- Set the server port to 'port'
 		require
 			valid_port: port > 0

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Does the user drink?"
 	author: "Neal L. Lester (neal@3dsafety.com)"
 	date: "$ May 14, 2001: $"
@@ -15,12 +15,12 @@ create
 
 feature
 
-	question : STRING is
+	question : STRING
 		do
 			result := text.he_drinks
 		end
 
-	title : STRING is
+	title : STRING
 		do
 			result := text.his_habits
 		end

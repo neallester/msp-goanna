@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Entity"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -16,19 +16,19 @@ inherit
 
 feature
 
-	public_id: DOM_STRING is
+	public_id: DOM_STRING
 			-- The public identifier associated with the entity, if specified.
 			-- For parsed entities, this is Void.
 		deferred
 		end
 
-	system_id: DOM_STRING is
+	system_id: DOM_STRING
 			-- The system identifier associated with the entity, if specified.
 			-- If the system identifier was not specified, this is Void.
 		deferred
 		end
 
-	notation_name: DOM_STRING is
+	notation_name: DOM_STRING
 			-- For unparsed entities, the name of the notation for the entity. For
 			-- parsed entities, this is Void.
 		deferred

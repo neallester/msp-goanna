@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that hold a DOM document and provide storable and access capabilities"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XMLE DOM Extensions"
@@ -20,12 +20,12 @@ inherit
 			{NONE} all
 		end
 
-creation
+create
 	make
 
 feature -- Initialization
 
-	make (doc: DOM_DOCUMENT) is
+	make (doc: DOM_DOCUMENT)
 			-- Create a wrapper on 'doc'
 		require
 			doc_exists: doc /= Void
@@ -43,7 +43,7 @@ feature -- Access
 	id_nodes: DS_HASH_TABLE [DOM_NODE, STRING]
 			-- Table of nodes indexed by 'id'. 
 
-	get_node_by_id (id: STRING): DOM_NODE is
+	get_node_by_id (id: STRING): DOM_NODE
 			-- Retrieve a reference to a node with the given 'id'.
 		do
 			Result := id_nodes.item (id)
@@ -51,7 +51,7 @@ feature -- Access
 
 feature {NONE} -- Implementation
 	
-	collect_id_nodes is
+	collect_id_nodes
 			-- Collect all nodes in 'document' with an 'id' attribute and
 			-- store a reference to the element in the 'id_elements' table.
 		local
@@ -77,7 +77,7 @@ feature {NONE} -- Implementation
 			end
 		end
 	
-	Id_attribute: DOM_STRING is
+	Id_attribute: DOM_STRING
 		once
 			create Result.make_from_string ("id")
 		end

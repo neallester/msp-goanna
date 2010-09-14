@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects representing a registry of agent services."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -14,7 +14,7 @@ inherit
 	
 	GOA_REGISTRY [GOA_SERVICE_PROXY]
 
-creation
+create
 	
 	make
 	

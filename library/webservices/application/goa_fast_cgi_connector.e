@@ -1,4 +1,4 @@
-indexing
+note
 	description: "FastCGI connector"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI servlets"
@@ -37,7 +37,7 @@ create
 
 feature -- Initialisation
 
-	make (port, backlog: INTEGER) is
+	make (port, backlog: INTEGER)
 			-- Initialise
 		do
 			Precursor (port, backlog)
@@ -47,7 +47,7 @@ feature -- Initialisation
 
 feature -- Basic operations
 
-	read_request is
+	read_request
 			-- Read a request from the service. Indicate success of read by
 			-- setting 'last_operation_ok' and if successful set 'last_request'
 			-- and 'last_response'

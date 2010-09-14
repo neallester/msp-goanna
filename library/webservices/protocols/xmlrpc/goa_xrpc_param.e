@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent an XML-RPC call and response parameters."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -20,7 +20,7 @@ create
 
 feature -- Initialisation
 
-	make (new_value: GOA_XRPC_VALUE) is
+	make (new_value: GOA_XRPC_VALUE)
 			-- Create parameter with 'new_value'
 		require
 			new_value_exists: new_value /= Void
@@ -29,7 +29,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 
-	unmarshall (node: XM_ELEMENT) is
+	unmarshall (node: XM_ELEMENT)
 			-- Unmarshall array value from XML node.
 		local
 			value_elem: XM_ELEMENT
@@ -51,7 +51,7 @@ feature -- Initialisation
 
 feature -- Mashalling
 
-	marshall: STRING is
+	marshall: STRING
 			-- Serialize this array param to XML format
 		do	
 			create Result.make (1024)

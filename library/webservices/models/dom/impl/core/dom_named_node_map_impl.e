@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Named node map implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -26,13 +26,13 @@ inherit
 			has as has_named_item
 		end
 
-creation
+create
 
 	make
 
 feature -- Factory creation
 
-	make (new_owner: like owner_node) is
+	make (new_owner: like owner_node)
 			-- Create new named node map for 'owner_node'
 		require
 			owner_node_exists: new_owner /= Void
@@ -46,7 +46,7 @@ feature
 	owner_node: DOM_NODE
 			-- The owner of this node map.
 
-	set_owner_node (new_owner: like owner_node) is
+	set_owner_node (new_owner: like owner_node)
 			-- Set the owner node
 		require
 			new_owner_exists: new_owner /= Void
@@ -54,7 +54,7 @@ feature
 			owner_node := new_owner
 		end
 
-   set_named_item (arg: DOM_NODE): DOM_NODE is
+   set_named_item (arg: DOM_NODE): DOM_NODE
          -- Adds a node using its nodeName attribute.
          -- As the nodeName attribute is used to derive the name
          -- which the node must be stored under, multiple nodes
@@ -77,7 +77,7 @@ feature
 		  Result := arg
       end
 
-   remove_named_item (name: DOM_STRING): DOM_NODE is
+   remove_named_item (name: DOM_STRING): DOM_NODE
          -- Removes a node specified by `name'. If the removed node
          -- is an Attr with a default value it is immediately replaced.
          -- Parameters
@@ -90,14 +90,14 @@ feature
 		  remove (name)
       end
 
-	get_named_item_ns (namespace_uri, local_name: DOM_STRING): DOM_NODE is
+	get_named_item_ns (namespace_uri, local_name: DOM_STRING): DOM_NODE
 			-- Retrieves a node specified by local name and namespace URI.
 			-- DOM Level 2.
 			-- Note: precondition 'has_item' is not standard DOM.
 		do
 		end
 
-	set_named_item_ns (arg: DOM_NODE): DOM_NODE is
+	set_named_item_ns (arg: DOM_NODE): DOM_NODE
 			-- Adds a node using its namespace_uri and local_name. If a node
 			-- with that namespace URI and local name is already present in this
 			-- map, it is replaced by the new one.
@@ -105,7 +105,7 @@ feature
 		do
       	end
 
-	remove_named_item_ns (namespace_uri, local_name: DOM_STRING): DOM_NODE is
+	remove_named_item_ns (namespace_uri, local_name: DOM_STRING): DOM_NODE
 			-- Removes a node specified by local name and namespace URI.
 			-- A removed attribute may be known to have a default value when
 			-- this map contains the attributes attached to an element,
@@ -118,13 +118,13 @@ feature
 		do
       	end
 		
-	has_named_item_ns (namespace_uri, local_name: DOM_STRING): BOOLEAN is
+	has_named_item_ns (namespace_uri, local_name: DOM_STRING): BOOLEAN
 			-- Does an item named 'local_name' in 'namespace_uri' 
 			-- exist in this map?
 		do
 		end
 
-   item (index: INTEGER): DOM_NODE is
+   item (index: INTEGER): DOM_NODE
          -- Returns the `index'th item in the map. If index is greater
          -- than or equal to the number of nodes in the map,
          -- this returns null.

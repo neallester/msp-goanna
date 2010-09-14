@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Node iterators are used to step through a set of nodes, e.g. the set of%
 		% nodes in a DOM_NODE_LIST, the document subtree governed by a particular node,%
 		% the results of a query, or any other set of nodes. The set of nodes to be%
@@ -19,23 +19,23 @@ deferred class
 
 feature -- Access
 
-	attached: BOOLEAN is
+	attached: BOOLEAN
 			-- Is the iterator attached to the underlying subtree?
 		deferred	
 		end
 	
-	what_to_show: INTEGER is
+	what_to_show: INTEGER
 			-- Which node types are presented via the iterator. The available set of constants
 			-- is defined by the DOM_NODE_FILTER_TYPES class.
 		deferred
 		end
 	
-	filter: DOM_NODE_FILTER is
+	filter: DOM_NODE_FILTER
 			-- The filter used to screen nodes.
 		deferred	
 		end
 	
-	expand_entity_references: BOOLEAN is
+	expand_entity_references: BOOLEAN
 			-- Are children of entity reference nodes visible to the iterator? If false, they will
 			-- be skipped over.
 		    -- To produce a view of the document that has entity references 
@@ -48,7 +48,7 @@ feature -- Access
 		deferred
 		end
 	
-	next_node: DOM_NODE is
+	next_node: DOM_NODE
 			-- Returns the next node in the set and advances the position of the 
      		-- iterator in the set. After a DOM_NODE_ITERATOR is created, the first call 
      						-- to 'next_node' returns the first node in the set.
@@ -57,7 +57,7 @@ feature -- Access
 		deferred
 		end
 	
-	previous_node: DOM_NODE is
+	previous_node: DOM_NODE
 			-- Returns the previous node in the set and moves the position of the 
      		-- iterator backwards in the set.
 		require
@@ -67,7 +67,7 @@ feature -- Access
 	
 feature -- Status setting
 
-	detach is
+	detach
 			-- Detaches the iterator from the set which it iterated over, releasing 
      		-- any computational resources. 
 		require

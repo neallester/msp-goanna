@@ -1,4 +1,4 @@
-indexing
+note
 
 	description: "Test marshalling features of SOAP library"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
@@ -20,7 +20,7 @@ inherit
 
 feature -- Test
 
-	test_empty is
+	test_empty
 			-- Test envelope with no header or body blocks
 		local
 			envelope: SOAP_ENVELOPE
@@ -34,7 +34,7 @@ feature -- Test
 			io.new_line
 		end
 
-	test_with_blocks is
+	test_with_blocks
 			-- Test envelope with header and body blocks
 		local
 			envelope: SOAP_ENVELOPE
@@ -54,7 +54,7 @@ feature -- Test
 			io.new_line
 		end
 
-	test_unmarshall is
+	test_unmarshall
 			-- Test unmarshall
 		local
 			envelope: SOAP_ENVELOPE
@@ -67,7 +67,7 @@ feature -- Test
 			assert ("correct_marshall", envelope.unmarshall_ok)
 		end
 		
-	parse_xml (xml: STRING): XM_ELEMENT is
+	parse_xml (xml: STRING): XM_ELEMENT
 			-- Parser xml string and return document element
 		local
 			a_tree_builder: GOA_TREE_CALLBACKS_PIPE
@@ -90,10 +90,10 @@ feature -- Test
 
 		end
 		
-	Header_block: STRING is "<?xml version=%"1.0%" ?><header><child>This is a child of header</child></header>"
-	Body_block: STRING is "<?xml version=%"1.0%" ?><body><child>This is a child of body</child></body>"
+	Header_block: STRING = "<?xml version=%"1.0%" ?><header><child>This is a child of header</child></header>"
+	Body_block: STRING = "<?xml version=%"1.0%" ?><body><child>This is a child of body</child></body>"
 	
-	Envelope1: STRING is 
+	Envelope1: STRING = 
 		"<env:Envelope xmlns:env=%"http://www.w3.org/2003/05/soap-envelope%">%
 		%	<env:Header>%
 		%		<n:alertcontrol xmlns:n=%"http://example.org/alertcontrol%" env:mustUnderstand=%"1%">%

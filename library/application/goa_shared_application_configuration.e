@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Shared access to APPLICATION_CONFIGURATION"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-03-29 07:17:01 -0800 (Thu, 29 Mar 2007) $"
@@ -12,7 +12,7 @@ class
 
 feature
 
-	configuration: APPLICATION_CONFIGURATION is
+	configuration: APPLICATION_CONFIGURATION
 			-- Application configuration
 		once
 			Result := active_configuration
@@ -21,7 +21,7 @@ feature
 	active_configuration: APPLICATION_CONFIGURATION
 			-- Configuration to use for this run
 
-	touch_configuration is
+	touch_configuration
 			-- Touch the configuration object to instantiate the once function
 		require
 			valid_active_configuration: active_configuration /= Void

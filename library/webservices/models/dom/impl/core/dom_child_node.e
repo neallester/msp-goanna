@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A node that is a child"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -36,19 +36,19 @@ feature
 
 feature {DOM_NODE} -- DOM Status Setting
 
-	set_previous_sibling (new_sibling: like previous_sibling) is
+	set_previous_sibling (new_sibling: like previous_sibling)
 			-- Set the previous sibling of this node
 		do
 			previous_sibling := new_sibling
 		end
 
-	set_next_sibling (new_sibling: like next_sibling) is
+	set_next_sibling (new_sibling: like next_sibling)
 			-- Set the next sibling of this node
 		do
 			next_sibling := new_sibling
 		end
 
-	set_parent_node (new_parent: like parent_node) is
+	set_parent_node (new_parent: like parent_node)
 			-- Set the parent node of this node
 		do
 			parent_node := new_parent
@@ -56,7 +56,7 @@ feature {DOM_NODE} -- DOM Status Setting
 
 feature {NONE} -- Implementation
 
-	ensure_child_list_exists is
+	ensure_child_list_exists
 			-- Build the child list if it doesn't already exist
 		do
 			-- No children.

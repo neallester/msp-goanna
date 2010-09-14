@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Content Containers Containing Clear Text"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -19,7 +19,7 @@ inherit
 		redefine
 			make
 		end
-creation
+create
 
 	make
 
@@ -28,7 +28,7 @@ feature {TEST_TEXT_PARAGRAPH, PAGE, PAGE_FACTORY, CONTENT_CONTAINER, TOPIC, USER
 	text : STRING
 		-- The clear text of the paragraph (no programming code)
 
-	set_text (new_text : STRING) is
+	set_text (new_text : STRING)
 		-- Set text
 		require
 			valid_new_text : new_text /= Void
@@ -41,22 +41,22 @@ feature {TEST_TEXT_PARAGRAPH, PAGE, PAGE_FACTORY, CONTENT_CONTAINER, TOPIC, USER
 
 feature {NONE} -- creation
 
-	html_begin_element : STRING is 
+	html_begin_element : STRING 
 		do
 			result := html_bold_begin_element
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			result := html_bold_end_element
 		end
 
-	html_element : STRING is
+	html_element : STRING
 		do
 			result := text
 		end
 
-	make is
+	make
 		do
 			text := ""
 		end

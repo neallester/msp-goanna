@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A Topic used in the bachelor application"
 	author: "Neal L. Lester"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -15,7 +15,7 @@ deferred class
 
 feature 
 
-	reset is
+	reset
 		deferred
 	end
 

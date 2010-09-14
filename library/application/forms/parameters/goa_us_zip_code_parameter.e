@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Accepts a zip code from the user"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -23,11 +23,11 @@ inherit
 	
 feature
 	
-	size: INTEGER is 10
+	size: INTEGER = 10
 	
-	maxlength: INTEGER is 10
+	maxlength: INTEGER = 10
 	
-	validate (processing_result: PARAMETER_PROCESSING_RESULT) is
+	validate (processing_result: PARAMETER_PROCESSING_RESULT)
 		local
 			zip_code, value: STRING
 			index: INTEGER
@@ -59,7 +59,7 @@ feature
 			end
 		end
 		
-	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			do
 				Result := processing_result.session_status.message_catalog.zip_code_label
 			end

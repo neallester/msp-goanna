@@ -11,7 +11,7 @@
 
 -- Dates following the Gregorian calendar, with time
 
-indexing
+note
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $";
 	compiler: "$Compiler: TowerEiffel v1.3$";  
 	revision: "$Revision: 491 $";
@@ -33,13 +33,13 @@ inherit
 	 make_to_now, infix "<", hash_code, out
       end;
    
-creation
+create
    make, make_to_now, make_to_day_of_year, make_to_day_of_week
    
 feature{ANY}
    hour,minute,second : INTEGER; 
    
-   make_to_day_of_year(yyear, doy, hhour, mminute, ssecond: INTEGER) is
+   make_to_day_of_year(yyear, doy, hhour, mminute, ssecond: INTEGER)
 	-- Set `month' and `day' by its ordinal day number in the year.
 	-- A zero value for 'yyear` and/or `doy' sets the corresponding features
 	-- to the values supplied by the system clock.
@@ -56,7 +56,7 @@ feature{ANY}
 	 second := ssecond;	 
       end; -- make_to_day_of_year
    
-   make(yyear, mmonth, dday, hhour, mminute, ssecond: INTEGER) is
+   make(yyear, mmonth, dday, hhour, mminute, ssecond: INTEGER)
 	 -- Set `day', `month', `year', `hour', `minute' and `second'.
 	 -- A zero argument for `day', `month' and/or `year' sets the 	
 	 -- corresponding feature to the value supplied by the system clock.
@@ -74,7 +74,7 @@ feature{ANY}
 	 second := ssecond;
       end; -- make
    
-   make_to_now is
+   make_to_now
 	 -- Set to current date and time, as supplied by the system clock
       do
 	 clock.read;
@@ -87,7 +87,7 @@ feature{ANY}
 	 was_set := true;
       end; -- make_to_now	 
    
-   make_to_day_of_week(yyear, mmonth, n, dow, hhour, mminute, ssecond: INTEGER) is
+   make_to_day_of_week(yyear, mmonth, n, dow, hhour, mminute, ssecond: INTEGER)
       	 -- Set date to the n'th dow in a given month and year
 	 -- e.g. the 3nd Tuesday in January, 1994 would be (1994, 01, 3, 2)
 	 -- given that Sunday = 0, Monday = 1 ....
@@ -108,7 +108,7 @@ feature{ANY}
 	 second := ssecond;
       end;
 	
-   infix "<" (other: like Current): BOOLEAN is
+   infix "<" (other: like Current): BOOLEAN
 	 -- Is `Current' date less than `other'?
       do
 	 if year < other.year then Result := true
@@ -130,7 +130,7 @@ feature{ANY}
 	 end;
       end; -- infix "<"
    
-   add_seconds(secs: INTEGER) is
+   add_seconds(secs: INTEGER)
 	 -- Advance `Current' by `secs' seconds
       do
 	 second := second + secs;
@@ -139,7 +139,7 @@ feature{ANY}
 	 current.seconds_between(old clone(Current)) = secs;
       end; -- add_seconds
    
-   seconds_between(other: like Current): INTEGER is
+   seconds_between(other: like Current): INTEGER
 	 -- Seconds between two dates with times
       require
 	 other_exists: other /= Void;
@@ -157,17 +157,17 @@ feature{ANY}
 	 Result := Result + (s1 - s2);      
       end; -- seconds_between
 
-   is_equal(other: like Current): BOOLEAN is
+   is_equal(other: like Current): BOOLEAN
       do
 	 Result :=  (date_is_equal(other) and (hour = other.hour) and (minute = other.minute) and (second = other.second));
       end; -- is_equal
    
-   hash_code: INTEGER is
+   hash_code: INTEGER
       do
 	 Result := (year + month + day + hour + minute + second);
       end; -- hash_code
    
-   add_hours(hrs: INTEGER) is
+   add_hours(hrs: INTEGER)
 	 -- Advance `Current' by `hrs' hours
       do
 	 hour := hour + hrs;
@@ -176,7 +176,7 @@ feature{ANY}
 	 current.hours_between(old clone(Current)) = hrs;
       end; -- add_hours
    
-   hours_between(other: like Current): INTEGER is
+   hours_between(other: like Current): INTEGER
 	 -- Hours between two dates with times
       require
 	 other_exists: other /= Void;
@@ -193,7 +193,7 @@ feature{ANY}
 	 Result := Result + (s1 - s2)//(60 * 60);            
       end; -- hours_between
 	     
-   add_minutes(mins: INTEGER) is
+   add_minutes(mins: INTEGER)
 	 -- Advance `Current' by `mins' minutes
       do
 	 minute := minute + mins;
@@ -202,7 +202,7 @@ feature{ANY}
 	 current.minutes_between(old clone(Current)) = mins;      
       end; -- add_minutes
    
-   minutes_between(other: like Current): INTEGER is
+   minutes_between(other: like Current): INTEGER
 	 -- Minutes between two dates with times
       require
 	 other_exists: other /= Void;
@@ -220,9 +220,9 @@ feature{ANY}
 	 Result := Result + (s1 - s2)//60;      
       end; -- minutes_between
 
-   out : STRING is
-      do
-         !!Result.make(16);
+   out : STRING
+      do 
+         create Result.make(16);
          if day < 10 then Result.append("0") end;
          Result.append(day.out);
          Result.append("/");
@@ -242,7 +242,7 @@ feature{ANY}
       end;
 
 feature{NONE}
-   time_normalise is
+   time_normalise
       do
 	 -- correct out of range seconds with minutes
 	 if second >= 60 then
@@ -270,7 +270,7 @@ feature{NONE}
 	 end;
       end; -- time_normalise
    
-   normalise is
+   normalise
       do
 	 time_normalise;
 	 date_normalise;

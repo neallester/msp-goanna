@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Parameter that directs user to a specific page"
 	author: "Neal L Lester <neal@3dsafety.com>"
 	date: "$Date: 2007-02-10 21:25:20 -0800 (Sat, 10 Feb 2007) $"
@@ -15,15 +15,15 @@ inherit
 	GOA_SHARED_SERVLET_MANAGER
 	SHARED_SERVLETS
 
-creation
+create
 
 	make
 
 feature
 
-	name: STRING is "page"
+	name: STRING = "page"
 
-	process (processing_result: PARAMETER_PROCESSING_RESULT) is
+	process (processing_result: PARAMETER_PROCESSING_RESULT)
 			-- Process this parameter
 		local
 			value: STRING

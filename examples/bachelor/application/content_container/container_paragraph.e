@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Paragraphs that contain one or more content_containers"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -32,13 +32,13 @@ create
 
 feature {NONE} -- creation
 
-	make is
+	make
 		do
 			multi_container_make
 			paragraph_make
 		end	
 
-	make_with_container (new_container : CONTENT_CONTAINER) is
+	make_with_container (new_container : CONTENT_CONTAINER)
 		-- make with a content container
 		require
 			valid_new_container : new_container /= Void

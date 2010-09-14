@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A node that is both a parent and a child"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"

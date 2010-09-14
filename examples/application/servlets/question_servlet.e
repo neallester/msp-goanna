@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Servlet that asks the user some questions"
 	author: "Neal L. Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -17,21 +17,21 @@ inherit
 		end
 	GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT
 
-creation
+create
 	
 	make
 
 feature
 
-	name: STRING is "question.htm"
+	name: STRING = "question.htm"
 	
-	new_xml_document (processing_result: REQUEST_PROCESSING_RESULT): GOA_PAGE_XML_DOCUMENT is
+	new_xml_document (processing_result: REQUEST_PROCESSING_RESULT): GOA_PAGE_XML_DOCUMENT
 		do
 			create Result.make_utf8_encoded
 			Result.start_page_element (processing_result.virtual_domain_host.host_name, processing_result.message_catalog.question_title, configuration.stylesheet, post_url (processing_result))			
 		end
 		
-	add_body (processing_result: REQUEST_PROCESSING_RESULT; xml: GOA_PAGE_XML_DOCUMENT) is
+	add_body (processing_result: REQUEST_PROCESSING_RESULT; xml: GOA_PAGE_XML_DOCUMENT)
 		do
 			xml.add_text_paragraph (Void, processing_result.message_catalog.question_title)
 			xml.start_data_entry_table_element (processing_result.message_catalog)
@@ -47,19 +47,19 @@ feature
 			xml.end_current_element
 		end
 		
-	add_footer (processing_result: REQUEST_PROCESSING_RESULT; xml: GOA_PAGE_XML_DOCUMENT) is
+	add_footer (processing_result: REQUEST_PROCESSING_RESULT; xml: GOA_PAGE_XML_DOCUMENT)
 		do
 			-- No Footer
 		end
 		
-	ok_to_display (processing_result: REQUEST_PROCESSING_RESULT): BOOLEAN is
+	ok_to_display (processing_result: REQUEST_PROCESSING_RESULT): BOOLEAN
 		do
 			Result := True
 		end
 
 feature {NONE} -- Creation
 
-	make is
+	make
 		do
 			Precursor
 			expected_parameters.force_last (name_parameter.name)

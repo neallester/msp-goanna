@@ -1,4 +1,4 @@
-indexing
+note
 	description: "SOAP MEPs"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -18,14 +18,14 @@ inherit
 
 feature {NONE} -- Initialization
 
-	make (a_role: UT_URI) is
+	make (a_role: UT_URI)
 			-- Establish invariant.
 		require
 			role_exists: a_role /= Void
 		deferred
 		end
 
-	init (a_name: UT_URI; a_role: UT_URI) is
+	init (a_name: UT_URI; a_role: UT_URI)
 			--	Establish invariant (to be called from `make')..
 		require
 			name_exists: a_name /= Void

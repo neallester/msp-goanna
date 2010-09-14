@@ -11,7 +11,7 @@
 
 -- Gregorian calendar constants, converters, etc.
 
-indexing
+note
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $";
 	compiler: "$TowerEiffel v1.2$";
 	revision: "$Revision: 491 $";
@@ -22,27 +22,27 @@ class GREGORIAN_FUNCTIONS
 obsolete "Use GOBO 2.0 datatime cluster"
 
 feature{NONE}	
-	dioy: INTEGER is 365;
+	dioy: INTEGER = 365;
 		-- Days in ordinary year
-	dily: INTEGER is 366;
+	dily: INTEGER = 366;
 		-- Days in leap year
 	
-	ld400: INTEGER is 97;
+	ld400: INTEGER = 97;
 		-- Number of leap days in 400 years
-	ld100: INTEGER is 24;
+	ld100: INTEGER = 24;
 		-- Number of leap days in 100 years
 
-	di400y: INTEGER is once Result := (400*dioy)+ld400 end;
+	di400y: INTEGER once Result := (400*dioy)+ld400 end;
 		-- Days in 400 years
-	di100y: INTEGER is once Result := (100*dioy)+ld100 end;
+	di100y: INTEGER once Result := (100*dioy)+ld100 end;
 		-- Days in 100 years
-	di4y: INTEGER is once Result := (4*dioy)+1 end;
+	di4y: INTEGER once Result := (4*dioy)+1 end;
 		-- Days in 4 years
 	
-	miy: INTEGER is 12;
+	miy: INTEGER = 12;
 		-- Number of months in a year
 	
-	leap_year(year: INTEGER):BOOLEAN is
+	leap_year(year: INTEGER):BOOLEAN
 		--Is the year a leap year?
 	local
 		y : INTEGER
@@ -52,7 +52,7 @@ feature{NONE}
 		Result := (y \\ 4 = 0);
 	end;
 
-	year_in_days( year : INTEGER ) : INTEGER is
+	year_in_days( year : INTEGER ) : INTEGER
 		-- Number of days in a year
 	local
 		y : INTEGER
@@ -62,7 +62,7 @@ feature{NONE}
 		if (y \\ 4 = 0) then Result := dily else Result := dioy end
 	end;
 
-	month_in_days(m, y: INTEGER): INTEGER is
+	month_in_days(m, y: INTEGER): INTEGER
 		-- Number of days in the month m of year y
 	require
 		m_positive: m > 0;
@@ -79,7 +79,7 @@ feature{NONE}
 		end;
 	end;
 
-	no_of_leaps( y : INTEGER ) : INTEGER is
+	no_of_leaps( y : INTEGER ) : INTEGER
 		-- Number of leap days since year 1 to y
 	local
 		yy : INTEGER;

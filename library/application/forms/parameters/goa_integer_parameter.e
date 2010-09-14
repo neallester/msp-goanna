@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A parameter that accepts only integers"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -17,7 +17,7 @@ inherit
 	
 feature
 	
-	validate (processing_result: PARAMETER_PROCESSING_RESULT) is
+	validate (processing_result: PARAMETER_PROCESSING_RESULT)
 		local
 			value: STRING
 			index: INTEGER
@@ -60,7 +60,7 @@ feature
 			end
 		end
 		
-	size: INTEGER is
+	size: INTEGER
 		deferred
 		end
 

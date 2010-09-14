@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Factory that correctly unmarshalls SOAP value objects depending on encoding styles."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -32,7 +32,7 @@ create
 	
 feature -- Initialisation
 
-	make (a_node_uri, a_role_uri: UT_URI) is
+	make (a_node_uri, a_role_uri: UT_URI)
 			-- Establish invariant.
 		require
 			node_uri_not_void: a_role_uri /= Void and then not STRING_.same_string (a_role_uri.full_reference, Role_ultimate_receiver) implies a_node_uri /= Void
@@ -67,7 +67,7 @@ feature -- Status report
 	unmarshalling_fault: GOA_SOAP_FAULT_INTENT
 			-- Fault intent representing unmarshalling/building error.
 
-	is_valid_scalar_type (a_value: ANY): BOOLEAN is
+	is_valid_scalar_type (a_value: ANY): BOOLEAN
 			-- Is `a_value' a valid scalar type?
 		require
 			value_exists: a_value /= Void
@@ -77,7 +77,7 @@ feature -- Status report
 			--        as they can't be round-tripped
 		end
 		
-	is_valid_array_type (a_value: ANY): BOOLEAN is
+	is_valid_array_type (a_value: ANY): BOOLEAN
 			-- Is `a_value' a valid array type?
 			-- A valid array type is an 'ARRAY [ANY]' or conforming
 			-- object.
@@ -90,7 +90,7 @@ feature -- Status report
 			Reault := an_array /= Void
 		end
 		
-	is_valid_struct_type (a_value: ANY): BOOLEAN is
+	is_valid_struct_type (a_value: ANY): BOOLEAN
 			-- Is `a_value' a valid struct type?
 		require
 			value_exists: a_value /= Void
@@ -104,7 +104,7 @@ feature -- Status report
 
 feature -- Factory
 
-	unmarshall_value (a_value: STRING; an_encoding_style, a_type: STRING) is
+	unmarshall_value (a_value: STRING; an_encoding_style, a_type: STRING)
 			-- Unmarshall `a_value' according to `a_type' as defined in `an_encoding_style'. Make
 			-- result available in last_value'.
 		require
@@ -126,7 +126,7 @@ feature -- Factory
 			end
 		end
 		
-	build (a_value: ANY) is
+	build (a_value: ANY)
 			-- Build a new SOAP value from `a_value'.
 		require
 			value_exists: value /= Void
@@ -148,7 +148,7 @@ feature -- Factory
 
 feature {NONE} -- Implementation
 
-	scalar_types: DS_HASH_SET [STRING] is
+	scalar_types: DS_HASH_SET [STRING]
 			-- Valid scalar types
 		once
 			create Result.make (16)

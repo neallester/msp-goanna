@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that test text_paragraph objects"
 	author: "Neal L. Lester"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -18,7 +18,7 @@ feature  -- Tests
 	
 	text_to_use: STRING
 
-	test_text_paragraph is
+	test_text_paragraph
 			-- Test the text paragraph
 		do
 --			create paragraph_to_test.make
@@ -30,7 +30,7 @@ feature  -- Tests
 --			paragraph_tag_assertions (paragraph_to_test)
 		end
 		
-	text_assertions is
+	text_assertions
 			-- Assertions related to the text of the paragraph
 		do
 --			assert_same ("TEXT_PARAGRAPH text set incorrectly", text_to_use, paragraph_to_test.text)
@@ -39,7 +39,7 @@ feature  -- Tests
 --			end
 		end
 		
-	paragraph_tag_assertions (my_paragraph: PARAGRAPH) is
+	paragraph_tag_assertions (my_paragraph: PARAGRAPH)
 			-- Assertions related to the paragraph tags
 		local
 			text_container: TEXT_CONTAINER

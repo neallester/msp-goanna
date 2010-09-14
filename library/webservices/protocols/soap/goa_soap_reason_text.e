@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP Fault Reason Text."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -23,7 +23,7 @@ create
 
 feature -- Initialisation
 
-	construct (a_reason: GOA_SOAP_FAULT_REASON; a_text, a_language: STRING) is
+	construct (a_reason: GOA_SOAP_FAULT_REASON; a_text, a_language: STRING)
 			-- Establish invariant.
 		require
 			reason_not_void: a_reason /= Void
@@ -43,7 +43,7 @@ feature -- Initialisation
 
 feature -- Status setting
 
-	validate (an_identity: UT_URI) is
+	validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		do
 			Precursor (an_identity)

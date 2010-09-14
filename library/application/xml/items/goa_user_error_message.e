@@ -1,4 +1,4 @@
-indexing
+note
 	description: "An error message that will be displayed to the user"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -17,13 +17,13 @@ inherit
 	L4E_SHARED_HIERARCHY
 	GOA_SHARED_APPLICATION_CONFIGURATION
 
-creation
+create
 	
 	make_with_processing_result
 	
 feature {GOA_XML_DOCUMENT, GOA_DEFERRED_PARAMETER} -- Services
 	
-	add_to_document (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED) is
+	add_to_document (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED)
 			-- Add to document
 		do
 			if not messages.is_empty then
@@ -35,7 +35,7 @@ feature {GOA_XML_DOCUMENT, GOA_DEFERRED_PARAMETER} -- Services
 		
 feature -- Queries
 		
-	ok_to_add (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN is
+	ok_to_add (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN
 			-- Is it OK to add this message to the_document
 		do
 			if is_empty then
@@ -45,7 +45,7 @@ feature -- Queries
 			end
 		end
 		
-	add_message (new_message: STRING) is
+	add_message (new_message: STRING)
 			-- Add new_message to error message, appending a space if needed
 		do
 			Precursor (new_message)
@@ -55,7 +55,7 @@ feature -- Queries
 			not_all_parameters_are_valid: not processing_result.all_parameters_are_valid
 		end
 		
-	add_message_item (new_item: GOA_XML_ITEM) is
+	add_message_item (new_item: GOA_XML_ITEM)
 			-- Add new item to error message
 		do
 			Precursor (new_item)
@@ -66,7 +66,7 @@ feature -- Queries
 
 feature {NONE} -- Creation
 
-	make_with_processing_result (new_processing_result: REQUEST_PROCESSING_RESULT) is
+	make_with_processing_result (new_processing_result: REQUEST_PROCESSING_RESULT)
 			-- Creation
 		require
 			valid_new_processing_result: new_processing_result /= Void

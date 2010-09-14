@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A message that may be displayed to the user"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -13,13 +13,13 @@ inherit
 	
 	GOA_XML_ITEM
 	
-creation
+create
 	
 	make, make_from_string
 	
 feature {GOA_XML_DOCUMENT, GOA_DEFERRED_PARAMETER} -- Services
 
-	add_to_document (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED) is
+	add_to_document (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED)
 			-- Add the message for this parameter to the_document
 		do
 			from
@@ -37,7 +37,7 @@ feature {GOA_XML_DOCUMENT, GOA_DEFERRED_PARAMETER} -- Services
 		
 feature -- Queries
 		
-	ok_to_add (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN is
+	ok_to_add (the_document: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN
 			-- Is it OK to add this message to the_document
 		do
 			if is_empty then
@@ -47,13 +47,13 @@ feature -- Queries
 			end
 		end
 		
-	is_empty: BOOLEAN is
+	is_empty: BOOLEAN
 			-- Is the message empty?
 		do
 			Result := messages.is_empty
 		end						
 
-	wipe_out is
+	wipe_out
 			-- Clear the message
 			-- There is no way to undo not RESULT_PROCESSING_RESULT.all_parameter_values_are_valid
 		do
@@ -64,7 +64,7 @@ feature -- Queries
 		
 feature -- Status Setting		
 			
-	add_message (new_message: STRING) is
+	add_message (new_message: STRING)
 			-- Add new_message to error message, appending a space if needed
 		require
 			valid_new_message: new_message /= Void
@@ -75,7 +75,7 @@ feature -- Status Setting
 			add_message_item (new_message_element)
 		end
 		
-	add_formatted_message (new_message, new_css_class: STRING) is
+	add_formatted_message (new_message, new_css_class: STRING)
 			-- Add new_message to error message, appending a space if needed
 		require
 			valid_new_message: new_message /= Void
@@ -86,7 +86,7 @@ feature -- Status Setting
 			add_message_item (new_message_element)
 		end
 		
-	add_message_item (new_item: GOA_XML_ITEM) is
+	add_message_item (new_item: GOA_XML_ITEM)
 			-- Add new item to error message
 		require
 			valid_new_item: new_item /= Void
@@ -103,13 +103,13 @@ feature {NONE} -- Implementation
 	
 feature {NONE} -- Creation
 
-	make is
+	make
 			-- Creation
 		do
 			create messages.make
 		end
 		
-	make_from_string (the_string: STRING) is
+	make_from_string (the_string: STRING)
 			-- Creation
 		require
 			valid_the_string: the_string /= Void

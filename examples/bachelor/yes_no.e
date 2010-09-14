@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Domains that that have a status of yes or no"
 	author: "Neal Lester"
 	date: "$Date: 2006-10-01 13:33:03 -0700 (Sun, 01 Oct 2006) $"
@@ -21,19 +21,19 @@ inherit
 
 feature -- attributes
 
-	yes: BOOLEAN is
+	yes: BOOLEAN
 			-- The status is 'yes'
 		do
 			result := equal (status_code, yes_code)
 		end
 
-	no: BOOLEAN is
+	no: BOOLEAN
 			-- The status is 'no'
 		do
 			result := equal (status_code, no_code)
 		end
 
-	set_yes is
+	set_yes
 			-- Set status to yes
 		do
 			set_status_code (yes_code)
@@ -41,7 +41,7 @@ feature -- attributes
 			yes : yes
 		end
 
-	set_no is
+	set_no
 			-- Set status to no
 		do
 			set_status_code (no_code)
@@ -49,35 +49,35 @@ feature -- attributes
 			no : no
 		end
 
-	question: STRING is
+	question: STRING
 			-- The question that this topic asks
 		deferred
 		end
 
 feature {NONE} -- implementation
 
-	yes_code, no_code: INTEGER is unique
+	yes_code, no_code: INTEGER = unique
 			-- Status codes
 
-	update is
+	update
 		do
 			precursor {STATUS_DOMAIN} 
 			precursor {DOMAIN_WITH_PARENT} 
 		end
 
-	initialize is
+	initialize
 		do
 			precursor {STATUS_DOMAIN} 
 		end
 
-	initialized: BOOLEAN is
+	initialized: BOOLEAN
 		do
 			result := precursor {STATUS_DOMAIN} 
 		end
 
 feature {NONE} -- Creation
 
-	make_with_user_and_parent (new_parent: DOMAIN_WITH_CHILDREN; new_user: like user_anchor) is
+	make_with_user_and_parent (new_parent: DOMAIN_WITH_CHILDREN; new_user: like user_anchor)
 		require
 			new_user_exists: new_user /= Void
 			new_parent_exists: new_parent /= Void

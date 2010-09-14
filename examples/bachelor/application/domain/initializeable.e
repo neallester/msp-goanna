@@ -1,4 +1,4 @@
-indexing
+note
 	description: "The abstract notion of objects that require initialization"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -13,11 +13,11 @@ deferred class
 
 feature
 
-	initialize is
+	initialize
 		deferred
 		end
 
-	initialized: BOOLEAN is
+	initialized: BOOLEAN
 			-- Has the domain been initialized
 		deferred
 		end

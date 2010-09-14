@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that hold essence of a SOAP Fault"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -20,7 +20,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_code: INTEGER; a_text, a_language: STRING; a_node_uri, a_role_uri: UT_URI) is
+	make (a_code: INTEGER; a_text, a_language: STRING; a_node_uri, a_role_uri: UT_URI)
 			-- Establish invariant.
 		require
 			text_not_empty: a_text /= Void and then not a_text.is_empty
@@ -66,7 +66,7 @@ feature -- Access
 
 feature -- Creation
 
-	new_fault: GOA_SOAP_FAULT is
+	new_fault: GOA_SOAP_FAULT
 			-- Fault created from `Current'
 		require
 			not_understood: code = Must_understand_fault implies not_understood_headers /= Void
@@ -98,7 +98,7 @@ feature -- Creation
 
 feature -- Element change
 
-	set_sub_code (a_sub_code: STRING) is
+	set_sub_code (a_sub_code: STRING)
 			-- Set `sub_code'.
 		do
 			sub_code := a_sub_code
@@ -106,7 +106,7 @@ feature -- Element change
 			sub_code_set: sub_code = a_sub_code
 		end
 
-	set_not_understood_headers (some_not_understood_headers: DS_LINKED_LIST [GOA_SOAP_HEADER_BLOCK]) is
+	set_not_understood_headers (some_not_understood_headers: DS_LINKED_LIST [GOA_SOAP_HEADER_BLOCK])
 			-- Set not_understodd_headers.
 		require
 			must_understand_fault: code = Must_understand_fault

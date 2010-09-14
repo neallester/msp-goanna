@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Shared access to the parameter processors"
 	author: "Neal L. Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,25 +16,25 @@ inherit
 	
 feature
 	
-	name_parameter: NAME_PARAMETER is
+	name_parameter: NAME_PARAMETER
 			-- Allow user to input their name
 		once
 			create Result.make
 		end
 		
-	gender_parameter: GENDER_PARAMETER is
+	gender_parameter: GENDER_PARAMETER
 			-- Allow user to input their gender
 		once
 			create Result.make
 		end
 		
-	programming_language_parameter: PROGRAMMING_LANGUAGE_PARAMETER is
+	programming_language_parameter: PROGRAMMING_LANGUAGE_PARAMETER
 			-- Allow user to select their favorate programming language from a pull down
 		once
 			create Result.make
 		end
 		
-	thinks_goanna_is_cool_parameter: THINKS_GOANNA_IS_COOL_PARAMETER is
+	thinks_goanna_is_cool_parameter: THINKS_GOANNA_IS_COOL_PARAMETER
 			-- Does user think Goanna is cool?
 		once
 			create Result.make

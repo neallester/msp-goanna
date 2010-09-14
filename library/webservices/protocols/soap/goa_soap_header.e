@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP envelope header."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -28,7 +28,7 @@ feature -- Access
 	
 feature -- Status setting
 
-	add_header_block (a_block: GOA_SOAP_HEADER_BLOCK) is
+	add_header_block (a_block: GOA_SOAP_HEADER_BLOCK)
 			-- Add 'a_block' to the list of header blocks in `Current'.
 		require
 			new_block_ok: a_block /= Void and then a_block.validated
@@ -40,7 +40,7 @@ feature -- Status setting
 			block_added_to_tree: has (a_block)
 		end
 		
-	validate (an_identity: UT_URI) is
+	validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		local
 			child_elements: DS_LIST [XM_ELEMENT]
@@ -85,7 +85,7 @@ feature -- Status setting
 
 feature -- Removal
 
-	remove_block (a_block: GOA_SOAP_HEADER_BLOCK) is
+	remove_block (a_block: GOA_SOAP_HEADER_BLOCK)
 			-- Add 'a_block' to the list of header blocks in `Current'.
 		require
 			new_block_ok: a_block /= Void and then a_block.validated

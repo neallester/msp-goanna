@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Singleton access for a HTTP_SESSION_MANAGER"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "HTTP Servlet API"
@@ -12,7 +12,7 @@ class GOA_SHARED_HTTP_SESSION_MANAGER
 
 feature -- Access
 
-	Session_manager: GOA_HTTP_SESSION_MANAGER is
+	Session_manager: GOA_HTTP_SESSION_MANAGER
 			-- Singleton access to a session manager
 		once
 			create Result.make

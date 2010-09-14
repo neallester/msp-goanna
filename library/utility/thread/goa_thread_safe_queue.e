@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Thread-safe FIFO queue."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "utility thread"
@@ -25,7 +25,7 @@ create
 	
 feature -- Initialisation
 
-	default_create is
+	default_create
 			-- Initialise
 		do
 			create {LINKED_QUEUE [K]} internal_queue.make
@@ -34,7 +34,7 @@ feature -- Initialisation
 		
 feature -- Access
 
-	next: K is
+	next: K
 			-- Retrieve next item from queue and remove it.
 			--| The precondition is not strictly thread safe because
 			--| it is not within the mutex block.
@@ -50,7 +50,7 @@ feature -- Access
 
 feature -- Status setting
 
-	put (new_item: K) is
+	put (new_item: K)
 			-- Add 'new_item' to end of queue
 		do
 			mutex.lock
@@ -61,7 +61,7 @@ feature -- Status setting
 	
 feature -- Status report
 
-	is_empty: BOOLEAN is
+	is_empty: BOOLEAN
 			-- Is the queue empty?
 		do
 			mutex.lock
@@ -72,7 +72,7 @@ feature -- Status report
 
 feature -- Measurement
 
-	count: INTEGER is
+	count: INTEGER
 			-- Number of elements in the queue
 		do
 			mutex.lock

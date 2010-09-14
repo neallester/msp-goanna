@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent an XML-RPC call."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -24,7 +24,7 @@ create {GOA_XRPC_SYSTEM}
 
 feature -- Initialisation
 
-	make (new_method: STRING) is
+	make (new_method: STRING)
 			-- Initialise
 		require
 			new_method_exists: new_method /= Void
@@ -34,7 +34,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 
-	make_from_string (new_method: STRING) is
+	make_from_string (new_method: STRING)
 			-- Initialise
 		require
 			new_method_exists: new_method /= Void
@@ -44,7 +44,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 
-	unmarshall (node: XM_ELEMENT) is
+	unmarshall (node: XM_ELEMENT)
 			-- Initialise XML-RPC call from DOM element.
 		local
 			method_name_elem, params_elem, next_param: XM_ELEMENT
@@ -94,7 +94,7 @@ feature -- Initialisation
 
 feature {GOA_XRPC_SYSTEM} -- Initialisation
 
-	unmarshall_for_multi_call (struct: ANY) is
+	unmarshall_for_multi_call (struct: ANY)
 			-- Initialise XML-RPC call from struct containing methodName and param members.
 			-- Used by multiCall.
 		require
@@ -144,7 +144,7 @@ feature -- Access
 	params: DS_LINKED_LIST [GOA_XRPC_PARAM]
 			-- Call parameters
 
-	extract_service_name: STRING is
+	extract_service_name: STRING
 			-- Extract the service name from the call's 'method_name'. The 'method_name'
 			-- should be in the form 'service.action', where 'service' is the service name.
 			-- If a '.' does not exist in the 'method_name' then the service name is returned
@@ -164,7 +164,7 @@ feature -- Access
 			empty_service_name_if_no_dot: method_name.index_of ('.', 1) = 0 implies Result.is_equal ("")
 		end
 
-	extract_action: STRING is
+	extract_action: STRING
 			-- Extract the service name from the call's 'method_name'. The 'method_name'
 			-- should be in the form 'service.action', where 'action' is the action to be invoked.
 			-- If a '.' does not exist in the 'method_name' then the action is returned
@@ -184,7 +184,7 @@ feature -- Access
 			empty_action_if_no_dot: method_name.index_of ('.', 1) = 0 implies Result.is_equal ("")
 		end
 
-	extract_parameters (a_service: GOA_SERVICE_PROXY; an_action: STRING): TUPLE is
+	extract_parameters (a_service: GOA_SERVICE_PROXY; an_action: STRING): TUPLE
 			-- Convert params to a tuple suitable for passing to an agent.
 		require
 			service_exists: a_service /= Void
@@ -246,7 +246,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_method_name (new_name: STRING) is
+	set_method_name (new_name: STRING)
 			-- Set method to call to 'new_name'
 		require
 			new_name_exists: new_name /= Void
@@ -254,7 +254,7 @@ feature -- Status setting
 			method_name := new_name
 		end
 
-	add_param (new_param: GOA_XRPC_PARAM) is
+	add_param (new_param: GOA_XRPC_PARAM)
 			-- Add 'new_param' to the list of parameters to send
 			-- with this call.
 		require
@@ -265,7 +265,7 @@ feature -- Status setting
 
 feature -- Marshalling
 
-	marshall: STRING is
+	marshall: STRING
 			-- Serialize this call to XML format
 		local
 			c: DS_LINKED_LIST_CURSOR [GOA_XRPC_PARAM]

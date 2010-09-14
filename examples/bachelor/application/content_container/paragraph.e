@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Paragraphs of text"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -22,13 +22,13 @@ inherit
 
 feature
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		-- Begin an http paragraph
 		do
 			Result := "<P" + html_alignment + ">" + new_line
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		-- End an http paragraph
 		do
 			Result := "</P>" + new_line

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Attribute implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -26,13 +26,13 @@ inherit
 			set_prefix
 		end
 			
-creation
+create
 
 	make, make_without_owner, make_with_namespace
 
 feature -- Factory creation
 
-	make (owner_doc: DOM_DOCUMENT; new_name: DOM_STRING) is
+	make (owner_doc: DOM_DOCUMENT; new_name: DOM_STRING)
 			-- Create a new attribute node.
 		require
 			owner_doc_exists: owner_doc /= Void
@@ -42,18 +42,18 @@ feature -- Factory creation
 			set_owner_document (owner_doc)
 		end
 
-	make_without_owner (new_name: DOM_STRING) is
+	make_without_owner (new_name: DOM_STRING)
 			-- Create a new attribute node without an owner document.
 		require
 			new_name_exists: new_name /= Void
 		do
 			parent_make
 			name := new_name
-			specified := true
-			!DOM_STRING! value.make_from_string ("")
+			specified := true 
+			create {DOM_STRING} value.make_from_string ("")
 		end
 
-	make_with_namespace (owner_doc: DOM_DOCUMENT; new_namespace_uri, new_qualified_name : DOM_STRING) is
+	make_with_namespace (owner_doc: DOM_DOCUMENT; new_namespace_uri, new_qualified_name : DOM_STRING)
 			-- Create a new attribute node with a namespace
 		require
 			owner_doc_exists: owner_doc /= Void
@@ -118,7 +118,7 @@ feature
          -- The value of the attribute is returned as a string. Character
          -- and general entity references are replaced with their values.
 
-   set_value (v: DOM_STRING) is
+   set_value (v: DOM_STRING)
          -- This creates a Text node with the unparsed contents of the string.
 	  do
 		  value := v
@@ -133,7 +133,7 @@ feature
 			-- The namespace prefix of this node, or Void if it is unspecified.
 			-- DOM Level 2.
 
-	set_prefix (new_prefix: DOM_STRING) is
+	set_prefix (new_prefix: DOM_STRING)
 			-- Set the namespace prefix of this node.
 			-- DOM Level 2.
 		do
@@ -146,25 +146,25 @@ feature
 			
 feature -- from DOM_NODE
    
-	node_name: DOM_STRING is
+	node_name: DOM_STRING
          -- The name of this node, depending on its type.
       do
 		  Result := name
       end
 
-	node_value: DOM_STRING is
+	node_value: DOM_STRING
          -- The value of this node, depending on its type.
       do 
 		  Result := value
 	  end
 
-   set_node_value (v: DOM_STRING) is
+   set_node_value (v: DOM_STRING)
          -- see `value'
    	  do
 		  set_value (v)
       end
 
-   node_type: INTEGER is
+   node_type: INTEGER
          -- A code representing the type of the underlying object.
       once
 		  Result := Attribute_node

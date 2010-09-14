@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Cells in a table"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -20,7 +20,7 @@ inherit
 		end
 feature {CONTENT_CONTAINER}
 
-	set_width_in_pixels (number_of_pixels : INTEGER) is
+	set_width_in_pixels (number_of_pixels : INTEGER)
 		-- Define width in pixels
 		require
 			non_negative_number_of_pixels : number_of_pixels >= 0
@@ -34,7 +34,7 @@ feature {CONTENT_CONTAINER}
 			not_in_percent : not in_percent
 		end
 
-	set_width_in_percent (percent : INTEGER) is
+	set_width_in_percent (percent : INTEGER)
 		-- Define width in percent
 		require
 			non_negative_percent : percent >= 0
@@ -50,7 +50,7 @@ feature {CONTENT_CONTAINER}
 
 feature {NONE} -- implementation
 
-	html_width : STRING is
+	html_width : STRING
 		-- A string for inclusion in the cell element; html width
 		do
 			if (not in_pixels and not in_percent) then

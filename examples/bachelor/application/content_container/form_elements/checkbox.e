@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Check boxes in forms"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -23,7 +23,7 @@ create
 	
 feature {FORM} -- attribute setting
 
-	set_checked_processor (new_checked_processor : PROCEDURE [PROCESSOR_HOST, TUPLE]) is
+	set_checked_processor (new_checked_processor : PROCEDURE [PROCESSOR_HOST, TUPLE])
 		-- Set the processor if the box is checked
 		require
 			valid_new_checked_processor : new_checked_processor /= Void
@@ -33,7 +33,7 @@ feature {FORM} -- attribute setting
 			checked_processor_updated : checked_processor = new_checked_processor
 		end
 
-	set_unchecked_processor (new_unchecked_processor : PROCEDURE [PROCESSOR_HOST, TUPLE]) is
+	set_unchecked_processor (new_unchecked_processor : PROCEDURE [PROCESSOR_HOST, TUPLE])
 		-- Set the unchecked processor
 		require
 			valid_new_unchecked_processor : new_unchecked_processor /= Void
@@ -43,7 +43,7 @@ feature {FORM} -- attribute setting
 			unchecked_processor_updated : unchecked_processor = new_unchecked_processor
 		end
 
-	set_checked is
+	set_checked
 		-- set checked true
 		do
 			checked := true
@@ -51,7 +51,7 @@ feature {FORM} -- attribute setting
 			checked : checked
 		end
 
-	set_database_version_function (new_database_version_function : FUNCTION [PROCESSOR_HOST, TUPLE, BOOLEAN]) is
+	set_database_version_function (new_database_version_function : FUNCTION [PROCESSOR_HOST, TUPLE, BOOLEAN])
 		-- Set the agent used to determine the initial value of the checkbox
 		require
 			valid_new_database_version_function : new_database_version_function /= Void
@@ -61,12 +61,12 @@ feature {FORM} -- attribute setting
 			database_version_function_updated : database_version_function = new_database_version_function
 		end
 
-	new_input : BOOLEAN is
+	new_input : BOOLEAN
 		do
 			result := true
 		end
 
-	process_element is
+	process_element
 		do
 			debug
 				io.putstring ("Processing Checkbox: " + name + new_line)
@@ -92,17 +92,17 @@ feature {FORM} -- attribute setting
 
 feature -- implement deferred features
 
-	ready_to_initialize : BOOLEAN is
+	ready_to_initialize : BOOLEAN
 		do
 			result := true
 		end
 
-	processed : BOOLEAN is
+	processed : BOOLEAN
 		do
 			result := true
 		end
 
-	initialize_element is
+	initialize_element
 		do
 			if database_version_function /= Void then
 				database_version_function.call ([])
@@ -112,12 +112,12 @@ feature -- implement deferred features
 			end
 		end
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			result := "<INPUT TYPE=%"CHECKBOX%" NAME=%""
 		end
 
-	html_element : STRING is
+	html_element : STRING
 		do
 			result := name + "%""
 			if checked then
@@ -125,7 +125,7 @@ feature -- implement deferred features
 			end
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			result := ">"
 		end
@@ -145,7 +145,7 @@ feature {NONE} -- implementation
 
 feature {NONE} -- Creation
 
-	make_form_element (new_form : FORM) is
+	make_form_element (new_form : FORM)
 		do
 			force_update := true
 			precursor (new_form)

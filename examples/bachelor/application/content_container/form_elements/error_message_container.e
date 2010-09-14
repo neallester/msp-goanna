@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Containers for error messages from a form element"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -19,26 +19,26 @@ create
 
 feature -- Implement deferred features
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		-- To Do Create a class "COLORED", and implement this class as a descendent of
 		-- COLORED_TEXT_CONTAINER with the color attribute set to red (user configurable)
 		do
 			result := "<FONT COLOR=RED>"
 		end
 
-	html_element : STRING is
+	html_element : STRING
 		do
 			result := form_element.error_message
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			result := "</FONT>"
 		end
 
 feature {NONE}
 
-	make_error_message_container (new_form_element : FORM_ELEMENT) is
+	make_error_message_container (new_form_element : FORM_ELEMENT)
 		require
 			valid_new_form_element : new_form_element /= Void
 		do

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that can stream a DOM as a string"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "DOM Serialization"
@@ -15,7 +15,7 @@ obsolete "Use SERIALIZER classes instead"
 
 feature -- Transformation
 
-	output (node: DOM_NODE) is
+	output (node: DOM_NODE)
 			-- Recursively stream 'node' as a string.
 		require
 			node_exists: node /= Void
@@ -25,7 +25,7 @@ feature -- Transformation
 
 feature {NONE} -- Implementation
 
-	output_recurse (node: DOM_NODE; level: INTEGER) is
+	output_recurse (node: DOM_NODE; level: INTEGER)
 			-- Recursive routine to stream a dom as a string
 		require
 			node_exists: node /= Void

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects representing a proxy to a service."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -17,7 +17,7 @@ inherit
 
 feature -- Status report
 
-	valid_operands (a_name: STRING; operands: TUPLE): BOOLEAN is
+	valid_operands (a_name: STRING; operands: TUPLE): BOOLEAN
 			-- Are 'operands' valid operands for the function named 'a_name'?
 		require
 			name_exists: a_name /= Void
@@ -36,7 +36,7 @@ feature -- Status report
 	last_fault: STRING
 			-- The last fault that occured. Void if no fault occured.
 
-	help (a_name: STRING): STRING is
+	help (a_name: STRING): STRING
 			-- Documentation for the named service.
 		require
 			name_exists: a_name /= Void
@@ -51,7 +51,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	register_with_help (element: ROUTINE [ANY, TUPLE]; a_name, help_string: STRING) is
+	register_with_help (element: ROUTINE [ANY, TUPLE]; a_name, help_string: STRING)
 			-- Register 'element' with 'a_name' and 'help_string'
 		require
 			name_exists: a_name /= Void
@@ -65,7 +65,7 @@ feature -- Status setting
 			help_set: help (a_name).is_equal (help_string)
 		end
 
-	call (a_name: STRING; args: TUPLE) is
+	call (a_name: STRING; args: TUPLE)
 			-- Call named routine
 		local
 			function: FUNCTION [ANY, TUPLE, ANY]
@@ -89,7 +89,7 @@ feature -- Status setting
 			end
 		end
 
-	set_help (a_name, help_string: STRING) is
+	set_help (a_name, help_string: STRING)
 			-- Set the help string for the named routine.
 		require
 			name_exists: a_name /= Void
@@ -106,7 +106,7 @@ feature -- Status setting
 
 feature -- Creation
 
-	new_tuple (a_name: STRING): TUPLE is
+	new_tuple (a_name: STRING): TUPLE
 			--	Tuple of default-valued arguments to pass to call `a_name'.
 		require
 			name_exists: a_name /= Void

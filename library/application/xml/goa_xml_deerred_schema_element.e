@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Deferred item in a GOA_XML_ELEMENT_SCHEMA"
 	author: "Neal L Lester <neal@3dsafety.com>"
 	date: "$Date: 2007-01-13 05:41:12 +0000 (Sat, 13 Jan 2007) $"
@@ -22,7 +22,7 @@ feature {GOA_XML_ELEMENT_SCHEMA, GOA_XML_DEERRED_SCHEMA_ELEMENT} -- Query implem
 
 	was_complete: BOOLEAN
 
-	is_valid_content_fragment (the_fragment: DS_ARRAYED_LIST [INTEGER]): BOOLEAN is
+	is_valid_content_fragment (the_fragment: DS_ARRAYED_LIST [INTEGER]): BOOLEAN
 			-- Does this element represent a valid element at the given location in the parent element?
 			-- The location is given by the internal cursor of the_fragment
 			-- If the feature retuns false, the_fragment must be unchanged.

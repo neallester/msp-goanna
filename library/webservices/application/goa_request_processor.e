@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Manages a sequence of connectors and processes requests from each in turn"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -30,7 +30,7 @@ create
 		
 feature -- Initialization
 
-	make (application_context: GOA_SERVLET_CONTEXT) is
+	make (application_context: GOA_SERVLET_CONTEXT)
 			-- Initialise this request processor
 		require
 			application_context_exists: application_context /= Void

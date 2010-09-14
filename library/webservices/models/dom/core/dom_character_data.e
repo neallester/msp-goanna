@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Character Data"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -16,7 +16,7 @@ inherit
 
 feature
 
-   data: DOM_STRING is
+   data: DOM_STRING
 			-- The character data of the node that implements this interface.
 			-- The DOM implementation may not put arbitrary limits on the amount
 			-- of data that may be stored in a CharacterData node. However,
@@ -27,12 +27,12 @@ feature
 		deferred
 		end
 
-	set_data (v: DOM_STRING) is
+	set_data (v: DOM_STRING)
 			-- see `data'
 		deferred
 		end
 	
-	substring_data (offset: INTEGER; count: INTEGER): DOM_STRING is
+	substring_data (offset: INTEGER; count: INTEGER): DOM_STRING
          -- Extracts a range of data from the node.
          -- Parameters
          --    offset   Start offset of substring to extract.
@@ -45,7 +45,7 @@ feature
 	  deferred
       end
 
-   append_data (arg: DOM_STRING) is
+   append_data (arg: DOM_STRING)
          -- Append the string to the end of the character data of the node.
          -- Upon success, data provides access to the concatenation
          -- of data and the DOM_String specified.
@@ -54,7 +54,7 @@ feature
 	  deferred
       end
 
-   insert_data (offset: INTEGER; arg: DOM_STRING) is
+   insert_data (offset: INTEGER; arg: DOM_STRING)
          -- Insert a string at the specified character offset.
          -- Parameters
          --    offset   The character offset at which to insert.
@@ -62,7 +62,7 @@ feature
 	  deferred
       end
 
-   delete_data (offset: INTEGER; count: INTEGER) is
+   delete_data (offset: INTEGER; count: INTEGER)
          -- Remove a range of characters from the node. Upon success,
          -- data and length reflect the change.
          -- Parameters
@@ -74,7 +74,7 @@ feature
 	  deferred
       end
 
-   replace_data (offset: INTEGER; count: INTEGER; arg: DOM_STRING) is
+   replace_data (offset: INTEGER; count: INTEGER; arg: DOM_STRING)
          -- Replace the characters starting at the specified character
          -- `offset' with the specified string.
          -- Parameters
@@ -89,7 +89,7 @@ feature
 	  deferred
       end
 
-	length: INTEGER is
+	length: INTEGER
 			-- Length of character data
 		deferred
 		end

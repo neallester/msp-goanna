@@ -1,4 +1,4 @@
-indexing
+note
 	description: "SOAP modules"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -12,12 +12,12 @@ deferred class	GOA_SOAP_MODULE
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Establish invariant.
 		deferred
 		end
 
-	init (a_name: like name; a_value: like value; a_schema_type: like schema_type) is
+	init (a_name: like name; a_value: like value; a_schema_type: like schema_type)
 			--	Establish invariant (to be called from `make')..
 		require
 			name_exists: a_name /= Void
@@ -37,17 +37,17 @@ feature -- Access
 	name: UT_URI
 			-- Name of module
 
-	provided_features: DS_SET [UT_URI] is
+	provided_features: DS_SET [UT_URI]
 			-- Names of provided features
 		deferred
 		end
 
-	header_names: DS_SET [GOA_EXPANDED_QNAME] is
+	header_names: DS_SET [GOA_EXPANDED_QNAME]
 			-- Header blocks which implement `Current'
 		deferred
 		end
 
-	property_names: DS_SET [STRING] is
+	property_names: DS_SET [STRING]
 			-- Names of properties used
 		deferred
 		end

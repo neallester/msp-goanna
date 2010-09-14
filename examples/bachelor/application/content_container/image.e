@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent image Content"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -24,7 +24,7 @@ inherit
 			set_center
 		end
 
-creation
+create
 
 	make_from_user
 
@@ -38,7 +38,7 @@ feature {PAGE} -- Attributes
 
 feature {PAGE_FACTORY, PAGE, USER} -- Attribute Setting
 
-	set_file_name (new_file_name : STRING) is
+	set_file_name (new_file_name : STRING)
 		-- Set new file_name for image (include extension)
 		require
 			valid_new_file_name : new_file_name /= Void
@@ -50,7 +50,7 @@ feature {PAGE_FACTORY, PAGE, USER} -- Attribute Setting
 
 feature {NONE} -- Creation
 
-	make_from_user (user : USER) is
+	make_from_user (user : USER)
 		-- Create the image
 		require
 			valid_user : user /= Void
@@ -64,11 +64,11 @@ feature {NONE} -- Creation
 
 feature -- Implementation
 
-	html_begin_element : STRING is ""
+	html_begin_element : STRING = ""
 
-	html_end_element : STRING is ""
+	html_end_element : STRING = ""
 
-	html_element : STRING is
+	html_element : STRING
 		do
 			result := "<IMG SRC=%"" + web_server_url + "/" + directory + "/" + file_name + "%""
 			if not text.empty then

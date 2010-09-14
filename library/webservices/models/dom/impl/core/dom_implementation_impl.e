@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Implementation implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -17,7 +17,7 @@ inherit
 feature
 
 	create_document (namespace_uri, qualified_name: DOM_STRING; 
-		doctype: DOM_DOCUMENT_TYPE): DOM_DOCUMENT is
+		doctype: DOM_DOCUMENT_TYPE): DOM_DOCUMENT
 			-- Creates an XML DOCUMENT object of the specified type with
 			-- its document element. 
 			-- Introduced in DOM Level 2.
@@ -28,21 +28,21 @@ feature
 		local
 			document_element: DOM_ELEMENT
 			discard: DOM_NODE
-		do
-			!DOM_DOCUMENT_IMPL! Result.make (doctype)
+		do 
+			create {DOM_DOCUMENT_IMPL} Result.make (doctype)
 			document_element := Result.create_element_ns (namespace_uri, qualified_name)
 			discard := Result.append_child (document_element)
 		end
 
-	create_empty_document: DOM_DOCUMENT is
+	create_empty_document: DOM_DOCUMENT
 			-- Creates an empty XML DOCUMENT object of the specified type.
 			-- Non DOM.
 			-- Parameters:
-		do
-			!DOM_DOCUMENT_IMPL! Result.make (Void)
+		do 
+			create {DOM_DOCUMENT_IMPL} Result.make (Void)
 		end
 
-	create_document_type (qualified_name, public_id, system_id: DOM_STRING): DOM_DOCUMENT_TYPE is
+	create_document_type (qualified_name, public_id, system_id: DOM_STRING): DOM_DOCUMENT_TYPE
 			-- Creates an empty DOM_DOCUMENT_TYPE node. Entity declarations 
 			-- and notations are not made available. Entity reference expansions
 			-- and default attribute additions do not occur. 
@@ -51,11 +51,11 @@ feature
 			--	`qualified_name' - The qualified name of the document type to be created.
 			--	`publid_id' - The external subset public identifier.
 			--	`system_id' - The external subset system identifier.
-		do	
-			!DOM_DOCUMENT_TYPE_IMPL! Result.make (Void, qualified_name, public_id, system_id)
+		do 	
+			create {DOM_DOCUMENT_TYPE_IMPL} Result.make (Void, qualified_name, public_id, system_id)
 		end
 
-	has_feature (feature_name: DOM_STRING; version: DOM_STRING) : BOOLEAN is
+	has_feature (feature_name: DOM_STRING; version: DOM_STRING) : BOOLEAN
 			-- Test if the DOM implementation implements a specific feature.
 			-- Parameters
 			--  'feature_name' - The package name of the feature to test.

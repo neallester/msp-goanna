@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Submit button for a form"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -31,21 +31,21 @@ create
 
 feature -- Implement Deferred Features
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			Result := "<INPUT TYPE=%"SUBMIT%" NAME=%"" + name + "%" VALUE=%"" 
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			Result := "%">" + new_line
 		end
 
-	ready_to_initialize : BOOLEAN is True
+	ready_to_initialize : BOOLEAN = True
 
-	processed : BOOLEAN is True
+	processed : BOOLEAN = True
 
-	new_input : BOOLEAN is
+	new_input : BOOLEAN
 		do
 			if parent.page.web_request.has_parameter (name) then
 				if equal (value, text) then
@@ -58,17 +58,17 @@ feature -- Implement Deferred Features
 			end
 		end	
 
-	make_form_element (proposed_parent : FORM) is
+	make_form_element (proposed_parent : FORM)
 		do
 			text_make
 			precursor (proposed_parent)
 		end
 
-	initialize_element is
+	initialize_element
 		do
 		end
 
-	process_element is
+	process_element
 		do
 		end
 

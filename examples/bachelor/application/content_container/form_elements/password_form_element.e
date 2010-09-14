@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that accept passwords as input"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -17,13 +17,13 @@ inherit
 			type
 		end
 
-creation
+create
 
 	make_form_element
 
 feature
 
-	type : STRING is
+	type : STRING
 		do
 			result := "PASSWORD"
 		end

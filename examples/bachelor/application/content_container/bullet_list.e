@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Bulleted List"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -22,12 +22,12 @@ create
 
 feature -- Implement deferred features
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			result := "<ul>" + new_line
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			result := "</ul>" + new_line
 		end

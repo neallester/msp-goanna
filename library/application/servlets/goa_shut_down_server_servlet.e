@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A servlet that brings down the application"
 	author: "Neal L Lester <neal@3dsafety.com>"
 	date: "$Date: 2007-02-15 14:52:21 -0800 (Thu, 15 Feb 2007) $"
@@ -16,18 +16,18 @@ inherit
 		end
 	GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT
 
-creation
+create
 
 	make
 
 feature
 
-	name: STRING is
+	name: STRING
 		once
 			Result := configuration.bring_down_server_servlet_name
 		end
 
-	perform_final_processing (processing_result: REQUEST_PROCESSING_RESULT) is
+	perform_final_processing (processing_result: REQUEST_PROCESSING_RESULT)
 		do
 			processing_result.response.send ("Server Will Be Shut Down")
 			processing_result.response.flush_buffer

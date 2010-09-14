@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Root class for goa_fast_cgi_manager; Manage Multiple fast_cgi applications"
 	author: "Neal L Lester [neal@3dsafety.com]"
 	date: "$Date:  $"
@@ -15,7 +15,7 @@ create
 
 feature {NONE} -- Creation
 
-	make is
+	make
 		local
 		
 		do
@@ -23,7 +23,7 @@ feature {NONE} -- Creation
 			-- create service.make_from_port (3783, "tcp")
 		end
 
-	prune_line (a_line: STRING) is
+	prune_line (a_line: STRING)
 			-- a_line cleaned of hidden characters
 		require
 			valid_a_line: a_line /= Void

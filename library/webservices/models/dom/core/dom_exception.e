@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Exception"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -16,7 +16,7 @@ inherit
 
 feature
 
-   code: INTEGER is
+   code: INTEGER
          -- An integer indicating the type of error generated
       deferred
       end

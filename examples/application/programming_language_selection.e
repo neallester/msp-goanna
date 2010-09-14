@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Selection of a programming language"
 	author: "Neal L. Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -10,7 +10,7 @@ class
 
 	PROGRAMMING_LANGUAGE_SELECTION
 
-creation
+create
 	
 	make
 	
@@ -22,7 +22,7 @@ feature -- Attributes
 	comment: STRING
 			-- A comment about the programming language
 			
-	valid_comment (the_comment: STRING): BOOLEAN is
+	valid_comment (the_comment: STRING): BOOLEAN
 			-- Is the_comment valid?
 		require
 			valid_comment: the_comment /= Void and then not the_comment.is_empty
@@ -32,7 +32,7 @@ feature -- Attributes
 		
 feature {NONE} -- Creation
 
-	make (new_name, new_comment: STRING) is
+	make (new_name, new_comment: STRING)
 		require
 			valid_new_name: new_name /= Void and then not new_name.is_empty
 			valid_new_comment: new_comment /= Void and then not new_comment.is_empty and then valid_comment (new_comment)

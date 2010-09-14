@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that are related to a specific user"
 	author: "Neal L. Lester"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,7 +16,7 @@ feature
 	user: like user_anchor
 			-- The user
 
-	set_user (new_user: like user_anchor) is
+	set_user (new_user: like user_anchor)
 			-- Set user
 		require
 			new_user_exists: new_user /= Void
@@ -28,7 +28,7 @@ feature
 
 feature {NONE} -- Creation
 
-	make_with_user (new_user: like user_anchor) is
+	make_with_user (new_user: like user_anchor)
 		require
 			new_user_exists: new_user /= Void
 		do

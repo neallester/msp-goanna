@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Coordinates producers and consumers."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "utility thread"
@@ -29,7 +29,7 @@ inherit
 		
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Initialise
 		do
 			create consumers.make
@@ -43,7 +43,7 @@ feature -- Status report
 
 feature -- Basic operations
 
-	run is
+	run
 			-- Start the pipeline
 		require
 			not_running: not is_running
@@ -59,7 +59,7 @@ feature -- Basic operations
 
 feature -- Element change
 
-	add_consumer (new_consumer: GOA_CONSUMER [ANY]) is
+	add_consumer (new_consumer: GOA_CONSUMER [ANY])
 			-- Add consumer to the list of consumers to start
 		require
 			not_running: not is_running
@@ -68,7 +68,7 @@ feature -- Element change
 			consumers.extend (new_consumer)
 		end
 	
-	add_producer (new_producer: GOA_PRODUCER [ANY]) is
+	add_producer (new_producer: GOA_PRODUCER [ANY])
 			-- Add producer to the list of producer to start
 		require
 			not_running: not is_running
@@ -85,7 +85,7 @@ feature {NONE} -- Implementation
 	producers: LINKED_LIST [GOA_PRODUCER [ANY]]
 			-- List of producers
 
-	start_consumers is
+	start_consumers
 			-- Initialise and launch 'number_of_consumers' consumers
 		require
 			not_running: not is_running
@@ -101,7 +101,7 @@ feature {NONE} -- Implementation
 			end
 		end
 	
-	start_producers is
+	start_producers
 			-- Start producers
 		require
 			not_running: not is_running
@@ -118,7 +118,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	wait_for_producers is
+	wait_for_producers
 			-- Wait for all producers to terminate
 		require
 			running: is_running
@@ -135,7 +135,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	terminate_consumers is
+	terminate_consumers
 			-- Stop all consumer threads
 		require
 			running: is_running

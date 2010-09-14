@@ -11,7 +11,7 @@
 
 -- Dates following the Gregorian calendar system
 
-indexing
+note
    date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $";
    revision: "$Revision: 491 $";
    compiler: "$Compiler: TowerEiffel v1.3$";  
@@ -37,13 +37,13 @@ inherit
 	 is_equal
       end
    
-creation
+create
    make, make_to_now, make_to_day_of_year, make_to_day_of_week
    
 feature{ANY}
    day, month, year: INTEGER;
    
-   make(yyear, mmonth, dday: INTEGER) is 
+   make(yyear, mmonth, dday: INTEGER) 
 	 -- Set `day', `month' and `year'.
 	 -- A zero argument sets the corresponding feature to the value supplied 
 	 -- by the system clock.
@@ -66,7 +66,7 @@ feature{ANY}
 	 end;
       end; -- make
 	
-   make_to_now is
+   make_to_now
 	 -- Set to current date, as supplied by the system clock.
       do
 	 clock.read;
@@ -76,7 +76,7 @@ feature{ANY}
 	 was_set := true;
       end; -- make_to_now
    
-   make_to_day_of_year(yyear, doy: INTEGER) is
+   make_to_day_of_year(yyear, doy: INTEGER)
 	 -- Set `month' and `day' by its ordinal day number in the year.
 	 -- A zero argument sets the corresponding feature to the value supplied 
 	 -- by the system clock.
@@ -109,7 +109,7 @@ feature{ANY}
 	 end;
       end; -- make_day_of_year
    
-   make_to_day_of_week(yyear, mmonth, n, dow: INTEGER) is
+   make_to_day_of_week(yyear, mmonth, n, dow: INTEGER)
 	 -- Set date to the n'th dow in a given month and year
 	 -- e.g. the 3nd Tuesday in January, 1994 would be (1994, 01, 3, 2)
 	 -- given that Sunday = 0, Monday = 1 ....
@@ -159,7 +159,7 @@ feature{ANY}
 	 -- Did the make operation chosen to create the object result in 
 	 -- a valid date being set?
    
-   day_of_year: INTEGER is
+   day_of_year: INTEGER
 	 -- Ordinal number of the day in the year in the `Current' 
 	 -- instance (1st January = 1).
       require
@@ -176,7 +176,7 @@ feature{ANY}
 	 Result := Result + day;	
       end; -- day_of_year
    
-   is_leap_year: BOOLEAN is
+   is_leap_year: BOOLEAN
 	 -- Is `year' a leap year?
       require
 	 year_valid: was_set
@@ -184,7 +184,7 @@ feature{ANY}
 	 Result := leap_year(year);
       end; -- is_leap_year
    
-   days_in_month: INTEGER is
+   days_in_month: INTEGER
 	 -- Number of days in `month'
       require
 	 current_set: was_set
@@ -192,7 +192,7 @@ feature{ANY}
 	 Result := month_in_days(month, year);
       end; -- days_in_month
     
-   day_of_week : INTEGER is
+   day_of_week : INTEGER
 	 -- Day of the week. 0 = Sunday.
 	 -- Found using Zeller's formula.
 	 -- Produces incorrect results for dates before 14 Sept 1752.
@@ -224,7 +224,7 @@ feature{ANY}
 	 Result >= 0 and Result <= 6
       end; -- day_of_week
    
-   add_days(ds: INTEGER) is
+   add_days(ds: INTEGER)
 	 -- Advances `Current' by `ds' days.
       require
 	 current_set: was_set
@@ -236,7 +236,7 @@ feature{ANY}
 	 current.days_between(old clone(Current)) = ds;
       end; -- add_days			
    
-   days_between(other: like Current): INTEGER is
+   days_between(other: like Current): INTEGER
 	 -- Days between two dates.	
       require
 	 current_set: was_set;
@@ -261,7 +261,7 @@ feature{ANY}
 	 if neg then Result := -Result end;
       end; -- days_between
    
-   infix "<" (other: like Current): BOOLEAN is
+   infix "<" (other: like Current): BOOLEAN
 	 -- Is `Current' date less than `other'?
       do
 	 if year < other.year then 
@@ -277,17 +277,17 @@ feature{ANY}
 	 end;
       end; -- infix "<"
    
-   is_equal(other: like Current): BOOLEAN is	
+   is_equal(other: like Current): BOOLEAN	
       do
 	 Result := ((year = other.year) and (month = other.month) and (day = other.day));
       end; -- is_equal
    
-   hash_code: INTEGER is
+   hash_code: INTEGER
       do
 	 Result := (year + month + day)
       end; -- hash_code
    
-   add_years(ys: INTEGER) is
+   add_years(ys: INTEGER)
 	 -- Advances `Current' by `ys' years.  If a leap year has a number
 	 -- of whole years added to 29th February then `day' will be 
 	 -- reset to 28, unless the resultant year is also a leap year.
@@ -298,7 +298,7 @@ feature{ANY}
 	 year_day_normalise;
       end; -- add_years
    
-   years_between(other: like Current): INTEGER is
+   years_between(other: like Current): INTEGER
 	 -- Whole years between two dates.	
       require
 	 current_set: was_set;				
@@ -322,7 +322,7 @@ feature{ANY}
 	 if neg then Result := -Result end;
       end; -- years_between
    
-   add_months(ms: INTEGER) is
+   add_months(ms: INTEGER)
 	 -- Advance `Current' by `ms' months.  Whole months are added,
 	 -- with `day' being rounded down if `new month' is shorter than
 	 -- `old month'.
@@ -333,7 +333,7 @@ feature{ANY}
 	 month_day_normalise;
       end; -- add_months
    
-   months_between(other: like Current): INTEGER is
+   months_between(other: like Current): INTEGER
 	 -- Whole months between two dates.
       require
 	 current_set: was_set;				
@@ -359,14 +359,14 @@ feature{ANY}
       end; -- months_between
    
 feature {DATE}
-   denormalise_month is
+   denormalise_month
 	 -- Borrow from `year' to make `month' larger.
       do
 	 month := month + 12;
 	 year := year - 1
       end; -- denormalize_month
    
-   denormalise_day is
+   denormalise_day
 	 -- Borrow from `month' (and `year') to make `day' > month_length.
       do
 	 inspect month
@@ -390,7 +390,7 @@ feature {DATE}
       end; -- denormalise_day
    
 feature {NONE}
-   month_day_normalise is
+   month_day_normalise
       do
 	 -- convert surplus to years
 	 if month > 12 then 
@@ -405,14 +405,14 @@ feature {NONE}
 	 end;
       end; -- month_day_normalise
    
-   year_day_normalise is
+   year_day_normalise
       do
 	 if day > month_in_days(month, year) then 
 	    day := month_in_days(month, year) 
 	 end;
       end; -- year_day_normalise
    
-   normalise_days is
+   normalise_days
       local
 	 normalised : BOOLEAN;
 	 y, m, d: INTEGER
@@ -447,7 +447,7 @@ feature {NONE}
 	 month <= 12;
       end; -- end normalise_days
    
-   clock: SYSTEM_CLOCK is once !!Result end;
+   clock: SYSTEM_CLOCK once  create Result end;
 
 invariant
    0 < year;

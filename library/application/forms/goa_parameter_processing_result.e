@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Results from processing a single parameter; PARAMETER_PROCESSING_RESULT should inherit from this class"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-06-14 13:46:53 -0700 (Thu, 14 Jun 2007) $"
@@ -32,7 +32,7 @@ feature -- Attributes
 	parameter_suffix: INTEGER
 			-- The suffix portion of the raw_parameter, Void if none
 
-	request_parameter: GOA_DEFERRED_PARAMETER is
+	request_parameter: GOA_DEFERRED_PARAMETER
 			-- parameter associated with this result
 		do
 			Result := request_parameters.item (parameter_name)
@@ -41,7 +41,7 @@ feature -- Attributes
 	value: STRING
 			-- The value of the parameter
 
-	is_value_valid: BOOLEAN is
+	is_value_valid: BOOLEAN
 			-- Was the value valid.  False generally indicates that an error message should be displayed
 			-- To the user and that the form should be displayed again.
 		do
@@ -63,25 +63,25 @@ feature -- Attributes
 	was_updated: BOOLEAN
 			-- Was the database updated when this parameter was processed?
 
-	session_status: SESSION_STATUS is
+	session_status: SESSION_STATUS
 			-- SESSION_STATUS associated with this parameter
 		do
 			Result := request_processing_result.session_status
 		end
 
-	processing_servlet: GOA_APPLICATION_SERVLET is
+	processing_servlet: GOA_APPLICATION_SERVLET
 			-- The servlet that is processing this request
 		do
 			Result := request_processing_result.processing_servlet
 		end
 
-	request: GOA_HTTP_SERVLET_REQUEST is
+	request: GOA_HTTP_SERVLET_REQUEST
 			-- The request that is being processed
 		do
 			Result := request_processing_result.request
 		end
 
-	message_catalog: MESSAGE_CATALOG is
+	message_catalog: MESSAGE_CATALOG
 			-- The message catalog associated with the current session
 		do
 			Result := request_processing_result.message_catalog
@@ -89,7 +89,7 @@ feature -- Attributes
 
 feature {GOA_REQUEST_PARAMETER} -- Database updating
 
-	set_was_updated is
+	set_was_updated
 			-- Set database_was_updated =  True
 		do
 			was_updated := True
@@ -98,7 +98,7 @@ feature {GOA_REQUEST_PARAMETER} -- Database updating
 
 feature {GOA_DEFERRED_PARAMETER} -- Dependency Updating
 
-	set_was_dependency_updated is
+	set_was_dependency_updated
 			-- Set updated_dependency to True
 		obsolete
 			"Application specific hack"
@@ -110,7 +110,7 @@ feature {GOA_DEFERRED_PARAMETER} -- Dependency Updating
 
 feature {GOA_REQUEST_PROCESSING_RESULT} -- Processing
 
-	process (the_parameter: PARAMETER_PROCESSING_RESULT) is
+	process (the_parameter: PARAMETER_PROCESSING_RESULT)
 			-- Process the parameter
 			-- Passing in the_parameter (which is a reference to current) allows us to pass this
 			-- Object to the request_parameters with a type of PARAMETER_PROCESSING_RESULT
@@ -151,7 +151,7 @@ feature {GOA_REQUEST_PROCESSING_RESULT} -- Processing
 
 feature {NONE} -- Creation
 
-	make (new_raw_parameter: STRING; new_processing_result: REQUEST_PROCESSING_RESULT) is
+	make (new_raw_parameter: STRING; new_processing_result: REQUEST_PROCESSING_RESULT)
 			-- Creation
 		require
 			valid_new_raw_parameter: new_raw_parameter /= Void and then not new_raw_parameter.is_empty and then request_parameters.has (name_from_raw_parameter (new_raw_parameter.as_lower))

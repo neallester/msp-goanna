@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XMLRPC Example Current Time servlet retrieval for the %
 		%server (http://time.xmlrpc.com/RPC2)."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
@@ -26,19 +26,19 @@ inherit
 			copy, default_create
 		end
 		
-creation
+create
 	
 	init
 	
 feature -- Initialization
 
-	do_get (request: HTTP_SERVLET_REQUEST; response: HTTP_SERVLET_RESPONSE) is
+	do_get (request: HTTP_SERVLET_REQUEST; response: HTTP_SERVLET_RESPONSE)
 			-- Service the request
 		do
 			write_page (response, "time.xmlrpc.com", 80, "/RPC2", "currentTime.getCurrentTime", "Unknown")	
 		end
 	
-	do_post (request: HTTP_SERVLET_REQUEST; response: HTTP_SERVLET_RESPONSE) is
+	do_post (request: HTTP_SERVLET_REQUEST; response: HTTP_SERVLET_RESPONSE)
 			-- Service the request
 		local
 			param: STRING
@@ -68,7 +68,7 @@ feature -- Initialization
 		
 feature -- Basic routines
 
-	retrieve_time (host: STRING; port: INTEGER; path, service_name: STRING): STRING is
+	retrieve_time (host: STRING; port: INTEGER; path, service_name: STRING): STRING
 			-- Retrieve current time
 		local
 			client: XRPC_LITE_CLIENT
@@ -88,7 +88,7 @@ feature -- Basic routines
 			end	
 		end
 	
-	write_page (response: HTTP_SERVLET_RESPONSE; host: STRING; port: INTEGER; path, service_name, time: STRING) is
+	write_page (response: HTTP_SERVLET_RESPONSE; host: STRING; port: INTEGER; path, service_name, time: STRING)
 			-- Write page
 		local
 			html: STRING

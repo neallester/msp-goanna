@@ -1,4 +1,4 @@
-indexing
+note
 	description: "SOAP properties"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -16,7 +16,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_name: like name; a_value: like value; a_schema_type: like schema_type) is
+	make (a_name: like name; a_value: like value; a_schema_type: like schema_type)
 			--	Establish invariant.
 		require
 			name_exists: a_name /= Void

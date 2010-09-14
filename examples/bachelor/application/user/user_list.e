@@ -1,4 +1,4 @@
-indexing
+note
 	description: "List of system users"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -29,7 +29,7 @@ create
 
 feature {LOGIN_SEQUENCE}
 
-	retrieved_user (user_id, password : STRING) : like user_anchor is
+	retrieved_user (user_id, password : STRING) : like user_anchor
 		-- Retrieve a user from user_list
 		require
 			user_id_in_list : has (user_id)
@@ -49,7 +49,7 @@ feature {LOGIN_SEQUENCE}
 			valid_result : result /= Void
 		end
 
-	add_new_user (new_user_id, new_password, new_file_name : STRING) is
+	add_new_user (new_user_id, new_password, new_file_name : STRING)
 		-- Add a new user to the user_list
 		require
 			valid_new_user_id : new_user_id /= Void
@@ -70,7 +70,7 @@ feature {LOGIN_SEQUENCE}
 			new_element_file_name_new_file_name : equal (item (new_user_id).file_name, new_file_name)
 		end
 
-	has (user_id: STRING): BOOLEAN is
+	has (user_id: STRING): BOOLEAN
 			-- Is there a USER_LIST_ELEMENT associated with user_id
 		require
 			user_id_exists: user_id /= void
@@ -78,7 +78,7 @@ feature {LOGIN_SEQUENCE}
 			result := user_list.has (user_id)
 		end
 
-	item (user_id: STRING): USER_LIST_ELEMENT is
+	item (user_id: STRING): USER_LIST_ELEMENT
 			-- The USER_LIST_ELEMENT associated with user_id
 		require
 			user_id_exists: user_id /= Void
@@ -89,7 +89,7 @@ feature {LOGIN_SEQUENCE}
 
 feature {NONE} -- Implementation
 
-	extend (new: USER_LIST_ELEMENT; key: STRING) is
+	extend (new: USER_LIST_ELEMENT; key: STRING)
 		-- Add a new user_element to the list, acessible through key
 		require
 			key_not_in_list: not user_list.has (key)
@@ -104,7 +104,7 @@ feature {NONE} -- Implementation
 
 feature {NONE} -- Creation
 
-	make is
+	make
 		do
 			create user_list.make (10)
 		end

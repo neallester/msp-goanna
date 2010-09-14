@@ -1,4 +1,4 @@
-indexing
+note
 	description: "The results of processing a request from the user; REQUEST_PROCESSING_RESULT should inherit from this class"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2009-12-23 16:16:29 -0800 (Wed, 23 Dec 2009) $"
@@ -26,7 +26,7 @@ feature -- Attributes
 	session_status: SESSION_STATUS
 			-- Session status associated with the request
 
-	message_catalog: MESSAGE_CATALOG is
+	message_catalog: MESSAGE_CATALOG
 			-- Message catalog for this user
 		do
 			Result := session_status.message_catalog
@@ -38,13 +38,13 @@ feature -- Attributes
 	generating_servlet: GOA_DISPLAYABLE_SERVLET
 			-- The servlet that is generating the next page that will be displayed to the user
 
-	virtual_domain_host: VIRTUAL_DOMAIN_HOST is
+	virtual_domain_host: VIRTUAL_DOMAIN_HOST
 		do
 			Result := session_status.virtual_domain_host
 		end
 
 
-	all_input_was_valid: BOOLEAN is
+	all_input_was_valid: BOOLEAN
 			-- Was all input received during the request valid?
 		require
 			was_processed: was_processed
@@ -64,14 +64,14 @@ feature -- Attributes
 	all_mandatory_parameters_are_valid: BOOLEAN
 			-- Are all mandatory parameters valid?
 
-	is_generating_response: BOOLEAN is
+	is_generating_response: BOOLEAN
 			-- Is this processing result currently being used to generate a response to the user
 			-- False during initial processing of request from user
 		do
 			Result := generating_servlet /= Void
 		end
 
-	ok_to_retry_process_parameters: BOOLEAN is
+	ok_to_retry_process_parameters: BOOLEAN
 			-- Is it ok to retry parameter processing; may be redefined by descendents if required
 			-- In general it should be OK, but if for example a parameter triggers credit card processing
 			-- We may not want to retry in event of a fault (for fear of processing a card twice)
@@ -79,7 +79,7 @@ feature -- Attributes
 			Result := True
 		end
 
-	has_parameter_name (name: STRING): BOOLEAN is
+	has_parameter_name (name: STRING): BOOLEAN
 			-- Does this result include a parameter with name?
 		require
 			valid_name: name /= Void and not name.is_empty
@@ -87,7 +87,7 @@ feature -- Attributes
 			Result := parameter_names.has (name)
 		end
 
-	has_parameter_result (name: STRING; suffix: INTEGER): BOOLEAN is
+	has_parameter_result (name: STRING; suffix: INTEGER): BOOLEAN
 			-- Does this processing result include a result for name:suffix
 			-- Use 0 if no suffix
 		require
@@ -96,7 +96,7 @@ feature -- Attributes
 			Result := parameter_processing_results.has (full_parameter_name (name, suffix))
 		end
 
-	parameter_processing_result (name: STRING; suffix: INTEGER): PARAMETER_PROCESSING_RESULT is
+	parameter_processing_result (name: STRING; suffix: INTEGER): PARAMETER_PROCESSING_RESULT
 			-- Processing result for parameter with name:suffix
 			-- Use 0 if no suffix
 		require
@@ -107,7 +107,7 @@ feature -- Attributes
 			end
 		end
 
-	parameter_value (name: STRING; suffix: INTEGER): STRING is
+	parameter_value (name: STRING; suffix: INTEGER): STRING
 			-- Value of parameter with name:suffix
 			-- Returns empty string if no such parameter in the request
 			-- Use 0 if no suffix
@@ -134,7 +134,7 @@ feature -- Attributes
 
 feature {GOA_APPLICATION_SERVLET, GOA_PARAMETER_PROCESSING_RESULT, GOA_REQUEST_PARAMETER} -- Processing
 
-	process_parameters is
+	process_parameters
 			-- Process the request
 		require
 			not_was_processed: not was_processed
@@ -196,7 +196,7 @@ feature {GOA_APPLICATION_SERVLET, GOA_PARAMETER_PROCESSING_RESULT, GOA_REQUEST_P
 			was_processed: was_processed
 		end
 
-	process_submit_parameter_if_present is
+	process_submit_parameter_if_present
 			-- Process the submit parameter, if one is present
 		local
 			submit_processing_result: PARAMETER_PROCESSING_RESULT
@@ -210,13 +210,13 @@ feature {GOA_APPLICATION_SERVLET, GOA_PARAMETER_PROCESSING_RESULT, GOA_REQUEST_P
 			was_processed: was_processed
 		end
 
-	set_final_processing_valid is
+	set_final_processing_valid
 			-- Post processing (in the servlet) completed successfully; the request is fully validated
 		do
 			final_processing_was_valid := True
 		end
 
-	add_parameter_processing_result (processing_result: PARAMETER_PROCESSING_RESULT; is_mandatory: BOOLEAN) is
+	add_parameter_processing_result (processing_result: PARAMETER_PROCESSING_RESULT; is_mandatory: BOOLEAN)
 			-- Add processing_result to parameter_processing_results
 		require
 			valid_processing_result: processing_result/= Void
@@ -236,12 +236,12 @@ feature {GOA_APPLICATION_SERVLET, GOA_PARAMETER_PROCESSING_RESULT, GOA_REQUEST_P
 			end
 		end
 
-	set_page_selected_servlet (the_servlet: GOA_DISPLAYABLE_SERVLET) is
+	set_page_selected_servlet (the_servlet: GOA_DISPLAYABLE_SERVLET)
 		do
 			page_selected_servlet := the_servlet
 		end
 
-	set_was_updated is
+	set_was_updated
 		do
 			was_updated := True
 		ensure
@@ -251,7 +251,7 @@ feature {GOA_APPLICATION_SERVLET, GOA_PARAMETER_PROCESSING_RESULT, GOA_REQUEST_P
 
 feature {GOA_USER_ERROR_MESSAGE} -- Parameter Validity
 
-	set_not_all_parameters_are_valid is
+	set_not_all_parameters_are_valid
 		do
 			all_parameters_are_valid := False
 		ensure
@@ -260,7 +260,7 @@ feature {GOA_USER_ERROR_MESSAGE} -- Parameter Validity
 
 feature {GOA_APPLICATION_SERVLET} -- Generating Servlet
 
-	set_generating_servlet (new_generating_servlet: GOA_DISPLAYABLE_SERVLET) is
+	set_generating_servlet (new_generating_servlet: GOA_DISPLAYABLE_SERVLET)
 			-- Set generating_servlet to new_generating_servlet
 		do
 			generating_servlet := new_generating_servlet
@@ -271,7 +271,7 @@ feature {GOA_APPLICATION_SERVLET} -- Generating Servlet
 
 feature {NONE} -- Creation
 
-	make (new_request: GOA_HTTP_SERVLET_REQUEST; new_response: GOA_HTTP_SERVLET_RESPONSE; new_session_status: SESSION_STATUS; new_processing_servlet: GOA_APPLICATION_SERVLET) is
+	make (new_request: GOA_HTTP_SERVLET_REQUEST; new_response: GOA_HTTP_SERVLET_RESPONSE; new_session_status: SESSION_STATUS; new_processing_servlet: GOA_APPLICATION_SERVLET)
 			-- Creation
 		require
 			valid_new_request: new_request /= Void
@@ -301,13 +301,13 @@ feature {GOA_PARAMETER_PROCESSING_RESULT, GOA_APPLICATION_SERVLET} -- Implementa
 
 feature {NONE} -- Implementation
 
-	sorter: DS_QUICK_SORTER [GOA_PARAMETER_PROCESSING_RESULT] is
+	sorter: DS_QUICK_SORTER [GOA_PARAMETER_PROCESSING_RESULT]
 			-- Sorter that can sort parameter processing_result containers
 		once
 			create Result.make (comparator)
 		end
 
-	comparator: GOA_PARAMETER_PROCESSING_RESULT_COMPARATOR is
+	comparator: GOA_PARAMETER_PROCESSING_RESULT_COMPARATOR
 			-- Comparator used for sorting GOA_PARAMETER_PROCESSING_RESULTS
 		once
 			create Result
@@ -331,7 +331,7 @@ feature -- Obsolete
 	was_dependency_updated: BOOLEAN
 			-- Did the request update a value upon which subsequent pages in the wizard may depend?
 
-	set_was_dependency_updated is
+	set_was_dependency_updated
 			-- Set updated_dependency to True
 		obsolete
 			"Application specific hack"

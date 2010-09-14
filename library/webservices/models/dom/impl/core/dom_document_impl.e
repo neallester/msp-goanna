@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Document implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -28,13 +28,13 @@ inherit
 			{NONE} all
 		end
 		
-creation
+create
 
 	make
 
 feature {DOM_IMPLEMENTATION_IMPL} -- Factory creation
 
-	make (new_doctype: DOM_DOCUMENT_TYPE) is
+	make (new_doctype: DOM_DOCUMENT_TYPE)
 			-- Create new document with specified doctype. 
 			-- 'doctype' may be Void.
 		do
@@ -61,7 +61,7 @@ feature -- Access
     		-- For HTML documents, this is the element with the tagName
     		-- "HTML".
 
-   create_element (tag_name: DOM_STRING): DOM_ELEMENT is
+   create_element (tag_name: DOM_STRING): DOM_ELEMENT
          	-- Creates an element of the type specified.
          	-- Parameters
          	--    tagName   The name of the element type to instantiate.
@@ -71,50 +71,50 @@ feature -- Access
          	--              form by the DOM implementation.
          	-- Return Value
          	--    A new Element object.
-		do
-			!DOM_ELEMENT_IMPL! Result.make (Current, tag_name)
+		do 
+			create {DOM_ELEMENT_IMPL} Result.make (Current, tag_name)
 		end
 
-	create_document_fragment: DOM_DOCUMENT_FRAGMENT is
+	create_document_fragment: DOM_DOCUMENT_FRAGMENT
 			-- Creates an empty DocumentFragment object.
 			-- Return Value
 			--    A new DocumentFragment.
-		do
-			!DOM_DOCUMENT_FRAGMENT_IMPL! Result.make (Current)
+		do 
+			create {DOM_DOCUMENT_FRAGMENT_IMPL} Result.make (Current)
 		end
 
-	create_text_node (data: DOM_STRING): DOM_TEXT is
+	create_text_node (data: DOM_STRING): DOM_TEXT
 			-- Creates a Text node given the specified string.
 			-- Parameters
 			--    data   The data for the node.
 			-- Return Value
 			--    The new Text object.
-		do
-			!DOM_TEXT_IMPL! Result.make (Current, data)
+		do 
+			create {DOM_TEXT_IMPL} Result.make (Current, data)
 		end
 
-	create_comment (data: DOM_STRING): DOM_COMMENT is
+	create_comment (data: DOM_STRING): DOM_COMMENT
 			-- Creates a Comment node given the specified string.
 			-- Parameters
 			--    data   The data for the node.
 			-- Return Value
 			--    The new Comment object.
-		do
-			!DOM_COMMENT_IMPL! Result.make (Current, data)
+		do 
+			create {DOM_COMMENT_IMPL} Result.make (Current, data)
 		end
 
-	create_cdata_section (data: DOM_STRING): DOM_CDATA_SECTION is
+	create_cdata_section (data: DOM_STRING): DOM_CDATA_SECTION
 			-- Creates a CDATASection node whose value is the specified string.
 			-- Parameters
 			--    data   The data for the CDATASection [p.43] contents.
 			-- Return Value
 			--    The new CDATASection [p.43] object.
-		do
-			!DOM_CDATA_SECTION_IMPL! Result.make (Current, data)
+		do 
+			create {DOM_CDATA_SECTION_IMPL} Result.make (Current, data)
 		end
 
 	create_processing_instruction (target: DOM_STRING; data: DOM_STRING):
-		DOM_PROCESSING_INSTRUCTION is
+		DOM_PROCESSING_INSTRUCTION
 			-- Creates a ProcessingInstruction node given the specified name
 			-- and data strings.
 			-- Parameters
@@ -122,32 +122,32 @@ feature -- Access
 			--    data     The data for the node.
 			-- Return Value
 			--    The new ProcessingInstruction [p.46] object.
-		do
-			!DOM_PROCESSING_INSTRUCTION_IMPL! Result.make (Current, target, data)
+		do 
+			create {DOM_PROCESSING_INSTRUCTION_IMPL} Result.make (Current, target, data)
 		end
 
-	create_attribute (name: DOM_STRING): DOM_ATTR is
+	create_attribute (name: DOM_STRING): DOM_ATTR
 			-- Creates an Attr of the given name. Note that the Attr instance
 			-- can then be set on an Element using the setAttribute method.
 			-- Parameters
 			--    name   The name of the attribute.
 			-- Return Value
 			--    A new Attr object.
-		do
-			!DOM_ATTR_IMPL! Result.make (Current, name)
+		do 
+			create {DOM_ATTR_IMPL} Result.make (Current, name)
 		end
 
-	create_entity_reference (name: DOM_STRING): DOM_ENTITY_REFERENCE is
+	create_entity_reference (name: DOM_STRING): DOM_ENTITY_REFERENCE
 			-- Creates an EntityReference object.
 			-- Parameters
 			--    name   The name of the entity to reference.
 			-- Return Value
 			--    The new EntityReference object.
-		do
-			!DOM_ENTITY_REFERENCE_IMPL! Result.make (Current, name)
+		do 
+			create {DOM_ENTITY_REFERENCE_IMPL} Result.make (Current, name)
 		end
 
-	get_elements_by_tag_name (tagname: DOM_STRING): DOM_NODE_LIST is
+	get_elements_by_tag_name (tagname: DOM_STRING): DOM_NODE_LIST
 			-- Returns a NodeList of all the Elements with a given tag name
 			-- in the order in which they would be encountered in a preorder
 			-- traversal of the Document tree.
@@ -160,7 +160,7 @@ feature -- Access
 		do
 		end
 
-	import_node (imported_node: DOM_NODE; deep: BOOLEAN): DOM_NODE is
+	import_node (imported_node: DOM_NODE; deep: BOOLEAN): DOM_NODE
 			-- Imports a node from another document to this document. The returned
 			-- has no parent; ('parent_node is Void). The source node is not altered
 			-- or removed from the original doeumtnt; this method creates a new copy
@@ -173,7 +173,7 @@ feature -- Access
 		do
 		end
 
-	create_element_ns (new_namespace_uri, qualified_name: DOM_STRING): DOM_ELEMENT is
+	create_element_ns (new_namespace_uri, qualified_name: DOM_STRING): DOM_ELEMENT
 			-- Creates an element of the given qualified name and namespace URI.
 			-- DOM Level 2.
 		do
@@ -181,7 +181,7 @@ feature -- Access
 				new_namespace_uri, qualified_name)
 		end
 
-	create_attribute_ns (new_namespace_uri, qualified_name: DOM_STRING): DOM_ATTR is
+	create_attribute_ns (new_namespace_uri, qualified_name: DOM_STRING): DOM_ATTR
 			-- Creates an attribute of the given qualified name and namespace URI.
 			-- DOM Level 2.
 		do
@@ -189,7 +189,7 @@ feature -- Access
 				new_namespace_uri, qualified_name)
 		end
 
-	get_elements_by_tag_name_ns (a_namespace_uri, localname: DOM_STRING): DOM_NODE_LIST is
+	get_elements_by_tag_name_ns (a_namespace_uri, localname: DOM_STRING): DOM_NODE_LIST
 			-- Returns a NodeList of all the Elements with a given local name and
 			-- namespace URI in the order in which they would be encountered in a preorder
 			-- traversal of the Document tree.
@@ -204,7 +204,7 @@ feature -- Access
 		do
 		end
 	
-	get_element_by_id (element_id: DOM_STRING): DOM_ELEMENT is
+	get_element_by_id (element_id: DOM_STRING): DOM_ELEMENT
 			-- Returns the element whose ID is given by 'element_id'. If no such
 			-- element exists, returns Void. Behaviour is not defined if more than
 			-- one element has this ID.
@@ -216,7 +216,7 @@ feature -- Access
 		do
 		end
 		
-	append_child (new_child: DOM_NODE): DOM_NODE is
+	append_child (new_child: DOM_NODE): DOM_NODE
 			-- Adds the node `newChild' to the end of the list of children
 			-- of this node. If the `newChild' is already in the tree,
 			-- it is first removed.
@@ -242,7 +242,7 @@ feature -- Access
 			doctype_if_doc_type_element: new_child.node_type = Document_type_node implies doctype = new_child
 		end
 		
-	insert_before (new_child: DOM_NODE; ref_child: DOM_NODE): DOM_NODE is
+	insert_before (new_child: DOM_NODE; ref_child: DOM_NODE): DOM_NODE
 			-- Inserts the node newChild before the existing child node
 			-- `refChild'. If `refChild' is `Void', insert `newChild' at the end
 			-- of the list of children. If `newChild' is a DocumentFragment
@@ -271,7 +271,7 @@ feature -- Access
 			doctype_if_doc_type_element: new_child.node_type = Document_type_node implies doctype = new_child
 		end
 		
-	remove_child (old_child: DOM_NODE): DOM_NODE is
+	remove_child (old_child: DOM_NODE): DOM_NODE
 			-- Removes the child node indicated by oldChild from the list
 			-- of children, and returns it.
 			-- If 'old_child' is the document element then unset it.
@@ -296,7 +296,7 @@ feature -- Access
 feature -- Document Traversal
 
 	create_node_iterator (root: DOM_NODE; what_to_show: INTEGER;
-		filter: DOM_NODE_FILTER; entity_reference_expansion: BOOLEAN): DOM_NODE_ITERATOR is
+		filter: DOM_NODE_FILTER; entity_reference_expansion: BOOLEAN): DOM_NODE_ITERATOR
 			-- Create a new node iterator over the subtree rooted at the specified node.
 			-- Parameters:
 			-- root - The node which will be iterated together with its children. The
@@ -319,13 +319,13 @@ feature -- Document Traversal
 		
 feature -- from DOM_NODE
    
-	node_name: DOM_STRING is
+	node_name: DOM_STRING
          -- The name of this node, depending on its type.
-      once
-		  !! Result.make_from_string ("#document")
+      once 
+		  create Result.make_from_string ("#document")
       end
 
-   node_type: INTEGER is
+   node_type: INTEGER
          -- A code representing the type of the underlying object.
       once
 		  Result := Document_node
@@ -333,7 +333,7 @@ feature -- from DOM_NODE
 
 feature -- Validation Utility
 
-	valid_name_chars (new_name: DOM_STRING): BOOLEAN is
+	valid_name_chars (new_name: DOM_STRING): BOOLEAN
 			-- Does 'new_name' consist of valid characters for a document name?
 			-- Follows the syntax: 
 			-- 		NCNameChar ::= Letter | Digit | '.' | '-' | '_' | ':' | CombiningChar
@@ -346,7 +346,7 @@ feature -- Validation Utility
 			end
 		end
 
-	valid_qualified_name_chars (new_name: DOM_STRING): BOOLEAN is
+	valid_qualified_name_chars (new_name: DOM_STRING): BOOLEAN
 			-- Does 'new_name' consist of valid characters for a qualified name?
 			-- Follows the syntax:
 			--		QName ::= NCName (':' NCName)
@@ -357,7 +357,7 @@ feature -- Validation Utility
 			end
 		end
 
-	valid_qualified_name (new_namespace_uri, new_name: DOM_STRING): BOOLEAN is
+	valid_qualified_name (new_namespace_uri, new_name: DOM_STRING): BOOLEAN
 			-- Is 'new_name' a valid name within 'new_namespace_uri'?
 			-- Fails if the qualified name is malformed, if the qualified name has a prefix and
 			-- the namespace URI is Void, if the qualified name has a prefix that is "xml" 
@@ -391,7 +391,7 @@ feature -- Validation Utility
 			end
 		end
 
-	valid_entity_name (new_name: DOM_STRING): BOOLEAN is
+	valid_entity_name (new_name: DOM_STRING): BOOLEAN
 			-- Is 'new_name' a valid name for an entity?
 		do
 			Result := True
@@ -400,7 +400,7 @@ feature -- Validation Utility
 			end
 		end
 
-	valid_target_chars (new_target: DOM_STRING): BOOLEAN is
+	valid_target_chars (new_target: DOM_STRING): BOOLEAN
 			-- Does 'new_target' consist of valid target characters?
 		do
 			Result := True
@@ -409,7 +409,7 @@ feature -- Validation Utility
 			end
 		end
 	
-	valid_node_name (new_name: DOM_STRING): BOOLEAN is
+	valid_node_name (new_name: DOM_STRING): BOOLEAN
 			-- Is 'new_name' a valid name for a node?
 		do
 			Result := True
@@ -418,7 +418,7 @@ feature -- Validation Utility
 			end
 		end
 
-	import_supported (new_node: DOM_NODE): BOOLEAN is
+	import_supported (new_node: DOM_NODE): BOOLEAN
 			-- Can 'new_node' be imported into this document?
 		do
 			Result := True

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A servlet that redirects user to a secure version of a displayable_servlet"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -17,17 +17,17 @@ inherit
 		end
 	GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT
 
-creation
+create
 	
 	make
 	
 feature
 
-	name: STRING is "go_to_secure_page.htm"
+	name: STRING = "go_to_secure_page.htm"
 	
 feature {NONE} -- Creation
 
-	make is
+	make
 		do
 			Precursor
 			receive_secure := True

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Integer parameter that may not be empty"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -26,7 +26,7 @@ inherit
 		
 feature
 	
-	validate (processing_result: PARAMETER_PROCESSING_RESULT) is
+	validate (processing_result: PARAMETER_PROCESSING_RESULT)
 		do
 			Precursor {GOA_NON_EMPTY_PARAMETER} (processing_result)
 			if processing_result.is_value_valid then

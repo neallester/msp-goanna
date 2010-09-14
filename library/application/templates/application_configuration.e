@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Configuration Settings for the Application"
 	author: "Neal L Lester <neal@3dsafety.com>"
 	date: "$Date: 2007-07-12 10:36:43 -0700 (Thu, 12 Jul 2007) $"

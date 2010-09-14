@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Form Elements that are strings"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -18,18 +18,18 @@ inherit
 			make_form_element
 		end
 
-creation
+create
 
 	make_form_element
 
 feature -- Implement deferred features
 
-	ready_to_initialize : BOOLEAN is
+	ready_to_initialize : BOOLEAN
 		do
 			result := (database_function /= Void) and (set_procedure /= Void)
 		end
 
-	process_element is
+	process_element
 		do
 			value.right_adjust
 			value.left_adjust
@@ -40,12 +40,12 @@ feature -- Implement deferred features
 			input_valid_implies_updated : input_valid implies equal (value, database_version)
 		end
 
-	initialize_element is
+	initialize_element
 		do
 			value := database_version
 		end
 
-	new_input : BOOLEAN is
+	new_input : BOOLEAN
 		do
 			if parent.page.web_request /= Void then
 				if parent.page.web_request.has_parameter (name) then
@@ -62,12 +62,12 @@ feature -- Implement deferred features
 			end
 		end
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			result := "<INPUT "
 		end
 
-	html_element : STRING is
+	html_element : STRING
 		do
 			result := "TYPE = %"" + type + "%" MAXLENGTH=%"" + maximum_length.out + "%" SIZE=%"" + size.out + "%" NAME=%"" + name + "%""
 			if value /= void then
@@ -75,19 +75,19 @@ feature -- Implement deferred features
 			end
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			result := ">"
 		end
 
-	processed : BOOLEAN is
+	processed : BOOLEAN
 		do
 			result := equal (value, database_version)
 		end
 
 feature {FORM} -- Attribute Setting
 
-	set_database_version (new_function : FUNCTION [PROCESSOR_HOST, TUPLE, STRING]) is
+	set_database_version (new_function : FUNCTION [PROCESSOR_HOST, TUPLE, STRING])
 		-- Set the agent that returns the value of the string from database
 		require
 			valid_new_function : new_function /= Void
@@ -97,7 +97,7 @@ feature {FORM} -- Attribute Setting
 			database_function_updated : database_function = new_function
 		end
 
-	set_database_set_procedure (new_set_procedure : PROCEDURE [PROCESSOR_HOST, TUPLE]) is
+	set_database_set_procedure (new_set_procedure : PROCEDURE [PROCESSOR_HOST, TUPLE])
 		-- Set the procedure (agent) used to set the string value in the database
 		require
 			valid_new_set_procedure : new_set_procedure /= Void
@@ -109,13 +109,13 @@ feature {FORM} -- Attribute Setting
 
 feature {NONE} -- implementation
 
-	type : STRING is
+	type : STRING
 		-- The HTML input type
 		do
 			result := "TEXT"
 		end
 
-	database_version : STRING is
+	database_version : STRING
 		-- The value of the string currently stored in the database
 		require
 			valid_database_function : database_function /= Void
@@ -136,7 +136,7 @@ feature {NONE} -- implementation
 	size : INTEGER
 		-- The size of the text box
 
-	set_maximum_length (new_maximum_length : INTEGER) is
+	set_maximum_length (new_maximum_length : INTEGER)
 		-- Set maximum length
 		require
 			positive_new_maximum_length : new_maximum_length > 0
@@ -144,7 +144,7 @@ feature {NONE} -- implementation
 			maximum_length := new_maximum_length
 		end
 
-	set_size (new_size : INTEGER) is
+	set_size (new_size : INTEGER)
 		-- Set size
 		require
 			postiive_new_size : new_size > 0
@@ -152,7 +152,7 @@ feature {NONE} -- implementation
 			size := new_size
 		end
 
-	make_form_element (proposed_parent : FORM) is
+	make_form_element (proposed_parent : FORM)
 		do
 			set_maximum_length (40)
 			set_size (40)

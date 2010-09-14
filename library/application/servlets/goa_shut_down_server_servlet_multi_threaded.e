@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A servlet that brings down the application (multi-threaded environment)"
 	author: "Neal Lester"
 	date: "$Date$"
@@ -22,7 +22,7 @@ create
 
 feature
 
-	perform_final_processing (processing_result: REQUEST_PROCESSING_RESULT) is
+	perform_final_processing (processing_result: REQUEST_PROCESSING_RESULT)
 		do
 			processing_result.response.send ("Server Will Be Shut Down")
 			processing_result.response.flush_buffer
@@ -34,7 +34,7 @@ feature
 
 	mutex: MUTEX
 
-	set_mutex (new_mutex: like MUTEX) is
+	set_mutex (new_mutex: like MUTEX)
 		do
 			mutex := new_mutex
 		end

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Domains that are related to a user and also have parent"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -22,7 +22,7 @@ feature -- Creation
 
 	parent: USER_RELATED_DOMAIN_WITH_CHILDREN
 
-	make_with_parent (new_parent: USER_RELATED_DOMAIN_WITH_CHILDREN) is
+	make_with_parent (new_parent: USER_RELATED_DOMAIN_WITH_CHILDREN)
 		do
 			set_user (new_parent.user)
 			precursor (new_parent)

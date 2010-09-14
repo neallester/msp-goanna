@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Shared access to Virtual Domain Hosts and related facilities"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -15,7 +15,7 @@ inherit
 	
 feature
 	
-	virtual_domain_for_host_name (host_name: STRING): VIRTUAL_DOMAIN_HOST is
+	virtual_domain_for_host_name (host_name: STRING): VIRTUAL_DOMAIN_HOST
 			-- Return virtual domain assigned to the host name
 		do
 			if virtual_domain_hosts.has (host_name) then
@@ -29,7 +29,7 @@ feature
 		
 feature
 	
-	register_virtual_domain_host (host: VIRTUAL_DOMAIN_HOST; host_name: STRING) is
+	register_virtual_domain_host (host: VIRTUAL_DOMAIN_HOST; host_name: STRING)
 			-- Register host under host_name
 		require
 			valid_host: host /= Void
@@ -42,7 +42,7 @@ feature
 			end
 		end
 		
-	virtual_domain_hosts: DS_HASH_TABLE [VIRTUAL_DOMAIN_HOST, STRING] is
+	virtual_domain_hosts: DS_HASH_TABLE [VIRTUAL_DOMAIN_HOST, STRING]
 			-- Table containing all virtual domain hosts
 		once
 			create Result.make_equal (5)

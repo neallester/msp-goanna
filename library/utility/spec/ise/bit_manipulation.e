@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Mixin class that provides portable bit manipulation routines."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Utility"
@@ -15,7 +15,7 @@ obsolete "Use Gobo's KL_INTEGER_ROUTINES}"
 
 feature -- Basic operations
 
-	bit_shift_right (i, n: INTEGER): INTEGER is
+	bit_shift_right (i, n: INTEGER): INTEGER
 			-- Shift the bits of 'i' right 'n' positions.
 		do
 
@@ -31,7 +31,7 @@ feature -- Basic operations
 
 		end
 
-	bit_shift_left (i, n: INTEGER): INTEGER is
+	bit_shift_left (i, n: INTEGER): INTEGER
 			-- Shift the bits of 'i' left 'n' positions.
 		do
 
@@ -47,7 +47,7 @@ feature -- Basic operations
 
 		end
 	
-	bit_and (i, n: INTEGER): INTEGER is
+	bit_and (i, n: INTEGER): INTEGER
 			-- Bitwise and of 'i' and 'n'
 		do
 
@@ -59,7 +59,7 @@ feature -- Basic operations
 
 		end
 	
-	bit_or (i, n: INTEGER): INTEGER is
+	bit_or (i, n: INTEGER): INTEGER
 			-- Bitwise or of 'i' and 'n'
 		do
 

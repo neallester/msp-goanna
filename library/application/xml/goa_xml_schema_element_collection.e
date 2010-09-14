@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a collection of GOA_XML_DEFERED_SCHEMA_ELEMENT"
 	author: "Neal L Lester <neal@3dsafety.com>"
 	date: "$Date: 2007-01-13 05:41:12 +0000 (Sat, 13 Jan 2007) $"
@@ -20,7 +20,7 @@ feature {NONE} -- Implementation
 
 feature {NONE} -- Creation
 
-	make_optional (new_elements: ARRAY [GOA_XML_DEERRED_SCHEMA_ELEMENT]) is
+	make_optional (new_elements: ARRAY [GOA_XML_DEERRED_SCHEMA_ELEMENT])
 			-- Make an 'optional' element
 		require
 			new_elements_not_void: new_elements /= Void
@@ -30,7 +30,7 @@ feature {NONE} -- Creation
 			is_multiple_element := False
 		end
 
-	make_required (new_elements: ARRAY [GOA_XML_DEERRED_SCHEMA_ELEMENT]) is
+	make_required (new_elements: ARRAY [GOA_XML_DEERRED_SCHEMA_ELEMENT])
 			-- Make a 'required' element
 		require
 			new_elements_not_void: new_elements /= Void
@@ -40,7 +40,7 @@ feature {NONE} -- Creation
 			is_multiple_element := False
 		end
 
-	make_zero_or_more (new_elements: ARRAY [GOA_XML_DEERRED_SCHEMA_ELEMENT]) is
+	make_zero_or_more (new_elements: ARRAY [GOA_XML_DEERRED_SCHEMA_ELEMENT])
 			-- Make a 'zero or more' element
 		require
 			new_elements_not_void: new_elements /= Void
@@ -50,7 +50,7 @@ feature {NONE} -- Creation
 			is_multiple_element := True
 		end
 
-	make_one_or_more (new_elements: ARRAY [GOA_XML_DEERRED_SCHEMA_ELEMENT]) is
+	make_one_or_more (new_elements: ARRAY [GOA_XML_DEERRED_SCHEMA_ELEMENT])
 			-- Make a 'one or more' element
 		require
 			new_elements_not_void: new_elements /= Void

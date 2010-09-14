@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A DOM tree based XML parser factory"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML Parser"
@@ -20,7 +20,7 @@ inherit
    
 feature -- Factory methods
 
-	create_parser: DOM_TREE_BUILDER is
+	create_parser: DOM_TREE_BUILDER
 			-- Create a dom tree builder that uses the Expat XML
 			-- parser
 		do

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Singleton servlet manager accessor."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "tools httpd"
@@ -12,7 +12,7 @@ class GOA_SHARED_SERVLET_MANAGER
 
 feature -- Access
 
-	servlet_manager: GOA_SERVLET_MANAGER [GOA_HTTP_SERVLET] is
+	servlet_manager: GOA_SERVLET_MANAGER [GOA_HTTP_SERVLET]
 			-- Access singleton servlet manager
 		once
 			create Result.make

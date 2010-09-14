@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that manage the sequence of pages during a session"
 	author: "Neal L. Lester"
 	date: "$Date: 2006-10-01 13:33:03 -0700 (Sun, 01 Oct 2006) $"
@@ -19,7 +19,7 @@ create
 
 feature {PAGE_SEQUENCE_ELEMENT, PAGE_FACTORY, USER, APPLICATION_SESSION_MANAGER} -- User
 
-	backable : BOOLEAN is
+	backable : BOOLEAN
 		-- Is there a previous page to display if requested by the user?
 		do
 			Result := not history.is_empty
@@ -30,7 +30,7 @@ feature {PAGE_SEQUENCE_ELEMENT, PAGE_FACTORY, USER, APPLICATION_SESSION_MANAGER}
 
 feature {APPLICATION_SERVLET} -- communication with GOANNA Application
 
-	process_dynamic_url (dynamic_url_to_process : DYNAMIC_URL) is
+	process_dynamic_url (dynamic_url_to_process : DYNAMIC_URL)
 		-- process an incoming dynamic_url from the servlet
 		require
 			valid_dynamic_url_to_process : dynamic_url_to_process /= Void
@@ -75,7 +75,7 @@ feature {APPLICATION_SERVLET} -- communication with GOANNA Application
 			end
 		end
 
-	set_new_request (new_request : GOA_HTTP_SERVLET_REQUEST; new_response : GOA_HTTP_SERVLET_RESPONSE) is
+	set_new_request (new_request : GOA_HTTP_SERVLET_REQUEST; new_response : GOA_HTTP_SERVLET_RESPONSE)
 		-- Set new request & response for the session to process
 		require
 			valid_new_request : new_request /= Void
@@ -88,7 +88,7 @@ feature {APPLICATION_SERVLET} -- communication with GOANNA Application
 			current_response_updated : current_response = new_response
 		end
 
-	build_response is
+	build_response
 		-- Instruct active page to build a response to the current request
 		require
 			not_active_page_void : active_page /= Void
@@ -101,13 +101,13 @@ feature {APPLICATION_SERVLET} -- communication with GOANNA Application
 
 feature -- {DYNAMIC_URL, PAGE}  -- Current request/response related attributes
 
-	active_page : PAGE is
+	active_page : PAGE
 		-- The currently active page
 		do
 			result := user.active_page
 		end
 
-	active_sequence : PAGE_SEQUENCE_ELEMENT is
+	active_sequence : PAGE_SEQUENCE_ELEMENT
 		-- The currently active page_sequence
 		do
 			result := user.active_sequence
@@ -120,7 +120,7 @@ feature -- {DYNAMIC_URL, PAGE}  -- Current request/response related attributes
 
 feature {LOGIN_SEQUENCE} -- Set User
 
-	set_user (new_user : like user_anchor) is
+	set_user (new_user : like user_anchor)
 		-- Set a new user for the session
 		require
 			valid_new_user : new_user /= Void
@@ -142,7 +142,7 @@ feature {NONE} -- implementation
 		-- The chain of page_sequence_elements within active_sequence linking the active_sequence to the page
 		-- To do; hide this from SESSION; it is an implementation detail of a particular type of page_sequence
 
-	process_active_page (dynamic_url : DYNAMIC_URL) is
+	process_active_page (dynamic_url : DYNAMIC_URL)
 		-- Process the selected dynamic URL as part of the active page
 		require
 			valid_active_page : active_page /= Void
@@ -156,7 +156,7 @@ feature {NONE} -- implementation
 			dynamic_url.process
 		end
 
-	restore_history_item is
+	restore_history_item
 		-- restore the current item in history as the active page
 		require
 			history_not_empty : not history.is_empty
@@ -172,13 +172,13 @@ feature {NONE} -- implementation
 			active_page_removed : active_page /= history.item
 		end	
 
-	history:	ARRAYED_STACK [PAGE] is
+	history:	ARRAYED_STACK [PAGE]
 		-- Pages previously processed for this user
 		do
 			result := user.history
 		end
 
-	set_active_page is
+	set_active_page
 		-- Set active_page to next page in sequence
 		do
 			user.set_active_page (active_sequence.page)
@@ -188,7 +188,7 @@ feature {NONE} -- implementation
 			master_sequence_updated : active_page.master_sequence = active_sequence
 		end
 
-	increment_page is
+	increment_page
 		-- Replace active page with the next page in the page sequence
 		do
 			if active_page.historical then
@@ -223,7 +223,7 @@ feature -- session
 
 feature {LOGIN_SEQUENCE, APPLICATION_SERVLET}
 
-	set_session (new_session : GOA_HTTP_SESSION) is
+	set_session (new_session : GOA_HTTP_SESSION)
 		-- set session to new_session
 		require
 			valid_new_session : new_session /= Void
@@ -235,7 +235,7 @@ feature {LOGIN_SEQUENCE, APPLICATION_SERVLET}
 
 feature {NONE} -- Creation
 
-	make (new_session : GOA_HTTP_SESSION) is
+	make (new_session : GOA_HTTP_SESSION)
 		require
 			valid_new_session : new_session /= Void
 		do

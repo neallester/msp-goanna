@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Content_containers with multiple lines of text"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -20,7 +20,7 @@ inherit
 
 feature {PAGE, PAGE_FACTORY, EXPOSURE}
 
-	add_text (new_text : STRING) is
+	add_text (new_text : STRING)
 		-- Add new_text to the text list
 		require
 			valid_new_text : new_text /= Void

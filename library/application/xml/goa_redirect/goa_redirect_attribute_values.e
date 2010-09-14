@@ -1,7 +1,7 @@
 
 
 
-indexing
+note
 
 	description: "Codes constants representing attribute values of the xmlns:goa_redirect schema"
 	author: ""
@@ -25,9 +25,9 @@ inherit
 
 feature -- Attribute Values
 
-	class_waiting_message: STRING is "waiting_message"
+	class_waiting_message: STRING = "waiting_message"
 
-  	class_centered_submit_area: STRING is "centered_submit_area"
+  	class_centered_submit_area: STRING = "centered_submit_area"
 
   
 

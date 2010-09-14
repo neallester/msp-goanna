@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Constants for node filter results and types."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Traversal"
@@ -13,22 +13,22 @@ class
 
 feature -- Access
 
-	Filter_accept: INTEGER is 1
-	Filter_reject: INTEGER is 2
-	Filter_skip: INTEGER is 3
+	Filter_accept: INTEGER = 1
+	Filter_reject: INTEGER = 2
+	Filter_skip: INTEGER = 3
 	
-	Show_all: INTEGER is 65535
-	Show_element: INTEGER is 1
-	Show_attribute: INTEGER is 2
-	Show_text: INTEGER is 4
-	Show_cdata_section: INTEGER is 8
-	Show_entity_reference: INTEGER is 16
-	Show_entity: INTEGER is 32
-	Show_processing_instruction: INTEGER is 64
-	Show_comment: INTEGER is 128
-	Show_document: INTEGER is 256
-	Show_document_type: INTEGER is 512
-	Show_document_fragment: INTEGER is 1024
-	Show_notation: INTEGER is 2048
+	Show_all: INTEGER = 65535
+	Show_element: INTEGER = 1
+	Show_attribute: INTEGER = 2
+	Show_text: INTEGER = 4
+	Show_cdata_section: INTEGER = 8
+	Show_entity_reference: INTEGER = 16
+	Show_entity: INTEGER = 32
+	Show_processing_instruction: INTEGER = 64
+	Show_comment: INTEGER = 128
+	Show_document: INTEGER = 256
+	Show_document_type: INTEGER = 512
+	Show_document_fragment: INTEGER = 1024
+	Show_notation: INTEGER = 2048
 
 end -- class DOM_NODE_FILTER_CONSTANTS

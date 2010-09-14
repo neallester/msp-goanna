@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Thread safe shared logger"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -25,12 +25,12 @@ inherit
 
 feature -- Access
 
-	Log_hierarchy: L4E_HIERARCHY is
+	Log_hierarchy: L4E_HIERARCHY
 			-- Shared log hierarchy with predefined
 			-- categories for server logging.
 			-- Direct access to this object is not thread safe.
 			-- This object has process (multi-thread) scope.
-		indexing
+		note
 			once_status: global
 		local
 			appender: L4E_APPENDER
@@ -46,7 +46,7 @@ feature -- Access
 			Result.root.add_appender (appender)
 		end
 	
-	Logger: L4E_LOGGER is
+	Logger: L4E_LOGGER
 			-- Internal logging category.
 			-- Direct access to this object is not thread safe.
 		once
@@ -55,7 +55,7 @@ feature -- Access
 
 feature -- Logging
 
-	debugging (category: STRING; message: ANY) is
+	debugging (category: STRING; message: ANY)
 			-- Log a 'message' object with the priority Debug
 			-- on the named 'category'.
 			-- Will create the category if it does not already
@@ -71,7 +71,7 @@ feature -- Logging
 			end
 		end
 	
-	warn (category: STRING; message: ANY) is
+	warn (category: STRING; message: ANY)
 			-- Log a 'message' object with the priority Warn
 			-- on the named 'category'.
 			-- Will create the category if it does not already
@@ -87,7 +87,7 @@ feature -- Logging
 			end
 		end
 	
-	info (category: STRING; message: ANY) is
+	info (category: STRING; message: ANY)
 			-- Log a 'message' object with the priority Info
 			-- on the named 'category'.
 			-- Will create the category if it does not already
@@ -103,7 +103,7 @@ feature -- Logging
 			end
 		end
 	
-	error (category: STRING; message: ANY) is
+	error (category: STRING; message: ANY)
 			-- Log a 'message' object with the priority Error
 			-- on the named 'category'.
 			-- Will create the category if it does not already
@@ -119,7 +119,7 @@ feature -- Logging
 			end
 		end
 	
-	fatal (category: STRING; message: ANY) is
+	fatal (category: STRING; message: ANY)
 			-- Log a 'message' object with the priority Fatal
 			-- on the named 'category'.
 			-- Will create the category if it does not already
@@ -135,7 +135,7 @@ feature -- Logging
 			end
 		end
 	
-	log (category: STRING; event_priority: L4E_PRIORITY; message: ANY) is
+	log (category: STRING; event_priority: L4E_PRIORITY; message: ANY)
 			-- Log a 'message' object with the given 'event_priority' on
 			-- the named 'category'.
 			-- Will create the category if it does not already
@@ -154,18 +154,18 @@ feature -- Logging
 
 feature {NONE} -- Implementation
 
-	log_mutex: MUTEX is
+	log_mutex: MUTEX
 			-- Mutual exclusion variable for logging thread safety.
 			-- This object has process (multi-thread) scope.
-		indexing
+		note
 			once_status: global
 		once
 			create Result
 		end
 		
-	Server_category: STRING is "server"
+	Server_category: STRING = "server"
 
-	Application_log: STRING is
+	Application_log: STRING
 			-- Construct application log from system name and ".log" extension.
 			-- Any leading path and extension will be removed. eg. The log file
 			-- for 'd:\dev\httpd.exe' will be 'httpd.log' not 'd:\dev\httpd.exe.log'

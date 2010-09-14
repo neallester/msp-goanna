@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that create appropriate DOM serializer objects for documents"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "DOM Serialization"
@@ -13,7 +13,7 @@ class
 
 feature -- Access
 
-	serializer_for_document (doc: DOM_DOCUMENT): DOM_SERIALIZER is
+	serializer_for_document (doc: DOM_DOCUMENT): DOM_SERIALIZER
 			-- Create a serializer for 'doc'
 		require
 			document_exists: doc /= Void			
@@ -29,7 +29,7 @@ feature -- Access
 	
 feature {NONE} -- Implementation
 
-	is_document_xml (doc: DOM_DOCUMENT): BOOLEAN is
+	is_document_xml (doc: DOM_DOCUMENT): BOOLEAN
 			-- Is 'doc' an XML document?
 		require
 			document_exists: doc /= Void			

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that register application servlets"
 	author: ""
 	date: "$Date$"
@@ -15,7 +15,7 @@ inherit
 
 feature
 
-	register_servlet (servlet: GOA_APPLICATION_SERVLET) is
+	register_servlet (servlet: GOA_APPLICATION_SERVLET)
 			-- Register servlet
 		require
 			valid_servlet: servlet /= Void
@@ -24,7 +24,7 @@ feature
 			servlet_manager.register_servlet (servlet, servlet.name)
 		end
 
-	register_servlets is
+	register_servlets
 		do
 			register_servlet (go_to_servlet)
 			register_servlet (shut_down_server_servlet)
@@ -32,7 +32,7 @@ feature
 			register_servlet (ping_servlet)
 		end
 
-	all_servlets_registered: BOOLEAN is
+	all_servlets_registered: BOOLEAN
 		local
 			has_this_servlet: BOOLEAN
 		do

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent an XML-RPC call and response array parameter values."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -20,7 +20,7 @@ create
 
 feature -- Initialisation
 
-	make (new_value: like value) is
+	make (new_value: like value)
 			-- Create array value from 'new_value'. 
 		require
 			new_value_exists: new_value /= Void
@@ -30,7 +30,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 
-	make_from_array (array: ARRAY [ANY]) is
+	make_from_array (array: ARRAY [ANY])
 			-- Create array value from 'array'. Recursivly convert all
 			-- basic types in array to XRPC_VALUE objects.
 		require
@@ -52,7 +52,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 
-	unmarshall (node: XM_ELEMENT) is
+	unmarshall (node: XM_ELEMENT)
 			-- Unmarshall array value from XML node.
 		local
 			data: XM_ELEMENT
@@ -110,7 +110,7 @@ feature -- Initialisation
 
 feature -- Mashalling
 
-	marshall: STRING is
+	marshall: STRING
 			-- Serialize this array param to XML format
 		local
 			i: INTEGER
@@ -135,7 +135,7 @@ feature -- Access
 
 feature -- Conversion
 
-	as_object: ANY is
+	as_object: ANY
 			-- Return value as an object. ie, extract the actual
 			-- object value from the XRPC_VALUE.
 		local

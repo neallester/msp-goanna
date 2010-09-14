@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Main current time window"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples xmlrpc currenttime"
@@ -32,7 +32,7 @@ create
 
 feature -- Initialisation
 
-	make (new_model: like model) is
+	make (new_model: like model)
 			-- Initialise this window to call back into 'new_model' on button events
 		require
 			model_exists: new_model /= Void
@@ -41,7 +41,7 @@ feature -- Initialisation
 			default_create
 		end
 		
-	initialize is
+	initialize
 			-- Initialize `Current' to set up calculator widgets.
 		local
 			vb: EV_VERTICAL_BOX
@@ -87,7 +87,7 @@ feature -- Initialisation
 	
 feature -- Status setting
 		
-	update_error_message (message: STRING) is
+	update_error_message (message: STRING)
 			-- Update the error widget text to 'message'
 		require
 			message_exists: message /= Void
@@ -95,7 +95,7 @@ feature -- Status setting
 			error.set_text (message)
 		end
 	
-	update_time (date_time: DT_DATE_TIME) is
+	update_time (date_time: DT_DATE_TIME)
 			-- Set time
 		require
 			time_exists: time /= Void

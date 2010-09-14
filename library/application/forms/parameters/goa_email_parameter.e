@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Parameter that accepts e-mail address from users"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-09-08 08:50:56 -0700 (Sat, 08 Sep 2007) $"
@@ -28,14 +28,14 @@ inherit
 
 feature
 
-	is_queried: BOOLEAN is False
+	is_queried: BOOLEAN = False
 
-	size: INTEGER is
+	size: INTEGER
 		deferred
 		end
 
 
-	validate (processing_result: PARAMETER_PROCESSING_RESULT) is
+	validate (processing_result: PARAMETER_PROCESSING_RESULT)
 			-- Process the paramter
 		local
 			message_catalog: GOA_MESSAGE_CATALOG
@@ -83,7 +83,7 @@ feature
 
 feature {NONE} -- Implementation
 
-	set_email_status (processing_result: PARAMETER_PROCESSING_RESULT; new_status: INTEGER) is
+	set_email_status (processing_result: PARAMETER_PROCESSING_RESULT; new_status: INTEGER)
 			-- Set status code for this e-mail address
 		require
 			valid_processing_result: processing_result /= Void
@@ -92,7 +92,7 @@ feature {NONE} -- Implementation
 		deferred
 		end
 
-	is_mandatory: BOOLEAN is
+	is_mandatory: BOOLEAN
 			-- Is user required to enter this email address?
 			-- Default is yes
 		once

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Security manager."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "web services security"
@@ -16,7 +16,7 @@ create
 
 feature -- Initialization
 
-	default_create is
+	default_create
 			-- Initialise with no security realms.
 		do
 			create realms
@@ -24,7 +24,7 @@ feature -- Initialization
 	
 feature -- Access
 
-	get_realm (name: STRING): GOA_SECURITY_REALM is
+	get_realm (name: STRING): GOA_SECURITY_REALM
 			-- Access the realm named 'name'
 		require
 			realm_registered: has_realm (name)
@@ -34,7 +34,7 @@ feature -- Access
 		
 feature -- Status setting
 
-	add_realm (new_realm: GOA_SECURITY_REALM) is
+	add_realm (new_realm: GOA_SECURITY_REALM)
 			-- Add 'new_zone' to the known security realms
 		require
 			realm_not_registered: not has_realm (new_realm.name)
@@ -46,7 +46,7 @@ feature -- Status setting
 	
 feature -- Status report
 
-	has_realm (name: STRING): BOOLEAN is
+	has_realm (name: STRING): BOOLEAN
 			-- Does a realm named 'name' exist in this security
 			-- manager?
 		do

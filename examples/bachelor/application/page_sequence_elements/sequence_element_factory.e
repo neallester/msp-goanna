@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that create page_sequence_elements"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"

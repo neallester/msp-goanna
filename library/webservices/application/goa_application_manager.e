@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Servlet manager provides servlet registry"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -39,7 +39,7 @@ create
 	
 feature -- Initialization
 
-	default_create is
+	default_create
 			-- Initialise this servlet manager
 		do
 			Precursor {GOA_APPLICATION_LOGGER}
@@ -53,7 +53,7 @@ feature -- Access
 
 feature -- Basic operations
 
-	dispatch (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE) is
+	dispatch (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE)
 			-- Dispatch 'request' to an appropriate servlet. Allow the servlet
 			-- to response on 'response'.
 		require
@@ -87,7 +87,7 @@ feature -- Basic operations
 		
 feature {NONE} -- Implementation
 
-	handle_missing_servlet (response: GOA_HTTP_SERVLET_RESPONSE) is
+	handle_missing_servlet (response: GOA_HTTP_SERVLET_RESPONSE)
 			-- Send error page indicating missing servlet
 		require
 			response_exists: response /= Void

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Example message producer consumer controller."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples thread"
@@ -25,7 +25,7 @@ create
 
 feature {NONE} -- Initialisation
 
-	make is
+	make
 			-- Initialise
 		do
 			create queue
@@ -39,14 +39,14 @@ feature {NONE} -- Initialisation
 		
 feature -- Factory operations
 
-	new_consumer: MESSAGE_CONSUMER is
+	new_consumer: MESSAGE_CONSUMER
 			-- Factory method for creating a new concrete consumer instance.
 		do
 			label := label + 1
 			create Result.make (label.out, queue)
 		end
 	
-	new_producer: MESSAGE_PRODUCER is
+	new_producer: MESSAGE_PRODUCER
 			-- Factory method for creating a new concrete producer instance.
 		do
 			label := label + 1

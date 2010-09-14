@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that test GOA_FAST_CGI_RECORD_BODY and descendents"
 	author: "Neal Lester"
 	date: "$Date$"
@@ -13,7 +13,7 @@ inherit
 
 feature
 
-	test_begin_request_body is
+	test_begin_request_body
 		local
 			begin_request_body: GOA_FAST_CGI_BEGIN_REQUEST_BODY
 			role, flags: INTEGER
@@ -46,7 +46,7 @@ feature
 
 		end
 
-	test_end_request_body is
+	test_end_request_body
 		do
 
 		end

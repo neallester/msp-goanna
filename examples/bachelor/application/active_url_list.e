@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Hashable Lists of active_url objects"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -19,7 +19,7 @@ feature -- Access
 	active_url_list : HASH_TABLE [DYNAMIC_URL, STRING]
 		-- a list of currently active dynamic_url objects
 
-	register_dynamic_url (url_to_register : DYNAMIC_URL) is
+	register_dynamic_url (url_to_register : DYNAMIC_URL)
 		-- add url_to_register to the list
 		require
 			valid_url_to_register : url_to_register /= void
@@ -30,7 +30,7 @@ feature -- Access
 			url_registered : url_registered (url_to_register)
 		end
 
-	url_registered (url_to_test: DYNAMIC_URL) : BOOLEAN is
+	url_registered (url_to_test: DYNAMIC_URL) : BOOLEAN
 		-- Is the url_to_test registered as in the active_url_list
 		require
 			valid_url_to_test : url_to_test /= Void

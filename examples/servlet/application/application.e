@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Example servlet application."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples"
@@ -23,7 +23,7 @@ create
 
 feature {NONE} -- Initialisation
 
-	default_create is
+	default_create
 			-- Initialise
 		do
 			create queue
@@ -32,7 +32,7 @@ feature {NONE} -- Initialisation
 		
 feature {NONE} -- Implementation
 
-	register_servlets is
+	register_servlets
 			-- Register all servlets for this application
 		local
 			servlet: GOA_HTTP_SERVLET
@@ -43,12 +43,12 @@ feature {NONE} -- Implementation
 			manager.registry.register_servlet (servlet, "snoop")
 		end
 		
-	register_security is
+	register_security
 			-- Register all security realms
 		do
 		end
 		
-	register_producers is
+	register_producers
 			-- Register all producers
 		local
 			producer: GS_REQUEST_PRODUCER
@@ -66,7 +66,7 @@ feature {NONE} -- Implementation
 			processor.add_producer (producer)
 		end
 		
-	register_consumers is
+	register_consumers
 			-- Register all consumers
 		local
 			c: INTEGER

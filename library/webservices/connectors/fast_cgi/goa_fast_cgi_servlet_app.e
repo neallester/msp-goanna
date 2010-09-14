@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a FastCGI servlet application"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI servlets"
@@ -34,7 +34,7 @@ inherit
 
 feature -- Initialisation
 
-	make (new_host: STRING; port, backlog: INTEGER) is
+	make (new_host: STRING; port, backlog: INTEGER)
 			-- Create a new fast cgi servlet application
 		do
 			fast_cgi_app_make (new_host, port, backlog)
@@ -42,7 +42,7 @@ feature -- Initialisation
 
 feature -- Basic operations
 
-	process_request is
+	process_request
 			-- Process a request.
 		local
 			req: like request_template
@@ -152,7 +152,7 @@ feature {NONE} -- Implementation
 	response_template: GOA_FAST_CGI_SERVLET_RESPONSE
 
 
-	handle_missing_servlet (resp: GOA_FAST_CGI_SERVLET_RESPONSE) is
+	handle_missing_servlet (resp: GOA_FAST_CGI_SERVLET_RESPONSE)
 			-- Send error page indicating missing servlet
 		require
 			resp_exists: resp /= Void

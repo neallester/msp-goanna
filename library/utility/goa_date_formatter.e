@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that format date time objects for display."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "datetime"
@@ -12,7 +12,7 @@ class GOA_DATE_FORMATTER
 
 feature -- Transformation
 
-	format_fixed_variant (date: DT_DATE_TIME): STRING is
+	format_fixed_variant (date: DT_DATE_TIME): STRING
 			-- Format 'date' using the long display format.
 			-- ie, "Wdy, DD-Mon-YY HH:MM:SS GMT".
 			-- This format is suitable for cookie expiry dates.
@@ -47,7 +47,7 @@ feature -- Transformation
 			formatted_date_exists: Result /= Void
 		end
 		
-	format_compact_sortable (date: DT_DATE_TIME): STRING is
+	format_compact_sortable (date: DT_DATE_TIME): STRING
 			-- Format suitable for string sorting.
 			-- ie, YYYYMMDDHHMMSS
 		require
@@ -66,7 +66,7 @@ feature -- Transformation
 		
 feature {NONE} -- Implementation
 
-	short_weekdays: ARRAY [STRING] is 
+	short_weekdays: ARRAY [STRING] 
 			-- Short names for weekdays beginning at Sunday.
 		once
 			Result := << "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" >>
@@ -74,7 +74,7 @@ feature {NONE} -- Implementation
 			seven_days: Result.count = 7
 		end	
 	
-	short_months: ARRAY [STRING] is
+	short_months: ARRAY [STRING]
 			-- Short names for months.
 		once
 			Result := << "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
@@ -83,7 +83,7 @@ feature {NONE} -- Implementation
 			twelve_months: Result.count = 12
 		end
 	
-	zero_fill (value: STRING; length: INTEGER): STRING is
+	zero_fill (value: STRING; length: INTEGER): STRING
 			-- Extend 'value' to 'length' and pad with
 			-- zeros on left if required.
 		require

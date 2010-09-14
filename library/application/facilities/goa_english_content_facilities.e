@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Facilities for creating user content"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -11,7 +11,7 @@ class
 	
 feature
 
-	a_or_an (next_string: STRING; capitalize: BOOLEAN): STRING is
+	a_or_an (next_string: STRING; capitalize: BOOLEAN): STRING
 			-- Return a or an, depending on next_character
 		require
 			valid_next_string: next_string /= Void
@@ -29,10 +29,10 @@ feature
 			Result.append (next_string)
 		end
 
-	vowels: STRING is "aeiouAEIOU"
+	vowels: STRING = "aeiouAEIOU"
 			-- The english vowels
 	
-	scrub (the_string, acceptable_characters: STRING) is
+	scrub (the_string, acceptable_characters: STRING)
 			-- Remove any characters from the_string that don't occur in acceptable_characters
 		require
 			valid_the_string: the_string /= Void
@@ -53,7 +53,7 @@ feature
 			end
 		end
 		
-	contains_acceptable_characters (the_string, acceptable_characters: STRING): BOOLEAN is
+	contains_acceptable_characters (the_string, acceptable_characters: STRING): BOOLEAN
 			-- Does the_string contain only characters that are in acceptable_characters
 		require
 			valid_the_string: the_string /= Void

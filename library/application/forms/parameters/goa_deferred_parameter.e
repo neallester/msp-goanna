@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Interface for a parameters in an HTML form"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-07-27 22:10:14 -0700 (Thu, 27 Jul 2006) $"
@@ -21,7 +21,7 @@ inherit
 
 feature -- Attributes
 
-	name: STRING is
+	name: STRING
 			-- Name of this request parameter; each parameter must have a unique name
 		deferred
 		ensure
@@ -30,7 +30,7 @@ feature -- Attributes
 
 feature -- Queries
 
-	parameter_processing_result (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): PARAMETER_PROCESSING_RESULT is
+	parameter_processing_result (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): PARAMETER_PROCESSING_RESULT
 			-- parameter processing result in processing_result corresponding to this parameter
 		require
 			valid_processing_result: processing_result /= Void
@@ -40,7 +40,7 @@ feature -- Queries
 			ok_to_read_data: ok_to_read_data (processing_result)
 		end
 
-	is_suffix_valid (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN is
+	is_suffix_valid (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN
 			-- Is suffix a valid value?
 		require
 			valid_processing_result: processing_result /= Void
@@ -48,7 +48,7 @@ feature -- Queries
 		deferred
 		end
 
-	minimum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER is
+	minimum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER
 			-- The minimum valid suffix value
 		require
 			valid_processing_result: processing_result /= Void
@@ -56,7 +56,7 @@ feature -- Queries
 		deferred
 		end
 
-	maximum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER is
+	maximum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER
 			-- The maximum valid suffix value
 		require
 			valid_processing_result: processing_result /= Void
@@ -68,7 +68,7 @@ feature -- Queries
 --			e.g. GOA_ITEM_LIST_PARAMETER whose list happens to be empty
 		end
 
-	suffix_list (processing_result: REQUEST_PROCESSING_RESULT): DS_LINKED_LIST [INTEGER] is
+	suffix_list (processing_result: REQUEST_PROCESSING_RESULT): DS_LINKED_LIST [INTEGER]
 			-- A list of all suffix values used for this parameter
 		require
 			valid_processing_result: processing_result /= Void
@@ -82,7 +82,7 @@ feature -- Queries
 
 feature {GOA_PARAMETER_PROCESSING_RESULT, GOA_PARAMETER_PROCESSING_RESULT_COMPARATOR}-- Processing
 
-	process (processing_result: PARAMETER_PROCESSING_RESULT) is
+	process (processing_result: PARAMETER_PROCESSING_RESULT)
 			-- Process the paramter
 		require
 			valid_processing_result: processing_result /= Void
@@ -93,7 +93,7 @@ feature {GOA_PARAMETER_PROCESSING_RESULT, GOA_PARAMETER_PROCESSING_RESULT_COMPAR
 			ok_to_process: ok_to_process (processing_result)
 		end
 
-	ok_to_process (processing_result: PARAMETER_PROCESSING_RESULT): BOOLEAN is
+	ok_to_process (processing_result: PARAMETER_PROCESSING_RESULT): BOOLEAN
 			-- Is it OK to process the paramter
 		require
 			valid_processing_result: processing_result /= Void
@@ -102,7 +102,7 @@ feature {GOA_PARAMETER_PROCESSING_RESULT, GOA_PARAMETER_PROCESSING_RESULT_COMPAR
 
 feature -- Processing Order
 
-	processing_order: INTEGER is
+	processing_order: INTEGER
 			-- Integer that gives the order in which to process this parameter relative to others in the request
 			-- Use the constants process_first - process_fifth
 		deferred
@@ -110,7 +110,7 @@ feature -- Processing Order
 
 feature -- Parameter Value
 
-	display_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	display_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- The value of this parameter that will be displayed to the user
 		require
 			valid_processing_result: processing_result /= Void
@@ -121,7 +121,7 @@ feature -- Parameter Value
 			ok_to_read_data: ok_to_read_data (processing_result)
 		end
 
-	current_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	current_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- Current value of the parameter in the data model.
 		require
 			valid_processing_result: processing_result /= Void
@@ -134,7 +134,7 @@ feature -- Parameter Value
 
 feature -- As XML
 
-	add_to_document (xml: GOA_XML_DOCUMENT; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER) is
+	add_to_document (xml: GOA_XML_DOCUMENT; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER)
 			-- Add a representation of this parameter to xml
 		require
 			valid_xml: xml /= Void
@@ -143,7 +143,7 @@ feature -- As XML
 		deferred
 		end
 
-	ok_to_add (xml: GOA_XML_DOCUMENT): BOOLEAN is
+	ok_to_add (xml: GOA_XML_DOCUMENT): BOOLEAN
 			-- Would adding a representation of this parameter to xml at this point in the document conform with
 			-- The schema for xml?
 		require
@@ -151,7 +151,7 @@ feature -- As XML
 		deferred
 		end
 
-	is_disabled (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN is
+	is_disabled (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN
 			-- Should this parameter be displayed as disabled?
 		require
 			valid_processing_result: processing_result /= Void
@@ -162,7 +162,7 @@ feature -- As XML
 			ok_to_read_data: ok_to_read_data (processing_result)
 		end
 
-	input_class (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	input_class (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- CSS class to use with this parameter; Void if none
 		require
 			valid_processing_result: processing_result /= Void
@@ -173,7 +173,7 @@ feature -- As XML
 			ok_to_read_data: ok_to_read_data (processing_result)
 		end
 
-	script_name (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	script_name (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- Name of the script associated with this request parameter; Void if none
 		require
 			valid_processing_result: processing_result /= Void
@@ -186,7 +186,7 @@ feature -- As XML
 
 feature -- To Be Removed
 
-	is_a_dependency: BOOLEAN is
+	is_a_dependency: BOOLEAN
 			-- Does this parameter change something in the database that may impact future evaluations
 			obsolete "Application Specific Hack"
 		deferred
@@ -194,11 +194,11 @@ feature -- To Be Removed
 
 feature {NONE} -- Processing Order Constants
 
-	process_first: INTEGER is 1
-	process_second: INTEGER is 2
-	process_third: INTEGER is 3
-	process_fourth: INTEGER is 4
-	process_fifth: INTEGER is 5
+	process_first: INTEGER = 1
+	process_second: INTEGER = 2
+	process_third: INTEGER = 3
+	process_fourth: INTEGER = 4
+	process_fifth: INTEGER = 5
 
 invariant
 

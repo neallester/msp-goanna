@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Items that can be undone"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -15,7 +15,7 @@ inherit
 
 feature
 
-	undo is
+	undo
 		-- Undo
 		deferred
 		end

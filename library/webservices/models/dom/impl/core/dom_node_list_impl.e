@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Node list implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -25,13 +25,13 @@ inherit
 			count as length
 		end
 
-creation
+create
 
 	make
 
 feature -- Creation
 
-	make is
+	make
 			-- Create new empty node list.
 		do
 			arrayed_list_make (0)
@@ -39,7 +39,7 @@ feature -- Creation
 
 feature -- Access
 
-	item (i: INTEGER): DOM_NODE is
+	item (i: INTEGER): DOM_NODE
          -- Returns the `index'th item in the collection. If `index'
          -- is greater than or equal to the number of nodes in the list,
          -- this returns `Void'.

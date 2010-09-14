@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A servlet that displays the users answeres to a few questions"
 	author: "Neal L Lester <neal@3dsafety.com>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,21 +16,21 @@ inherit
 	GOA_DISPLAYABLE_SERVLET
 	GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT
 
-creation
+create
 	
 	make
 	
 feature
 
-	name: STRING is "answer.htm"
+	name: STRING = "answer.htm"
 	
-	new_xml_document (processing_result: REQUEST_PROCESSING_RESULT): GOA_PAGE_XML_DOCUMENT is
+	new_xml_document (processing_result: REQUEST_PROCESSING_RESULT): GOA_PAGE_XML_DOCUMENT
 		do
 			create Result.make_utf8_encoded
 			Result.start_page_element (processing_result.virtual_domain_host.host_name, processing_result.message_catalog.answer_title, configuration.stylesheet, Void)
 		end
 		
-	add_body (processing_result: REQUEST_PROCESSING_RESULT; xml: GOA_PAGE_XML_DOCUMENT) is
+	add_body (processing_result: REQUEST_PROCESSING_RESULT; xml: GOA_PAGE_XML_DOCUMENT)
 		local
 			user_name, language, language_comment: STRING
 			is_male, thinks_goanna_is_cool: BOOLEAN
@@ -50,12 +50,12 @@ feature
 			xml.end_current_element
 		end
 		
-	add_footer (processing_result: REQUEST_PROCESSING_RESULT; xml: GOA_PAGE_XML_DOCUMENT) is
+	add_footer (processing_result: REQUEST_PROCESSING_RESULT; xml: GOA_PAGE_XML_DOCUMENT)
 		do
 			-- No Footer
 		end
 		
-	ok_to_display (processing_result: REQUEST_PROCESSING_RESULT): BOOLEAN is
+	ok_to_display (processing_result: REQUEST_PROCESSING_RESULT): BOOLEAN
 		local
 			session_status: SESSION_STATUS
 		do

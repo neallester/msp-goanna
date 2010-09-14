@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Standard Submit Button Parameter"
 	author: "Neal L Lester <neal@3dsafety.com>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,20 +16,20 @@ inherit
 		end
 	GOA_NON_DATABASE_ACCESS_PARAMETER
 	
-creation
+create
 	
 	make
 	
 feature
 	
-	name: STRING is "standard_submit"
+	name: STRING = "standard_submit"
 	
-	process (processing_result: PARAMETER_PROCESSING_RESULT)is
+	process (processing_result: PARAMETER_PROCESSING_RESULT)
 		do
 			-- Nothing
 		end
 		
-	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 		do
 			if processing_result.generating_servlet = Void then
 				Result := processing_result.message_catalog.submit_label
@@ -38,12 +38,12 @@ feature
 			end
 		end
 		
-	is_suffix_valid (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN is
+	is_suffix_valid (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN
 		do
 			Result := True
 		end
 		
-	add_not_received_error_message (processing_result: PARAMETER_PROCESSING_RESULT) is
+	add_not_received_error_message (processing_result: PARAMETER_PROCESSING_RESULT)
 			-- Add error message to if the parameter was not included with the request
 		require
 			valid_processing_result: processing_result /= Void

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent Eiffel code fragments"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Eiffel Code Generator"
@@ -13,7 +13,7 @@ deferred class
 
 feature -- Basic operations
 
-	write (output: IO_MEDIUM) is
+	write (output: IO_MEDIUM)
 			-- Print source code representation of this fragment to 'output'.
 		require
 			output_exists: output /= Void

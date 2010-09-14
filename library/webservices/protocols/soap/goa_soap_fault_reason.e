@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP Fault Reason."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -23,7 +23,7 @@ create
 
 feature -- Initialisation
 
-	construct (a_fault: GOA_SOAP_FAULT; a_text, a_language: STRING) is
+	construct (a_fault: GOA_SOAP_FAULT; a_text, a_language: STRING)
 			-- Establish invariant.
 		require
 			fault_not_void: a_fault /= Void
@@ -39,7 +39,7 @@ feature -- Initialisation
 
 feature -- Status setting
 
-	validate (an_identity: UT_URI) is
+	validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		local
 			a_cursor: DS_LIST_CURSOR [XM_ELEMENT]
@@ -70,7 +70,7 @@ feature -- Status setting
 
 feature -- Element change
 
-	add_text (a_text, a_language: STRING) is
+	add_text (a_text, a_language: STRING)
 			-- Add a Text element child.
 		require
 			text_not_empty: a_text /= Void and then not a_text.is_empty

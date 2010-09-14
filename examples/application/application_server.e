@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Demonstration of Goanna Web Application Framework"
 	author: "Neal L. Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-10-21 09:54:12 -0700 (Sun, 21 Oct 2007) $"
@@ -27,7 +27,7 @@ create
 
 feature
 
-	command_line_ok: BOOLEAN is
+	command_line_ok: BOOLEAN
 		local
 			a_host: VIRTUAL_DOMAIN_HOST
 		do
@@ -39,7 +39,7 @@ feature
 			Result := True
 		end
 
-	register_servlets is
+	register_servlets
 		do
 			register_servlet (question_servlet)
 			servlet_manager.register_default_servlet (question_servlet)

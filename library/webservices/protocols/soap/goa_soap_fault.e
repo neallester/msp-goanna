@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP fault."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -27,13 +27,13 @@ inherit
 			copy, is_equal
 		end
 
-creation
+create
 
 	make_last, construct
 
 feature {NONE} -- Initialization
 
-	construct (a_body: GOA_SOAP_BODY; a_fault_code: INTEGER; a_reason, a_language: STRING; a_node_uri, a_role_uri: UT_URI; a_sub_code: STRING) is
+	construct (a_body: GOA_SOAP_BODY; a_fault_code: INTEGER; a_reason, a_language: STRING; a_node_uri, a_role_uri: UT_URI; a_sub_code: STRING)
 			-- Initialise new fault.
 		require
 			body_validated: a_body /= Void and then a_body.validation_complete and then a_body.validated
@@ -73,7 +73,7 @@ feature -- Access
 	detail: GOA_SOAP_FAULT_DETAIL
 			-- Details about `Current' (optional)
 
-	is_encoding_style_permitted: BOOLEAN is
+	is_encoding_style_permitted: BOOLEAN
 			-- Is `encoding_style' permitted to be non-Void?
 		do
 			Result := False
@@ -81,7 +81,7 @@ feature -- Access
 
 feature -- Status setting
 
-		validate (an_identity: UT_URI) is
+		validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		local
 			child_elements: DS_LIST [XM_ELEMENT]
@@ -164,7 +164,7 @@ feature -- Status setting
 
 feature -- Element change
 
-	add_detail  is
+	add_detail
 			-- Add a Detail node.
 		require
 			detail_is_void: detail = Void

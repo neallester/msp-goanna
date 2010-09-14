@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that process SOAP messages"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -28,7 +28,7 @@ inherit
 
 feature {NONE} -- Initialization
 
-	initialize_structures is
+	initialize_structures
 			-- Establish invariant.
 		do
 			initialize_roles
@@ -36,7 +36,7 @@ feature {NONE} -- Initialization
 			recognised_headers.set_equality_tester (qname_tester)
 		end
 
-	initialize_roles is
+	initialize_roles
 			-- Setup known and active roles.
 		do
 			create known_roles.make_default
@@ -49,19 +49,19 @@ feature {NONE} -- Initialization
 
 feature -- Template routines
 
-	send_build_failure_message (a_message: STRING) is
+	send_build_failure_message (a_message: STRING)
 			-- Send a build-failure message.
 		require
 			message_not_empty: a_message /= Void and then not a_message.is_empty
 		deferred
 		end
 
-	add_additional_known_roles is
+	add_additional_known_roles
 			-- Add non-standard roles.
 		deferred
 		end
 
-	determine_active_roles is
+	determine_active_roles
 			-- Determine in which roles we will act.
 		require
 			no_build_error: is_build_sucessful
@@ -69,7 +69,7 @@ feature -- Template routines
 		deferred
 		end
 
-	examine_header_for_roles (a_header: GOA_SOAP_HEADER_BLOCK) is
+	examine_header_for_roles (a_header: GOA_SOAP_HEADER_BLOCK)
 			-- Examine `a_header' to determine roles in which `Current' will act.
 		require
 			header_block_not_void: a_header /= Void
@@ -78,7 +78,7 @@ feature -- Template routines
 		deferred
 		end
 
-	is_header_understood (a_header: GOA_SOAP_HEADER_BLOCK): BOOLEAN is
+	is_header_understood (a_header: GOA_SOAP_HEADER_BLOCK): BOOLEAN
 			-- Do we understand `a_header'?
 		require
 			header_exists: a_header /= Void
@@ -89,26 +89,26 @@ feature -- Template routines
 			Result := recognised_headers.has (a_qname)
 		end
 								 
-	examine_body_for_active_roles is
+	examine_body_for_active_roles
 			-- Examine message body to determine roles in which `Current' will act.
 		deferred
 		end
 
-	process_headers is
+	process_headers
 			-- Process all mandatory headers (and optionally, non-mandatory headers) targetted at `Current'.
 		require
 			all_mandatory_headers_understood: are_all_mandatory_headers_understood
 		deferred
 		end
 
-	process_header (a_header:  GOA_SOAP_HEADER_BLOCK) is
+	process_header (a_header:  GOA_SOAP_HEADER_BLOCK)
 			-- Process `_header'
 		require
 			header_exists: a_header /= Void
 		deferred
 		end
 
-	process_body is
+	process_body
 			-- Process message body.
 		require
 			ultimate_receiver: is_ultimate_receiver
@@ -116,28 +116,28 @@ feature -- Template routines
 		deferred
 		end
 
-	create_and_send_must_understand_fault is
+	create_and_send_must_understand_fault
 			-- Send a MustUnderstand fault.
 		require
 			some_headers_not_understood: not_understood_headers /= Void and then not_understood_headers.count > 0
 		deferred
 		end
 
-	create_and_send_fault (a_fault_intent: GOA_SOAP_FAULT_INTENT) is
+	create_and_send_fault (a_fault_intent: GOA_SOAP_FAULT_INTENT)
 			-- Create and send a fault_message.
 		require
 			fault_intent_not_void: a_fault_intent /= Void
 		deferred
 		end
 
-	send_message (an_envelope: GOA_SOAP_ENVELOPE) is
+	send_message (an_envelope: GOA_SOAP_ENVELOPE)
 			-- Send a SOAP message.
 		require
 			envelope_not_void: an_envelope /= Void
 		deferred
 		end
 
-	relay_message is
+	relay_message
 			-- TODO
 		deferred
 		end
@@ -165,7 +165,7 @@ feature -- Access
 	is_relaying: BOOLEAN
 			-- Are we relaying messages?
 
-	envelope: GOA_SOAP_ENVELOPE is
+	envelope: GOA_SOAP_ENVELOPE
 			-- Parsed envelope
 		require
 			no_build_error: is_build_sucessful
@@ -183,13 +183,13 @@ feature -- Status report
 	are_optional_headers_processed: BOOLEAN
 			-- Do we process optional headers targetted at us?
 
-	is_build_sucessful: BOOLEAN is
+	is_build_sucessful: BOOLEAN
 			-- Was the envelope built without error?
 		do
 			Result := tree_builder /= Void and then not tree_builder.error.has_error and then not tree_builder.tree_filter.is_error
 		end
 
-	is_valid: BOOLEAN is
+	is_valid: BOOLEAN
 			-- Did `envelope' validate?
 		require
 			no_build_error: is_build_sucessful
@@ -197,7 +197,7 @@ feature -- Status report
 			Result := envelope.validated
 		end
 
-	validation_fault: GOA_SOAP_FAULT_INTENT is
+	validation_fault: GOA_SOAP_FAULT_INTENT
 			-- Fault from validation
 		require
 			no_build_error: is_build_sucessful
@@ -208,7 +208,7 @@ feature -- Status report
 			fault_not_void: Result /= Void
 		end
 
-	is_ultimate_receiver: BOOLEAN is
+	is_ultimate_receiver: BOOLEAN
 			-- Are we acting as the ultimate receiver for the next or current call to `process'?
 		do
 			Result := known_roles.has (Role_ultimate_receiver)
@@ -216,7 +216,7 @@ feature -- Status report
 
 feature -- Setting
 
-	set_ultimate_receiver (yes_or_no: BOOLEAN) is
+	set_ultimate_receiver (yes_or_no: BOOLEAN)
 			-- Determine if we are to act as the ultimate receiver for the next call to `process'.
 		do
 			if yes_or_no then
@@ -230,7 +230,7 @@ feature -- Setting
 			end
 		end
 
-	set_process_optional_headers  (yes_or_no: BOOLEAN) is
+	set_process_optional_headers  (yes_or_no: BOOLEAN)
 			-- Determine if we process optional headers targetted at us.
 		do
 			are_optional_headers_processed := yes_or_no
@@ -238,7 +238,7 @@ feature -- Setting
 			set: are_optional_headers_processed = yes_or_no
 		end
 
-	recognise_header (a_qname: GOA_EXPANDED_QNAME) is
+	recognise_header (a_qname: GOA_EXPANDED_QNAME)
 			-- Recognise headers identified by `a_qname'.
 			-- TODO: Logic for processing a recognised header? 
 		require
@@ -252,7 +252,7 @@ feature -- Setting
 		
 feature -- Process
 
-	process (a_message: STRING; a_base_uri: UT_URI) is
+	process (a_message: STRING; a_base_uri: UT_URI)
 			-- Process message.
 		require
 			message_not_void: a_message /= Void
@@ -295,7 +295,7 @@ feature -- Process
 			end
 		end
 
-	identify_mandatory_headers is
+	identify_mandatory_headers
 			-- Identify all mandatory headers.
 		require
 			no_build_error: is_build_sucessful
@@ -316,7 +316,7 @@ feature -- Process
 			end
 		end
 
-	are_all_mandatory_headers_understood: BOOLEAN is
+	are_all_mandatory_headers_understood: BOOLEAN
 			-- Are all of `mandatory_headers' understood by `Current'?
 		require
 			mandatory_headers_not_void: mandatory_headers /= Void
@@ -338,7 +338,7 @@ feature {NONE} -- Implementation
 	tree_builder: GOA_SOAP_TREE_BUILDER
 			-- Tree constructor
 
-	is_mandatory_header (a_header: GOA_SOAP_HEADER_BLOCK): BOOLEAN is
+	is_mandatory_header (a_header: GOA_SOAP_HEADER_BLOCK): BOOLEAN
 			-- Is `a_header' mandatory?
 		require
 			header_not_void: a_header /= Void
@@ -348,7 +348,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	is_targetted_header (a_header: GOA_SOAP_HEADER_BLOCK): BOOLEAN is
+	is_targetted_header (a_header: GOA_SOAP_HEADER_BLOCK): BOOLEAN
 			-- Is `a_header' targetted at us?
 		require
 			header_not_void: a_header /= Void
@@ -375,7 +375,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	parse_xml (an_xml: STRING; a_base_uri: UT_URI) is
+	parse_xml (an_xml: STRING; a_base_uri: UT_URI)
 			-- Parse xml source.
 		require
 			xml_not_void: an_xml /= Void
@@ -400,7 +400,7 @@ feature {NONE} -- Implementation
 			tree_builder_created: tree_builder /= Void
 		end
 
-	send_version_mismatch_fault is
+	send_version_mismatch_fault
 			-- Send a versionMismatch fault.
 		local
 			a_fault_intent: GOA_SOAP_FAULT_INTENT

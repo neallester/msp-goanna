@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A single page, or one interaction with the user"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -17,41 +17,41 @@ inherit
 	SYSTEM_CONSTANTS
 	PAGE_SEQUENCE_ELEMENT
 
-creation
+create
 
 	make
 
 feature -- Implement Deferred Features
 
-	text: TEXT_LIST is
+	text: TEXT_LIST
 		do
 			result := user.preference.language
 		end
 
-	page : PAGE is
+	page : PAGE
 		do
 			result := current
 		end
 
-	start is
+	start
 		do
 			done := false
 		end
 
-	forth is
+	forth
 		do
 			done := true
 		end
 
 	done : BOOLEAN
 
-	active_chain : LINKED_LIST [ELEMENT_CONTAINER] is 
+	active_chain : LINKED_LIST [ELEMENT_CONTAINER] 
 		-- Add current to the chain of active elements
 		do
 			create result.make
 		end
 
-	context : STRING is
+	context : STRING
 		-- Clear text contribution to text describing the sequence of page_sequence_elements that has generated this page
 		do
 			if display_topic_title then
@@ -66,7 +66,7 @@ feature -- {PAGE_SEQUENCER, WEB_SERVER_PROXY, DYNAMIC_URL, PAGE_FACTORY}
 	page_sequencer : PAGE_SEQUENCER
 		-- The page_sequencer associated with this page
 
-	user : like user_anchor is
+	user : like user_anchor
 		do
 			result := page_sequencer.user
 		end
@@ -75,7 +75,7 @@ feature -- {PAGE_SEQUENCER, WEB_SERVER_PROXY, DYNAMIC_URL, PAGE_FACTORY}
 
 feature {PAGE_SEQUENCER} -- Access by page_sequencer
 
-	undo is
+	undo
 		-- Undo any changes made by this page
 		require
 			page_is_active : current = page_sequencer.active_page
@@ -86,7 +86,7 @@ feature {PAGE_SEQUENCER} -- Access by page_sequencer
 			done_false : done = false
 		end
 
-	reset_sequence is
+	reset_sequence
 		-- Sets the active_sequence to state when current page was generated
 		require
 			valid_master_sequence : master_sequence /= Void
@@ -108,7 +108,7 @@ feature {PAGE_SEQUENCER} -- Access by page_sequencer
 			master_sequence_active_sequence_matches_chain : master_sequence_active_sequence_matches_chain
 		end
 
-	add_to_response (content_to_add : CONTENT_CONTAINER) is
+	add_to_response (content_to_add : CONTENT_CONTAINER)
 		-- Add content_to_add to response
 		require
 			valid_content_to_add : content_to_add /= Void
@@ -118,7 +118,7 @@ feature {PAGE_SEQUENCER} -- Access by page_sequencer
 			response.send (content_to_add.code)
 		end
 
-	build is
+	build
 		-- prepare to display the page
 		require
 			valid_master_sequence : master_sequence /= Void
@@ -160,7 +160,7 @@ feature {PAGE_SEQUENCER} -- Access by page_sequencer
 			master_sequence_active_sequence_matches_chain  : 	master_sequence_active_sequence_matches_chain
 		end
 
-	response : GOA_HTTP_SERVLET_RESPONSE is
+	response : GOA_HTTP_SERVLET_RESPONSE
 		-- The web response associated with the page
 		do
 			result := page_sequencer.current_response
@@ -172,7 +172,7 @@ feature {PAGE_SEQUENCER} -- Access by page_sequencer
 	master_sequence : PAGE_SEQUENCE_ELEMENT
 		-- The page_sequence_element in page_sequencer that has generated this page
 
-	set_master_sequence (new_master_sequence : PAGE_SEQUENCE_ELEMENT) is
+	set_master_sequence (new_master_sequence : PAGE_SEQUENCE_ELEMENT)
 		-- Set master_sequence
 		require
 			valid_new_master_sequence : new_master_sequence /= Void
@@ -182,7 +182,7 @@ feature {PAGE_SEQUENCER} -- Access by page_sequencer
 			master_sequence_updated : master_sequence = new_master_sequence
 		end
 
-	set_web_request (new_web_request : GOA_HTTP_SERVLET_REQUEST) is
+	set_web_request (new_web_request : GOA_HTTP_SERVLET_REQUEST)
 		-- Set the web request received in response to this page
 		require
 			valid_new_web_request : new_web_request /= Void
@@ -192,7 +192,7 @@ feature {PAGE_SEQUENCER} -- Access by page_sequencer
 			web_request_updated : web_request = new_web_request
 		end
 
-	buildable : BOOLEAN is
+	buildable : BOOLEAN
 		-- Does the page contain any content to use for building a response
 		do
 			result := not content_list.is_empty
@@ -203,7 +203,7 @@ feature {PAGE_SEQUENCER} -- Access by page_sequencer
 
 feature {DYNAMIC_URL} -- Page Processing
 
-	process (processing_code : PROCEDURE [PROCESSOR_HOST, TUPLE])is
+	process (processing_code : PROCEDURE [PROCESSOR_HOST, TUPLE])
 		-- do post display processing
 		require
 			valid_processing_code : processing_code /= Void
@@ -227,20 +227,20 @@ feature {NONE} -- Implementation
 	content_list : LINKED_LIST [CONTENT_CONTAINER]
 		-- The content of the page to be displayed
 
-	title : STRING is
+	title : STRING
 		-- The clear text title of this page
 		do
 			Result := text.application_title + " : " + page_sequencer.active_sequence.context
 		end
 
-	restore_chain (chain : LINKED_LIST [ELEMENT_CONTAINER]) is
+	restore_chain (chain : LINKED_LIST [ELEMENT_CONTAINER])
 		-- The caller is restoring a previously executed chain of page_sequence_elements that generated this page
 		-- This page is the terminal element of this chain.
 		do
 			done := false
 		end
 
-	master_sequence_active_sequence_matches_chain : BOOLEAN is
+	master_sequence_active_sequence_matches_chain : BOOLEAN
 		-- Does sequence_element_chain match active_sequence.active_chain?
 		require
 			valid_master_sequence : master_sequence /= Void
@@ -283,7 +283,7 @@ feature {PAGE_FACTORY} --
 		-- Display the topic title in context string
 		-- Usefull if topic is not a page sequence in the context
 
-	set_display_topic_title is
+	set_display_topic_title
 		-- Set display_topic_title true
 		do
 			display_topic_title := true
@@ -291,7 +291,7 @@ feature {PAGE_FACTORY} --
 			display_topic_title : display_topic_title
 		end
 
-	add_content (new_content : CONTENT_CONTAINER)is
+	add_content (new_content : CONTENT_CONTAINER)
 		-- add new_content to content_list
 		require
 			valid_new_content : new_content /= Void
@@ -301,7 +301,7 @@ feature {PAGE_FACTORY} --
 			new_content_added : content_list.has (new_content)
 		end
 
-	set_not_historical is
+	set_not_historical
 		-- This page should not be added to page history
 		do
 			historical := false
@@ -309,7 +309,7 @@ feature {PAGE_FACTORY} --
 			not_historical : not historical
 		end
 
-	set_topic (new_topic : TOPIC) is
+	set_topic (new_topic : TOPIC)
 		-- Set a new topic for the page
 		require
 			valid_new_topic : new_topic /= Void
@@ -321,7 +321,7 @@ feature {PAGE_FACTORY} --
 		
 feature {NONE} -- creation
 
-	make (new_page_sequencer : PAGE_SEQUENCER ; new_topic : TOPIC) is
+	make (new_page_sequencer : PAGE_SEQUENCER ; new_topic : TOPIC)
 		require 
 			valid_new_page_sequencer : new_page_sequencer /= Void
 		do

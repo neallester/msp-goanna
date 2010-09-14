@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Domains that have children"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -19,7 +19,7 @@ inherit
 
 feature
 
-	receive_child_notification (child: DOMAIN_WITH_PARENT) is
+	receive_child_notification (child: DOMAIN_WITH_PARENT)
 			-- Receive notification that child was updated and process
 		require
 			child_of_current: child.parent = current	
@@ -30,7 +30,7 @@ feature
 			time_last_modified_updated: time_last_modified = child.time_last_modified
 		end
 
-	initialize is
+	initialize
 		do
 			if not domain_with_children_initialized then
 				create child_list.make
@@ -39,7 +39,7 @@ feature
 			end
 		end
 
-	reset is
+	reset
 		do
 			from
 				child_list.start
@@ -51,7 +51,7 @@ feature
 			end
 		end
 
-	evaluated : BOOLEAN is
+	evaluated : BOOLEAN
 		do
 			from
 				result := true
@@ -68,12 +68,12 @@ feature {NONE}
 
 	child_list: DS_LINKED_LIST [DOMAIN_WITH_PARENT]
 
-	create_children is
+	create_children
 			-- Create children and add them to child_list
 		deferred
 		end
 
-	process_child_notification (child: DOMAIN_WITH_PARENT) is
+	process_child_notification (child: DOMAIN_WITH_PARENT)
 			-- Do whatever processing is necessary due to child_notification
 			-- Note: processing specific to a child should generally be done in that child.
 		do
@@ -84,7 +84,7 @@ feature {NONE}
 
 feature
 
-	initialized: BOOLEAN is
+	initialized: BOOLEAN
 		do
 			result := domain_with_children_initialized
 		end

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Holder for a queued request and its response"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -10,13 +10,13 @@ indexing
 
 class	GOA_QUEUED_REQUEST
 
-creation
+create
 	
 	make
 	
 feature -- Initialization
 
-	make (new_request: GOA_HTTP_SERVLET_REQUEST; new_response: GOA_HTTP_SERVLET_RESPONSE) is
+	make (new_request: GOA_HTTP_SERVLET_REQUEST; new_response: GOA_HTTP_SERVLET_RESPONSE)
 			-- Initialize holder with 'new_request' and 'new_response'
 		require
 			new_request_exists: new_request /= Void

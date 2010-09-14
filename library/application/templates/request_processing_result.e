@@ -1,4 +1,4 @@
-indexing
+note
 	description: "The result of processing a request from the user"
 	author: "Neal L Lester <neal@3dsafety.com>"
 	date: "$Date: 2007-07-12 10:36:43 -0700 (Thu, 12 Jul 2007) $"
@@ -14,7 +14,7 @@ inherit
 	SHARED_REQUEST_PARAMETERS
 	SHARED_SERVLETS
 	
-creation
+create
 	
 	make
 

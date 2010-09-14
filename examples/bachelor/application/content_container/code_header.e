@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Code that goes at the top of every response"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -23,12 +23,12 @@ create
 
 feature -- Initialization
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			Result := "<HTML><HEAD><TITLE>"
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			Result := "</TITLE></HEAD>" + new_line + "<BODY>" + new_line
 		end

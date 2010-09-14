@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Personal Information about the user"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -28,12 +28,12 @@ feature  {TOPIC, PAGE, USER}-- Attributes & Setting
 	name : STRING
 		-- The users name
 
-	name_agent_access : STRING is
+	name_agent_access : STRING
 		do
 			result := name
 		end
 
-	set_name (new_name : STRING) is
+	set_name (new_name : STRING)
 		require
 			valid_new_name : new_name /= Void
 		do
@@ -44,12 +44,12 @@ feature  {TOPIC, PAGE, USER}-- Attributes & Setting
 	first_name : STRING
 		-- The users first name
 
-	first_name_agent_access : STRING is
+	first_name_agent_access : STRING
 		do
 			result := first_name
 		end
 
-	set_first_name (new_first_name : STRING) is
+	set_first_name (new_first_name : STRING)
 		require
 			valid_new_first_name : new_first_name /= Void
 		do
@@ -61,12 +61,12 @@ feature  {TOPIC, PAGE, USER}-- Attributes & Setting
 	middle_name : STRING
 		-- The users middle name
 
-	middle_name_agent_access : STRING is
+	middle_name_agent_access : STRING
 		do
 			result := middle_name
 		end
 
-	set_middle_name (new_middle_name : STRING) is
+	set_middle_name (new_middle_name : STRING)
 		require
 			valid_new_middle_name : new_middle_name /= Void
 		do
@@ -78,12 +78,12 @@ feature  {TOPIC, PAGE, USER}-- Attributes & Setting
 	last_name : STRING
 		-- The users last name
 
-	last_name_agent_access : STRING is
+	last_name_agent_access : STRING
 		do
 			result := last_name
 		end
 
-	set_last_name (new_last_name : STRING) is
+	set_last_name (new_last_name : STRING)
 		require
 			valid_new_last_name : new_last_name /= Void
 		do
@@ -95,12 +95,12 @@ feature  {TOPIC, PAGE, USER}-- Attributes & Setting
 	e_mail_address : STRING
 		-- The users e-mail address
 
-	e_mail_address_agent_access : STRING is
+	e_mail_address_agent_access : STRING
 		do
 			result := e_mail_address
 		end
 
-	set_e_mail_address (new_e_mail_address : STRING) is
+	set_e_mail_address (new_e_mail_address : STRING)
 		require
 			valid_new_e_mail_address : new_e_mail_address /= Void
 		do
@@ -109,7 +109,7 @@ feature  {TOPIC, PAGE, USER}-- Attributes & Setting
 			e_mail_address_updated : new_e_mail_address = e_mail_address
 		end	
 
-	undo is
+	undo
 			-- 	Roll back to previuos state (not implemented)
 		do
 		end
@@ -117,40 +117,40 @@ feature  {TOPIC, PAGE, USER}-- Attributes & Setting
 
 feature -- Implement Deferred Features
 
-	title : STRING is
+	title : STRING
 		do
 			Result := user.preference.language.personal_information
 		end
 
-	reset is
+	reset
 		do
 			reset_personal_information
 		end
 
 feature {NONE} -- Implementation
 
-	initialize is
+	initialize
 		do
 			reset_personal_information
 			precursor {TIME_STAMPED_DOMAIN}
 		end
 
-	update is
+	update
 		do
 			precursor {TIME_STAMPED_DOMAIN} 
 		end
 
-	initialized: BOOLEAN is
+	initialized: BOOLEAN
 		do
 			result := precursor {TIME_STAMPED_DOMAIN} 
 		end
 
-	reset_personal_information is
+	reset_personal_information
 		do
 			name := ""
 		end
 
-	evaluated: BOOLEAN is
+	evaluated: BOOLEAN
 		do
 			result := not equal (name, "")
 		end

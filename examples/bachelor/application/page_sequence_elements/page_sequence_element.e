@@ -1,4 +1,4 @@
-indexing
+note
 	description: "An element in a page sequence"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -19,7 +19,7 @@ inherit
 
 feature {PAGE_SEQUENCE_ELEMENT, USER}
 
-	page_factory : PAGE_FACTORY is
+	page_factory : PAGE_FACTORY
 		-- Where pages come from
 		once
 			create result.make
@@ -28,30 +28,30 @@ feature {PAGE_SEQUENCE_ELEMENT, USER}
 	page_is_dirty : BOOLEAN
 		-- True if a page has already been displayed; false if not a page
 
-	context : STRING is
+	context : STRING
 		-- Plain text describing the context (the sequence of page_sequence_elements) that has generated the current page
 		deferred
 		end
 
 feature {PAGE_SEQUENCE_ELEMENT, PAGE_FACTORY, CONTENT_CONTAINER, TO_DO}
 
-	text : TEXT_LIST is
+	text : TEXT_LIST
 		-- Text used as content on the page
 		deferred
 		end
 
-	title : STRING is
+	title : STRING
 		-- Plain text title of the page_sequence_element
 		deferred
 		end
 
-	user: like user_anchor is
+	user: like user_anchor
 		deferred
 		end
 
 feature {PAGE_SEQUENCE_ELEMENT, PAGE_SEQUENCER, USER}
 
-	active_chain : LINKED_LIST [ELEMENT_CONTAINER] is
+	active_chain : LINKED_LIST [ELEMENT_CONTAINER]
 		-- The chain of page_sequence_elements linking session with active_page
 		require
 			not_done : not done
@@ -59,7 +59,7 @@ feature {PAGE_SEQUENCE_ELEMENT, PAGE_SEQUENCER, USER}
 		ensure
 		end
 
-	page : PAGE is
+	page : PAGE
 		-- The current page in the sequence
 		require
 			not_done : not done
@@ -69,24 +69,24 @@ feature {PAGE_SEQUENCE_ELEMENT, PAGE_SEQUENCER, USER}
 			valid_result : result /= Void
 		end
 
-	start is
+	start
 		-- Go to first (valid) page in the sequence
 		deferred
 		end
 
-	forth is
+	forth
 		-- Go to the next (valid) page in the sequence
 		require
 			not_done : not done
 		deferred
 		end
 
-	done : BOOLEAN is
+	done : BOOLEAN
 		-- The last element in this sequence has been displayed
 		deferred
 		end
 
-	restore_chain (chain : LINKED_LIST [ELEMENT_CONTAINER]) is
+	restore_chain (chain : LINKED_LIST [ELEMENT_CONTAINER])
 		-- Restore the current sequence_element to state given by chain
 		require
 			valid_chain : chain /= Void
@@ -95,7 +95,7 @@ feature {PAGE_SEQUENCE_ELEMENT, PAGE_SEQUENCER, USER}
 
 feature {NONE} -- Implementation
 
-	null_processor is
+	null_processor
 		-- do nothing
 		do
 		end

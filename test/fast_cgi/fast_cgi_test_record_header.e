@@ -1,4 +1,4 @@
-indexing
+note
 
 
 
@@ -34,7 +34,7 @@ feature -- Test
 
 
 
-	test_as_fast_cgi_string is
+	test_as_fast_cgi_string
 		local
 			a_record_header: GOA_FAST_CGI_RECORD_HEADER
 			version, request_id, type, content_length, padding_length: INTEGER

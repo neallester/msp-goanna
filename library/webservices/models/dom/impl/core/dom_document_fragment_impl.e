@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Document fragment implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -21,13 +21,13 @@ inherit
 			{NONE} parent_node_make
 		end
 		
-creation
+create
 
 	make
 
 feature {DOM_DOCUMENT} -- Factory creation
 
-	make (doc: DOM_DOCUMENT_IMPL) is
+	make (doc: DOM_DOCUMENT_IMPL)
 			-- Create new document fragment
 		do
 			parent_node_make
@@ -36,14 +36,14 @@ feature {DOM_DOCUMENT} -- Factory creation
 
 feature -- from DOM_NODE
 
-	node_type: INTEGER is
+	node_type: INTEGER
 		once
 			Result := Document_fragment_node
 		end
 
-	node_name: DOM_STRING is
-		once
-			!! Result.make_from_string ("#document-fragment")
+	node_name: DOM_STRING
+		once 
+			create Result.make_from_string ("#document-fragment")
 		end
 
 end -- class DOM_DOCUMENT_FRAGMENT_IMPL

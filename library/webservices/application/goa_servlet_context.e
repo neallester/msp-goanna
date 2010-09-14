@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Servlet context scope"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -12,12 +12,12 @@ deferred class GOA_SERVLET_CONTEXT
 	
 feature -- Access
 
-	manager: GOA_SERVLET_MANAGER is
+	manager: GOA_SERVLET_MANAGER
 			-- Servlet manager
 		deferred
 		end
 
-	processor: GOA_REQUEST_PROCESSOR is
+	processor: GOA_REQUEST_PROCESSOR
 			-- Request processor
 		deferred
 		end

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Topics that represent single questions that can be answered with a yes or no answer"
 	author: "Neal L. Lester (neal@3dsafety.com)"
 	date: "$ May 11, 2001: $"
@@ -16,30 +16,30 @@ inherit
 
 feature
 
-	question : STRING is
+	question : STRING
 		-- The question associated with the topic
 		deferred
 		end
 
-	yes : BOOLEAN is
+	yes : BOOLEAN
 		-- The answer to this question is yes
 		do
 			result := yes_implementation
 		end
 
-	no : BOOLEAN is
+	no : BOOLEAN
 		-- The answer to question is no
 		do
 			result := no_implementation
 		end
 
-	evaluated : BOOLEAN is
+	evaluated : BOOLEAN
 		-- Has this question been evaluated
 		do
 			result := evaluated_implementation
 		end
 
-	set_yes is
+	set_yes
 		do
 			yes_implementation := true
 			no_implementation := false
@@ -47,7 +47,7 @@ feature
 			update
 		end
 
-	set_no is
+	set_no
 		do
 			yes_implementation := false
 			no_implementation := true
@@ -55,7 +55,7 @@ feature
 			update
 		end
 
-	reset is
+	reset
 		do
 			yes_implementation := false
 			no_implementation := false
@@ -63,7 +63,7 @@ feature
 			update
 		end
 
-	initialize (proposed_user : like user_anchor) is
+	initialize (proposed_user : like user_anchor)
 		do
 			yes_implementation := false
 			no_implementation := false
@@ -71,7 +71,7 @@ feature
 			precursor (proposed_user)
 		end
 
-	text : TEXT_LIST is
+	text : TEXT_LIST
 		do
 			result := user.preference.language
 		end

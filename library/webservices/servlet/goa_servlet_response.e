@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that assist a servlet in sending a response to a client."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -12,12 +12,12 @@ deferred class GOA_SERVLET_RESPONSE
 
 feature -- Status report
 
-	buffer_size: INTEGER is
+	buffer_size: INTEGER
 			-- Actual size of response buffer.
 		deferred
 		end
 
-	is_committed: BOOLEAN is
+	is_committed: BOOLEAN
 			-- Has the response been committed? A committed response has already
 			-- had its status code and headers written.
 		deferred
@@ -25,14 +25,14 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_content_length (length: INTEGER) is
+	set_content_length (length: INTEGER)
 			-- Set the length of the content body in the response.
 		require
 			positive_length: length >= 0
 		deferred
 		end
 
-	set_content_type (type: STRING) is
+	set_content_type (type: STRING)
 			-- Set the content type of the response being sent to the client.
 			-- The content type may include the type of character encoding used, for
 			-- example, 'text/html; charset=ISO-885904'
@@ -41,14 +41,14 @@ feature -- Status setting
 		deferred
 		end
 
-	set_buffer_size (size: INTEGER) is
+	set_buffer_size (size: INTEGER)
 			-- Set the preferred buffer size for the body of the response.
 		deferred
 		end
 
 feature -- Basic operations
 
-	flush_buffer is
+	flush_buffer
 			-- Force any content in the buffer to be written to the client. A call
 			-- to this method automatically commits the response, meaning the status
 			-- code and headers will be written.
@@ -57,7 +57,7 @@ feature -- Basic operations
 			committed: is_committed
 		end
 
-	reset is
+	reset
 			-- Clear any data that exists in the buffer as well as the status code
 			-- and headers.
 		require

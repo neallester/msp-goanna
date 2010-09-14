@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Parameters that are either on or off (html checkbox input)"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2010-02-26 11:12:53 -0800 (Fri, 26 Feb 2010) $"
@@ -19,7 +19,7 @@ inherit
 
 feature -- Processing
 
-	process (processing_result: PARAMETER_PROCESSING_RESULT) is
+	process (processing_result: PARAMETER_PROCESSING_RESULT)
 		do
 			start_transaction (processing_result.request_processing_result)
 				validate (processing_result)
@@ -34,7 +34,7 @@ feature -- Processing
 			commit (processing_result.request_processing_result)
 		end
 
-	display_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	display_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 		local
 			parameter_result: PARAMETER_PROCESSING_RESULT
 		do
@@ -46,7 +46,7 @@ feature -- Processing
 			end
 		end
 
-	boolean_updated (processing_result: PARAMETER_PROCESSING_RESULT): BOOLEAN is
+	boolean_updated (processing_result: PARAMETER_PROCESSING_RESULT): BOOLEAN
 			-- Does processing_result contain a change for the boolean value contained in the database?
 		require
 			ok_to_read_data: ok_to_read_data (processing_result.request_processing_result)
@@ -62,7 +62,7 @@ feature -- Processing
 			ok_to_read_data: ok_to_read_data (processing_result.request_processing_result)
 		end
 
-	is_checked (processing_result: PARAMETER_PROCESSING_RESULT): BOOLEAN is
+	is_checked (processing_result: PARAMETER_PROCESSING_RESULT): BOOLEAN
 			-- Is the parameter checked in processing_result?
 		require
 			ok_to_read_data: ok_to_read_data (processing_result.request_processing_result)
@@ -74,12 +74,12 @@ feature -- Processing
 			ok_to_read_data: ok_to_read_data (processing_result.request_processing_result)
 		end
 
-	current_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	current_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 		do
 			Result := yes_no_string_for_boolean (boolean_in_database (processing_result, suffix))
 		end
 
-	validate (processing_result: PARAMETER_PROCESSING_RESULT) is
+	validate (processing_result: PARAMETER_PROCESSING_RESULT)
 		require
 			valid_processing_result: processing_result /= Void
 			ok_to_read_data: ok_to_read_data (processing_result.request_processing_result)
@@ -91,20 +91,20 @@ feature -- Processing
 
 feature -- As XML
 
-	add_to_document (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER) is
+	add_to_document (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER)
 		do
 			xml.add_checkbox_element (input_class (processing_result, suffix), full_parameter_name (name, suffix), display_value (processing_result, suffix), xml.yes_no_string_for_boolean (is_disabled (processing_result, suffix)), script_name (processing_result, suffix))
 		end
 
 
-	ok_to_add (xml: GOA_COMMON_XML_DOCUMENT): BOOLEAN is
+	ok_to_add (xml: GOA_COMMON_XML_DOCUMENT): BOOLEAN
 		do
 			Result := xml.ok_to_add_element_or_text (xml.checkbox_element_code)
 		end
 
 feature -- Deferred Features
 
-	process_checked (processing_result: PARAMETER_PROCESSING_RESULT) is
+	process_checked (processing_result: PARAMETER_PROCESSING_RESULT)
 		require
 			ok_to_read_data: ok_to_read_data (processing_result.request_processing_result)
 			valid_processing_result: processing_result /= Void
@@ -114,7 +114,7 @@ feature -- Deferred Features
 			ok_to_read_data: ok_to_read_data (processing_result.request_processing_result)
 		end
 
-	process_not_checked (processing_result: PARAMETER_PROCESSING_RESULT) is
+	process_not_checked (processing_result: PARAMETER_PROCESSING_RESULT)
 		require
 			ok_to_read_data: ok_to_read_data (processing_result.request_processing_result)
 			valid_processing_result: processing_result /= Void
@@ -124,7 +124,7 @@ feature -- Deferred Features
 			ok_to_read_data: ok_to_read_data (processing_result.request_processing_result)
 		end
 
-	boolean_in_database (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN is
+	boolean_in_database (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN
 		require
 			ok_to_read_data: ok_to_read_data (processing_result)
 			valid_processing_result: processing_result /= Void

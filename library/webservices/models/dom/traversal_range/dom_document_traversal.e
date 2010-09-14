@@ -1,4 +1,4 @@
-indexing
+note
 	description: "DocumentTraversal contains methods that create iterators and%
 		% tree-walkers to traverse a node and its children in document order (depth%
  		% first, pre-order traversal, which is equivalent to the order in which the%
@@ -17,7 +17,7 @@ deferred class
 feature -- Access
 
 	create_node_iterator (root: DOM_NODE; what_to_show: INTEGER;
-		filter: DOM_NODE_FILTER; entity_reference_expansion: BOOLEAN): DOM_NODE_ITERATOR is
+		filter: DOM_NODE_FILTER; entity_reference_expansion: BOOLEAN): DOM_NODE_ITERATOR
 			-- Create a new node iterator over the subtree rooted at the specified node.
 			-- Parameters:
 			-- root - The node which will be iterated together with its children. The

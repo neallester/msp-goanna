@@ -1,12 +1,12 @@
 class	ROOT_CLASS
 
-creation
+create
 	
 	make 
 
 feature {NONE} -- Initialisation
 
-	make is
+	make
 			-- Initialise
 		do
 			create control.make

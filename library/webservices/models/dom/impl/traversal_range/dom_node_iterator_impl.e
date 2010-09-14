@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Node iterator implementation."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Traversal Impl"
@@ -25,13 +25,13 @@ inherit
 			{NONE} all
 		end
 		
-creation
+create
 	make
 
 feature -- Initialization
 
 	make (doc: DOM_DOCUMENT_IMPL; root_node: DOM_NODE; show_options: INTEGER; 
-		node_filter: DOM_NODE_FILTER; expand_entity_references_flag: BOOLEAN) is
+		node_filter: DOM_NODE_FILTER; expand_entity_references_flag: BOOLEAN)
 				-- Create a new node iterator.
 			require
 				doc_exists: doc /= Void
@@ -70,7 +70,7 @@ feature -- Access
      		-- expansion, use the 'what_to_show' flags to show the entity reference node 
      		-- and set 'expand_entity_references' to false.
 	
-	next_node: DOM_NODE is
+	next_node: DOM_NODE
 			-- Returns the next node in the set and advances the position of the 
      		-- iterator in the set. After a DOM_NODE_ITERATOR is created, the first call 
      						-- to 'next_node' returns the first node in the set.
@@ -113,7 +113,7 @@ feature -- Access
 			end
 		end
 	
-	previous_node: DOM_NODE is
+	previous_node: DOM_NODE
 			-- Returns the previous node in the set and moves the position of the 
      		-- iterator backwards in the set.
 		do
@@ -121,7 +121,7 @@ feature -- Access
 	
 feature -- Status setting
 
-	detach is
+	detach
 			-- Detaches the iterator from the set which it iterated over, releasing 
      		-- any computational resources. 
 		do
@@ -142,7 +142,7 @@ feature {NONE} -- Implementation
 	forward: BOOLEAN
 		-- The direction of the iterator on the current_node.
 	
-	accept_node (node: DOM_NODE): BOOLEAN is
+	accept_node (node: DOM_NODE): BOOLEAN
 			-- The node is accepted if it passes the what_to_show and the filter.
 		require
 			node_exists: node /= Void
@@ -158,7 +158,7 @@ feature {NONE} -- Implementation
 			end
 		end
 		
-	find_next_node (node: DOM_NODE; visit_children: BOOLEAN): DOM_NODE is
+	find_next_node (node: DOM_NODE; visit_children: BOOLEAN): DOM_NODE
 			-- The method nextNode(Node, boolean) returns the next node 
      		-- from the actual DOM tree.
      		-- The boolean visitChildren determines whether to visit the children.
@@ -203,7 +203,7 @@ feature {NONE} -- Implementation
 			end
 		end
 	
- 	find_previous_node (node: DOM_NODE): DOM_NODE is
+ 	find_previous_node (node: DOM_NODE): DOM_NODE
  			-- return the previous node from the actual DOM tree.
  		do
  		end

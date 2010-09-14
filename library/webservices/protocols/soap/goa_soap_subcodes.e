@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that can have a SOAP Subcode child element."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -23,7 +23,7 @@ feature -- Access
 
 feature -- Element change
 
-	add_sub_code (a_parent: GOA_SOAP_ELEMENT; a_value: STRING) is
+	add_sub_code (a_parent: GOA_SOAP_ELEMENT; a_value: STRING)
 			--  Add a sub-code.
 		require
 			no_existing_sub_code: sub_code = Void

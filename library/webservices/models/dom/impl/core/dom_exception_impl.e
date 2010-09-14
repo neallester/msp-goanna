@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Exception implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"

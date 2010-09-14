@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that create SOAP messages."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -16,7 +16,7 @@ inherit
 
 feature -- Creation
 
-	new_envelope: GOA_SOAP_ENVELOPE is
+	new_envelope: GOA_SOAP_ENVELOPE
 			-- New SOAP message
 		local
 			a_document: XM_DOCUMENT
@@ -31,7 +31,7 @@ feature -- Creation
 			envelope_created: Result /= Void
 		end	
 
-	new_rpc_envelope: GOA_SOAP_ENVELOPE is
+	new_rpc_envelope: GOA_SOAP_ENVELOPE
 			-- New SOAP rpc invocation or response
 		local
 			a_namespace: XM_NAMESPACE
@@ -44,7 +44,7 @@ feature -- Creation
 			envelope_created: Result /= Void
 		end
 
-	new_rpc_soap_envelope: GOA_SOAP_ENVELOPE is
+	new_rpc_soap_envelope: GOA_SOAP_ENVELOPE
 			-- New SOAP rpc invocation or response with SOAP encoding
 		local
 			a_namespace: XM_NAMESPACE
@@ -57,7 +57,7 @@ feature -- Creation
 			envelope_created: Result /= Void
 		end
 
-	new_body (an_envelope: GOA_SOAP_ENVELOPE; an_identity: UT_URI): GOA_SOAP_BODY is
+	new_body (an_envelope: GOA_SOAP_ENVELOPE; an_identity: UT_URI): GOA_SOAP_BODY
 			-- New SOAP body
 		require
 			envelope_not_void: an_envelope /= Void
@@ -75,7 +75,7 @@ feature -- Creation
 			body_created: Result /= Void
 		end
 
-	new_header (an_envelope: GOA_SOAP_ENVELOPE; an_identity: UT_URI): GOA_SOAP_HEADER is
+	new_header (an_envelope: GOA_SOAP_ENVELOPE; an_identity: UT_URI): GOA_SOAP_HEADER
 			-- New SOAP header
 		require
 			envelope_not_void: an_envelope /= Void

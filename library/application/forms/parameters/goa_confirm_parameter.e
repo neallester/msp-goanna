@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Parameters that confirm the value of another input"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -20,36 +20,36 @@ inherit
 	
 feature
 	
-	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	label_string (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- label for this parameter (intended for presentation to the user
 		do
 			Result := processing_result.session_status.message_catalog.confirm_label (parameter_to_confirm.label_string (processing_result, suffix))
 		end
 		
-	parameter_to_confirm: GOA_NON_EMPTY_INPUT_PARAMETER is
+	parameter_to_confirm: GOA_NON_EMPTY_INPUT_PARAMETER
 			-- The parameter which will be confirmed
 		deferred
 		end
 		
-	current_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	current_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- current_value for this parameter (intended for presentation to the user
 		do
 			Result := parameter_to_confirm.current_value (processing_result, suffix)
 		end
 		
-	size: INTEGER is
+	size: INTEGER
 			-- Size of the parameter
 		do
 			Result := parameter_to_confirm.size
 		end
 		
-	type: STRING is
+	type: STRING
 			-- Type of the parameter
 		do
 			Result := parameter_to_confirm.type
 		end
 		
-	validate (processing_result: PARAMETER_PROCESSING_RESULT) is
+	validate (processing_result: PARAMETER_PROCESSING_RESULT)
 			-- Process
 		local
 			other_processing_result: PARAMETER_PROCESSING_RESULT
@@ -68,14 +68,14 @@ feature
 			end
 		end
 		
-	add_unprocessed_message (other_processing_result: PARAMETER_PROCESSING_RESULT) is
+	add_unprocessed_message (other_processing_result: PARAMETER_PROCESSING_RESULT)
 			-- Add an error message to the processing result for parameter_to_confirm, if needed
 		require
 			valid_other_processing_result: other_processing_result /= Void
 		deferred
 		end
 		
-	label_class (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	label_class (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- CSS class for label of this parameter
 		do
 			Result := parameter_to_confirm.label_class (processing_result, suffix)

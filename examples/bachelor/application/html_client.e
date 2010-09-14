@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A client that renders HTML"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -15,13 +15,13 @@ inherit
 
 	CLIENT
 
-creation
+create
 
 	make
 
 feature
 
-	set_code (content : CONTENT_CONTAINER) is
+	set_code (content : CONTENT_CONTAINER)
 		-- Set "code" in content to content.html_code
 		do
 			content.set_code (content.html_code)

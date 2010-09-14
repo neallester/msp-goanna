@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Document type implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -21,14 +21,14 @@ inherit
 			{NONE} parent_node_make
 		end
 
-creation
+create
 
 	make
 
 feature {DOM_DOCUMENT} -- Factory creation
 
 	make (doc: DOM_DOCUMENT_IMPL; new_qualified_name, 
-		new_public_id, new_system_id: DOM_STRING) is
+		new_public_id, new_system_id: DOM_STRING)
 			-- Create new document type.
 			-- 'doc' may be Void.
 		do
@@ -72,12 +72,12 @@ feature
 	  
 feature -- from DOM_NODE
 	  
-	node_type: INTEGER is
+	node_type: INTEGER
 		once
 			Result := Document_type_node
 		end
 
-	node_name: DOM_STRING is
+	node_name: DOM_STRING
 		do
 			Result := name
 		end

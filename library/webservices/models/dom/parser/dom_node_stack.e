@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A stack of DOM_NODES with typed accessor methods"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML Parser"
@@ -22,7 +22,7 @@ create
 
 feature -- Access
 
-	item_node_as_element: DOM_ELEMENT is
+	item_node_as_element: DOM_ELEMENT
 			-- Return current item as an element
 		do
 			Result ?= item.node
@@ -32,7 +32,7 @@ feature -- Access
 		end
 
 	find_namespace_for_attribute (qname: DOM_STRING;
-		attributes: DS_BILINEAR [DS_PAIR [DS_PAIR [UC_STRING, UC_STRING], UC_STRING]]): DOM_STRING is
+		attributes: DS_BILINEAR [DS_PAIR [DS_PAIR [UC_STRING, UC_STRING], UC_STRING]]): DOM_STRING
 			-- Find a namespace URI bound to the prefix of 'qname' if one exists. Search
 			-- the raw attributes structure first then search the current element and all
 			-- ancestors.
@@ -74,7 +74,7 @@ feature -- Access
 			end
 		end
 		
-	find_namespace_uri (ns_prefix: DOM_STRING; current_node: DOM_TREE_NODE): DOM_STRING is
+	find_namespace_uri (ns_prefix: DOM_STRING; current_node: DOM_TREE_NODE): DOM_STRING
 			-- Find a namespace URI bound to 'ns_prefix'. Start the search in 
 			-- 'current_node', if specified, then traverse stack of nodes.
 			-- Return an empty string if not found
@@ -110,7 +110,7 @@ feature -- Access
 	
 feature {NONE} -- Implementation
 
-	Default_namespace_prefix: DOM_STRING is
+	Default_namespace_prefix: DOM_STRING
 			-- Default namespace prefix
 		once
 			create Result.make_from_string ("xmlns")

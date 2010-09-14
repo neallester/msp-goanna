@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP Fault Detail element."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -20,7 +20,7 @@ create
 
 feature -- Initialisation
 
-	construct (a_fault: GOA_SOAP_FAULT) is
+	construct (a_fault: GOA_SOAP_FAULT)
 			-- Establish invariant.
 		require
 			fault_not_void: a_fault /= Void

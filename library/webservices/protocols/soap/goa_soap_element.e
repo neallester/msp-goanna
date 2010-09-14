@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Abstract objects that represent general SOAP element."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -66,7 +66,7 @@ create
 
 feature {NONE} -- Initialization
 
-	construct (a_parent: GOA_SOAP_ELEMENT; a_namespace, a_name: STRING) is
+	construct (a_parent: GOA_SOAP_ELEMENT; a_namespace, a_name: STRING)
 			-- Initialise new element.
 		require
 			parent_validated: a_parent /= Void and then a_parent.validation_complete and then a_parent.validated
@@ -84,7 +84,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	envelope: GOA_SOAP_ENVELOPE is
+	envelope: GOA_SOAP_ENVELOPE
 			-- Document element
 		require
 			validation_complete: validation_complete
@@ -94,7 +94,7 @@ feature -- Access
 			envelope_not_void: Result /= Void
 		end
 
-	element_name: STRING is
+	element_name: STRING
 			-- Qualified name of `Current'
 		do
 			create Result.make (100)
@@ -107,7 +107,7 @@ feature -- Access
 			element_name_not_empty: Result /= Void and then Result.is_empty
 		end
 
-	block_name: STRING is
+	block_name: STRING
 			-- Expanded name of `Current'
 		local
 			a_namespace: XM_NAMESPACE
@@ -129,7 +129,7 @@ feature -- Access
 			expanded_name: is_valid_expanded_name (Result)
 		end
 
-	encoding_style: UT_URI is
+	encoding_style: UT_URI
 			-- Encoding style in scope
 		local
 			a_parent: GOA_SOAP_ELEMENT
@@ -153,7 +153,7 @@ feature -- Access
 			style_may_be_unknown: True
 		end
 
-	type_name: GOA_EXPANDED_QNAME is
+	type_name: GOA_EXPANDED_QNAME
 			-- Type name
 		local
 			a_lexical_qname: STRING
@@ -174,7 +174,7 @@ feature -- Access
 			may_be_unspecified: True
 		end
 
-	is_encoding_style_permitted: BOOLEAN is
+	is_encoding_style_permitted: BOOLEAN
 			-- Is `encoding_style' permitted to be non-Void?
 		local
 			a_parent: GOA_SOAP_ELEMENT
@@ -216,7 +216,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_validation_fault (a_code: INTEGER; a_text: STRING; a_node_uri: UT_URI) is
+	set_validation_fault (a_code: INTEGER; a_text: STRING; a_node_uri: UT_URI)
 			-- Set `validation_fault'.
 		require
 			text_not_empty: a_text /= Void and then not a_text.is_empty
@@ -229,7 +229,7 @@ feature -- Status setting
 			validation_failed: not validated
 		end
 
-	validate (an_identity: UT_URI) is
+	validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		require
 			identity_not_void: an_identity /= Void
@@ -258,7 +258,7 @@ feature -- Status setting
 			validation_complete := True
 		end
 
-	validate_encoding (an_identity: UT_URI) is
+	validate_encoding (an_identity: UT_URI)
 			-- Perform additional validation by `encoding_style'.
 		require
 			identity_not_void: an_identity /= Void
@@ -273,7 +273,7 @@ feature -- Status setting
 			end
 		end
 
-	set_encoding_style (an_encoding_style: like encoding_style) is
+	set_encoding_style (an_encoding_style: like encoding_style)
 			-- Set 'local_encoding_style' to 'an_encoding_style'
 		require
 			new_encoding_style_exists: an_encoding_style /= Void
@@ -293,7 +293,7 @@ feature -- Status setting
 
 feature {GOA_SOAP_ELEMENT} -- Implementation
 
-	prefix_for_namespace (a_namespace_uri: STRING): STRING is
+	prefix_for_namespace (a_namespace_uri: STRING): STRING
 			-- Bound prefix for `a_namespace_uri'
 		require
 			namespace_not_void: a_namespace_uri /= Void
@@ -336,7 +336,7 @@ feature {NONE} -- Implementation
 	namespaces: DS_LINKED_LIST [XM_NAMESPACE]
 			-- Namespace declarations on `Current'
 
-	named_element (a_parent: XM_ELEMENT; a_name, a_namespace: STRING): XM_ELEMENT is
+	named_element (a_parent: XM_ELEMENT; a_name, a_namespace: STRING): XM_ELEMENT
 			-- First element with 'a_name' and 'a_namespace'
 		require
 			parent_exists: a_parent /= Void
@@ -371,7 +371,7 @@ feature {NONE} -- Implementation
 			void_if_not_found: True
 		end
 
-	is_valid_element (an_element: XM_ELEMENT; a_name: STRING): BOOLEAN is
+	is_valid_element (an_element: XM_ELEMENT; a_name: STRING): BOOLEAN
 			-- Is `an_element' named by `a_name', in the soap-envelope namespace?
 		require
 			element_exists: an_element /= Void
@@ -381,7 +381,7 @@ feature {NONE} -- Implementation
 				and then  STRING_.same_string (an_element.name, a_name)
 		end
 
-	check_encoding_style_attribute (an_identifying_uri: UT_URI) is
+	check_encoding_style_attribute (an_identifying_uri: UT_URI)
 			-- Search for optional encodingStyle attribute, unmarshall and set `local_encoding_style' if found.
 			-- Notify of unmarshalling error by setting `validated'.
 			--| encoding style attribute is explicitly encoded as an XMLSchema anyURI.
@@ -411,7 +411,7 @@ feature {NONE} -- Implementation
 			end
 		end
 	
-	scan_attributes (an_identity: UT_URI; must_be_namespace_qualified: BOOLEAN) is
+	scan_attributes (an_identity: UT_URI; must_be_namespace_qualified: BOOLEAN)
 			-- Scan attributes and namespace declarations of `Current'.
 		require
 			identity_not_void: an_identity /= Void
@@ -445,7 +445,7 @@ feature {NONE} -- Implementation
 			end
 		end
 	
-	prefix_to_namespace (a_prefix: STRING): STRING is
+	prefix_to_namespace (a_prefix: STRING): STRING
 			-- Namespace URI for `a_prefix'
 		require
 			prefix_not_void: a_prefix /= Void
@@ -480,7 +480,7 @@ feature {NONE} -- Implementation
 			result_may_be_void: True
 		end
 
-	expanded_name_to_qname (an_expanded_name: STRING): STRING is
+	expanded_name_to_qname (an_expanded_name: STRING): STRING
 			-- QName from `an_expanded_name, if prefix is in scope
 		require
 			expanded_name_not_empty: an_expanded_name /= Void and then not an_expanded_name.is_empty
@@ -510,7 +510,7 @@ feature {NONE} -- Implementation
 			result_not_void: Result /= Void
 		end
 	
-	qname_to_expanded_name (a_qname: STRING): STRING is
+	qname_to_expanded_name (a_qname: STRING): STRING
 			-- QName from `an_expanded_name, if prefix is in scope
 		require
 			is_qname: a_qname /= Void and then not a_qname.is_empty and then is_qname (a_qname)

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Page sequences implementing a branching behavior"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -17,12 +17,12 @@ inherit
 
 feature -- Implement deferred features
 		
-	page : PAGE is
+	page : PAGE
 		do
 			result := current_element.page
 		end
 
-	start is
+	start
 		do
 			page_sequence.start
 			find_next_element
@@ -32,7 +32,7 @@ feature -- Implement deferred features
 			recreate_dirty_page
 		end
 
-	forth is
+	forth
 		do
 			current_element.forth
 			if current_element.done then
@@ -50,18 +50,18 @@ feature -- Implement deferred features
 			recreate_dirty_page
 		end
 
-	done : BOOLEAN is
+	done : BOOLEAN
 		do
 			result := page_sequence.after
 		end
 
-	active_chain  : LINKED_LIST [ELEMENT_CONTAINER] is
+	active_chain  : LINKED_LIST [ELEMENT_CONTAINER]
 		do
 			result := current_element.active_chain
 			result.put_front (page_sequence.item)
 		end
 
-	restore_chain (chain : LINKED_LIST [ELEMENT_CONTAINER]) is
+	restore_chain (chain : LINKED_LIST [ELEMENT_CONTAINER])
 		local
 			new_chain : LINKED_LIST [ELEMENT_CONTAINER]
 		do
@@ -82,7 +82,7 @@ feature -- Implement deferred features
 			recreate_dirty_page
 		end
 
-	context : STRING is
+	context : STRING
 		do
 			if current_element = Void then
 				result := title
@@ -106,7 +106,7 @@ feature {EXPOSURE}
 
 feature {NONE} -- Implementation
 
-	recreate_dirty_page is
+	recreate_dirty_page
 		-- Recreates (calls the function) for a page that is dirty (has already been built)
 		do
 			if not done then
@@ -117,7 +117,7 @@ feature {NONE} -- Implementation
 		end
 
 
-	current_element : PAGE_SEQUENCE_ELEMENT is
+	current_element : PAGE_SEQUENCE_ELEMENT
 			-- The current page_sequence_element in the page_sequence
 		local
 			a_page : PAGE
@@ -132,21 +132,21 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	always_true : BOOLEAN is
+	always_true : BOOLEAN
 		do
 			result := True
 		ensure
 			result_true : result
 		end
 
-	always_false : BOOLEAN is
+	always_false : BOOLEAN
 		do
 			result := not True
 		ensure
 			result_false : not result
 		end
 
-	find_next_element is
+	find_next_element
 		-- Find the next valid element in sequence
 		local
 		do
@@ -160,14 +160,14 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	current_function : FUNCTION[SEQUENCE_ELEMENT_FACTORY,TUPLE,PAGE_SEQUENCE_ELEMENT] is
+	current_function : FUNCTION[SEQUENCE_ELEMENT_FACTORY,TUPLE,PAGE_SEQUENCE_ELEMENT]
 		require
 			not_done : not done
 		do
 			result := page_sequence.item.element
 		end
 
-	add_element_container (new_condition : FUNCTION [PAGE_SEQUENCE_ELEMENT, TUPLE, BOOLEAN] ; new_description : STRING; new_element : FUNCTION[SEQUENCE_ELEMENT_FACTORY,TUPLE,PAGE_SEQUENCE_ELEMENT]) is
+	add_element_container (new_condition : FUNCTION [PAGE_SEQUENCE_ELEMENT, TUPLE, BOOLEAN] ; new_description : STRING; new_element : FUNCTION[SEQUENCE_ELEMENT_FACTORY,TUPLE,PAGE_SEQUENCE_ELEMENT])
 		-- Adds a new element_container to the end of sequence
 		require
 			valid_new_condition : new_condition /= Void

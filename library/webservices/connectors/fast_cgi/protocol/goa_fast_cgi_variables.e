@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Fast CGI variable constants"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI protocol"
@@ -16,6 +16,6 @@ inherit
 
 feature
 
-	request_uri_var: STRING is "REQUEST_URI"
+	request_uri_var: STRING = "REQUEST_URI"
 
 end -- class GOA_FAST_CGI_VARIABLES

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XML-RPC Validation services. Called by the XML-RPC Validation suite (http://www.xmlrpc.com)"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XMLRPC examples validator"
@@ -20,7 +20,7 @@ create
 			
 feature -- Access
 			
-	array_of_structs_test (arg: ARRAY [ANY]): INTEGER_REF is
+	array_of_structs_test (arg: ARRAY [ANY]): INTEGER_REF
 			-- This handler takes a single parameter, an array of structs, 
 			-- each of which contains at least three elements named moe, larry and curly, 
 			-- all <i4>s. Yout handler must add all the struct elements named 
@@ -45,7 +45,7 @@ feature -- Access
 			end
 		end
 
-	count_the_entities (arg: STRING): DS_HASH_TABLE [ANY, STRING] is
+	count_the_entities (arg: STRING): DS_HASH_TABLE [ANY, STRING]
 			-- This handler takes a single parameter, a string, that contains 
 			-- any number of predefined entities, namely <, >, &, ' and ".
 			--
@@ -92,7 +92,7 @@ feature -- Access
 			Result.force (quot, "ctQuotes")
 		end
 	
-	easy_struct_test (arg: DS_HASH_TABLE [ANY, STRING]): INTEGER_REF is
+	easy_struct_test (arg: DS_HASH_TABLE [ANY, STRING]): INTEGER_REF
 			-- This handler takes a single parameter, a struct, containing at 
 			-- least three elements named moe, larry and curly, all <i4>s. Your 
 			-- handler must add the three numbers and return the result.
@@ -113,7 +113,7 @@ feature -- Access
 			end
 		end
 	
-	echo_struct_test (arg: DS_HASH_TABLE [ANY, STRING]): DS_HASH_TABLE [ANY, STRING] is
+	echo_struct_test (arg: DS_HASH_TABLE [ANY, STRING]): DS_HASH_TABLE [ANY, STRING]
 			-- This handler takes a single parameter, a struct. 
 			-- Your handler must return the struct.
 		do
@@ -121,7 +121,7 @@ feature -- Access
 		end
 	
 	many_types_test (number: INTEGER_REF; boolean: BOOLEAN_REF; string: STRING;
-		double: DOUBLE_REF; date_time: DT_DATE_TIME; base64: STRING): ARRAY [ANY] is
+		double: DOUBLE_REF; date_time: DT_DATE_TIME; base64: STRING): ARRAY [ANY]
 			-- This handler takes six parameters, and returns an array 
 			-- containing all the parameters.
 		do
@@ -134,7 +134,7 @@ feature -- Access
 			Result.force (base64, 6)
 		end
 			
-	moderate_size_array_check (arg: ARRAY [ANY]): STRING is
+	moderate_size_array_check (arg: ARRAY [ANY]): STRING
 			-- This handler takes a single parameter, which is an array 
 			-- containing between 100 and 200 elements. Each of the items is a string, 
 			-- your handler must return a string containing the concatenated text of 
@@ -149,7 +149,7 @@ feature -- Access
 			Result.append (str)
 		end
 
-	nested_struct_test (arg: DS_HASH_TABLE [ANY, STRING]): INTEGER_REF is
+	nested_struct_test (arg: DS_HASH_TABLE [ANY, STRING]): INTEGER_REF
 			-- This handler takes a single parameter, a struct, that models a daily 
 			-- calendar. At the top level, there is one struct for each year. Each 
 			-- year is broken down into months, and months into days. Most of the 
@@ -182,7 +182,7 @@ feature -- Access
 			end
 		end
 	
-	simple_struct_return_test (arg: INTEGER_REF): DS_HASH_TABLE [ANY, STRING] is
+	simple_struct_return_test (arg: INTEGER_REF): DS_HASH_TABLE [ANY, STRING]
 			-- This handler takes one parameter, and returns a struct containing three elements, 
 			-- times10, times100 and times1000, the result of multiplying the number by 10, 100 
 			-- and 1000.
@@ -195,7 +195,7 @@ feature -- Access
 
 feature -- Creation
 
-	new_tuple (a_name: STRING): TUPLE is
+	new_tuple (a_name: STRING): TUPLE
 			--	Tuple of default-valued arguments to pass to call `a_name'.
 		local
 			an_int_tuple: TUPLE [INTEGER_REF]
@@ -225,33 +225,33 @@ feature -- Creation
 
 feature {NONE} -- Implementation
 
-	Array_of_structs_test_name: STRING is "arrayOfStructsTest"
+	Array_of_structs_test_name: STRING = "arrayOfStructsTest"
 			-- Name of `array_of_structs_test' service
 
-	Count_the_entities_name: STRING is "countTheEntities"
+	Count_the_entities_name: STRING = "countTheEntities"
 			-- Name of `count_the_entities' service
 
-	Easy_struct_test_name: STRING is "easyStructTest"
+	Easy_struct_test_name: STRING = "easyStructTest"
 			-- Name of `easy_struct_test' service
 
-	Echo_struct_test_name: STRING is "echoStructTest"
+	Echo_struct_test_name: STRING = "echoStructTest"
 			-- Name of `echo_struct_test' service
 
-	Many_types_test_name: STRING is "manyTypesTest"
+	Many_types_test_name: STRING = "manyTypesTest"
 			-- Name of `many_types_test' service
 
-	Moderate_size_array_check_name: STRING is "moderateSizeArrayCheck"
+	Moderate_size_array_check_name: STRING = "moderateSizeArrayCheck"
 			-- Name of `moderate_size_array_check' service
 
-	Nested_struct_test_name: STRING is "nestedStructTest"
+	Nested_struct_test_name: STRING = "nestedStructTest"
 			-- Name of `nested_struct_test' service
 
-	Simple_struct_return_test_name: STRING is "simpleStructReturnTest"
+	Simple_struct_return_test_name: STRING = "simpleStructReturnTest"
 			-- Name of `simple_struct_return_test' service
 		
 feature {NONE} -- Initialisation
 
-	self_register is
+	self_register
 			-- Register all actions for this service
 		do	
 			register (agent array_of_structs_test, Array_of_structs_test_name)

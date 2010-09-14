@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Notation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -16,13 +16,13 @@ inherit
 
 feature
 
-	public_id: DOM_STRING is
+	public_id: DOM_STRING
 			-- The public identifier of this notation. If the public identifier was 
 			-- not specified, this is Void.
 		deferred
 		end
 
-	system_id: DOM_STRING is
+	system_id: DOM_STRING
 			-- The system identifier of this notation. If the system identifier was
 			-- not specified, this is Void.
 		deferred

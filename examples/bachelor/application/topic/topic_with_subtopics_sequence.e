@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Topics with Subtopics that are also page sequences"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"

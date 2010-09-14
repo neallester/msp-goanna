@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Threaded consumer."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "utility thread"
@@ -27,7 +27,7 @@ inherit
 
 feature {NONE} -- Initialisation
 
-	make (new_name: STRING; queue: like request_queue) is
+	make (new_name: STRING; queue: like request_queue)
 			-- Initialise consumer to read from 'queue'
 		require
 			new_name_not_void: new_name /= Void
@@ -39,7 +39,7 @@ feature {NONE} -- Initialisation
 		
 feature {GOA_PRODUCER_CONSUMER_CONTROL} -- Basic operations
 
-	execute is
+	execute
 			-- Process queue elements as they arrive
 		local
 			next: K
@@ -77,7 +77,7 @@ feature {GOA_PRODUCER_CONSUMER_CONTROL} -- Basic operations
 			debugging (generator, name + " terminated")
 		end
 	
-	terminate is
+	terminate
 			-- Terminate this thread at the next opportunity
 		do
 			done := True
@@ -85,7 +85,7 @@ feature {GOA_PRODUCER_CONSUMER_CONTROL} -- Basic operations
 
 feature {NONE} -- Implementation
 
-	process (next: K) is
+	process (next: K)
 			-- Process the next entry in the queue.
 		deferred
 		end

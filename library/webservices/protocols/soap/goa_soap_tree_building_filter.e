@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Filters that build a SOAP tree."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -58,7 +58,7 @@ feature -- Status report
 	invalid_comment: BOOLEAN
 			-- Was a comment seen outside of document element? (`True' is an error)
 
-	is_error: BOOLEAN is
+	is_error: BOOLEAN
 			-- Were any errors detected?
 		do
 			Result := is_parse_error
@@ -71,7 +71,7 @@ feature -- Status report
 
 feature -- Document type definuition callbacks
 
-	on_doctype (a_name: STRING; an_id: XM_DTD_EXTERNAL_ID; has_internal_subset: BOOLEAN) is
+	on_doctype (a_name: STRING; an_id: XM_DTD_EXTERNAL_ID; has_internal_subset: BOOLEAN)
 			-- Document type declaration.
 		do
 			dtd_seen := True
@@ -79,7 +79,7 @@ feature -- Document type definuition callbacks
 
 feature -- Errors
 
-	on_error (a_message: STRING) is
+	on_error (a_message: STRING)
 			-- Event producer detected an error.
 		do
 			is_parse_error := True
@@ -89,7 +89,7 @@ feature -- Errors
 
 feature -- Document
 
-	on_xml_declaration (a_version: STRING; an_encoding: STRING; a_standalone: BOOLEAN) is
+	on_xml_declaration (a_version: STRING; an_encoding: STRING; a_standalone: BOOLEAN)
 			-- XML declaration.
 		do
 			if not a_standalone then
@@ -99,13 +99,13 @@ feature -- Document
 
 feature -- Meta
 
-	on_processing_instruction (target, data: STRING) is
+	on_processing_instruction (target, data: STRING)
 			-- Processing instruction.
 		do
 			pi_seen := True
 		end
 
-	on_comment (a_content: STRING) is
+	on_comment (a_content: STRING)
 			-- Processing a comment.
 		do
 			if not is_within_document_element then
@@ -117,7 +117,7 @@ feature -- Meta
 
 feature -- Elements
 
-	on_start_tag (namespace, ns_prefix, a_name: STRING) is
+	on_start_tag (namespace, ns_prefix, a_name: STRING)
 			-- called whenever the parser findes a start element.
 		local
 			an_element: XM_ELEMENT
@@ -166,7 +166,7 @@ feature -- Elements
 			end
 		end
 
-	on_end_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING) is
+	on_end_tag (a_namespace: STRING; a_prefix: STRING; a_local_part: STRING)
 			-- End tag.
 		do
 			if not is_error then
@@ -182,7 +182,7 @@ feature -- Elements
 			end
 		end
 
-	on_attribute (namespace, a_prefix, a_name: STRING; a_value: STRING) is
+	on_attribute (namespace, a_prefix, a_name: STRING; a_value: STRING)
 			-- Add attribute.
 		do
 			if not is_error then
@@ -190,7 +190,7 @@ feature -- Elements
 			end
 		end
 
-	on_content (a_data: STRING) is
+	on_content (a_data: STRING)
 			-- Character data
 		do
 			if not is_error then
@@ -200,13 +200,13 @@ feature -- Elements
 	
 feature -- Implementation
 
-	is_header_block: BOOLEAN is
+	is_header_block: BOOLEAN
 			-- Are we building an immediate child of env:Header?
 		do
 			Result := header_depth = 1
 		end
 	
-	is_body_block: BOOLEAN is
+	is_body_block: BOOLEAN
 			-- Are we building an immediate child of env:Body?
 		do
 			Result := body_depth = 1

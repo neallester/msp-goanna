@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that encode and decode Base64 (RFC1521) strings."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Utility"
@@ -21,7 +21,7 @@ inherit
 
 feature -- Basic operations
 
-	encode (data: STRING): STRING is
+	encode (data: STRING): STRING
 			-- Base64 encode 'data'
 		require
 			data_exists: data /= Void
@@ -31,7 +31,7 @@ feature -- Basic operations
 			encoded_exists: Result /= Void
 		end
 
-	encode_for_session_key (data: STRING): STRING is
+	encode_for_session_key (data: STRING): STRING
 			-- Base64 encode 'data' with a modified Base64 character
 			-- set that is suitable for use as a session key and for
 			-- transmission as a cookie value.
@@ -43,7 +43,7 @@ feature -- Basic operations
 			encoded_exists: Result /= Void
 		end
 
-	decode (data: STRING): STRING is
+	decode (data: STRING): STRING
 			-- Base64 encode 'data'
 		require
 			data_exists: data /= Void
@@ -55,7 +55,7 @@ feature -- Basic operations
 
 feature {NONE} -- Implementation
 
-	base_64_chars: ARRAY [CHARACTER] is
+	base_64_chars: ARRAY [CHARACTER]
 			-- The BASE64 encoding standard's 6-bit alphabet, from RFC 1521,
      		-- plus the padding character at the end.
      	once
@@ -74,7 +74,7 @@ feature {NONE} -- Implementation
         	sixty_five_chars: Result.count = 65
         end
 
-	session_key_chars: ARRAY [CHARACTER] is
+	session_key_chars: ARRAY [CHARACTER]
 			-- Encoding alphabet for session keys. Contains only chars that
 			-- are safe to use in cookies, URLs and file names. Same as BASE64
 			-- except the last two chars and the padding char
@@ -94,7 +94,7 @@ feature {NONE} -- Implementation
         	sixty_five_chars: Result.count = 65
         end
 
-	codes: ARRAY [INTEGER] is
+	codes: ARRAY [INTEGER]
 			-- Decoding codes
 		local
 			i: INTEGER
@@ -128,7 +128,7 @@ feature {NONE} -- Implementation
 			Result.put (63, ('/').code)
 		end
 
-	perform_encoding (data: STRING; chars: ARRAY [CHARACTER]): STRING is
+	perform_encoding (data: STRING; chars: ARRAY [CHARACTER]): STRING
 			-- Encode 'data' using characters in 'char_set'.
 		require
 			data_exists: data /= Void
@@ -180,7 +180,7 @@ feature {NONE} -- Implementation
 			encoded_string_exists: Result /= Void
  		end
 
-	perform_decoding (data: STRING; chars: ARRAY [CHARACTER]): STRING is
+	perform_decoding (data: STRING; chars: ARRAY [CHARACTER]): STRING
 			-- Decode 'data' using characters in 'char_set'.
 		require
 			data_exists: data /= Void

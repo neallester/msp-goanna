@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Creates form element names"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -21,7 +21,7 @@ create
 
 feature 
 
-	storage_file_name : STRING is
+	storage_file_name : STRING
 		once
 			Result := unique_form_element_name_factory_file_name
 		end

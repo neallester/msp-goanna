@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A servlet that processes requests to go directly to another page"
 	author: "Neal L Lester <neal@3dsafety.com>"
 	date: "$Date: 2007-01-10 09:26:51 -0800 (Wed, 10 Jan 2007) $"
@@ -16,17 +16,17 @@ inherit
 		end
 	GOA_NON_DATABASE_ACCESS_TRANSACTION_MANAGEMENT
 
-creation
+create
 
 	make
 
 feature
 
-	name: STRING is "go_to.htm"
+	name: STRING = "go_to.htm"
 
 feature {NONE} -- Creation
 
-	make is
+	make
 			-- Creation
 		do
 			Precursor

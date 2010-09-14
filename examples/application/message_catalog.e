@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Messages displayed to the user"
 	author: "Neal L. Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -18,39 +18,39 @@ inherit
 
 feature -- Messages
 
-	answer_title: STRING is "Your Answers..."
+	answer_title: STRING = "Your Answers..."
 	
-	question_title: STRING is "A Few Questions..."
+	question_title: STRING = "A Few Questions..."
 
-	name_label: STRING is "Name"
+	name_label: STRING = "Name"
 	
-	male: STRING is "Male"
+	male: STRING = "Male"
 	
-	female: STRING is "Female"
+	female: STRING = "Female"
 	
-	eiffel: STRING is "Eiffel"
+	eiffel: STRING = "Eiffel"
 
-	eiffel_comment: STRING is "(Yes!)"
+	eiffel_comment: STRING = "(Yes!)"
 	
-	java: STRING is "Java"
+	java: STRING = "Java"
 	
-	java_comment: STRING is "(No!)"
+	java_comment: STRING = "(No!)"
 	
-	c: STRING is "C"
+	c: STRING = "C"
 	
-	c_comment: STRING is "(Ugh!)"
+	c_comment: STRING = "(Ugh!)"
 
-	lisp: STRING is "Lisp"
+	lisp: STRING = "Lisp"
 
-	lisp_comment: STRING is "(Oh!)"
+	lisp_comment: STRING = "(Oh!)"
 
-	programming_language_label: STRING is "Favorite Programming Language"
+	programming_language_label: STRING = "Favorite Programming Language"
 	
-	thinks_goanna_is_cool_label: STRING is "I think Goanna is cool."
+	thinks_goanna_is_cool_label: STRING = "I think Goanna is cool."
 
-	link_to_question_servlet_text: STRING is "Ask Questions Again"
+	link_to_question_servlet_text: STRING = "Ask Questions Again"
 	
-	comment (name: STRING; is_male: BOOLEAN; favorite_language, language_comment: STRING; goanna_is_cool: BOOLEAN): STRING is
+	comment (name: STRING; is_male: BOOLEAN; favorite_language, language_comment: STRING; goanna_is_cool: BOOLEAN): STRING
 			-- Response to send user to their answers
 		require
 			valid_name: name /= Void and then not name.is_empty

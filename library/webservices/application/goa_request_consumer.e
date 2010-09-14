@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Request handling thread."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -19,13 +19,13 @@ inherit
 			{NONE} consumer_make
 		end
 
-creation
+create
 	
 	make
 
 feature {NONE} -- Initialisation
 
-	make (thread_name: STRING; app_context: GOA_SERVLET_CONTEXT; queue: GOA_THREAD_SAFE_QUEUE [GOA_QUEUED_REQUEST]) is
+	make (thread_name: STRING; app_context: GOA_SERVLET_CONTEXT; queue: GOA_THREAD_SAFE_QUEUE [GOA_QUEUED_REQUEST])
 			-- Initialise
 		require
 			thread_name_not_void: thread_name /= Void
@@ -42,7 +42,7 @@ feature {NONE} -- Implementation
 	context: GOA_SERVLET_CONTEXT
 			-- Servlet application context
 			
-	process (next: GOA_QUEUED_REQUEST) is
+	process (next: GOA_QUEUED_REQUEST)
 			-- Process the next entry in the queue.
 		do
 			debugging (generator, name.out + " handling request")

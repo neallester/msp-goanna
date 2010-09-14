@@ -1,4 +1,4 @@
-indexing
+note
 	description:	"A DOM tree based XML parser"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML Parser"
@@ -39,13 +39,13 @@ inherit
 			{NONE} all
 		end
 	
-creation {DOM_TREE_BUILDER_FACTORY}
+create {DOM_TREE_BUILDER_FACTORY}
    
 	make
       
 feature {NONE} -- Initialisation
 
-	make (impl: like implementation) is
+	make (impl: like implementation)
 			do
 				make_from_implementation (impl)
 				create {DOM_IMPLEMENTATION_IMPL} dom_impl
@@ -62,7 +62,7 @@ feature {ANY} -- Access
 feature {NONE} -- Parser call backs
 
 	on_start_tag (name, ns_prefix: UC_STRING; 
-		attributes: DS_BILINEAR [DS_PAIR [DS_PAIR [UC_STRING, UC_STRING], UC_STRING]]) is
+		attributes: DS_BILINEAR [DS_PAIR [DS_PAIR [UC_STRING, UC_STRING], UC_STRING]])
 			-- called whenever the parser findes a start element
 		local
 			discard: DOM_NODE
@@ -134,7 +134,7 @@ feature {NONE} -- Parser call backs
 			nodes.force (node_holder)
 		end
 
-	on_content (chr_data: UC_STRING) is
+	on_content (chr_data: UC_STRING)
 			-- called whenever the parser finds character data
 		local
 			discard: DOM_NODE
@@ -153,7 +153,7 @@ feature {NONE} -- Parser call backs
 			end
 		end
 
-	on_end_tag (name, ns_prefix: UC_STRING) is
+	on_end_tag (name, ns_prefix: UC_STRING)
 			-- called whenever the parser findes an end element
 		do
 			debug ("parser_events")
@@ -165,7 +165,7 @@ feature {NONE} -- Parser call backs
 			nodes.remove
 		end
    
-	on_processing_instruction (target, data: UC_STRING) is
+	on_processing_instruction (target, data: UC_STRING)
 			-- called whenever the parser findes a processing instruction.
 		local
 			new_element, discard: DOM_NODE
@@ -180,7 +180,7 @@ feature {NONE} -- Parser call backs
 			discard := document.append_child (new_element)
 		end
    
-	on_comment (com: UC_STRING) is
+	on_comment (com: UC_STRING)
 			-- called whenever the parser finds a comment.
 		local
 			new_element, discard: DOM_NODE
@@ -193,7 +193,7 @@ feature {NONE} -- Parser call backs
 			discard := nodes.item_node_as_element.append_child (new_element)
 		end
 
-	on_element_declaration (name: UC_STRING) is
+	on_element_declaration (name: UC_STRING)
 		do
 			debug ("parser_events")
 				print ("on_element_declaration:%R%N%Tname=" + quoted_eiffel_string_out (name.out))
@@ -202,7 +202,7 @@ feature {NONE} -- Parser call backs
 		end
 		
 	on_attribute_declaration (element_name, attribute_name, 
-			attribute_type, default_value: UC_STRING; is_required: BOOLEAN) is
+			attribute_type, default_value: UC_STRING; is_required: BOOLEAN)
 		do
 			debug ("parser_events")
 				print ("on_attribute_declaration:%R%N%Telement_name=" + quoted_eiffel_string_out (element_name.out))
@@ -212,7 +212,7 @@ feature {NONE} -- Parser call backs
 			end
 		end
 
-	on_xml_declaration (xml_version, encoding: UC_STRING; is_standalone: BOOLEAN) is
+	on_xml_declaration (xml_version, encoding: UC_STRING; is_standalone: BOOLEAN)
 		do
 			debug ("parser_events")
 				print ("on_xml_declaration:R%N%Txml_version=" + quoted_eiffel_string_out (xml_version.out))
@@ -226,7 +226,7 @@ feature {NONE} -- Parser call backs
 		end
 
 	on_entity_declaration (entity_name: UC_STRING; is_parameter_entity: BOOLEAN; 
-			value: UC_STRING; value_length: INTEGER; base, system_id, public_id, notation_name: UC_STRING) is
+			value: UC_STRING; value_length: INTEGER; base, system_id, public_id, notation_name: UC_STRING)
 		do
 			debug ("parser_events")
 				print ("on_entity_declaration:%R%N%Tentity_name=" + quoted_eiffel_string_out (entity_name.out))
@@ -238,7 +238,7 @@ feature {NONE} -- Parser call backs
 			end
 		end
 		
-	on_start_cdata_section is
+	on_start_cdata_section
 		do
 			debug ("parser_events")
 				print ("on_start_cdata_section")
@@ -247,7 +247,7 @@ feature {NONE} -- Parser call backs
 			in_cdata_section := True
 		end
 
-	on_end_cdata_section is
+	on_end_cdata_section
 		do
 			debug ("parser_events")
 				print ("on_end_cdata_section")
@@ -256,7 +256,7 @@ feature {NONE} -- Parser call backs
 			in_cdata_section := False
 		end
 
-	on_start_doctype (name, system_id, public_id: UC_STRING; has_internal_subset: BOOLEAN) is
+	on_start_doctype (name, system_id, public_id: UC_STRING; has_internal_subset: BOOLEAN)
 			-- This is called for the start of the DOCTYPE declaration, before
 			-- any DTD or internal subset is parsed.
 		local
@@ -288,7 +288,7 @@ feature {NONE} -- Parser call backs
 				uc_public_id, uc_system_id)
 		end
 
-	on_end_doctype is
+	on_end_doctype
 			-- This is called for the start of the DOCTYPE declaration when the
 			-- closing > is encountered, but after processing any external subset.
 		local
@@ -303,7 +303,7 @@ feature {NONE} -- Parser call backs
 			discard := document.append_child (document_type)
 		end
 
-	on_notation_declaration (notation_name, base, system_id, public_id: UC_STRING) is
+	on_notation_declaration (notation_name, base, system_id, public_id: UC_STRING)
 		do
 			debug ("parser_events")
 				print ("on_notation_declaration:%R%N%Tnotation_name=" + quoted_eiffel_string_out (notation_name.out))
@@ -313,7 +313,7 @@ feature {NONE} -- Parser call backs
 			end
 		end
 
-	on_not_standalone: BOOLEAN is
+	on_not_standalone: BOOLEAN
 		do
 			debug ("parser_events")
 				print ("on_not_standalone")
@@ -336,7 +336,7 @@ feature {NONE} -- Implementation
 	
 	dom_impl: DOM_IMPLEMENTATION
 
-	normalize (str: UC_STRING) is
+	normalize (str: UC_STRING)
 			-- Remove leading and trailing whitespace from 'str'
 			-- Modifies 'str' parameter
 		require
@@ -348,7 +348,7 @@ feature {NONE} -- Implementation
 			normalized_exists: str /= Void
 		end
 		
-	build_qualified_name (ns_prefix, name: UC_STRING): DOM_STRING is
+	build_qualified_name (ns_prefix, name: UC_STRING): DOM_STRING
 			-- Build a fully qualified name from ns_prefix and name.
 			-- Include the prefix and colon separator if the prefix  
 			-- is not empty

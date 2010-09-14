@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A parameter that updates one or more fields in a data model"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-06-14 13:46:53 -0700 (Thu, 14 Jun 2007) $"
@@ -19,7 +19,7 @@ inherit
 
 feature
 
-	process (processing_result: PARAMETER_PROCESSING_RESULT) is
+	process (processing_result: PARAMETER_PROCESSING_RESULT)
 		local
 			local_current_value: STRING
 			the_label: STRING
@@ -47,7 +47,7 @@ feature
 			commit (processing_result.request_processing_result)
 		end
 
-	ok_to_save (processing_result: PARAMETER_PROCESSING_RESULT): BOOLEAN is
+	ok_to_save (processing_result: PARAMETER_PROCESSING_RESULT): BOOLEAN
 			-- Is it OK to save the value of processing_result in the database?
 		require
 			valid_processing_result: processing_result /= Void
@@ -55,7 +55,7 @@ feature
 			Result := processing_result.is_value_valid
 		end
 
-	add_update_message (processing_result: PARAMETER_PROCESSING_RESULT) is
+	add_update_message (processing_result: PARAMETER_PROCESSING_RESULT)
 			-- Descendents may redefine if they must send a message to the user when the parameter updates a database value
 		require
 			valid_processing_result: processing_result /= Void
@@ -63,7 +63,7 @@ feature
 			-- Default is do nothing
 		end
 
-	save_current_value (processing_result: PARAMETER_PROCESSING_RESULT) is
+	save_current_value (processing_result: PARAMETER_PROCESSING_RESULT)
 			-- Save value in the database
 		require
 			valid_processing_result: processing_result /= Void
@@ -73,7 +73,7 @@ feature
 			ok_to_write_data (processing_result.request_processing_result)
 		end
 
-	validate (processing_result: GOA_PARAMETER_PROCESSING_RESULT) is
+	validate (processing_result: GOA_PARAMETER_PROCESSING_RESULT)
 			-- Validate the value of processing_result.value
 		require
 			valid_processing_result: processing_result /= Void
@@ -83,7 +83,7 @@ feature
 			ok_to_write_data (processing_result.request_processing_result)
 		end
 
-	include_value_in_error_message: BOOLEAN is
+	include_value_in_error_message: BOOLEAN
 		once
 			Result := True
 		end

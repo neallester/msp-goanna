@@ -1,4 +1,4 @@
-indexing
+note
 
 	description: "Test features of class BASE64_ENCODER"
 	library:    "Goanna Utility Test Harnesses"
@@ -16,35 +16,35 @@ inherit
 
 feature -- Test
 
-	test_encoding is
+	test_encoding
 			-- Test standard encoding features of GOA_BASE64_ENCODER
 		local
 			encoder: GOA_BASE64_ENCODER
-		do
-			!! encoder
+		do 
+			create encoder
 			assert_equal ("empty", "", encoder.encode(""))
 			assert_equal ("Hello there!","SGVsbG8gdGhlcmUh", encoder.encode ("Hello there!"))
 			assert_equal ("Hello there!x", "SGVsbG8gdGhlcmUheA==", encoder.encode ("Hello there!x"))
 			assert_equal ("Hello there!xx", "SGVsbG8gdGhlcmUheHg=", encoder.encode ("Hello there!xx"))
 		end
 
-	test_session_id_encoding is
+	test_session_id_encoding
 			-- Test session ID encoding features of BASE^$_ENCODER
 		local
 			encoder: GOA_BASE64_ENCODER
-		do
-			!! encoder
+		do 
+			create encoder
 			assert_equal ("Hello there!", "SGVsbG8gdGhlcmUh", encoder.encode_for_session_key ("Hello there!"))
 			assert_equal ("Hello there!x", "SGVsbG8gdGhlcmUheA..", encoder.encode_for_session_key ("Hello there!x"))
 			assert_equal ("Hello there!xx", "SGVsbG8gdGhlcmUheHg.", encoder.encode_for_session_key ("Hello there!xx"))
 		end
 
-	test_decoding is
+	test_decoding
 			-- Test standard encoding features of GOA_BASE64_ENCODER
 		local
 			encoder: GOA_BASE64_ENCODER
-		do
-			!! encoder
+		do 
+			create encoder
 			assert_equal ("empty", "", encoder.encode(""))
 			assert_equal ("Hello there!", "Hello there!", encoder.decode ("SGVsbG8gdGhlcmUh"))
 			assert_equal ("Hello there!x", "Hello there!x", encoder.decode ("SGVsbG8gdGhlcmUheA=="))

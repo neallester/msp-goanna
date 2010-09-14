@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that build XML documents"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,13 +16,13 @@ inherit
 	XM_CALLBACKS_FILTER_FACTORY
 		export {NONE} all end
 
-creation
+create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Create a new pipe.
 		local
 			a_dummy: XM_CALLBACKS
@@ -65,7 +65,7 @@ feature -- Filters (part of the pipe)
 
 feature -- Shortcuts
 
-	document: XM_DOCUMENT is
+	document: XM_DOCUMENT
 			-- Document (from tree building filter)
 		require
 			not_error: not error.has_error
@@ -73,7 +73,7 @@ feature -- Shortcuts
 			Result := tree.document
 		end
 
-	last_error: STRING is
+	last_error: STRING
 			-- Error (from error filter)
 		require
 			error: error.has_error

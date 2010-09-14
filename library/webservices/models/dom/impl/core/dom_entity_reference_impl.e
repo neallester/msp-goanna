@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Entity reference implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -19,13 +19,13 @@ inherit
 			make as child_parent_make
 		end
 
-creation
+create
 
 	make
 
 feature {DOM_DOCUMENT} -- Factory creation
 
-	make (owner_doc: DOM_DOCUMENT; new_name: DOM_STRING) is
+	make (owner_doc: DOM_DOCUMENT; new_name: DOM_STRING)
 			-- Create a new entity reference node
 		do
 			child_parent_make
@@ -40,13 +40,13 @@ feature
 
 feature -- from DOM_NODE
    
-	node_name: DOM_STRING is
+	node_name: DOM_STRING
          -- The name of this node, depending on its type.
       do
 		  Result := name
       end
 
-   node_type: INTEGER is
+   node_type: INTEGER
          -- A code representing the type of the underlying object.
       once
 		  Result := Entity_reference_node

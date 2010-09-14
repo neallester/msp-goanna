@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Redirects user to another page"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -15,7 +15,7 @@ inherit
 	
 feature
 
-	new_xml_document (processing_result: REQUEST_PROCESSING_RESULT): GOA_REDIRECT_XML_DOCUMENT_EXTENDED is
+	new_xml_document (processing_result: REQUEST_PROCESSING_RESULT): GOA_REDIRECT_XML_DOCUMENT_EXTENDED
 		local
 			virtual_domain_host: VIRTUAL_DOMAIN_HOST
 		do
@@ -26,12 +26,12 @@ feature
 			end_version_access (processing_result)
 		end
 	
-	add_footer (processing_result: REQUEST_PROCESSING_RESULT; xml: GOA_REDIRECT_XML_DOCUMENT_EXTENDED) is
+	add_footer (processing_result: REQUEST_PROCESSING_RESULT; xml: GOA_REDIRECT_XML_DOCUMENT_EXTENDED)
 		do
 		
 		end
 		
-	title (processing_result: REQUEST_PROCESSING_RESULT): STRING is
+	title (processing_result: REQUEST_PROCESSING_RESULT): STRING
 			-- Title displayed in Browser Title
 		require
 			valid_processing_result: processing_result /= Void
@@ -42,7 +42,7 @@ feature
 			ok_to_read_data (processing_result)
 		end
 		
-	style_sheet (processing_result: REQUEST_PROCESSING_RESULT): STRING is
+	style_sheet (processing_result: REQUEST_PROCESSING_RESULT): STRING
 			-- URL to the stylesheet for this page
 		require
 			valid_processing_result: processing_result /= Void
@@ -54,7 +54,7 @@ feature
 		end
 	
 		
-	delay (processing_result: REQUEST_PROCESSING_RESULT): STRING is
+	delay (processing_result: REQUEST_PROCESSING_RESULT): STRING
 			-- The number of seconds to delay before redirecting to URL
 		require
 			valid_processing_result: processing_result /= Void
@@ -65,7 +65,7 @@ feature
 			ok_to_read_data (processing_result)
 		end
 		
-	url (processing_result: REQUEST_PROCESSING_RESULT): STRING is
+	url (processing_result: REQUEST_PROCESSING_RESULT): STRING
 			-- The URL to redirect the user to
 		require
 			valid_processing_result: processing_result /= Void
@@ -75,7 +75,7 @@ feature
 			ok_to_read_data (processing_result)
 		end
 		
-	page_transformer_file_name: STRING is
+	page_transformer_file_name: STRING
 		once
 			Result := configuration.data_directory + "/goa_redirect.xsl"
 		end

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XML Schema constants"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -19,40 +19,40 @@ inherit
 		
 feature -- Constants
 
-	Xsd_string: STRING is "string"
+	Xsd_string: STRING = "string"
 			-- Finite sequence of characters
 	
-	Xsd_boolean: STRING is "boolean"
+	Xsd_boolean: STRING = "boolean"
 			-- Boolean value represented by "true", "false", "1" or "0"
 			-- with the canonical representation of either "true" or "false"
 
-	Xsd_decimal: STRING is "decimal"
+	Xsd_decimal: STRING = "decimal"
 			-- Decimal value within the set i*10^-n, where i and n are integers such
 			-- that n >= 0.
 			
-	Xsd_int: STRING is "int"
+	Xsd_int: STRING = "int"
 			-- Same as Xsd_decimal. Java SOAP seems to use this type instead of the 
 			-- standard 'decimal' name.
 	
-	Xsd_short: STRING is "short"
+	Xsd_short: STRING = "short"
 			-- Same as Xsd_decimal.
 			-- TODO: Check if this is a 2001 Schema type.
 			
-	Xsd_float: STRING is "float"
+	Xsd_float: STRING = "float"
 			-- IEEE single-precision 32-bit floating point type including INF (infinity)
 			
-	Xsd_double: STRING is "double"
+	Xsd_double: STRING = "double"
 			-- IEEE double-precision 64-bit floating point type including INF (infinity)
 			-- and NaN (Not a Number).
 			
-	Xsd_duration: STRING is "duration"
+	Xsd_duration: STRING = "duration"
 			-- Duration of the form PnYnMnDTnHnMnS, where nY represents the number 
 			-- of years, nM the number of months, nD the number of days, 'T' is the 
 			-- date/time separator, nH the number of hours, nM the number of minutes 
 			-- and nS the number of seconds. The number of seconds can include decimal 
 			-- digits to arbitrary precision.
 
-	Xsd_datetime: STRING is "dateTime"
+	Xsd_datetime: STRING = "dateTime"
 			-- Date time of the format CCYY-MM-DDThh:mm:ss where "CC" represents the
 			-- century, "YY" the year, "MM" the month and "DD" the day, preceded by 
 			-- an optional leading "-" sign to indicate a negative number. If the sign 
@@ -67,24 +67,24 @@ feature -- Constants
 			-- if the year value would otherwise have fewer than four digits; otherwise 
 			-- they are forbidden. The year 0000 is prohibited. 
 
-	Xsd_time: STRING is "time"
+	Xsd_time: STRING = "time"
 			-- Time of the format hh:mm:ss.sss with optional following time zone indicator.
 	
-	Xsd_date: STRING is "date"
+	Xsd_date: STRING = "date"
 			-- Date with the reduced (right truncated) lexical representation for dateTime:
 			-- CCYY-MM-DD. No left truncation is allowed. An optional following time 
 			-- zone qualifier is allowed as for dateTime. To accommodate year values 
 			-- outside the range from 0001 to 9999, additional digits can be added 
 			-- to the left of this representation and a preceding "-" sign is allowed. 
 
-	Xsd_gyearmonth: STRING is "gYearMonth"
+	Xsd_gyearmonth: STRING = "gYearMonth"
 			-- reduced (right truncated) lexical representation for dateTime: CCYY-MM. 
 			-- No left truncation is allowed. An optional following time zone qualifier 
 			-- is allowed. To accommodate year values outside the range from 0001 to 9999, 
 			-- additional digits can be added to the left of this representation and a 
 			-- preceding "-" sign is allowed. 
 
-	Xsd_year: STRING is "gYear"
+	Xsd_year: STRING = "gYear"
 			-- reduced (right truncated) lexical representation for dateTime: CCYY. 
 			-- No left truncation is allowed. An optional following time zone qualifier 
 			-- is allowed as for dateTime. To accommodate year values outside the range 
@@ -92,45 +92,45 @@ feature -- Constants
 			-- representation and a preceding "-" sign is allowed. 
 
 	
-	Xsd_gmonthday: STRING is "gMonthDay"
+	Xsd_gmonthday: STRING = "gMonthDay"
 			-- left truncated lexical representation for date: --MM-DD. An optional 
 			-- following time zone qualifier is allowed as for date. No preceding sign 
 			-- is allowed. No other formats are allowed.
 	
-	Xsd_gday: STRING is "gDay"
+	Xsd_gday: STRING = "gDay"
 			-- left truncated lexical representation for date: ---DD . An optional 
 			-- following time zone qualifier is allowed as for date. No preceding 
 			-- sign is allowed. No other formats are allowed. 
 			
-	Xsd_gMonth: STRING is "gMonth"
+	Xsd_gMonth: STRING = "gMonth"
 			-- left and right truncated lexical representation for date: --MM--. 
 			-- An optional following time zone qualifier is allowed as for date. 
 			-- No preceding sign is allowed. No other formats are allowed.
 		
-	Xsd_hexBinary: STRING is "hexBinary"
+	Xsd_hexBinary: STRING = "hexBinary"
 			-- lexical representation where each binary octet is encoded as a 
 			-- character tuple, consisting of two hexadecimal digits ([0-9a-fA-F]) 
 			-- representing the octet code. For example, "0FB7" is a hex encoding 
 			-- for the 16-bit integer 4023 (whose binary representation is 111110110111). 
 			-- The lower case hexadecimal digits ([a-f]) are not allowed. 
 			
-	Xsd_base64binary: STRING is "base64Binary"
+	Xsd_base64binary: STRING = "base64Binary"
 			-- represents Base64-encoded arbitrary binary data. The ·value space· 
 			-- of base64Binary is the set of finite-length sequences of binary octets. 
 			-- For base64Binary data the entire binary stream is encoded using the Base64 
 			-- Content-Transfer-Encoding 
 			
-	Xsd_anyuri: STRING is "anyURI"
+	Xsd_anyuri: STRING = "anyURI"
 			-- represents a Uniform Resource Identifier Reference (URI). An anyURI 
 			-- value can be absolute or relative, and may have an optional fragment 
 			-- identifier (i.e., it may be a URI Reference). 
 	
-	Xsd_qname: STRING is "QName"
+	Xsd_qname: STRING = "QName"
 			-- represents XML qualified names. The ·value space· of QName is the set
 			-- of tuples {namespace name, local part}, where namespace name is an anyURI
 			-- and local part is an NCName. 
 			
-	is_valid_type_constant (a_type: STRING): BOOLEAN is
+	is_valid_type_constant (a_type: STRING): BOOLEAN
 			-- Is `a_type' a valid XML Schema type constant?
 		require
 			type_not_empty: a_type /= Void and then not a_type.is_empty

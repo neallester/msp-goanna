@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that integer objects for display."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "utility"
@@ -15,7 +15,7 @@ class
 
 feature -- Transformation
 
-	zero_fill (value, length: INTEGER): STRING is
+	zero_fill (value, length: INTEGER): STRING
 			-- Convert 'value' to a string and zero fill to 'length'.
 			-- Truncate right if the result will not fit in 'length'.
 		require

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "HTTP Server."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "tools httpd"
@@ -22,7 +22,7 @@ inherit
 			{NONE} all
 		end
 		
-creation
+create
 
 	make
 				
@@ -31,7 +31,7 @@ feature {NONE} -- Implementation
 	config: GOA_SERVLET_CONFIG
 			-- Configuration for servlets
 	
-	register_servlets is
+	register_servlets
 			-- Initialise servlets
 		local
 			servlet: GOA_HTTP_SERVLET	
@@ -54,7 +54,7 @@ feature {NONE} -- Implementation
 			servlet_manager.register_servlet (servlet, "snoop")
 		end
 
-	initialise_logger is
+	initialise_logger
 			-- Set logger appenders
 		local
 			appender: L4E_APPENDER

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A text area parameter that is labeled"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -19,7 +19,7 @@ inherit
 	
 feature
 	
-	add_to_standard_data_input_table (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER) is
+	add_to_standard_data_input_table (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER)
 		local
 			the_parameter_processing_result: PARAMETER_PROCESSING_RESULT
 		do

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description: "A container for a DOM_NODE and its namespace declarations, if any"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
@@ -19,13 +19,13 @@ inherit
 			{NONE} all
 		end
 		
-creation
+create
 	
 	make_with_attributes, make_with_node
 	
 feature
 		
-	make_with_attributes (attributes: DS_BILINEAR [DOM_ATTR]) is
+	make_with_attributes (attributes: DS_BILINEAR [DOM_ATTR])
 			-- Create new holder and extract namespace declarations from
 			-- 'attributes'.
 		require
@@ -66,7 +66,7 @@ feature
 			end
 		end
 		
-	make_with_node (new_node: like node) is
+	make_with_node (new_node: like node)
 			-- Create new tree node holding 'new_node'
 		require
 			node_exists: new_node /= Void
@@ -87,7 +87,7 @@ feature -- Status
 			
 feature -- Status setting
 
-	set_node (new_node: like node) is
+	set_node (new_node: like node)
 			-- Set 'node' to 'new_node'
 		require
 			node_exists: new_node /= Void
@@ -95,7 +95,7 @@ feature -- Status setting
 			node := new_node
 		end
 	
-	find_namespace_uri (ns_prefix: DOM_STRING): DOM_STRING is
+	find_namespace_uri (ns_prefix: DOM_STRING): DOM_STRING
 			-- Find a namespace URI bound to 'ns_prefix'. Return
 			-- an empty string if not found.
 		require
@@ -123,19 +123,19 @@ feature -- Status setting
 		
 feature {NONE} -- Implementation
 
-	Namespace_name_prefix: DOM_STRING is
+	Namespace_name_prefix: DOM_STRING
 			-- Namespace prefix
 		once
 			create Result.make_from_string ("xmlns:")
 		end
 		
-	Default_namespace_prefix: DOM_STRING is
+	Default_namespace_prefix: DOM_STRING
 			-- Default namespace prefix
 		once
 			create Result.make_from_string ("xmlns")
 		end
 	
-	Namespace_name_separator: UC_CHARACTER is
+	Namespace_name_separator: UC_CHARACTER
 			-- Default namespace name separator
 		once
 			Result.make_from_character (':')

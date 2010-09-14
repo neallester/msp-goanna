@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects representing agent calls on a target."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -19,7 +19,7 @@ inherit
 
 feature -- Initialisation
 
-	make is
+	make
 			-- Register services
 		do
 			Precursor
@@ -28,7 +28,7 @@ feature -- Initialisation
 		
 feature {NONE} -- Initialisation
 
-	self_register is
+	self_register
 			-- Register all facilities of Current in 'registry'.
 		deferred
 		end

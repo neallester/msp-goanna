@@ -1,4 +1,4 @@
-indexing
+note
 	description: "The abstraction of an ordered collection of nodes, %
 		%without defining or constraining how this collection %
 		%is implemented.",
@@ -15,7 +15,7 @@ deferred class DOM_NODE_LIST
 
 feature
 
-   item (index: INTEGER): DOM_NODE is
+   item (index: INTEGER): DOM_NODE
          -- Returns the `index'th item in the collection. If `index'
          -- is greater than or equal to the number of nodes in the list,
          -- this returns `Void'.
@@ -29,7 +29,7 @@ feature
       deferred
       end
 
-   length: INTEGER is
+   length: INTEGER
          -- The number of nodes in the list.
          -- The range of valid child node indices is 0 to `length'-1 inclusive.
       deferred
@@ -37,31 +37,31 @@ feature
 
 feature -- Utility
 
-	empty: BOOLEAN is
+	empty: BOOLEAN
 			-- Does this node list have no elements?
 		deferred
 		end
 
-	force_last (new_node: DOM_NODE) is
+	force_last (new_node: DOM_NODE)
 			-- Add 'new_node' to end of list.
 		require
 			new_node_exists: new_node /= Void
 		deferred
 		end
 
-	delete (old_node: DOM_NODE) is
+	delete (old_node: DOM_NODE)
 			-- Remove 'old_node' from list. If 'old_node' not found go off.
 		require
 			old_node_exists: old_node /= Void
 		deferred
 		end
 	
-	first: DOM_NODE is
+	first: DOM_NODE
 			-- First node in list.
 		deferred
 		end
 
-	last: DOM_NODE is
+	last: DOM_NODE
 			-- Last node in list.
 		deferred
 		end

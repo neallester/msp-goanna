@@ -1,4 +1,4 @@
-indexing
+note
 
 	description: "Test features of class LOG_HIERARCHY"
 	library:    "Goanna log4e Test Harnesses"
@@ -27,7 +27,7 @@ inherit
 feature -- Test
 
 		
-	test_externally_rolled_appender is
+	test_externally_rolled_appender
 		local
 			h: LOG_HIERARCHY
 			cat: LOG_CATEGORY
@@ -60,7 +60,7 @@ feature -- Test
 		
 feature {NONE} -- Implementation
 	
-	sleep (period: INTEGER) is
+	sleep (period: INTEGER)
 			-- Sleep for 'period' milliseconds
 		external
 			"[

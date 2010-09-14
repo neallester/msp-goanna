@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that ..."
 	author: ""
 	date: "$Date$"
@@ -18,7 +18,7 @@ inherit
 -- According to Berend, what is really needed is
 -- ISO-8859-1 Support in EPX_XML_WRITER
 
-creation
+create
 
 	make,
 	make_with_capacity,
@@ -27,7 +27,7 @@ creation
 
 feature
 
-	replace_content_meta_characters (s: STRING) is
+	replace_content_meta_characters (s: STRING)
 			-- Replace all characters in `s' that have a special meaning in
 			-- XML. These characters are '<' and '&' and the sequence "]]>".
 			-- This routine is slow when `data' is actually a UC_STRING
@@ -144,7 +144,7 @@ feature
 			end
 		end
 
-	extend_with_data (data: STRING) is
+	extend_with_data (data: STRING)
 			-- Extend `my_xml' with `data', but quote any meta characters
 			-- that occur in `data'.
 		local

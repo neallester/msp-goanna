@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A topic in the application"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -18,23 +18,23 @@ inherit
 
 feature {PAGE, PAGE_FACTORY, TOPIC, PAGE_SEQUENCE_ELEMENT, SUBDOMAIN_ITERATOR, FORM, FORM_ELEMENT} -- Attributes
 
-	page_sequencer : PAGE_SEQUENCER is
+	page_sequencer : PAGE_SEQUENCER
 		-- Current page_sequencer for user
 		do
 			result := user.page_sequencer
 		end
 
-	undo is
+	undo
 		-- Return this topic to the state before last change
 		deferred
 		end
 
-	title : STRING is
+	title : STRING
 		-- The plain text title
 		deferred
 		end
 
-	text: TEXT_LIST is
+	text: TEXT_LIST
 			-- The current list of all text used in the application for this user
 		do
 			result := user.preference.language

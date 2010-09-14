@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Returns current date time of current machine"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XMLRPC examples test"
@@ -26,7 +26,7 @@ create
 feature -- Access
 			
 		
-	get_current_time: DT_DATE_TIME is
+	get_current_time: DT_DATE_TIME
 			-- Return current time
 		do
 			Result := system_clock.date_time_now
@@ -34,7 +34,7 @@ feature -- Access
 
 feature -- Creation
 
-	new_tuple (a_name: STRING): TUPLE is
+	new_tuple (a_name: STRING): TUPLE
 			--	Tuple of default-valued arguments to pass to call `a_name'.
 		local
 			a_tuple: TUPLE []
@@ -44,12 +44,12 @@ feature -- Creation
 
 feature {NONE} -- Implementation
 
-	Get_current_time_name: STRING is "getCurrentTime"
+	Get_current_time_name: STRING = "getCurrentTime"
 			-- Name of `get_current_time' service
 
 feature {NONE} -- Initialisation
 
-	self_register is
+	self_register
 			-- Register all actions for this service
 		do	
 			register (agent get_current_time, Get_current_time_name)				

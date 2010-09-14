@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Entity reference"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -16,7 +16,7 @@ inherit
 
 feature
 
-	name: DOM_STRING is
+	name: DOM_STRING
 			-- Name of the entity reference
 		deferred
 		end

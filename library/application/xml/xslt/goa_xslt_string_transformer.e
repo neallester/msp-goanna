@@ -1,4 +1,4 @@
-indexing
+note
 	description: "An XSLT Transformer that can process xml presented as strings"
 	author: "Neal L. Lester <neallester@users.sourceforge.net"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -14,13 +14,13 @@ inherit
 	XM_SHARED_CATALOG_MANAGER
 	KL_IMPORTED_STRING_ROUTINES
 
-creation
+create
 	
 	make
 	
 feature -- Transformation
 	
-	transform_string_to_string (the_string: STRING): STRING is
+	transform_string_to_string (the_string: STRING): STRING
 			-- transform the_string, returning the result as a string
 		require
 			-- XM_STRING_URI_RESOLVER is registered in
@@ -49,7 +49,7 @@ feature -- Transformation
 		
 feature -- Configuration
 		
-	set_string_parameter (a_parameter_value, a_parameter_name: STRING) is
+	set_string_parameter (a_parameter_value, a_parameter_name: STRING)
 			-- Set a global string-valued parameter on the stylesheet.
 		require
 			parameter_name_not_void: a_parameter_name /= Void and then is_valid_expanded_name (a_parameter_name)
@@ -58,7 +58,7 @@ feature -- Configuration
 			transformer.set_string_parameter (a_parameter_value, a_parameter_name)
 		end
 		
-	set_always_clear_document_pool (true_or_false: BOOLEAN) is
+	set_always_clear_document_pool (true_or_false: BOOLEAN)
 			-- Set clear_document_pool to true_or_false
 		do
 			always_clear_document_pool := true_or_false
@@ -67,19 +67,19 @@ feature -- Configuration
 		
 feature -- Status Report
 		
-	valid_executable: BOOLEAN is
+	valid_executable: BOOLEAN
 			-- Has the stylesheet been compiled into a valid executable?
 		do
 			Result := transformer.executable /= Void
 		end
 		
-	is_error: BOOLEAN is
+	is_error: BOOLEAN
 			-- Has an error occurred in the transformer?
 		do
 			Result := transformer.is_error
 		end
 		
-	is_valid_expanded_name (a_parameter_name: STRING): BOOLEAN is
+	is_valid_expanded_name (a_parameter_name: STRING): BOOLEAN
 			-- Is a_parameter_name valid when expanded?
 		do
 			Result := transformer.is_valid_expanded_name (a_parameter_name)
@@ -92,15 +92,15 @@ feature -- Status Report
 		
 feature {NONE} -- Implementation
 		
-	output_uri: STRING is "string:output"
-	input_uri: STRING is "string:input"
+	output_uri: STRING = "string:output"
+	input_uri: STRING = "string:input"
 			-- URIs for input and output strings
 			
 	transformer: XM_XSLT_TRANSFORMER
 
 feature {NONE} -- Creation
 			
-	make (new_transformer: XM_XSLT_TRANSFORMER) is
+	make (new_transformer: XM_XSLT_TRANSFORMER)
 		require
 			valid_new_transformer: new_transformer /= Void
 		do

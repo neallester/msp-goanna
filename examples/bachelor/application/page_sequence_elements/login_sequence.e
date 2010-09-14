@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Page sequence that logs user into the system"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -31,7 +31,7 @@ feature --	implement deferred features
 
 	done : BOOLEAN
 
-	page : PAGE is
+	page : PAGE
 		do
 			if new_user then
 				if new_user_login_page = void then
@@ -46,18 +46,18 @@ feature --	implement deferred features
 			end
 		end
 
-	active_chain : LINKED_LIST [ELEMENT_CONTAINER] is
+	active_chain : LINKED_LIST [ELEMENT_CONTAINER]
 		do
 			create result.make
 		end
 
-	start is
+	start
 		do
 			set_returning_user
 			display_error_messages := false
 		end
 
-	forth is
+	forth
 		do
 			display_error_messages := true
 			if valid_user then
@@ -65,18 +65,18 @@ feature --	implement deferred features
 			end
 		end
 
-	restore_chain (chain : LINKED_LIST [ELEMENT_CONTAINER]) is
+	restore_chain (chain : LINKED_LIST [ELEMENT_CONTAINER])
 		do
 		end
 
-	context : STRING is
+	context : STRING
 		do
 			result := ""
 		end
 
 feature {PAGE_FACTORY, LOGIN_FORM} -- Access
 
-	language : TEXT_LIST is
+	language : TEXT_LIST
 		-- The
 		do
 			result := page_sequencer.user.preference.language
@@ -90,7 +90,7 @@ feature {LOGIN_FORM} -- Implementation
 	user_id : STRING
 		-- The user ID input by user
 
-	user_id_access : STRING is
+	user_id_access : STRING
 		-- Used for agents that return user id
 		do
 			result := user_id
@@ -99,7 +99,7 @@ feature {LOGIN_FORM} -- Implementation
 	new_user : BOOLEAN
 		-- The person completing the form indicated they are a new user
 
-	set_new_user is
+	set_new_user
 		-- This is a new user
 		do
 			new_user := true
@@ -107,7 +107,7 @@ feature {LOGIN_FORM} -- Implementation
 			new_user : new_user
 		end
 
-	set_returning_user is
+	set_returning_user
 		-- This is not a new user
 		do
 			new_user := false
@@ -119,7 +119,7 @@ feature {LOGIN_FORM} -- Implementation
 	password : STRING
 		-- The password input by user
 
-	password_access : STRING is
+	password_access : STRING
 		-- Work around; v 4.5 ISE Agents won't work with attributes
 		do
 			result := password
@@ -128,7 +128,7 @@ feature {LOGIN_FORM} -- Implementation
 	confirm_password : STRING
 		-- The confirmation password provided by the user
 
-	confirm_password_access : STRING is
+	confirm_password_access : STRING
 		-- Work around; v 4.5 ISE Agents won't work with attributes
 		do
 			result := confirm_password
@@ -137,13 +137,13 @@ feature {LOGIN_FORM} -- Implementation
 	new_user_name : STRING
 		-- The name (if any) of the new user)
 
-	new_user_name_access : STRING is
+	new_user_name_access : STRING
 		-- Work around; v 4.5 ISE Agents won't work with attributes
 		do
 			result := new_user_name
 		end
 
-	set_new_user_name (new_new_user_name : STRING) is
+	set_new_user_name (new_new_user_name : STRING)
 		-- Set the name of a new user
 		require
 			valid_new_new_user_name : new_new_user_name /= Void
@@ -153,7 +153,7 @@ feature {LOGIN_FORM} -- Implementation
 			new_user_name_updated : new_user_name = new_new_user_name
 		end
 
-	set_confirm_password (new_confirm_password : STRING) is
+	set_confirm_password (new_confirm_password : STRING)
 		-- Set confirm password entered by the user
 		require
 			valid_new_confirm_password : new_confirm_password /= Void
@@ -163,7 +163,7 @@ feature {LOGIN_FORM} -- Implementation
 			confirm_password_updated : confirm_password = new_confirm_password
 		end
 
-	set_user_id (new_user_id : STRING) is
+	set_user_id (new_user_id : STRING)
 		-- Set the user ID input by the user
 		require
 			valid_new_user_id : new_user_id /= Void
@@ -173,7 +173,7 @@ feature {LOGIN_FORM} -- Implementation
 			user_id_updated : user_id = new_user_id
 		end
 
-	set_password (new_password : STRING) IS
+	set_password (new_password : STRING)
 		-- Set the password input the by user
 		require
 			valid_new_password : new_password /= Void
@@ -183,13 +183,13 @@ feature {LOGIN_FORM} -- Implementation
 			password_updated : password = new_password
 		end
 
-	new_user_access : BOOLEAN is
+	new_user_access : BOOLEAN
 		-- Work around; v4.5 ISE Agents won't work with attributes
 		do
 			result := new_user
 		end
 
-	user_list : USER_LIST is
+	user_list : USER_LIST
 		-- List of users
 		once
 			create result.make
@@ -199,7 +199,7 @@ feature {LOGIN_FORM} -- Implementation
 			end
 		end
 
-	valid_user_id : BOOLEAN is
+	valid_user_id : BOOLEAN
 		-- Is the USER ID input by the user valid?
 		do
 			if new_user then
@@ -209,13 +209,13 @@ feature {LOGIN_FORM} -- Implementation
 			end
 		end
 
-	valid_user : BOOLEAN is
+	valid_user : BOOLEAN
 		-- Is all information input by the user valid?
 		do
 			result := valid_user_id and valid_password and valid_confirm_password
 		end
 
-	valid_password : BOOLEAN is
+	valid_password : BOOLEAN
 		-- Is the password input by the user valid?
 		do
 			if new_user then
@@ -229,7 +229,7 @@ feature {LOGIN_FORM} -- Implementation
 			end
 		end
 
-	valid_confirm_password : BOOLEAN is
+	valid_confirm_password : BOOLEAN
 		-- Is the confirm password input by the user valid?
 		do
 			if new_user then
@@ -239,18 +239,18 @@ feature {LOGIN_FORM} -- Implementation
 			end
 		end	
 
-	valid_user_access : BOOLEAN is
+	valid_user_access : BOOLEAN
 		
 		do
 			result := valid_user
 		end
 
-	title : STRING is
+	title : STRING
 		do
 			result := text.user_login
 		end
 
-	login_existing_user is
+	login_existing_user
 		-- login a previously registered user
 		require
 			valid_user : valid_user
@@ -280,7 +280,7 @@ feature {LOGIN_FORM} -- Implementation
 			user_active_sequence_current : user.active_sequence = current
 		end
 
-	login_new_user is
+	login_new_user
 		-- Login a previously unregistered user
 		require
 			valid_user : valid_user
@@ -321,7 +321,7 @@ feature {NONE} -- Implementation
 
 feature {NONE} -- Initialization
 
-	make (new_page_sequencer : PAGE_SEQUENCER) is
+	make (new_page_sequencer : PAGE_SEQUENCER)
 		require
 			valid_new_page_sequencer : new_page_sequencer /= Void
 		do
@@ -329,7 +329,7 @@ feature {NONE} -- Initialization
 			make_with_user (page_sequencer.user)			
 		end
 
-	initialize is
+	initialize
 		do
 			precursor
 			user_id := ""
@@ -339,18 +339,18 @@ feature {NONE} -- Initialization
 			login_sequence_initialized := True
 		end
 
-	create_sequence is
+	create_sequence
 		do
 			sequence_initialized := true
 		end
 
-	undo is
+	undo
 		do
 		end
 
 	login_sequence_initialized: BOOLEAN
 
-	initialized: BOOLEAN is
+	initialized: BOOLEAN
 		do
 			result := precursor and login_sequence_initialized
 		end

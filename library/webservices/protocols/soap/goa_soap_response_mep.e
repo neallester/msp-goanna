@@ -1,4 +1,4 @@
-indexing
+note
 	description: "SOAP Response Message Exchange Pattern"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -20,7 +20,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_role: UR_URI) is
+	make (a_role: UR_URI)
 			-- Establish invariant.
 		local
 			a_name: UT_URI

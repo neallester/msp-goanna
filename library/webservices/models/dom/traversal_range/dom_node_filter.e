@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Filters are objects that know how to 'filter out' nodes. If a%
 		% DOM_NODE_ITERATOR or DOM_TREE_WALKER is given a filter, it applies the filter%
 		% before it returns the next node. If the filter says to accept the node, the%
@@ -21,7 +21,7 @@ inherit
 	
 feature -- Basic opterations
 
-	accept_node (node: DOM_NODE): INTEGER is
+	accept_node (node: DOM_NODE): INTEGER
 			-- Test whether a specified node is visible in the logical view of a 
      		-- DOM_TREE_WALKER or DOM_NODE_ITERATOR. This function will be called by the 
      		-- implementation of DOM_TREE_WALKER and DOM_NODE_ITERATOR; it is not intended to 

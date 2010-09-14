@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP NotUnderstookd element."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -28,7 +28,7 @@ create
 
 feature {NONE} -- Initialisation
 
-	construct (a_parent: GOA_SOAP_HEADER; a_header_block: GOA_SOAP_HEADER_BLOCK) is
+	construct (a_parent: GOA_SOAP_HEADER; a_header_block: GOA_SOAP_HEADER_BLOCK)
 			-- Establish invariant.
 		require
 			parent_exists: a_parent /= Void
@@ -59,7 +59,7 @@ feature {NONE} -- Initialisation
 
 feature -- Status report
 
-	is_encoding_style_permitted: BOOLEAN is
+	is_encoding_style_permitted: BOOLEAN
 			-- Is `encoding_style' permitted to be non-Void?
 		do
 			Result := False
@@ -67,7 +67,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	validate (an_identity: UT_URI) is
+	validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		do
 			if elements.count > 0 then

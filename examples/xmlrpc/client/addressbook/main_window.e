@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Main address book window"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples xmlrpc addressbook"
@@ -32,7 +32,7 @@ create
 
 feature -- Initialisation
 
-	make (ab: ADDRESS_BOOK) is
+	make (ab: ADDRESS_BOOK)
 			-- Initialise this window to call back into 'ab' on button events
 		require
 			address_book_exists: ab /= Void
@@ -41,7 +41,7 @@ feature -- Initialisation
 			default_create
 		end
 		
-	initialize is
+	initialize
 			-- Initialize `Current' to set up calculator widgets.
 		local
 			vb: EV_VERTICAL_BOX
@@ -108,7 +108,7 @@ feature -- Initialisation
 	
 feature -- Status setting
 		
-	update_error_message (message: STRING) is
+	update_error_message (message: STRING)
 			-- Update the error widget text to 'message'
 		require
 			message_exists: message /= Void
@@ -116,7 +116,7 @@ feature -- Status setting
 			error.set_text (message)
 		end
 	
-	update_names (new_names: ARRAY [ANY]) is
+	update_names (new_names: ARRAY [ANY])
 			-- Refresh list with new names
 		require
 			new_names_exist: new_names /= Void
@@ -145,7 +145,7 @@ feature -- Status setting
 			names.deselect_all
 		end
 	
-	update_address (new_address: STRING) is
+	update_address (new_address: STRING)
 			-- Set address text to 'new_address'
 		require
 			new_address_exists: new_address /= Void

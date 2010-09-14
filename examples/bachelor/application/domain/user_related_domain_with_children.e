@@ -1,4 +1,4 @@
-indexing
+note
 	description: "User related domains that also have children"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -22,14 +22,14 @@ inherit
 
 feature
 
-	receive_child_notification (child: USER_RELATED_DOMAIN_WITH_PARENT) is
+	receive_child_notification (child: USER_RELATED_DOMAIN_WITH_PARENT)
 		do
 			precursor (child)
 		end
 	
 	child_list: DS_LINKED_LIST [USER_RELATED_DOMAIN_WITH_PARENT]
 
-	process_child_notification (child: USER_RELATED_DOMAIN_WITH_PARENT) is
+	process_child_notification (child: USER_RELATED_DOMAIN_WITH_PARENT)
 		do
 			precursor (child)
 		end

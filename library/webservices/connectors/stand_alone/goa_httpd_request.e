@@ -1,4 +1,4 @@
-indexing
+note
 	description: "HTTP parsed request"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "tools httpd"
@@ -28,7 +28,7 @@ create
 
 feature -- Initialisation
 
-	make (socket: GOA_HTTPD_SERVING_SOCKET; buffer: STRING) is
+	make (socket: GOA_HTTPD_SERVING_SOCKET; buffer: STRING)
 			-- Parse 'buffer' to initialise the request parameters
 		require
 			socket_exists: socket /= Void
@@ -45,7 +45,7 @@ feature -- Initialisation
 		end
 
 	make_standard_socket (socket: EPX_TCP_SOCKET; buffer: STRING; server_port: INTEGER;
-		doc_root, servlet_mapping_prefix: STRING) is
+		doc_root, servlet_mapping_prefix: STRING)
 			-- Parse 'buffer' to initialise the request parameters
 		require
 			socket_exists: socket /= Void
@@ -66,7 +66,7 @@ feature -- Access
 
 	serving_socket: EPX_TCP_SOCKET
 
-	parameter (name: STRING): STRING is
+	parameter (name: STRING): STRING
 			-- Return value of parameter 'name'
 		require
 			name_exists: name /= Void
@@ -75,7 +75,7 @@ feature -- Access
 			Result := parameters.item (name)
 		end
 
-	has_parameter (name: STRING): BOOLEAN is
+	has_parameter (name: STRING): BOOLEAN
 			-- Does the parameter 'name' exists for this request?
 		require
 			name_exists: name /= Void
@@ -91,7 +91,7 @@ feature -- Access
 
 feature {NONE} -- Implementation
 
-	set_server_parameters (server_port: INTEGER; doc_root: STRING) is
+	set_server_parameters (server_port: INTEGER; doc_root: STRING)
 			-- Set server specific parameters for request
 		require
 			doc_root_exists: doc_root /= Void
@@ -104,14 +104,14 @@ feature {NONE} -- Implementation
 			parameters.force (doc_root, Document_root_var)
 		end
 
-	Last_header_line: STRING is "%R%N%R%N"
+	Last_header_line: STRING = "%R%N%R%N"
 			-- String that indicates the last header has been read.
 			--| Specific to the GOA_STRING_TOKENIZER token parsing method
 
-	Header_separator_line: STRING is "%R%N"
+	Header_separator_line: STRING = "%R%N"
 			-- String that separates headers.
 
-	parse_request_buffer (buffer: STRING) is
+	parse_request_buffer (buffer: STRING)
 			-- Parse request buffer to set parameters
 		require
 			buffer_exists: buffer /= Void
@@ -173,7 +173,7 @@ feature {NONE} -- Implementation
 
 	a_servlet_prefix, document_root: STRING
 
-	parse_request_uri (token: STRING) is
+	parse_request_uri (token: STRING)
 			-- Parse the request uri extracting the path info, script path and query string.
 		require
 			token_exists: token /= Void
@@ -217,10 +217,10 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	Http_header_prefix: STRING is "HTTP_"
+	Http_header_prefix: STRING = "HTTP_"
 			-- Prefix for all headers found in the request
 
-	parse_header (header: STRING) is
+	parse_header (header: STRING)
 			-- Parse the header and set appropriate CGI variables
 		require
 			header_exists: header /= Void

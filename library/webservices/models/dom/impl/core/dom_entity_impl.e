@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Entity implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -18,19 +18,19 @@ inherit
 
 feature
 
-	public_id: DOM_STRING is
+	public_id: DOM_STRING
 			-- The public identifier associated with the entity, if specified.
 			-- For parsed entities, this is Void.
 		do
 		end
 
-	system_id: DOM_STRING is
+	system_id: DOM_STRING
 			-- The system identifier associated with the entity, if specified.
 			-- If the system identifier was not specified, this is Void.
 		do
 		end
 
-	notation_name: DOM_STRING is
+	notation_name: DOM_STRING
 			-- For unparsed entities, the name of the notation for the entity. For
 			-- parsed entities, this is Void.
 		do
@@ -38,12 +38,12 @@ feature
 	
 feature -- from DOM_NODE
 
-	node_type: INTEGER is
+	node_type: INTEGER
 		once
 			Result := Entity_node
 		end
 
-	node_name: DOM_STRING is
+	node_name: DOM_STRING
 		do
 			Result := notation_name
 		end

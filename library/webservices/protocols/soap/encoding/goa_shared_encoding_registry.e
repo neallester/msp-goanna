@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Shared encoding registry"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -12,7 +12,7 @@ class	GOA_SHARED_ENCODING_REGISTRY
 
 feature -- Access
 
-	encodings: REGISTRY [GOA_SOAP_ENCODING] is
+	encodings: REGISTRY [GOA_SOAP_ENCODING]
 			-- Shared encoding registry
 		once
 			create Result.make

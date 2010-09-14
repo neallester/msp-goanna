@@ -1,4 +1,4 @@
-indexing
+note
 	description: "SOAP Web Method feature "
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -16,7 +16,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_method: STRING) is
+	make (a_method: STRING)
 		require
 			valid_method: a_method /= Void and then is_valid_method (a_method)
 		local
@@ -33,7 +33,7 @@ feature -- Access
 	method: GOA_SOAP_PROPERTY
 			-- Web method in use
 
-	is_valid_method (a_method: STRING): BOOLEAN is
+	is_valid_method (a_method: STRING): BOOLEAN
 			--		 Is `a_method' a valid method name?
 		require
 			method_exists: a_method /= Void

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Binary content file handler"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "tools httpd"
@@ -17,7 +17,7 @@ inherit
 feature -- Basic operations
 
 	service (file_name: STRING; content_type_code: INTEGER;
-		req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE) is
+		req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
 			-- Service the file request for the specified 'file_name' and
 			-- 'content_type_code'. Send the file to 'resp'.
 			--| There is currently no difference between this method and
@@ -50,6 +50,6 @@ feature -- Basic operations
 		
 feature {NONE} -- Implementation
 
-	Max_raw_chunk : INTEGER is 8192
+	Max_raw_chunk : INTEGER = 8192
 
 end -- class GOA_BINARY_CONTENT_FILE_HANDLER

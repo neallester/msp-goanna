@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Application Server Used For Testing"
 	author: "Neal Lester"
 	date: "$Date$"
@@ -35,9 +35,9 @@ create
 
 feature
 
-	command_line_ok: BOOLEAN is True
+	command_line_ok: BOOLEAN = True
 
-	register_servlets is
+	register_servlets
 		do
 		end
 
@@ -45,13 +45,13 @@ feature
 
 feature {NONE} -- Creation
 
-	application_make is
+	application_make
 		do
 			create mutex
 			mutex.lock
 		end
 
-	execute is
+	execute
 		do
 			create active_configuration
 			touch_configuration
@@ -68,7 +68,7 @@ feature {NONE} -- Creation
 		end
 
 
-	initialize_listening is
+	initialize_listening
 		do
 			Precursor
 			shut_down_server_servlet.set_mutex (mutex)

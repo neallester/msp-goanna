@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Processing instruction"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -16,14 +16,14 @@ inherit
 
 feature
 
-	data: DOM_STRING is
+	data: DOM_STRING
 			-- The content of this processing  instruction. This is from the
 			-- first non white space character after the target to the character 
 			-- immediately preceding the ?>
 		deferred
 		end
 
-	target: DOM_STRING is
+	target: DOM_STRING
 			-- The target of this processing instruction. XML defines this as being
 			-- the first token following the markup that begins the processing 
 			-- instruction.

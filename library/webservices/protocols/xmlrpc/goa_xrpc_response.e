@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent an XML-RPC response."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -20,14 +20,14 @@ create
 	
 feature -- Initialisation
 
-	make (new_param: GOA_XRPC_PARAM) is
+	make (new_param: GOA_XRPC_PARAM)
 			-- Initialise response with given 'value'. Parameter may be Void.
 		do
 			value := new_param
 			unmarshall_ok := True
 		end
 
-	make_with_value (new_value: GOA_XRPC_VALUE) is
+	make_with_value (new_value: GOA_XRPC_VALUE)
 			-- Initialise response with given 'value'. Routine will create 
 			-- required parameter object. Value may be Void.
 		local
@@ -40,7 +40,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 		
-	unmarshall (node: XM_ELEMENT) is
+	unmarshall (node: XM_ELEMENT)
 			-- Initialise XML-RPC call from DOM element.
 		local
 			params, pvalue: XM_ELEMENT
@@ -74,7 +74,7 @@ feature -- Access
 
 feature -- Status setting
 
-	set_value (new_value: GOA_XRPC_PARAM) is
+	set_value (new_value: GOA_XRPC_PARAM)
 			-- Set the value to 'new_value'. Value may be Void.
 		do
 			value := new_value
@@ -82,7 +82,7 @@ feature -- Status setting
 	
 feature -- Marshalling
 
-	marshall: STRING is
+	marshall: STRING
 			-- Serialize this response to XML format
 		do
 			create Result.make (300)

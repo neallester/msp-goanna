@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A virtual domain host; VIRTUAL_DOMAIN_HOST should inherit from this class"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-06-14 13:46:53 -0700 (Thu, 14 Jun 2007) $"
@@ -13,7 +13,7 @@ feature -- Attributes
 
 	host_name: STRING
 
-	base_url (is_secure: BOOLEAN): STRING is
+	base_url (is_secure: BOOLEAN): STRING
 			-- URL to current virtual domain host
 		local
 			base: STRING
@@ -31,7 +31,7 @@ feature -- Attributes
 
 feature -- Attribute Setting
 
-	set_host_name (new_host_name: STRING) is
+	set_host_name (new_host_name: STRING)
 			-- Set host_name to new_host_name
 		require
 			valid_new_host_name: new_host_name /= Void and then not new_host_name.is_empty
@@ -41,7 +41,7 @@ feature -- Attribute Setting
 			host_name_updated: host_name = new_host_name
 		end
 
-	set_use_ssl is
+	set_use_ssl
 			-- Set domain to to use ssl
 		do
 			use_ssl := True

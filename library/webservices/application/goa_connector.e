@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Servlet connector for connecting to external servers"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -22,7 +22,7 @@ inherit
 		
 feature -- Initialisation
 
-	default_create is
+	default_create
 			-- Initialise
 		do
 			Precursor
@@ -43,7 +43,7 @@ feature -- Access
 	
 feature -- Basic operations
 
-	read_request is
+	read_request
 			-- Read a request from the service. Indicate success of read by
 			-- setting 'last_operation_ok' and if successful set 'last_request'
 			-- and 'last_response'

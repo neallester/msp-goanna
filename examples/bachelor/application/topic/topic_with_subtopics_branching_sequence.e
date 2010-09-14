@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Topics with subtopics that are also branching_page_sequences"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -21,7 +21,7 @@ inherit
 
 feature
 
-	initialize (proposed_user : like user_anchor) is
+	initialize (proposed_user : like user_anchor)
 		do
 			precursor (proposed_user)
 			create_sequence

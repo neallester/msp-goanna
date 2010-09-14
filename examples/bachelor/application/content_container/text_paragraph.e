@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A paragraph of text"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -36,19 +36,19 @@ create
 
 feature -- implement deferred features
 
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			result := precursor {PARAGRAPH}  + html_text_container_begin_element
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			result := html_text_container_end_element + precursor {PARAGRAPH}
 		end
 
 feature {NONE} -- Creation
 
-	make is
+	make
 		do
 			text_container_make
 			paragraph_make

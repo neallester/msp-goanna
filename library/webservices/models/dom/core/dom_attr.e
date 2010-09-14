@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Attribute node"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -16,12 +16,12 @@ inherit
 
 feature
 
-   name: DOM_STRING is
+   name: DOM_STRING
          -- The name of this attribute.
       deferred
       end
 
-   specified: BOOLEAN is
+   specified: BOOLEAN
          -- If this attribute was explicitly given a value in the original
          -- document, this is `True'; otherwise, it is `False'. Note that
          -- the implementation is in charge of this attribute, not the
@@ -45,13 +45,13 @@ feature
       deferred
       end
 
-   value: DOM_STRING is
+   value: DOM_STRING
          -- The value of the attribute is returned as a string. Character
          -- and general entity references are replaced with their values.
       deferred
       end
 
-   set_value (v: DOM_STRING) is
+   set_value (v: DOM_STRING)
          -- This creates a Text node with the unparsed contents of the string.
 	  require
 		  not_no_modification_allowed_err: not readonly
@@ -60,7 +60,7 @@ feature
 		  value_set: value.is_equal (v)
       end
 
-	owner_element: DOM_ELEMENT is
+	owner_element: DOM_ELEMENT
 			-- The element node this attribute is attached to or Void if this 
 			-- attribute is not in use.
 			-- DOM Level 2.

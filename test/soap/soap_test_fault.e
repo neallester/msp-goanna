@@ -1,4 +1,4 @@
-indexing
+note
 
 	description: "Test SOAP Faults"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
@@ -22,7 +22,7 @@ inherit
 
 feature -- Test
 
-	test_parse_with_detail is
+	test_parse_with_detail
 			-- Test parse of test1.xml.
 		local
 			a_node: UT_URI
@@ -36,7 +36,7 @@ feature -- Test
 			assert ("Validation sucessful", a_processor.is_valid)
 		end
 
-	test_new_envelope is
+	test_new_envelope
 			-- Test construct a SOAP message.
 		local
 			an_envelope: GOA_SOAP_ENVELOPE
@@ -53,7 +53,7 @@ feature -- Test
 			--a_formatter.process_document (an_envelope.root_node)
 		end
 
-	test_bad_header is
+	test_bad_header
 			-- Test generation of Fault for a bad header.
 		local
 			a_node: UT_URI
@@ -66,7 +66,7 @@ feature -- Test
 			assert ("Parse sucessful", a_processor.is_build_sucessful)
 		end
 
-	test_version_mismatch is
+	test_version_mismatch
 			-- Test construction of a VersionMismatch fault, with upgrade header
 		local
 			a_node: UT_URI
@@ -79,7 +79,7 @@ feature -- Test
 			assert ("Parse error", not a_processor.is_build_sucessful)
 		end
 
-	test_not_understood is
+	test_not_understood
 			-- Test construction of a MustUnderstand fault, with NotUnderstood headers.
 		local
 			a_node: UT_URI
@@ -94,7 +94,7 @@ feature -- Test
 
 feature -- Access
 
-	base_uri: UT_URI is
+	base_uri: UT_URI
 			-- Base URI for all requests
 		do
 			create Result.make ("dummy:request-uri")
@@ -102,7 +102,7 @@ feature -- Access
 
 feature -- Messages
 
-	fault_message: STRING is
+	fault_message: STRING
 			-- Example env:Fault
 		once
 			Result := "[
@@ -132,7 +132,7 @@ feature -- Messages
 						   ]"
 		end
 
-	faulty_message_one: STRING is
+	faulty_message_one: STRING
 			-- Header has wrong namespace
 		once
 			Result := "[
@@ -147,7 +147,7 @@ feature -- Messages
 						   ]"
 		end
 
-	faulty_message_two: STRING is
+	faulty_message_two: STRING
 			-- Envelope has wrong namespace
 		once
 			Result := "[
@@ -159,7 +159,7 @@ feature -- Messages
 						   ]"
 		end
 
-	faulty_message_three: STRING is
+	faulty_message_three: STRING
 			-- Headers not understood
 		once
 			Result := "[

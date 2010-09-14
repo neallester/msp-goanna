@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that can serialize a DOM to a STRING"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "DOM Serialization"
@@ -17,7 +17,7 @@ inherit
 
 feature -- Initialization
 
-	make is
+	make
 			-- Create a new DOM serializer using the default format.
 		do
 			indent_amount := Default_indent
@@ -40,7 +40,7 @@ feature -- Status report
 			
 feature -- Status setting
 
-	set_output (output_medium: like OUTPUT_STREAM_TYPE) is
+	set_output (output_medium: like OUTPUT_STREAM_TYPE)
 			-- Set the output stream that this serializer will write to.
 		require
 			output_medium_exists: output_medium /= Void			
@@ -50,13 +50,13 @@ feature -- Status setting
 			output_set: output = output_medium
 		end
 	
-	set_compact_format is
+	set_compact_format
 			-- Set compact format
 		do
 			is_compact_format := True
 		end
 	
-	set_pretty_format is
+	set_pretty_format
 			-- Set pretty (indented) format
 		do
 			is_compact_format := False
@@ -64,7 +64,7 @@ feature -- Status setting
 	
 feature -- Serialization
 
-	serialize (node: DOM_NODE) is
+	serialize (node: DOM_NODE)
 			-- Serialize 'node' to specified output medium.
 		require
 			output_exists: output /= Void
@@ -72,7 +72,7 @@ feature -- Serialization
 		deferred
 		end
 	
-	frozen serialize_node (node: DOM_NODE) is
+	frozen serialize_node (node: DOM_NODE)
 		obsolete "To be removed in the next version, use serialize"
 			-- Serialize 'node' to specified output medium
 		require
@@ -82,7 +82,7 @@ feature -- Serialization
 			serialize (node)
 		end
 		
-	frozen serialize_element (element: DOM_ELEMENT) is
+	frozen serialize_element (element: DOM_ELEMENT)
 		obsolete "To be removed in the next version, use serialize"
 			-- Serialize 'element' to specified output medium
 		require
@@ -94,10 +94,10 @@ feature -- Serialization
 	
 feature {NONE} -- Implementation
 		
-	Default_indent: INTEGER is 4
+	Default_indent: INTEGER = 4
 			-- Default indentation amount		
 						
-	Default_line_separator: STRING is "%R%N"
+	Default_line_separator: STRING = "%R%N"
 			-- Default line separator
 
 invariant

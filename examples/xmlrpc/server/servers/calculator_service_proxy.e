@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Proxy for calculator"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -19,7 +19,7 @@ create
 
 feature -- Creation
 
-	new_tuple (a_name: STRING): TUPLE is
+	new_tuple (a_name: STRING): TUPLE
 			--	Tuple of default-valued arguments to pass to call `a_name'.
 		local
 			two_doubles: TUPLE [DOUBLE_REF, DOUBLE_REF]

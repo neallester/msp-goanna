@@ -1,4 +1,4 @@
-indexing
+note
    	description: "Character data implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -21,7 +21,7 @@ inherit
 
 feature {DOM_DOCUMENT} -- Factory creation
 
-	make (new_owner: DOM_DOCUMENT; new_data: DOM_STRING) is
+	make (new_owner: DOM_DOCUMENT; new_data: DOM_STRING)
 			-- Create character data
 		require
 			owner_exists: new_owner /= Void
@@ -42,13 +42,13 @@ feature
          -- may call substringData to retrieve the data in appropriately
          -- sized pieces.
 
-   set_data (v: DOM_STRING) is
+   set_data (v: DOM_STRING)
          -- see `data'
 	  do
 			data := v
       end
 
-   length: INTEGER is 
+   length: INTEGER 
          	-- The number of characters that are available through data
          	-- and the substringData method below. This may have the value
          	-- zero, i.e., CharacterData nodes may be empty.
@@ -56,7 +56,7 @@ feature
 			Result := data.count
 		end
 	
-	substring_data (offset: INTEGER; count: INTEGER): DOM_STRING is
+	substring_data (offset: INTEGER; count: INTEGER): DOM_STRING
          -- Extracts a range of data from the node.
          -- Parameters
          --    offset   Start offset of substring to extract.
@@ -69,7 +69,7 @@ feature
 	  	  Result := data.substring (offset, offset + count)
       end
 
-	append_data (arg: DOM_STRING) is
+	append_data (arg: DOM_STRING)
 			-- Append the string to the end of the character data of the node.
 			-- Upon success, data provides access to the concatenation
 			-- of data and the DOM_String specified.
@@ -79,7 +79,7 @@ feature
 			data.append_uc_string (arg)
 		end
 
-	insert_data (offset: INTEGER; arg: DOM_STRING) is
+	insert_data (offset: INTEGER; arg: DOM_STRING)
 			-- Insert a string at the specified character offset.
 			-- Parameters
 			--    offset   The character offset at which to insert.
@@ -88,7 +88,7 @@ feature
 			data.insert (arg, offset)
 		end
 
-	delete_data (offset: INTEGER; count: INTEGER) is
+	delete_data (offset: INTEGER; count: INTEGER)
 			-- Remove a range of characters from the node. Upon success,
 			-- data and length reflect the change.
 			-- Parameters
@@ -106,7 +106,7 @@ feature
 --			create data.make_from_string (str)
 		end
 
-   replace_data (offset: INTEGER; count: INTEGER; arg: DOM_STRING) is
+   replace_data (offset: INTEGER; count: INTEGER; arg: DOM_STRING)
          -- Replace the characters starting at the specified character
          -- `offset' with the specified string.
          -- Parameters
@@ -124,12 +124,12 @@ feature
 
 feature -- from DOM_NODE
 
-	node_value: DOM_STRING is
+	node_value: DOM_STRING
 		do
 			Result := data
 		end
 
-	set_node_value (v: DOM_STRING) is
+	set_node_value (v: DOM_STRING)
 			-- Set the node value
 		do
 			set_data (v)

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Node that is a parent"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -22,7 +22,7 @@ inherit
 		
 feature {DOM_NODE}
 
-	make is
+	make
 			-- Initialise this parent node
 		do
 			-- TODO: remove this creation procedure
@@ -30,7 +30,7 @@ feature {DOM_NODE}
 
 feature
 
-	first_child: DOM_NODE is
+	first_child: DOM_NODE
 			-- The first child of this node.
 			-- If there is no such node, this returns `Void'.
 		do
@@ -39,7 +39,7 @@ feature
 			end
 		end
 
-	last_child: DOM_NODE is
+	last_child: DOM_NODE
 			-- The last child of this node.
 			-- If there is no such node, this returns `Void'.
 		do
@@ -48,21 +48,21 @@ feature
 			end
 		end
    
-   previous_sibling: DOM_NODE is
+   previous_sibling: DOM_NODE
          -- The node immediately preceding this node.
          -- If there is no such node, this returns `Void'.
       	 -- No siblings for a parent node
 		do
 		end
 
-   next_sibling: DOM_NODE is
+   next_sibling: DOM_NODE
          -- The node immediately following this node.
          -- If there is no such node, this returns `Void'.
 		 -- No siblings for a parent node.
       do
       end
 
-	has_child_nodes: BOOLEAN is
+	has_child_nodes: BOOLEAN
          -- This is a convenience method to allow easy determination
          -- of whether a node has any children.
          -- Return Value
@@ -72,7 +72,7 @@ feature
 		  Result := child_nodes /= Void and then not child_nodes.empty
       end
 
-	normalize is
+	normalize
 			-- Puts all Text modes in the full depth of the sub-tree underneath
 			-- this Node, including attribute nodes, into a "normal" form
 			-- where only stucture (eg, elements, comments, processing
@@ -122,23 +122,23 @@ feature
 
 feature {DOM_NODE} -- DOM Status Setting
 
-	set_previous_sibling (new_sibling: like previous_sibling) is
+	set_previous_sibling (new_sibling: like previous_sibling)
 			-- Set the previous sibling of this node
 		do
 		end
 
-	set_next_sibling (new_sibling: like next_sibling) is
+	set_next_sibling (new_sibling: like next_sibling)
 			-- Set the next sibling of this node
 		do
 		end
 
 feature {NONE} -- Implementation
 
-	ensure_child_list_exists is
+	ensure_child_list_exists
 			-- Build the child list if it doesn't already exist
 		do
-			if child_nodes = Void then
-				!DOM_NODE_LIST_IMPL! child_nodes.make
+			if child_nodes = Void then 
+				create {DOM_NODE_LIST_IMPL} child_nodes.make
 			end
 		end
 

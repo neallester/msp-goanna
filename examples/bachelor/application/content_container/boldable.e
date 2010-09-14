@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Content containers that can display bold text"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -16,13 +16,13 @@ feature
 	bold : BOOLEAN
 		-- Display text bold
 
-	set_bold is
+	set_bold
 		-- Set to display text bold
 		do
 			bold := true
 		end
 
-	set_bold_off is
+	set_bold_off
 		-- Set to not display text bold
 		do
 			bold := false
@@ -30,7 +30,7 @@ feature
 
 feature {NONE} -- implementation
 
-	html_bold_begin_element : STRING is
+	html_bold_begin_element : STRING
 		do
 			if bold then
 				result := "<B>"
@@ -39,7 +39,7 @@ feature {NONE} -- implementation
 			end
 		end
 
-	html_bold_end_element : STRING is
+	html_bold_end_element : STRING
 		do
 			if bold then
 				result := "</B>"

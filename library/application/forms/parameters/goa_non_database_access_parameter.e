@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A parameter that does not require access to an open database"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"

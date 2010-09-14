@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP Fault Node."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -28,7 +28,7 @@ create
 
 feature {NONE} -- Initialisation
 
-	construct (a_parent: GOA_SOAP_ELEMENT; a_value: STRING) is
+	construct (a_parent: GOA_SOAP_ELEMENT; a_value: STRING)
 			-- Establish invariant.
 		require
 			parent_not_void: a_parent /= Void
@@ -44,7 +44,7 @@ feature {NONE} -- Initialisation
 		
 feature -- Status setting
 
-	validate (an_identity: UT_URI) is
+	validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		local
 			a_text, a_prefix, a_local_name: STRING

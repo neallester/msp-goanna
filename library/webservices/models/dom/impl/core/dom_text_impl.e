@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Text implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -16,13 +16,13 @@ inherit
 
 	DOM_CHARACTER_DATA_IMPL
 
-creation
+create
 
 	make
 
 feature
 
-   split_text (offset: INTEGER): DOM_TEXT is
+   split_text (offset: INTEGER): DOM_TEXT
          -- Breaks this Text node into two Text nodes at the specified
          -- `offset', keeping both in the tree as siblings. This node
          -- then only contains all the content up to the `offset' point.

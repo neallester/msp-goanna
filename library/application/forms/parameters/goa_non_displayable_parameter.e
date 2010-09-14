@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A parameter which may not be added to an xml document"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,25 +16,25 @@ inherit
 	
 feature
 	
-	ok_to_add (the_document: GOA_XML_DOCUMENT): BOOLEAN is
+	ok_to_add (the_document: GOA_XML_DOCUMENT): BOOLEAN
 		do
 			Result := False
 		ensure then
 			not_result: not Result
 		end
 		
-	add_to_document (the_document: GOA_XML_DOCUMENT; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER) is
+	add_to_document (the_document: GOA_XML_DOCUMENT; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER)
 		do
 			-- Nothing
 		end
 		
-	add_to_standard_data_input_table (xml: GOA_COMMON_XML_DOCUMENT; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER) is
+	add_to_standard_data_input_table (xml: GOA_COMMON_XML_DOCUMENT; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER)
 		do
 			-- Nothing
 		end
 		
 		
-	current_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	current_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 		do
 			Result := ""
 		end

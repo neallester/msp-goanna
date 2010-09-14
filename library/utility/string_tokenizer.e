@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that parser strings into tokens"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Utility"
@@ -20,12 +20,12 @@ inherit
 --			{NONE} all
 --		end
 		
-creation
+create
 	make
 
 feature -- Initialization
 
-	make (str: STRING) is
+	make (str: STRING)
 			-- Build a tokenizer that will parse 'str'
 		require
 			str_exists: str /= Void
@@ -38,7 +38,7 @@ feature -- Initialization
 	
 feature -- Access
 
-	token: STRING is
+	token: STRING
 			-- Token at current position
 		require
 			not_off: not off
@@ -59,7 +59,7 @@ feature -- Access
 			
 feature -- Status report
 
-	exhausted: BOOLEAN is
+	exhausted: BOOLEAN
 			-- Has string been completely parsed?
 		do
 			Result := off
@@ -67,19 +67,19 @@ feature -- Status report
 			exhausted_when_off: off implies Result
 		end
 
-	after: BOOLEAN is
+	after: BOOLEAN
 			-- Is there no valid token to the right of current one?
 		do
 			Result := (position >= internal_string.count)		
 		end
 
-	off: BOOLEAN is
+	off: BOOLEAN
 			-- Is there no current token?
 		do
 			Result := is_empty or after
 		end
 	
-	is_empty: BOOLEAN is
+	is_empty: BOOLEAN
 			-- Is string empty?
 		do
 			Result := internal_string.is_empty
@@ -87,7 +87,7 @@ feature -- Status report
 		
 feature -- Status setting
 
-	set_token_separator (ch: CHARACTER) is
+	set_token_separator (ch: CHARACTER)
 			-- Set the token separator to 'ch'
 		do
 			token_separator := ch
@@ -95,13 +95,13 @@ feature -- Status setting
 	
 feature -- Cursor movement
 
-	start is
+	start
 			-- Move to start of string if any.
 		do
 			position := 1		
 		end
 
-	forth is
+	forth
 			-- Move to next token; if no next position,
 			-- ensure that 'exhausted' will be true.
 		require

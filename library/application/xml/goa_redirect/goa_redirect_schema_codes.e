@@ -1,5 +1,5 @@
 
-indexing
+note
 
 	description: "Codes and constants representing elements/attributes of the xmlns:goa_redirect schema"
 	author: ""
@@ -18,62 +18,62 @@ class
 
 feature -- Element Tags
 
- 	paragraph_element_tag: STRING is "goa_common:paragraph"
-	text_item_element_tag: STRING is "goa_common:text_item"
-	division_element_tag: STRING is "goa_common:division"
-	ordered_list_element_tag: STRING is "goa_common:ordered_list"
-	list_item_element_tag: STRING is "goa_common:list_item"
-	unordered_list_element_tag: STRING is "goa_common:unordered_list"
-	hyperlink_element_tag: STRING is "goa_common:hyperlink"
-	popup_hyperlink_element_tag: STRING is "goa_common:popup_hyperlink"
-	table_element_tag: STRING is "goa_common:table"
-	header_element_tag: STRING is "goa_common:header"
-	row_element_tag: STRING is "goa_common:row"
-	cell_element_tag: STRING is "goa_common:cell"
-	footer_element_tag: STRING is "goa_common:footer"
-	body_element_tag: STRING is "goa_common:body"
-	hidden_element_tag: STRING is "goa_common:hidden"
-	input_element_tag: STRING is "goa_common:input"
-	submit_element_tag: STRING is "goa_common:submit"
-	radio_element_tag: STRING is "goa_common:radio"
-	checkbox_element_tag: STRING is "goa_common:checkbox"
-	select_element_tag: STRING is "goa_common:select"
-	option_element_tag: STRING is "goa_common:option"
-	text_area_element_tag: STRING is "goa_common:text_area"
-	image_element_tag: STRING is "goa_common:image"
-	tool_tip_element_tag: STRING is "goa_common:tool_tip"
-	redirect_element_tag: STRING is "goa_redirect:redirect"
+ 	paragraph_element_tag: STRING = "goa_common:paragraph"
+	text_item_element_tag: STRING = "goa_common:text_item"
+	division_element_tag: STRING = "goa_common:division"
+	ordered_list_element_tag: STRING = "goa_common:ordered_list"
+	list_item_element_tag: STRING = "goa_common:list_item"
+	unordered_list_element_tag: STRING = "goa_common:unordered_list"
+	hyperlink_element_tag: STRING = "goa_common:hyperlink"
+	popup_hyperlink_element_tag: STRING = "goa_common:popup_hyperlink"
+	table_element_tag: STRING = "goa_common:table"
+	header_element_tag: STRING = "goa_common:header"
+	row_element_tag: STRING = "goa_common:row"
+	cell_element_tag: STRING = "goa_common:cell"
+	footer_element_tag: STRING = "goa_common:footer"
+	body_element_tag: STRING = "goa_common:body"
+	hidden_element_tag: STRING = "goa_common:hidden"
+	input_element_tag: STRING = "goa_common:input"
+	submit_element_tag: STRING = "goa_common:submit"
+	radio_element_tag: STRING = "goa_common:radio"
+	checkbox_element_tag: STRING = "goa_common:checkbox"
+	select_element_tag: STRING = "goa_common:select"
+	option_element_tag: STRING = "goa_common:option"
+	text_area_element_tag: STRING = "goa_common:text_area"
+	image_element_tag: STRING = "goa_common:image"
+	tool_tip_element_tag: STRING = "goa_common:tool_tip"
+	redirect_element_tag: STRING = "goa_redirect:redirect"
 		
 	
 feature -- Attribute Names
 
-	span_attribute_name: STRING is "span"
-	palette_attribute_name: STRING is "palette"
-	summary_attribute_name: STRING is "summary"
-	cellspacing_attribute_name: STRING is "cellspacing"
-	cellpadding_attribute_name: STRING is "cellpadding"
-	colspan_attribute_name: STRING is "colspan"
-	name_attribute_name: STRING is "name"
-	type_attribute_name: STRING is "type"
-	maxlength_attribute_name: STRING is "maxlength"
-	size_attribute_name: STRING is "size"
-	disabled_attribute_name: STRING is "disabled"
-	value_attribute_name: STRING is "value"
-	checked_attribute_name: STRING is "checked"
-	on_click_script_attribute_name: STRING is "on_click_script"
-	multiple_attribute_name: STRING is "multiple"
-	selected_attribute_name: STRING is "selected"
-	rows_attribute_name: STRING is "rows"
-	columns_attribute_name: STRING is "columns"
-	url_attribute_name: STRING is "url"
-	alternate_text_attribute_name: STRING is "alternate_text"
-	height_attribute_name: STRING is "height"
-	width_attribute_name: STRING is "width"
-	page_title_attribute_name: STRING is "page_title"
-	style_sheet_attribute_name: STRING is "style_sheet"
-	delay_attribute_name: STRING is "delay"
-	dummy_attribute_name: STRING is "dummy"
-	class_attribute_name: STRING is "class"
+	span_attribute_name: STRING = "span"
+	palette_attribute_name: STRING = "palette"
+	summary_attribute_name: STRING = "summary"
+	cellspacing_attribute_name: STRING = "cellspacing"
+	cellpadding_attribute_name: STRING = "cellpadding"
+	colspan_attribute_name: STRING = "colspan"
+	name_attribute_name: STRING = "name"
+	type_attribute_name: STRING = "type"
+	maxlength_attribute_name: STRING = "maxlength"
+	size_attribute_name: STRING = "size"
+	disabled_attribute_name: STRING = "disabled"
+	value_attribute_name: STRING = "value"
+	checked_attribute_name: STRING = "checked"
+	on_click_script_attribute_name: STRING = "on_click_script"
+	multiple_attribute_name: STRING = "multiple"
+	selected_attribute_name: STRING = "selected"
+	rows_attribute_name: STRING = "rows"
+	columns_attribute_name: STRING = "columns"
+	url_attribute_name: STRING = "url"
+	alternate_text_attribute_name: STRING = "alternate_text"
+	height_attribute_name: STRING = "height"
+	width_attribute_name: STRING = "width"
+	page_title_attribute_name: STRING = "page_title"
+	style_sheet_attribute_name: STRING = "style_sheet"
+	delay_attribute_name: STRING = "delay"
+	dummy_attribute_name: STRING = "dummy"
+	class_attribute_name: STRING = "class"
 		
 
 feature -- Codes
@@ -90,11 +90,11 @@ feature -- Codes
 	footer_element_code, body_element_code, hidden_element_code, input_element_code,
 	submit_element_code, radio_element_code, checkbox_element_code, select_element_code,
 	option_element_code, text_area_element_code, image_element_code, tool_tip_element_code,
-	redirect_element_code, xml_text_code, xml_null_code: INTEGER is Unique	
+	redirect_element_code, xml_text_code, xml_null_code: INTEGER = Unique	
 
 feature -- Valid Attribute Values
 	
-	is_valid_attribute_value (attribute_name_code: INTEGER; attribute_value: STRING): BOOLEAN is
+	is_valid_attribute_value (attribute_name_code: INTEGER; attribute_value: STRING): BOOLEAN
 			-- is attribute_value valid for athe attribute given by attribute_name_code
 		do
 			Result :=  True
@@ -142,7 +142,7 @@ feature -- Valid Attribute Values
 
 feature {NONE} -- Implementation
 	
-		valid_type_attribute_values: DS_LINKED_LIST [STRING] is
+		valid_type_attribute_values: DS_LINKED_LIST [STRING]
 			-- Valid values for the typeattribute
 		once
 			create Result.make_equal
@@ -150,7 +150,7 @@ feature {NONE} -- Implementation
 			Result.put_last ("password")
 		end
 
-	valid_disabled_attribute_values: DS_LINKED_LIST [STRING] is
+	valid_disabled_attribute_values: DS_LINKED_LIST [STRING]
 			-- Valid values for the disabledattribute
 		once
 			create Result.make_equal
@@ -158,7 +158,7 @@ feature {NONE} -- Implementation
 			Result.put_last ("no")
 		end
 
-	valid_checked_attribute_values: DS_LINKED_LIST [STRING] is
+	valid_checked_attribute_values: DS_LINKED_LIST [STRING]
 			-- Valid values for the checkedattribute
 		once
 			create Result.make_equal
@@ -166,7 +166,7 @@ feature {NONE} -- Implementation
 			Result.put_last ("no")
 		end
 
-	valid_multiple_attribute_values: DS_LINKED_LIST [STRING] is
+	valid_multiple_attribute_values: DS_LINKED_LIST [STRING]
 			-- Valid values for the multipleattribute
 		once
 			create Result.make_equal
@@ -174,7 +174,7 @@ feature {NONE} -- Implementation
 			Result.put_last ("no")
 		end
 
-	valid_selected_attribute_values: DS_LINKED_LIST [STRING] is
+	valid_selected_attribute_values: DS_LINKED_LIST [STRING]
 			-- Valid values for the selectedattribute
 		once
 			create Result.make_equal
@@ -182,7 +182,7 @@ feature {NONE} -- Implementation
 			Result.put_last ("no")
 		end
 
-	valid_class_attribute_values: DS_LINKED_LIST [STRING] is
+	valid_class_attribute_values: DS_LINKED_LIST [STRING]
 			-- Valid values for the classattribute
 		once
 			create Result.make_equal
@@ -194,7 +194,7 @@ feature {NONE} -- Implementation
 
 
 
-	element_code_by_tag: DS_HASH_TABLE [INTEGER, STRING] is
+	element_code_by_tag: DS_HASH_TABLE [INTEGER, STRING]
 			-- Element codes, keyed by element tag
 		once
 			create Result.make_equal (30)
@@ -225,7 +225,7 @@ feature {NONE} -- Implementation
 			Result.force (redirect_element_code, redirect_element_tag)
 		end
 		
-	element_tag_by_code: DS_HASH_TABLE [STRING, INTEGER] is
+	element_tag_by_code: DS_HASH_TABLE [STRING, INTEGER]
 			-- Element tags, keyed by element code
 		once
 			create Result.make_equal (30)
@@ -256,7 +256,7 @@ feature {NONE} -- Implementation
 			Result.force (redirect_element_tag, redirect_element_code)
 		end
 		
-	attribute_code_by_name: DS_HASH_TABLE [INTEGER, STRING] is
+	attribute_code_by_name: DS_HASH_TABLE [INTEGER, STRING]
 			-- Attribute codes, keyed by attribute name
 		once
 			create Result.make_equal (30)
@@ -289,7 +289,7 @@ feature {NONE} -- Implementation
 			Result.force (class_attribute_code, class_attribute_name)
 		end
 		
-	attribute_name_by_code: DS_HASH_TABLE [STRING, INTEGER] is
+	attribute_name_by_code: DS_HASH_TABLE [STRING, INTEGER]
 			-- Attribute names, keyed by attribute code
 		once
 			create Result.make_equal (30)

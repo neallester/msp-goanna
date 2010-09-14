@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that test QNames for equality."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -19,7 +19,7 @@ inherit
 
 feature -- Status report
 
-	test (v, u: GOA_EXPANDED_QNAME): BOOLEAN is
+	test (v, u: GOA_EXPANDED_QNAME): BOOLEAN
 			-- Are `v' and `u' considered equal?
 		do
 			if v = u then

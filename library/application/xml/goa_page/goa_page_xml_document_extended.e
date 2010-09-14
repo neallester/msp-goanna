@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A GOA_PAGE_XML_DOCUMENT with Manually extended features"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -13,7 +13,7 @@ inherit
 
 	GOA_PAGE_XML_DOCUMENT
 	
-creation
+create
 
 	make_iso_8859_1_encoded, make_utf8_encoded
 

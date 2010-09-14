@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A GOA_XML_ITEM that consist only of text"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -13,14 +13,14 @@ inherit
 	
 	GOA_XML_ITEM
 	
-creation
+create
 	
 	make, make_with_css_class
 	
 feature {GOA_COMMON_XML_DOCUMENT_EXTENDED}
 
 	
-	add_to_document (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED) is
+	add_to_document (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED)
 			-- Add an xml representation of this hyperlink to the_documnet
 		do
 			if not text.is_empty then
@@ -34,7 +34,7 @@ feature {GOA_COMMON_XML_DOCUMENT_EXTENDED}
 
 feature -- Queries
 		
-	ok_to_add (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN is
+	ok_to_add (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED): BOOLEAN
 			-- Is it OK to add this hyperlink to xml
 		do
 			Result := xml.ok_to_add_element_or_text (xml.text_item_element_code)
@@ -48,7 +48,7 @@ feature -- Queries
 			
 feature {NONE} -- Creation
 
-	make (new_text: STRING) is
+	make (new_text: STRING)
 			-- Creation
 		require
 			valid_new_text: new_text /= Void
@@ -58,7 +58,7 @@ feature {NONE} -- Creation
 			text_updated: equal (text, new_text)
 		end
 		
-	make_with_css_class (new_text, new_css_class: STRING) is
+	make_with_css_class (new_text, new_css_class: STRING)
 			-- Creation
 		require
 			valid_new_text: new_text /= Void

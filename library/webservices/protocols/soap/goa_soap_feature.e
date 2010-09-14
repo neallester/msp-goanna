@@ -1,4 +1,4 @@
-indexing
+note
 	description: "SOAP features (including MEPs) "
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -12,7 +12,7 @@ deferred class	GOA_SOAP_FEATURE
 
 feature {NONE} -- Initialization
 
-	init (a_name: like name) is
+	init (a_name: like name)
 			--	Establish invariant (to be called from `make'.
 		require
 			name_exists: a_name /= Void

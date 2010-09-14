@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Named threads."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "utility thread"
@@ -21,7 +21,7 @@ inherit
 
 feature {NONE} -- Initialization
 
-	make (new_name: STRING) is
+	make (new_name: STRING)
 			-- Initialize `Current' with specified name.
 		require
 			new_name_exists: new_name /= Void
@@ -36,7 +36,7 @@ feature -- Access
 
 feature -- Status setting
 
-	set_name (new_name: STRING) is
+	set_name (new_name: STRING)
 			-- Set name to 'new_name
 		require
 			new_name_exists: new_name /= Void

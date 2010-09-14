@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Undoable topics that are also branching_sequences"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -20,7 +20,7 @@ inherit
 
 feature
 
-	initialize (new_user : like user_anchor) is
+	initialize (new_user : like user_anchor)
 		do
 			create_sequence
 			precursor (new_user)

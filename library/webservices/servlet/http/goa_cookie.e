@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a small amount of information sent %
 		%by a servlet to a Web browser, saved by the browser, and later sent %
 		%back to the server."
@@ -26,7 +26,7 @@ create
 
 feature -- Initialization
 
-	make (new_name, new_value: STRING) is
+	make (new_name, new_value: STRING)
 			-- Create a new cookie with 'new_name' and 'new_value'
 		require
 			name_not_reserved_word: not is_reserved_cookie_word (new_name)
@@ -65,7 +65,7 @@ feature -- Access
 
 feature -- Status setting
 
-	set_comment (new_comment: like comment) is
+	set_comment (new_comment: like comment)
 			-- Set 'comment' to 'new_comment'
 		require
 			new_comment_exists: new_comment /= Void
@@ -73,7 +73,7 @@ feature -- Status setting
 			comment := new_comment.twin
 		end
 
-	set_domain (new_domain: like domain) is
+	set_domain (new_domain: like domain)
 			-- Set 'domain' to 'new_domain'
 		require
 			new_domain_exists: new_domain /= Void
@@ -81,13 +81,13 @@ feature -- Status setting
 			domain := new_domain.twin
 		end
 
-	set_max_age (new_max_age: like max_age) is
+	set_max_age (new_max_age: like max_age)
 			-- Set 'max_age' to 'new_max_age'
 		do
 			max_age := new_max_age
 		end
 
-	set_path (new_path: like path) is
+	set_path (new_path: like path)
 			-- Set 'path' to 'new_path'
 		require
 			new_path_exists: new_path /= Void
@@ -95,13 +95,13 @@ feature -- Status setting
 			path := new_path.twin
 		end
 
-	set_secure (flag: like secure) is
+	set_secure (flag: like secure)
 			-- Set 'secure' to 'flag'
 		do
 			secure := flag
 		end
 
-	set_version (new_version: like version)	is
+	set_version (new_version: like version)
 			-- Set 'version' to new_version
 		do
 			version := new_version
@@ -109,7 +109,7 @@ feature -- Status setting
 
 feature -- Validation
 
-	is_reserved_cookie_word (word: STRING): BOOLEAN is
+	is_reserved_cookie_word (word: STRING): BOOLEAN
 			-- Is 'word' a reserved cookie word?
 		require
 			word_exists: word /= Void
@@ -130,7 +130,7 @@ feature -- Validation
 
 feature -- Conversion
 
-	header_string: STRING is
+	header_string: STRING
 			-- Return string representation of this cookie suitable for
 			-- a request header value. This routine formats the cookie using
 			-- version 0 of the cookie spec (RFC 2109).
@@ -184,23 +184,23 @@ feature -- Conversion
 			end
 		end
 
-	Comment_label: STRING is "Comment"
-	Discard_label: STRING is "Discard"
-	Domain_label: STRING is "Domain"
-	Expires_label: STRING is "Expires"
-	Max_age_label: STRING is "Max-Age"
-	Path_label: STRING is "Path"
-	Secure_label: STRING is "secure"
-	Version_label: STRING is "Version"
+	Comment_label: STRING = "Comment"
+	Discard_label: STRING = "Discard"
+	Domain_label: STRING = "Domain"
+	Expires_label: STRING = "Expires"
+	Max_age_label: STRING = "Max-Age"
+	Path_label: STRING = "Path"
+	Secure_label: STRING = "secure"
+	Version_label: STRING = "Version"
 
-	Name_value_separator: STRING is "="
-	Term_separator: STRING is "; "
+	Name_value_separator: STRING = "="
+	Term_separator: STRING = "; "
 
-	Expired_date: STRING is "Tue, 01-Jan-1970 00:00:00 GMT"
+	Expired_date: STRING = "Tue, 01-Jan-1970 00:00:00 GMT"
 
-	Default_version: INTEGER is 0
+	Default_version: INTEGER = 0
 
-	max_age_to_date (age: INTEGER): STRING is
+	max_age_to_date (age: INTEGER): STRING
 			-- Convert max_age to a date
 		local
 			date: DT_DATE_TIME

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Security realm."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "web services security"
@@ -16,7 +16,7 @@ create
 
 feature -- Initialization
 
-	default_create is
+	default_create
 			-- Initialise
 		do
 		end

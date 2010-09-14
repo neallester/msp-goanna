@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A URL that can active specific actions within the application"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -36,7 +36,7 @@ feature -- Attribute
 	page : PAGE
 		-- The page that generated the URL
 
-	query_string_factory : UNIQUE_QUERY_STRING_FACTORY is
+	query_string_factory : UNIQUE_QUERY_STRING_FACTORY
 		-- where unique URL's come from
 		once
 			create Result.make
@@ -45,7 +45,7 @@ feature -- Attribute
 	processor : PROCEDURE [PROCESSOR_HOST, TUPLE]
 		-- The code that will run if the URL is selected by user
 
-	process is
+	process
 		-- The url was selected, activate the processor
 		require
 			url_in_active_page: page = page.page_sequencer.active_page
@@ -57,19 +57,19 @@ feature -- Attribute
 	back_up : BOOLEAN
 		-- This dynamic URL is a back_up URL (will cause display of the previous page)
 	
-	html_begin_element : STRING is
+	html_begin_element : STRING
 		do
 			Result := "<A HREF=%"" + web_server_url + "/" + web_file_name + "?" + query_string + "%">"
 		end
 
-	html_end_element : STRING is
+	html_end_element : STRING
 		do
 			Result := "</A>"
 		end		
 		
 feature -- creation
 
-	make (client_page : PAGE ; new_processor : PROCEDURE [PROCESSOR_HOST, TUPLE]; new_text : STRING) is
+	make (client_page : PAGE ; new_processor : PROCEDURE [PROCESSOR_HOST, TUPLE]; new_text : STRING)
 		require
 			valid_client_page : client_page /= void
 			valid_new_processor : new_processor /= Void

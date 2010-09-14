@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A non empty parameter that updates the database"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Parameters that operate on one item in a list of existing items; with suffix indicating the list index"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-02-10 21:25:20 -0800 (Sat, 10 Feb 2007) $"
@@ -18,7 +18,7 @@ inherit
 
 feature
 
-	item_list (processing_result: REQUEST_PROCESSING_RESULT): DS_LINKED_LIST [G] is
+	item_list (processing_result: REQUEST_PROCESSING_RESULT): DS_LINKED_LIST [G]
 		require
 			valid_processing_result: processing_result /= Void
 			ok_to_read_data: ok_to_read_data (processing_result)
@@ -27,17 +27,17 @@ feature
 			ok_to_read_data: ok_to_read_data (processing_result)
 		end
 
-	minimum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER is
+	minimum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER
 		do
 			Result := 1
 		end
 
-	maximum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER is
+	maximum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER
 		do
 			Result := item_list (processing_result).count
 		end
 
-	item_in_list (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): G is
+	item_in_list (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): G
 		require
 			ok_to_read_data: ok_to_read_data (processing_result)
 			valid_processing_result: processing_result /= Void

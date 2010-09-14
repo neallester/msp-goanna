@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Node implementation"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core Implementation"
@@ -16,19 +16,19 @@ inherit
 		
 feature
 
-	node_value: DOM_STRING is
+	node_value: DOM_STRING
 			-- The value of this node, depending on its type.
 			--| Default is Void, subclasses override to return appropriate values.
 		do 
 		end
 
-	set_node_value (v: DOM_STRING) is
+	set_node_value (v: DOM_STRING)
 			-- see `nodeValue'
 			--| Default do nothing. Descendants override.
 		do
 		end
 
-	parent_node: DOM_NODE is
+	parent_node: DOM_NODE
 			-- The parent of this node. All nodes, except Document,
 			-- DocumentFragment, and Attr may have a parent. However,
 			-- if a node has just been created and not yet added to the tree,
@@ -46,13 +46,13 @@ feature
 			-- returned by the NodeList accessors; it is not a static snapshot
 			-- of the content of the node.
 
-	first_child: DOM_NODE is
+	first_child: DOM_NODE
 			-- The first child of this node.
 			-- If there is no such node, this returns `Void'.
 		do
 		end
 
-	last_child: DOM_NODE is
+	last_child: DOM_NODE
 			-- The last child of this node.
 			-- If there is no such node, this returns `Void'.
 		do
@@ -67,7 +67,7 @@ feature
 			-- the Document object used to create new nodes. When this node
 			-- is a Document this is `Void'.
 
-	insert_before (new_child: DOM_NODE; ref_child: DOM_NODE): DOM_NODE is
+	insert_before (new_child: DOM_NODE; ref_child: DOM_NODE): DOM_NODE
 			-- Inserts the node newChild before the existing child node
 			-- `refChild'. If `refChild' is `Void', insert `newChild' at the end
 			-- of the list of children. If `newChild' is a DocumentFragment
@@ -84,7 +84,7 @@ feature
 			ensure_child_list_exists
 		end
 
-	replace_child (new_child: DOM_NODE; old_child: DOM_NODE): DOM_NODE is
+	replace_child (new_child: DOM_NODE; old_child: DOM_NODE): DOM_NODE
 			-- Replaces the child node `oldChild' with `newChild' in the list
 			-- of children, and returns the `oldChild' node. If the `newChild'
 			-- is already in the tree, it is first removed.
@@ -141,7 +141,7 @@ feature
 
 		end
 
-	remove_child (old_child: DOM_NODE): DOM_NODE is
+	remove_child (old_child: DOM_NODE): DOM_NODE
 			-- Removes the child node indicated by oldChild from the list
 			-- of children, and returns it.
 			-- Parameters
@@ -169,7 +169,7 @@ feature
 			Result := old_child 
 		end
 
-	append_child (new_child: DOM_NODE): DOM_NODE is
+	append_child (new_child: DOM_NODE): DOM_NODE
 			-- Adds the node `newChild' to the end of the list of children
 			-- of this node. If the `newChild' is already in the tree,
 			-- it is first removed.
@@ -196,7 +196,7 @@ feature
 			Result := new_child
 		end
 
-	has_child_nodes: BOOLEAN is
+	has_child_nodes: BOOLEAN
 			-- This is a convenience method to allow easy determination
 			-- of whether a node has any children.
 			-- Return Value
@@ -206,7 +206,7 @@ feature
 		do
 		end
 
-	clone_node (deep: BOOLEAN): DOM_NODE is
+	clone_node (deep: BOOLEAN): DOM_NODE
 			-- Returns a duplicate of this node, i.e., serves as a generic copy
 			-- constructor for nodes. The duplicate node has no parent
 			-- (parentNode returns `Void'). Cloning an Element copies all
@@ -225,7 +225,7 @@ feature
 		do
 		end
 
-	normalize is
+	normalize
 			-- Puts all Text modes in the full depth of the sub-tree underneath
 			-- this Node, including attribute nodes, into a "normal" form
 			-- where only stucture (eg, elements, comments, processing
@@ -236,14 +236,14 @@ feature
 		do
 		end
 
-	is_supported (feature_name, version: DOM_STRING): BOOLEAN is
+	is_supported (feature_name, version: DOM_STRING): BOOLEAN
 			-- Tests whether the DOM implementation implements a specific
 			-- feature and that feature is supported by this node.
 		do
 			-- Result := owner_document.implementation.has_feature (feature_name, version)
 		end
 
-	namespace_uri: DOM_STRING is
+	namespace_uri: DOM_STRING
 			-- The namespace URI of this node, or Void if it is unspecified.
 			-- This is not a computed value that is the result of a namespace
 			-- lookup based on an examination of the namespace declarations
@@ -256,25 +256,25 @@ feature
 		do
 		end
 
-	ns_prefix: DOM_STRING is
+	ns_prefix: DOM_STRING
 			-- The namespace prefix of this node, or Void if it is unspecified.
 			-- DOM Level 2.
 		do
 		end
 
-	set_prefix (new_prefix: DOM_STRING) is
+	set_prefix (new_prefix: DOM_STRING)
 			-- Set the namespace prefix of this node.
 			-- DOM Level 2.
 		do
 		end
 
-	local_name: DOM_STRING is
+	local_name: DOM_STRING
 			-- Returns the local part of the qualified name of this node.
 			-- DOM Level 2.
 		do
 		end
 
-	has_attributes: BOOLEAN is
+	has_attributes: BOOLEAN
 			-- Returns whether this node (if it is an element) has any
 			-- attributes.
 			-- DOM Level 2.
@@ -284,13 +284,13 @@ feature
 
 feature {DOM_NODE} -- DOM Status Setting
 
-	set_owner_document (doc: like owner_document) is
+	set_owner_document (doc: like owner_document)
 			-- Set the owner document of this node
 		do
 			owner_document := doc
 		end
 
-	set_parent_node (new_parent: like parent_node) is
+	set_parent_node (new_parent: like parent_node)
 			-- Set the parent node of this node
 			-- Default: do nothing
 		do
@@ -298,7 +298,7 @@ feature {DOM_NODE} -- DOM Status Setting
 
 feature -- Validation Utility
 
-	is_right_document (new_child: DOM_NODE): BOOLEAN is
+	is_right_document (new_child: DOM_NODE): BOOLEAN
 			-- Is 'new_child' from the same document?
 		do
 			if node_type /= Document_node then
@@ -311,7 +311,7 @@ feature -- Validation Utility
 			end
 		end
 
-	can_insert (new_child: DOM_NODE): BOOLEAN is
+	can_insert (new_child: DOM_NODE): BOOLEAN
 			-- Can 'new_child' be inserted in this node?
 		local
 			ancestor: DOM_NODE
@@ -343,7 +343,7 @@ feature -- Validation Utility
 			end
 		end
 
-	has_node (old_child: DOM_NODE): BOOLEAN is
+	has_node (old_child: DOM_NODE): BOOLEAN
 			-- Does 'old_child' exist in this node?
 		local
 			child: DOM_NODE
@@ -369,13 +369,13 @@ feature -- Validation Utility
 			end
 		end
 
-	readonly: BOOLEAN is
+	readonly: BOOLEAN
 			-- Can this node be modified?
 			--| Default is False.
 		do
 		end
 
-	valid_prefix_chars (new_prefix: DOM_STRING): BOOLEAN is
+	valid_prefix_chars (new_prefix: DOM_STRING): BOOLEAN
 			-- Does 'new_prefix' consist of valid namespace prefix characters?
 		do
 			Result := True
@@ -384,7 +384,7 @@ feature -- Validation Utility
 			end
 		end
 
-	well_formed_prefix (new_prefix: DOM_STRING): BOOLEAN is
+	well_formed_prefix (new_prefix: DOM_STRING): BOOLEAN
 			-- Is 'new_prefix' a well formed namespace prefix?
 		do
 			Result := True
@@ -395,14 +395,14 @@ feature -- Validation Utility
 
 feature {DOM_WRITER, DOM_NODE} -- Output Implementation
 
-	output_indented (level: INTEGER) is
+	output_indented (level: INTEGER)
 			-- Indented string representation of node.
 		local
 			i: INTEGER
 			next_attribute: DOM_NODE
 			str: UC_STRING
-		do
-			!! str.make (50)
+		do 
+			create str.make (50)
 			-- node type
 			str.append_string (make_indent (level))
 			str.append_string (node_type_string (node_type))
@@ -460,7 +460,7 @@ feature {DOM_WRITER, DOM_NODE} -- Output Implementation
 		
 feature {NONE} -- Implementation
 
-	ensure_child_list_exists is
+	ensure_child_list_exists
 			-- Build the child list if it doesn't already exist
 		deferred
 		end

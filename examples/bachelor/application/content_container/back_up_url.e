@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A dynamic URL that indicates the user would like to back up to the previous page in the factory sequence"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -19,7 +19,7 @@ inherit
 
 feature
 
-	make (client_page : PAGE ; new_processor : PROCEDURE [PAGE_SEQUENCE_ELEMENT, TUPLE]; new_text : STRING) is
+	make (client_page : PAGE ; new_processor : PROCEDURE [PAGE_SEQUENCE_ELEMENT, TUPLE]; new_text : STRING)
 		do
 			back_up := True
 			precursor (client_page, new_processor, new_text)

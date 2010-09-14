@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that create pages"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -16,7 +16,7 @@ inherit
 	SYSTEM_CONSTANTS
 	SEQUENCE_ELEMENT_FACTORY
 
-creation
+create
 
 	make
 
@@ -25,7 +25,7 @@ feature {PAGE_SEQUENCE_ELEMENT} -- Pages
 
 -- Login
 
-	login (login_sequence : LOGIN_SEQUENCE) : PAGE is
+	login (login_sequence : LOGIN_SEQUENCE) : PAGE
 		-- Page that provides for user login
 			local
 				form : LOGIN_FORM
@@ -37,7 +37,7 @@ feature {PAGE_SEQUENCE_ELEMENT} -- Pages
 		end
 
 
-	new_user_login (login_sequence : LOGIN_SEQUENCE) : PAGE is
+	new_user_login (login_sequence : LOGIN_SEQUENCE) : PAGE
 		-- Page that allows new users to apply to system
 		local
 			form : NEW_USER_LOGIN_FORM
@@ -51,7 +51,7 @@ feature {PAGE_SEQUENCE_ELEMENT} -- Pages
 
 feature {NONE} -- Creation
 
-	make is
+	make
 		do
 		end
 

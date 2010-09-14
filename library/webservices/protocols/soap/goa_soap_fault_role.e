@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP Fault Role."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -23,7 +23,7 @@ create
 
 feature -- Initialisation
 
-	construct (a_fault: GOA_SOAP_FAULT; a_role: like role) is
+	construct (a_fault: GOA_SOAP_FAULT; a_role: like role)
 			-- Establish invariant.
 		require
 			fault_not_void: a_fault /= Void
@@ -47,7 +47,7 @@ feature -- Access
 
 feature -- Status setting
 
-		validate (an_identity: UT_URI) is
+		validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		local
 			a_text: STRING

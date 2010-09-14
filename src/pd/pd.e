@@ -1,4 +1,4 @@
-indexing
+note
 	description: "DOM tree printer"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples"
@@ -23,12 +23,12 @@ inherit
 			{NONE} all
 		end
       
-creation
+create
 	make
 
 feature -- Initialization
 
-	make is
+	make
 		local
 			node_impl: DOM_NODE_IMPL
 			writer: DOM_WRITER
@@ -58,7 +58,7 @@ feature {NONE} -- Implementation
 	file_name: UC_STRING
 			-- Name of file to parse.
 
-	parse_arguments is
+	parse_arguments
 			-- Parse and validate the command line arguments
 		local
 			str: STRING
@@ -75,7 +75,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	show_usage is
+	show_usage
 			-- Output usage message to user
 		local
 			str: STRING

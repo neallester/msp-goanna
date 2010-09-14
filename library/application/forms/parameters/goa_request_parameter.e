@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that process user input from request parameters"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2007-02-10 21:25:20 -0800 (Sat, 10 Feb 2007) $"
@@ -16,7 +16,7 @@ inherit
 
 feature -- Attributes
 
-	processing_order: INTEGER is
+	processing_order: INTEGER
 			-- Order in which to process the parameters
 		once
 			Result := process_third
@@ -24,7 +24,7 @@ feature -- Attributes
 
 feature -- Values
 
-	display_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	display_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- display_value for this parameter (intended for presentation to the user)
 			-- suffix is used for multiple parameters (e.g. after the colon - name:1, name:2 etc)
 			-- Use 0 if no suffix
@@ -38,31 +38,31 @@ feature -- Values
 
 feature -- Queries
 
-	parameter_processing_result (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): PARAMETER_PROCESSING_RESULT is
+	parameter_processing_result (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): PARAMETER_PROCESSING_RESULT
 			-- parameter processing result in processing_result corresponding to this parameter
 		do
 			Result := processing_result.parameter_processing_result (name, suffix)
 		end
 
-	is_suffix_valid (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN is
+	is_suffix_valid (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN
 			-- Is suffix a valid value.  Default is suffix = 0 (no suffix allowed)
 		do
 			Result := minimum_suffix (processing_result) <= suffix and suffix <= maximum_suffix (processing_result)
 		end
 
-	minimum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER is
+	minimum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER
 			-- The minimum valid suffix value
 		once
 			Result := 0
 		end
 
-	maximum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER is
+	maximum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER
 			-- The maximum valid suffix value
 		once
 			Result := 0
 		end
 
-	suffix_list (processing_result: REQUEST_PROCESSING_RESULT): DS_LINKED_LIST [INTEGER] is
+	suffix_list (processing_result: REQUEST_PROCESSING_RESULT): DS_LINKED_LIST [INTEGER]
 			-- A list of all suffix values used for this parameter
 		local
 			index: INTEGER
@@ -86,20 +86,20 @@ feature -- Queries
 
 feature -- As XML
 
-	is_disabled (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN is
+	is_disabled (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN
 			-- Default is always enabled
 		once
 			Result := False
 		end
 
-	input_class (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	input_class (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- CSS class for input of this parameter
 			-- Void if none
 		once
 			Result := Void
 		end
 
-	script_name (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	script_name (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- Name of the script associated with this request parameter; Void if none
 		once
 			Result := Void
@@ -107,14 +107,14 @@ feature -- As XML
 
 feature -- To be removed
 
-	is_a_dependency: BOOLEAN is
+	is_a_dependency: BOOLEAN
 		once
 			Result := False
 		end
 
 feature {NONE} -- Creation
 
-	make is
+	make
 			-- Creation
 		require
 			name_not_registered: not request_parameters.has (name)

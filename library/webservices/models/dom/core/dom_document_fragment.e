@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Document fragment"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"

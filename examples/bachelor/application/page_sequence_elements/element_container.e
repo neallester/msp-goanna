@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Containers of page_sequence_elements for use in page_sequences"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -16,7 +16,7 @@ create
 
 feature -- Attributes
 
-	branch_condition : BOOLEAN is
+	branch_condition : BOOLEAN
 		-- If true, element is incorporated in sequence, if false, element is skipped
 		do
 			branch_function.call ([])
@@ -35,7 +35,7 @@ feature -- Attributes
 feature {NONE} -- creation
 
 	make (new_condition : FUNCTION [PAGE_SEQUENCE_ELEMENT, TUPLE, BOOLEAN]
-; new_description : STRING ; new_element : FUNCTION[SEQUENCE_ELEMENT_FACTORY,TUPLE,PAGE_SEQUENCE_ELEMENT]) is
+; new_description : STRING ; new_element : FUNCTION[SEQUENCE_ELEMENT_FACTORY,TUPLE,PAGE_SEQUENCE_ELEMENT])
 		require
 			valid_new_condition : new_condition /= Void
 			valid_new_description : new_description /= Void

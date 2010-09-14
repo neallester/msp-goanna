@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Document"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Document Object Model (DOM) Core"
@@ -20,14 +20,14 @@ inherit
 		
 feature
 
-	doctype: DOM_DOCUMENT_TYPE is
+	doctype: DOM_DOCUMENT_TYPE
 			-- The Document Type Declaration associated with this
 			-- document. For HTML documents as well as XML documents
 			-- without a document type declaration this returns `Void'.
 		deferred
 		end
 
-	document_element: DOM_ELEMENT is
+	document_element: DOM_ELEMENT
     		-- This is a convenience attribute that allows direct access
     		-- to the child node that is the root element of the document.
     		-- For HTML documents, this is the element with the tagName
@@ -35,7 +35,7 @@ feature
 		deferred
 		end
 
-   create_element (tag_name: DOM_STRING): DOM_ELEMENT is
+   create_element (tag_name: DOM_STRING): DOM_ELEMENT
          	-- Creates an element of the type specified.
          	-- Parameters
          	--    tagName   The name of the element type to instantiate.
@@ -57,7 +57,7 @@ feature
 			proper_result_owner: Result.owner_document = Current
 		end
 
-	create_document_fragment: DOM_DOCUMENT_FRAGMENT is
+	create_document_fragment: DOM_DOCUMENT_FRAGMENT
 			-- Creates an empty DocumentFragment object.
 			-- Return Value
 			--    A new DocumentFragment.
@@ -67,7 +67,7 @@ feature
 			proper_result_owner: Result.owner_document = Current
 		end
 
-	create_text_node (data: DOM_STRING): DOM_TEXT is
+	create_text_node (data: DOM_STRING): DOM_TEXT
 			-- Creates a Text node given the specified string.
 			-- Parameters
 			--    data   The data for the node.
@@ -82,7 +82,7 @@ feature
 			proper_result_owner: Result.owner_document = Current
 		end
 
-	create_comment (data: DOM_STRING): DOM_COMMENT is
+	create_comment (data: DOM_STRING): DOM_COMMENT
 			-- Creates a Comment node given the specified string.
 			-- Parameters
 			--    data   The data for the node.
@@ -97,7 +97,7 @@ feature
 			proper_result_owner: Result.owner_document = Current
 		end
 
-	create_cdata_section (data: DOM_STRING): DOM_CDATA_SECTION is
+	create_cdata_section (data: DOM_STRING): DOM_CDATA_SECTION
 			-- Creates a CDATASection node whose value is the specified string.
 			-- Parameters
 			--    data   The data for the CDATASection [p.43] contents.
@@ -114,7 +114,7 @@ feature
 		end
 
 	create_processing_instruction (target: DOM_STRING; data: DOM_STRING):
-		DOM_PROCESSING_INSTRUCTION is
+		DOM_PROCESSING_INSTRUCTION
 			-- Creates a ProcessingInstruction node given the specified name
 			-- and data strings.
 			-- Parameters
@@ -133,7 +133,7 @@ feature
 			proper_result_owner: Result.owner_document = Current
 		end
 
-	create_attribute (name: DOM_STRING): DOM_ATTR is
+	create_attribute (name: DOM_STRING): DOM_ATTR
 			-- Creates an Attr of the given name. Note that the Attr instance
 			-- can then be set on an Element using the setAttribute method.
 			-- Parameters
@@ -153,7 +153,7 @@ feature
 			proper_result_owner: Result.owner_document = Current
 		end
 
-	create_entity_reference (name: DOM_STRING): DOM_ENTITY_REFERENCE is
+	create_entity_reference (name: DOM_STRING): DOM_ENTITY_REFERENCE
 			-- Creates an EntityReference object.
 			-- Parameters
 			--    name   The name of the entity to reference.
@@ -171,7 +171,7 @@ feature
 			proper_result_owner: Result.owner_document = Current
 		end
 
-	get_elements_by_tag_name (tagname: DOM_STRING): DOM_NODE_LIST is
+	get_elements_by_tag_name (tagname: DOM_STRING): DOM_NODE_LIST
 			-- Returns a NodeList of all the Elements with a given tag name
 			-- in the order in which they would be encountered in a preorder
 			-- traversal of the Document tree.
@@ -189,7 +189,7 @@ feature
 			-- for_all Result.elements element.tagname.is_equal (tagname)
 		end
 
-	import_node (imported_node: DOM_NODE; deep: BOOLEAN): DOM_NODE is
+	import_node (imported_node: DOM_NODE; deep: BOOLEAN): DOM_NODE
 			-- Imports a node from another document to this document. The returned
 			-- has no parent; ('parent_node is Void). The source node is not altered
 			-- or removed from the original doeumtnt; this method creates a new copy
@@ -211,7 +211,7 @@ feature
 			deep_equal: deep implies deep_equal (imported_node, Result)
 		end
 
-	create_element_ns (new_namespace_uri, qualified_name: DOM_STRING): DOM_ELEMENT is
+	create_element_ns (new_namespace_uri, qualified_name: DOM_STRING): DOM_ELEMENT
 			-- Creates an element of the given qualified name and namespace URI.
 			-- DOM Level 2.
 		require
@@ -227,7 +227,7 @@ feature
 			-- TODO: prefix and localname set.
 		end
 
-	create_attribute_ns (new_namespace_uri, qualified_name: DOM_STRING): DOM_ATTR is
+	create_attribute_ns (new_namespace_uri, qualified_name: DOM_STRING): DOM_ATTR
 			-- Creates an attribute of the given qualified name and namespace URI.
 			-- DOM Level 2.
 		require
@@ -242,7 +242,7 @@ feature
 			-- TODO: prefix and localname set.
 		end
 
-	get_elements_by_tag_name_ns (a_namespace_uri, localname: DOM_STRING): DOM_NODE_LIST is
+	get_elements_by_tag_name_ns (a_namespace_uri, localname: DOM_STRING): DOM_NODE_LIST
 			-- Returns a NodeList of all the Elements with a given local name and
 			-- namespace URI in the order in which they would be encountered in a preorder
 			-- traversal of the Document tree.
@@ -262,7 +262,7 @@ feature
 			result_exists: Result /= Void
 		end
 	
-	get_element_by_id (element_id: DOM_STRING): DOM_ELEMENT is
+	get_element_by_id (element_id: DOM_STRING): DOM_ELEMENT
 			-- Returns the element whose ID is given by 'element_id'. If no such
 			-- element exists, returns Void. Behaviour is not defined if more than
 			-- one element has this ID.
@@ -278,49 +278,49 @@ feature
 		
 feature -- Validation Utility
 
-	valid_name_chars (new_name: DOM_STRING): BOOLEAN is
+	valid_name_chars (new_name: DOM_STRING): BOOLEAN
 			-- Does 'new_name' consist of valid characters for a document name?
 		require
 			new_name_exists: new_name /= Void
 		deferred
 		end
 
-	valid_qualified_name_chars (new_name: DOM_STRING): BOOLEAN is
+	valid_qualified_name_chars (new_name: DOM_STRING): BOOLEAN
 			-- Does 'new_name' consist of valid characters for a qualified name?
 		require
 			new_name_exists: new_name /= Void
 		deferred
 		end
 
-	valid_qualified_name (new_namespace_uri, new_name: DOM_STRING): BOOLEAN is
+	valid_qualified_name (new_namespace_uri, new_name: DOM_STRING): BOOLEAN
 			-- Is 'new_name' a valid name within 'new_namespace_uri'?
 		require
 			new_name_exists: new_name /= Void
 		deferred
 		end
 
-	valid_entity_name (new_name: DOM_STRING): BOOLEAN is
+	valid_entity_name (new_name: DOM_STRING): BOOLEAN
 			-- Is 'new_name' a valid name for an entity?
 		require
 			new_name_exists: new_name /= Void
 		deferred
 		end
 
-	valid_target_chars (new_target: DOM_STRING): BOOLEAN is
+	valid_target_chars (new_target: DOM_STRING): BOOLEAN
 			-- Does 'new_target' consist of valid target characters?
 		require
 			new_target_exists: new_target /= Void
 		deferred
 		end
 
-	valid_node_name (new_name: DOM_STRING): BOOLEAN is
+	valid_node_name (new_name: DOM_STRING): BOOLEAN
 			-- Is 'new_name' a valid name for a node?
 		require
 			new_name_exists: new_name /= Void
 		deferred
 		end
 
-	import_supported (new_node: DOM_NODE): BOOLEAN is
+	import_supported (new_node: DOM_NODE): BOOLEAN
 			-- Can 'new_node' be imported into this document?
 		require
 			new_node_exists: new_node /= Void

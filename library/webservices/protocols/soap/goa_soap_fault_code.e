@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP Fault Code element."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -33,7 +33,7 @@ create
 
 feature -- Initialisation
 
-	construct (a_fault: GOA_SOAP_FAULT; a_fault_code: INTEGER; a_sub_code: STRING) is
+	construct (a_fault: GOA_SOAP_FAULT; a_fault_code: INTEGER; a_sub_code: STRING)
 			-- Establish invariant.
 		require
 			fault_not_void: a_fault /= Void
@@ -56,7 +56,7 @@ feature -- Access
 
 feature -- Status setting
 
-	validate (an_identity: UT_URI) is
+	validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		local
 			child_elements: DS_LIST [XM_ELEMENT]

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent general SOAP blocks."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -32,7 +32,7 @@ create
 	
 feature -- Access
 
-	encoding_style: UT_URI is
+	encoding_style: UT_URI
 			-- Encoding style in scope
 		local
 			a_parent: XM_ELEMENT
@@ -56,7 +56,7 @@ feature -- Access
 			style_may_be_unknown: True
 		end
 
-	is_encoding_style_permitted: BOOLEAN is
+	is_encoding_style_permitted: BOOLEAN
 			-- Is `encoding_style' permitted to be non-Void?
 		local
 			a_parent: XM_ELEMENT
@@ -82,7 +82,7 @@ feature -- Access
 	node: XM_ELEMENT
 			-- The XML element of this block
 
-	block_name: STRING is
+	block_name: STRING
 			-- Qualified name of `node'
 		local
 			a_namespace: XM_NAMESPACE
@@ -106,7 +106,7 @@ feature -- Access
 
 feature -- Status setting
 
-	set_encoding_style (an_encoding_style: like encoding_style) is
+	set_encoding_style (an_encoding_style: like encoding_style)
 			-- Set 'encoding_style' to 'an_encoding_style'
 		require
 			new_encoding_style_exists: an_encoding_style /= Void
@@ -126,7 +126,7 @@ feature -- Status setting
 
 	-- TODO: Do we need this next routine ??
 
-	set_node (a_node: like node) is
+	set_node (a_node: like node)
 			-- Set `node' to `a_node'
 		require
 			new_node_exists: a_node /= Void
@@ -138,7 +138,7 @@ feature -- Status setting
 
 feature {GOA_SOAP_NODE_FORMATTER} -- Implementation
 
-	encoding_style_attribute: STRING is
+	encoding_style_attribute: STRING
 			-- Encoding style attribute for insertion in marshall strings;
 			-- Created string is prefixed with a single space.
 		do
@@ -159,7 +159,7 @@ feature {GOA_SOAP_NODE_FORMATTER} -- Implementation
 		
 feature -- Marshalling
 
-	marshalled: STRING is
+	marshalled: STRING
 			-- Serialized to XML format
 		local
 			a_stream: KL_STRING_OUTPUT_STREAM
@@ -176,13 +176,13 @@ feature {NONE} -- Implementation
 	local_encoding_style: UT_URI
 			-- Encoding style
 
-	formatter: GOA_SOAP_NODE_FORMATTER is
+	formatter: GOA_SOAP_NODE_FORMATTER
 			-- XML node formatter
 		once
 			create Result.make
 		end
 
-	check_encoding_style_attribute (an_identifying_uri, a_role_uri: UT_URI) is
+	check_encoding_style_attribute (an_identifying_uri, a_role_uri: UT_URI)
 			-- Search for optional encodingStyle attribute, unmarshall and set
 			-- encoding style if found. Notify of unmarshalling error by setting
 			-- 'unmarshall_ok'.

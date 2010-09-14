@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a FastCGI end request record body"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI protocol"
@@ -24,7 +24,7 @@ create
 
 feature -- Initialisation
 
-	make (new_app_status, new_protocol_status: INTEGER)is
+	make (new_app_status, new_protocol_status: INTEGER)
 			-- Create a new end request body.
 		require
 			-- valid_app_status: valid_app_status (new_app_status)
@@ -40,11 +40,11 @@ feature -- Access
 
 	app_status, protocol_status: INTEGER
 
-	header_type_code: INTEGER is 5
+	header_type_code: INTEGER = 5
 
 feature -- Basic operations
 
-	write (socket: ABSTRACT_TCP_SOCKET) is
+	write (socket: ABSTRACT_TCP_SOCKET)
 			-- Write this body to 'socket'
 		require
 			socket_exists: socket /= Void
@@ -86,7 +86,7 @@ feature -- Basic operations
 			end
 		end
 
-	as_fast_cgi_string: STRING is
+	as_fast_cgi_string: STRING
 			-- Formatted as a String per the FastCGI protocol
 		do
 			Result := ""
@@ -95,7 +95,7 @@ feature -- Basic operations
 
 feature {NONE} -- Implementation
 
-	process_body_fields is
+	process_body_fields
 			-- Extract body fields from raw content data.
 		do
 --			app_status := raw_param_content.item (1).code.INTEGER_.bit_shift_left (24)

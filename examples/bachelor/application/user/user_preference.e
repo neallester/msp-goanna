@@ -1,4 +1,4 @@
-indexing
+note
 	description: "User Preferences"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -16,14 +16,14 @@ create
 
 feature -- Access
 
-	language : TEXT_LIST is
+	language : TEXT_LIST
 		-- A list of all text used as content by the system
 		-- To do; provide mechanism for changing the list for multi-language support
 		once
 			Create Result.make
 		end
 
-	client : CLIENT is
+	client : CLIENT
 		-- The client (e.g. browser) used by the user
 		-- To do; provide support for multiple client types; allowing browser specific code, etc.
 		local
@@ -33,14 +33,14 @@ feature -- Access
 			result := new_client
 		end
 
-	image_location : STRING is "600_800"
+	image_location : STRING = "600_800"
 		-- The subdirectory where images are served from.
 		-- To do; provide support for multiple image directories to support selecting different images
 		-- Based on user's monitor size and/or bandwidth
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 		do
 		end
 

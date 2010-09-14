@@ -1,4 +1,4 @@
-indexing
+note
 
 
 
@@ -34,7 +34,7 @@ feature -- Test
 
 
 
-	test_unbounded_pool is
+	test_unbounded_pool
 
 			-- Test unbounded pool
 
@@ -124,7 +124,7 @@ feature -- Test
 
 
 
-	test_bounded_pool is
+	test_bounded_pool
 
 			-- Test bounded pool
 

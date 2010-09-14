@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that allow input/output to a string object."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Utility"
@@ -33,14 +33,14 @@ inherit
 --			from_c_substring
 		end
 
-creation
+create
 
 	make, make_from_string
 	--, make_from_c
 	
 feature {NONE} -- Initialization
 
-	make (n: INTEGER) is
+	make (n: INTEGER)
 			-- Allocate space for at least `n' characters.
 		do
 			Precursor (n)
@@ -49,7 +49,7 @@ feature {NONE} -- Initialization
 
 feature -- Initialization
 
-	make_from_string (s: STRING) is
+	make_from_string (s: STRING)
 			-- Initialize from the characters of `s'.
 			-- (Useful in proper descendants of class STRING,
 			-- to initialize a string-like object from a manifest string.)
@@ -84,14 +84,14 @@ feature -- Initialization
 			
 feature -- Access
 
-	name: STRING is
+	name: STRING
 			-- Medium name
 		once
 			-- io strings do not have a name
 			Result := ""
 		end
 
-	retrieved: ANY is
+	retrieved: ANY
 			-- Retrieved object structure
 			-- To access resulting object under correct type,
 			-- use assignment attempt.
@@ -103,7 +103,7 @@ feature -- Access
 
 feature -- Element change
 
-	basic_store (object: ANY) is
+	basic_store (object: ANY)
 			-- Produce an external representation of the
 			-- entire object structure reachable from `object'.
 			-- Retrievable within current system only.
@@ -111,7 +111,7 @@ feature -- Element change
 			-- TODO: implement	
 		end
  
-	general_store (object: ANY) is
+	general_store (object: ANY)
 			-- Produce an external representation of the
 			-- entire object structure reachable from `object'.
 			-- Retrievable from other systems for same platform
@@ -123,7 +123,7 @@ feature -- Element change
 			-- TODO: implement
 		end
  
-	independent_store (object: ANY) is
+	independent_store (object: ANY)
 			-- Produce an external representation of the
 			-- entire object structure reachable from `object'.
 			-- Retrievable from other systems for the same or other
@@ -134,46 +134,46 @@ feature -- Element change
  
 feature -- Status report
 
-	handle: INTEGER is 0
+	handle: INTEGER = 0
 			-- Handle to medium
 
-	handle_available: BOOLEAN is True
+	handle_available: BOOLEAN = True
 			-- Is the handle available after class has been
 			-- created?
 
-	is_plain_text: BOOLEAN is True
+	is_plain_text: BOOLEAN = True
 			-- Is file reserved for text (character sequences)?
 
-	exists: BOOLEAN is True
+	exists: BOOLEAN = True
 			-- Does medium exist?
 
-	is_open_read: BOOLEAN is True
+	is_open_read: BOOLEAN = True
 			-- Is this medium opened for input
 
-	is_open_write: BOOLEAN is True
+	is_open_write: BOOLEAN = True
 			-- Is this medium opened for output
 
-	is_readable: BOOLEAN is True
+	is_readable: BOOLEAN = True
 			-- Is medium readable?
 
-	is_executable: BOOLEAN is False
+	is_executable: BOOLEAN = False
 			-- Is medium executable?
 
-	is_writable: BOOLEAN is True
+	is_writable: BOOLEAN = True
 			-- Is medium writable?
 
-	readable: BOOLEAN is True
+	readable: BOOLEAN = True
 			-- Is there a current item that may be read?
 
-	is_closed: BOOLEAN is False
+	is_closed: BOOLEAN = False
 			-- Is the I/O medium open
 
-	support_storable: BOOLEAN is True
+	support_storable: BOOLEAN = True
 			-- Can medium be used to store an Eiffel object?
 
 feature -- Status setting
 
-	close is
+	close
 			-- Close medium.
 		do
 			-- do nothing	
@@ -181,43 +181,43 @@ feature -- Status setting
 
 feature -- Output
 
-	put_new_line, new_line is
+	put_new_line, new_line
 			-- Write a new line character to medium
 		do
 			append ("%R%N") -- TODO: find platform independant new line characters
 		end
 
-	put_string, putstring (s: STRING) is
+	put_string, putstring (s: STRING)
 			-- Write `s' to medium.
 		do
 			append (s)
 		end
 
-	put_character, putchar (c: CHARACTER) is
+	put_character, putchar (c: CHARACTER)
 			-- Write `c' to medium.
 		do
 			append_character (c)	
 		end
 
-	put_real, putreal (r: REAL) is
+	put_real, putreal (r: REAL)
 			-- Write `r' to medium.
 		do
 			append_real (r)
 		end
 
-	put_integer, putint (i: INTEGER) is
+	put_integer, putint (i: INTEGER)
 			-- Write `i' to medium.
 		do
 			append_integer (i)
 		end
 
-	put_boolean, putbool (b: BOOLEAN) is
+	put_boolean, putbool (b: BOOLEAN)
 			-- Write `b' to medium.
 		do
 			append_boolean (b)
 		end
 
-	put_double, putdouble (d: DOUBLE) is
+	put_double, putdouble (d: DOUBLE)
 			-- Write `d' to medium.
 		do
 			append_double (d)
@@ -225,7 +225,7 @@ feature -- Output
 
 feature -- Input
 
-	read_real, readreal is
+	read_real, readreal
 			-- Read a new real.
 			-- Make result available in `last_real'.
 		do
@@ -233,28 +233,28 @@ feature -- Input
 		end
 		
 
-	read_double, readdouble is
+	read_double, readdouble
 			-- Read a new double.
 			-- Make result available in `last_double'.
 		do
 			-- TODO: implement
 		end
 
-	read_character, readchar is
+	read_character, readchar
 			-- Read a new character.
 			-- Make result available in `last_character'.
 		do
 			-- TODO: implement
 		end
 
-	read_integer, readint is
+	read_integer, readint
 			-- Read a new integer.
 			-- Make result available in `last_integer'.
 		do
 			-- TODO: implement
 		end
 
-	read_stream, readstream (nb_char: INTEGER) is
+	read_stream, readstream (nb_char: INTEGER)
 			-- Read a string of at most `nb_char' bound characters
 			-- or until end of medium is encountered.
 			-- Make result available in `last_string'.
@@ -262,7 +262,7 @@ feature -- Input
 			-- TODO: implement
 		end
 
-	read_line, readline is
+	read_line, readline
 			-- Read characters until a new line or
 			-- end of medium.
 			-- Make result available in `last_string'.
@@ -275,7 +275,7 @@ feature -- Input
 	
 feature -- Output
 
-	to_string: STRING is
+	to_string: STRING
 			-- Printable representation
 		do
 			Result ?= Current

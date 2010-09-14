@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a SOAP envelope body."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -26,7 +26,7 @@ feature -- Access
 	body_blocks: DS_LINKED_LIST [GOA_SOAP_ELEMENT]
 			-- Body blocks (zero or more).
 
-	is_fault_message: BOOLEAN is
+	is_fault_message: BOOLEAN
 			-- Is this a SOAP Fault message?
 		require
 			validated: validation_complete and then validated
@@ -42,7 +42,7 @@ feature -- Access
 
 feature -- Status setting
 
-		validate (an_identity: UT_URI) is
+		validate (an_identity: UT_URI)
 			-- Validate `Current'.
 		local
 			child_elements: DS_LIST [XM_ELEMENT]
@@ -83,7 +83,7 @@ feature -- Status setting
 			validation_complete := True
 		end
 
-	add_body_block (a_block: GOA_SOAP_ELEMENT) is
+	add_body_block (a_block: GOA_SOAP_ELEMENT)
 			-- Add `a_block' to the list of body blocks in this body.
 		require
 			new_block_exists: a_block /= Void

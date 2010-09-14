@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that test GOA_FAST_CGI_REQUEST"
 	author: "Neal Lester"
 	date: "$Date$"
@@ -15,7 +15,7 @@ inherit
 
 feature
 
-	test_add_raw_parameter_to_request is
+	test_add_raw_parameter_to_request
 		local
 			request: GOA_FAST_CGI_REQUEST
 			parameters: DS_HASH_TABLE [STRING, STRING]
@@ -48,7 +48,7 @@ feature
 
 		end
 
-	add_raw_parameter_to_request (a_value, a_name: STRING; a_request: GOA_FAST_CGI_REQUEST) is
+	add_raw_parameter_to_request (a_value, a_name: STRING; a_request: GOA_FAST_CGI_REQUEST)
 		require
 			valid_a_name: a_name /= Void
 			valid_a_value: a_value /= Void
@@ -78,7 +78,7 @@ feature
 			end
 		end
 
-	test_as_fast_cgi_string is
+	test_as_fast_cgi_string
 		local
 			request: GOA_FAST_CGI_REQUEST
 			as_fast_cgi_string: STRING

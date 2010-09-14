@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Shared objects for producers and consumers."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "utility thread"
@@ -12,17 +12,17 @@ class	GOA_SHARED_PRODUCER_CONSUMER_DATA
 
 feature 
 
-	mutex: MUTEX is
+	mutex: MUTEX
 			-- Request mutex
-		indexing
+		note
 			once_status: "global"
 		once
 			create Result
 		end
 
-	condition: CONDITION_VARIABLE is
+	condition: CONDITION_VARIABLE
 			-- Request condition variable
-		indexing
+		note
 			once_status: "global"
 		once
 			create Result.make

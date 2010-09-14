@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Collection of DOM class references to ensure a close-set of classes %
 		% to ensure correct storable functionality. %
 		% When retrieving XMLE_DOCUMENT_WRAPPER objects ensure that %

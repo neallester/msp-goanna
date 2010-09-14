@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Abstract SOAP XML encoding scheme"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -12,7 +12,7 @@ deferred class GOA_SOAP_ENCODING
 
 feature -- Status checking
 
-	is_valid_type (a_type: STRING): BOOLEAN is
+	is_valid_type (a_type: STRING): BOOLEAN
 			-- Is `a_type' a known data type in this encoding scheme?
 		require
 			type_not_empty: a_type /= Void and then not a_type.is_empty
@@ -27,7 +27,7 @@ feature -- Status checking
 
 feature -- Validation
 
-	validate_references (an_element: GOA_SOAP_ELEMENT; unique_identifiers: DS_HASH_TABLE [GOA_SOAP_ELEMENT, STRING]; an_identity: UT_URI) is
+	validate_references (an_element: GOA_SOAP_ELEMENT; unique_identifiers: DS_HASH_TABLE [GOA_SOAP_ELEMENT, STRING]; an_identity: UT_URI)
 			-- Validate references from `an_element' and set `was_valid'.
 		require
 			element_not_void: an_element /= Void
@@ -36,7 +36,7 @@ feature -- Validation
 		deferred
 		end
 
-	validate_encoding_information (an_element: GOA_SOAP_ELEMENT; unique_identifiers: DS_HASH_TABLE [GOA_SOAP_ELEMENT, STRING]; an_identity: UT_URI) is
+	validate_encoding_information (an_element: GOA_SOAP_ELEMENT; unique_identifiers: DS_HASH_TABLE [GOA_SOAP_ELEMENT, STRING]; an_identity: UT_URI)
 			-- Validate `an_element' in isolation and set `was_valid'.
 		require
 			element_not_void: an_element /= Void
@@ -47,7 +47,7 @@ feature -- Validation
 
 feature -- Unmarshalling
 
-	unmarshalled_value (a_type, a_value: STRING): GOA_SOAP_VALUE is
+	unmarshalled_value (a_type, a_value: STRING): GOA_SOAP_VALUE
 			-- Unmarshall `a_value' according to `a_type' using the 
 			-- current encoding scheme.
 		require

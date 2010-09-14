@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that provide logging facilities."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "logging"
@@ -13,12 +13,12 @@ class
 
 obsolete "Use log4e instead"
 	
-creation
+create
 	make
 	
 feature -- Initialization
 
-	make is
+	make
 			-- Create a new logger
 		do
 			create channels.make (2)
@@ -26,7 +26,7 @@ feature -- Initialization
 		
 feature -- Access
 
-	channel (facility: STRING): LOG_CHANNEL is
+	channel (facility: STRING): LOG_CHANNEL
 			-- Get log channel for 'facility'.
 		require
 			facility_exists: facility /= Void
@@ -37,7 +37,7 @@ feature -- Access
 		
 feature -- Status report
 
-	has_channel (facility: STRING): BOOLEAN is
+	has_channel (facility: STRING): BOOLEAN
 			-- Does a log channel exists for 'facility'?
 		require
 			facility_exists: facility /= Void
@@ -47,7 +47,7 @@ feature -- Status report
 		
 feature -- Element change
 
-	add_channel (facility: STRING; new_channel: LOG_CHANNEL) is
+	add_channel (facility: STRING; new_channel: LOG_CHANNEL)
 			-- Add log channel 'channel' for logging facility 'facility'.
 		require
 			facility_exists: facility /= Void
@@ -61,7 +61,7 @@ feature -- Element change
 
 feature -- Removal
 	
-	remove_channel (facility: STRING) is
+	remove_channel (facility: STRING)
 			-- Remove log channel for logging facility 'facility'.
 		require
 			facility_exists: facility /= Void

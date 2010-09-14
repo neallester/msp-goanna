@@ -1,4 +1,4 @@
-indexing
+note
 	description: "The client used by the user"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -13,13 +13,13 @@ deferred class
 
 feature -- Initialization
 
-	make is
+	make
 		do
 		end
 
 feature {PAGE} -- Access
 
-	set_code (content : CONTENT_CONTAINER) is
+	set_code (content : CONTENT_CONTAINER)
 		-- Set "code" in content
 		deferred
 		ensure

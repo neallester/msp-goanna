@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Facilities for manipulating text content"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -16,7 +16,7 @@ inherit
 	
 feature -- Text Manipulation
 
-	append_with_space_if_needed (target, text_to_add: STRING) is
+	append_with_space_if_needed (target, text_to_add: STRING)
 			-- Append text to add to target; adding a space if target is not empty
 		require
 			valid_target: target /= Void
@@ -29,7 +29,7 @@ feature -- Text Manipulation
 			end
 		end
 		
-	name_from_raw_parameter (new_raw_parameter: STRING): STRING is
+	name_from_raw_parameter (new_raw_parameter: STRING): STRING
 			-- The parameter name portion of raw_parameter
 		require
 			valid_raw_parameter: new_raw_parameter /= Void and then not new_raw_parameter.is_empty
@@ -47,7 +47,7 @@ feature -- Text Manipulation
 			new_string_created: Result /= new_raw_parameter
 		end
 		
-	suffix_from_raw_parameter (new_raw_parameter: STRING): INTEGER is
+	suffix_from_raw_parameter (new_raw_parameter: STRING): INTEGER
 			-- The parameter's parameter portion of new_raw_parameter
 		require
 			valid_new_raw_parameter: new_raw_parameter /= Void and then not new_raw_parameter.is_empty
@@ -68,7 +68,7 @@ feature -- Text Manipulation
 			not_new_raw_parameter_has_separator_implies_result: not new_raw_parameter.has (configuration.parameter_separator) implies Result = 0
 		end
 		
-	full_parameter_name (name: STRING; suffix: INTEGER): STRING is
+	full_parameter_name (name: STRING; suffix: INTEGER): STRING
 			-- The full parameter name given name and suffix
 			-- Use Void if no suffix
 		require
@@ -82,7 +82,7 @@ feature -- Text Manipulation
 			
 		end
 		
-	maxlength_string_for_integer (maxlength: INTEGER): STRING is
+	maxlength_string_for_integer (maxlength: INTEGER): STRING
 			-- Return a string representing maxlength
 		do
 			if maxlength = 0 then

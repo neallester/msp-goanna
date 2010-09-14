@@ -1,4 +1,4 @@
-indexing
+note
 	description: "XMLRPC Example Current Time retrieval for the %
 		%server (http://time.xmlrpc.com/RPC2)."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
@@ -30,13 +30,13 @@ inherit
 			copy, default_create
 		end
 		
-creation
+create
 
 	start
 
 feature -- Initialization
 
-	start is
+	start
 			-- Create the application, set up `main_window'
 			-- and then launch the application.
 		do
@@ -54,7 +54,7 @@ feature -- Initialization
 			
 feature -- Basic routines
 
-	retrieve_time is
+	retrieve_time
 			-- Retrieve current time
 		local
 			call: XRPC_CALL
@@ -90,7 +90,7 @@ feature {NONE} -- Implementation
 	argument_error: BOOLEAN
 			-- Did an error occur parsing arguments?
 			
-	parse_arguments is
+	parse_arguments
 			-- Parse the command line arguments and store appropriate settings
 		do
 			if Arguments.argument_count < 2 then
@@ -107,14 +107,14 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	print_usage is
+	print_usage
 			-- Display usage information
 		do
 			print ("Usage: currenttime <host> <port-number>%R%N")
 			print ("       eg. currenttime time.xmlrpc.com 80%R%N")
 		end
 
-	update_error_message (message: STRING) is
+	update_error_message (message: STRING)
 			-- Update error message in main window
 		require
 			message_exists: message /= Void

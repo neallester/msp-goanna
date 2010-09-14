@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that log messages for a particular facility"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "logging"
@@ -35,12 +35,12 @@ inherit
 			{ANY} is_open_write
 		end
 
-creation
+create
 	make
 
 feature -- Initialization
 
-	make (medium: like sink) is
+	make (medium: like sink)
 			-- Create new log channel to write to 'medium'
 		require
 			medium_exists: medium /= Void
@@ -50,7 +50,7 @@ feature -- Initialization
 			set_filter (Emergency, Debug9)
 		end
 	
-	make_filter (medium: like sink; min_level, max_level: INTEGER) is
+	make_filter (medium: like sink; min_level, max_level: INTEGER)
 			-- Create a new log channel to write log message with level between
 			-- 'min_level' and 'max_level' to 'medium'.
 		require
@@ -66,7 +66,7 @@ feature -- Initialization
 					
 feature -- Status setting
 
-	set_filter (min_level, max_level: INTEGER) is
+	set_filter (min_level, max_level: INTEGER)
 			-- Set log level filter to 'min_level' and 'max_level'.
 		require
 			valid_log_filter: valid_log_level (min_level) 
@@ -77,7 +77,7 @@ feature -- Status setting
 			max_filter := max_level
 		end
 
-	write (level: INTEGER; message: STRING) is
+	write (level: INTEGER; message: STRING)
 			-- Write 'message' at log level 'level' to output medium.
 		require
 			valid_log_level: valid_log_level (level)
@@ -97,7 +97,7 @@ feature {NONE} -- Implementation
 	min_filter, max_filter: INTEGER
 			-- Log level filter range.
 	
-	format (level: INTEGER; message: STRING): STRING is
+	format (level: INTEGER; message: STRING): STRING
 			-- Format the message for logging
 		local
 			date: DT_DATE_TIME

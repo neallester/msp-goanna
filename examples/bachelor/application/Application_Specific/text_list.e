@@ -1,4 +1,4 @@
-indexing
+note
 	description: "All of the text that may be presented to the user as content"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -16,71 +16,71 @@ create
 	make
 
 feature {NONE} -- Initialization
-	make is
+	make
 		do
 		end
 
 feature  -- Text
 
-	application_title : STRING is ""
+	application_title : STRING = ""
 		-- This string is placed in the title bar of every page with the page context
 
-	language : STRING is "english"
+	language : STRING = "english"
 
-	yes : STRING is "Yes"
+	yes : STRING = "Yes"
 
-	no : STRING is "No"
+	no : STRING = "No"
 
-	more : STRING is "More"
+	more : STRING = "More"
 
-	previous : STRING is "Previous"
+	previous : STRING = "Previous"
 
-	submit : STRING is "Submit"
+	submit : STRING = "Submit"
 
-	no_text : STRING is ""
+	no_text : STRING = ""
 
-	continue : STRING is "Continue"
+	continue : STRING = "Continue"
 
-	done : STRING is "Done"
+	done : STRING = "Done"
 
 -- Personal Information
 
-	personal_information : STRING is "Personal Information"
+	personal_information : STRING = "Personal Information"
 
 -- Login Sequence
 
-	user_login : STRING is "User Login"
+	user_login : STRING = "User Login"
 
-	login_user_id : STRING is "User ID:"
+	login_user_id : STRING = "User ID:"
 
-	login_password : STRING is "Password:"
+	login_password : STRING = "Password:"
 
-	login_confirm_password : STRING is "Confirm Password:"
+	login_confirm_password : STRING = "Confirm Password:"
 
-	login_new_user : STRING is "Your Name:"
+	login_new_user : STRING = "Your Name:"
 
-	login_user_id_error_message : STRING is 
+	login_user_id_error_message : STRING 
 		do
 			result := "This User ID does not match anything on our user list.  Please enter a different User ID or click on '" + login_wrong_form_button_text + "'.  Check your CAPS LOCK key, this entry is case sensitive."
 		end
 
-	login_password_error_message : STRING is "The password you entered does match the one on file for this User ID.  Please re-enter your password.  Check your CAPS LOCK key, this entry is case sensitive."
+	login_password_error_message : STRING = "The password you entered does match the one on file for this User ID.  Please re-enter your password.  Check your CAPS LOCK key, this entry is case sensitive."
 
-	login_button_label : STRING is "Login"
+	login_button_label : STRING = "Login"
 
-	new_user_button_label : STRING is "Login as a New User"
+	new_user_button_label : STRING = "Login as a New User"
 
-	login_wrong_form_button_text : STRING is "I Don't Have a User ID"
+	login_wrong_form_button_text : STRING = "I Don't Have a User ID"
 
-	new_user_wrong_form_button_text : STRING is "I Already Have a User ID"
+	new_user_wrong_form_button_text : STRING = "I Already Have a User ID"
 
-	new_user_id_empty : STRING is "You may not enter a blank User ID.  Please enter a User ID."
+	new_user_id_empty : STRING = "You may not enter a blank User ID.  Please enter a User ID."
 
-	new_user_id_exists : STRING is 
+	new_user_id_exists : STRING 
 		do
 			result := "The User ID you entered is already in use by another person.  Please enter another user ID or click on %"" + new_user_wrong_form_button_text + "%"."
 		end
 
-	confirm_password_error_message : STRING is "The entry in the 'Confirm Password' box does not match the entry in the 'Password' box.  Please retype them both; they must be the same in order to confirm that we have correctly understood your proposed password."
+	confirm_password_error_message : STRING = "The entry in the 'Confirm Password' box does not match the entry in the 'Password' box.  Please retype them both; they must be the same in order to confirm that we have correctly understood your proposed password."
 
 end -- class TEXT_LIST

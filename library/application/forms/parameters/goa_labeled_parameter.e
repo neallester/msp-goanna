@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A parameter that has a label for display to the user"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-06-26 20:03:29 -0700 (Mon, 26 Jun 2006) $"
@@ -16,7 +16,7 @@ inherit
 	
 feature
 	
-	label (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): GOA_XML_ITEM is
+	label (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): GOA_XML_ITEM
 			-- label for this parameter (intended for presentation to the user
 		require
 			valid_processing_result: processing_result /= Void
@@ -27,7 +27,7 @@ feature
 			valid_result: Result /= Void
 		end
 
-	label_class (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	label_class (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- CSS  Class (if any) to use for the label (if any) associated with this parameter
 			-- Void if none (default = Void)
 		require
@@ -40,7 +40,7 @@ feature
 			ok_to_read_data: ok_to_read_data (processing_result)
 		end
 
-	add_to_standard_data_input_table (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER) is
+	add_to_standard_data_input_table (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER)
 			-- Add labeled parameter to a standard table in xml document
 		do
 			xml.start_row_element (Void)
@@ -56,7 +56,7 @@ feature
 			xml.end_current_element
 		end
 		
-	add_messages (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER) is
+	add_messages (xml: GOA_COMMON_XML_DOCUMENT_EXTENDED; processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER)
 			-- Add dependency messages for this parameter (if any) to document
 		require
 			valid_xml: xml /= Void

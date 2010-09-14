@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Register of addresses"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XMLRPC examples"
@@ -23,7 +23,7 @@ create
 	
 feature -- Initialization
 
-	make is
+	make
 			-- Create a few addresses
 		do
 			Precursor
@@ -32,7 +32,7 @@ feature -- Initialization
 		
 feature -- Access
 			
-	get_entry (name: STRING): STRING is
+	get_entry (name: STRING): STRING
 			-- Locate address by name
 		require
 			has_entry: has_entry (name).item
@@ -42,7 +42,7 @@ feature -- Access
 			entry_exists: Result /= Void
 		end
 	
-	add_entry (name: STRING; address: STRING) is
+	add_entry (name: STRING; address: STRING)
 			-- Add 'address' for 'name'.
 		require
 			name_exists: name /= Void
@@ -54,7 +54,7 @@ feature -- Access
 			has_entry: has_entry (name).item
 		end
 	
-	has_entry (name: STRING): BOOLEAN_REF is
+	has_entry (name: STRING): BOOLEAN_REF
 			-- Does 'address' exist for 'name'?
 		require
 			name_exists: name /= Void
@@ -63,7 +63,7 @@ feature -- Access
 			Result.set_item (addresses.has (name))
 		end
 		
-	remove_entry (name: STRING) is
+	remove_entry (name: STRING)
 			-- Remove 'address' for 'name'
 		require
 			name_exists: name /= Void
@@ -72,7 +72,7 @@ feature -- Access
 			addresses.remove (name)
 		end
 	
-	get_names: ARRAY [STRING] is
+	get_names: ARRAY [STRING]
 			-- Return all names
 		local
 			c: DS_HASH_TABLE_CURSOR [STRING, STRING]
@@ -94,7 +94,7 @@ feature -- Access
 
 feature -- Creation
 
-	new_tuple (a_name: STRING): TUPLE is
+	new_tuple (a_name: STRING): TUPLE
 			--	Tuple of default-valued arguments to pass to call `a_name'.
 		local
 			a_get_names_tuple: TUPLE []
@@ -118,19 +118,19 @@ feature -- Creation
 
 feature {NONE} -- Implementation
 
-	Get_names_name: STRING is "getNames"
+	Get_names_name: STRING = "getNames"
 			-- Name of `get_names' service
 
-	Get_entry_name: STRING is "getEntry"
+	Get_entry_name: STRING = "getEntry"
 			-- Name of `get_entry' service
 
-	Has_entry_name: STRING is "hasEntry"
+	Has_entry_name: STRING = "hasEntry"
 			-- Name of `has_entry' service
 	
-	Add_entry_name: STRING is "addEntry"
+	Add_entry_name: STRING = "addEntry"
 			-- Name of `add_entry' service
 
-	Remove_entry_name: STRING is "removeEntry"
+	Remove_entry_name: STRING = "removeEntry"
 			-- Name of `remove_entry' service
 	
 	addresses: DS_HASH_TABLE [STRING, STRING]
@@ -138,7 +138,7 @@ feature {NONE} -- Implementation
 
 feature {NONE} -- Initialisation
 
-	self_register is
+	self_register
 			-- Register all actions for this service
 		do		
 			register (agent get_names, Get_names_name)

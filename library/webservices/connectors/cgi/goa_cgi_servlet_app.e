@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a CGI servlet application"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "CGI servlets"
@@ -44,7 +44,7 @@ inherit
 		
 feature -- Initialisation
 
-	make is
+	make
 			-- Process the request and exit
 		do
 			initialise_logger
@@ -54,7 +54,7 @@ feature -- Initialisation
 	
 feature -- Basic operations
 		
-	run is
+	run
 			-- Process a request.
 		local
 			req: GOA_CGI_SERVLET_REQUEST
@@ -89,9 +89,9 @@ feature -- Basic operations
 		
 feature {NONE} -- Implementation
 	
-	Servlet_app_log_category: STRING is "servlet.app"
+	Servlet_app_log_category: STRING = "servlet.app"
 	
-	initialise_logger is
+	initialise_logger
 			-- Set logger appenders
 		local
 			appender: L4E_APPENDER
@@ -103,7 +103,7 @@ feature {NONE} -- Implementation
 			log_hierarchy.logger (Servlet_app_log_category).add_appender (appender)
 		end
 		
-	handle_missing_servlet (resp: GOA_CGI_SERVLET_RESPONSE) is
+	handle_missing_servlet (resp: GOA_CGI_SERVLET_RESPONSE)
 			-- Send error page indicating missing servlet
 		require
 			resp_exists: resp /= Void
@@ -111,7 +111,7 @@ feature {NONE} -- Implementation
 			resp.send_error (Sc_not_found)
 		end
 
-	servlet_app_make (new_host: STRING; port, backlog: INTEGER) is
+	servlet_app_make (new_host: STRING; port, backlog: INTEGER)
 			-- Not used in a CGI app 	
 		do
 		end

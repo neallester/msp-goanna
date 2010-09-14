@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Example consumer of messages."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "examples thread"
@@ -20,7 +20,7 @@ create
 	
 feature {NONE} -- Implementation
 
-	process (next: STRING) is
+	process (next: STRING)
 			-- Process the next entry in the queue.
 		do
 			print (next + "%N")

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "An item in an XML_ELEMENT_SCHEMA"
 	author: "Neal L Lester <neal@3dsafety.com>"
 	date: "$Date: 2007-04-06 03:18:13 -0700 (Fri, 06 Apr 2007) $"
@@ -11,7 +11,7 @@ class
 inherit
 	GOA_XML_DEERRED_SCHEMA_ELEMENT
 
-creation
+create
 
 	make_required,
 	make_optional,
@@ -21,7 +21,7 @@ creation
 
 feature {GOA_XML_ELEMENT_SCHEMA, GOA_XML_DEERRED_SCHEMA_ELEMENT} -- Query
 
-	is_valid_content_fragment (the_fragment: DS_ARRAYED_LIST [INTEGER]): BOOLEAN is
+	is_valid_content_fragment (the_fragment: DS_ARRAYED_LIST [INTEGER]): BOOLEAN
 			-- Does this element represent a valid element at the given location in the parent element?
 			-- The location is given by the internal cursor of the_fragment
 			-- If the feature retuns false, the_fragment must be unchanged.
@@ -50,7 +50,7 @@ feature {NONE} -- Implementation
 
 feature {NONE} -- Creation
 
-	make_optional (new_element_code: INTEGER) is
+	make_optional (new_element_code: INTEGER)
 			-- Make an 'optional' element
 		do
 			element_code := new_element_code
@@ -60,7 +60,7 @@ feature {NONE} -- Creation
 			element_code_set: element_code = new_element_code
 		end
 
-	make_required (new_element_code: INTEGER) is
+	make_required (new_element_code: INTEGER)
 			-- Make a 'required' element
 		do
 			element_code := new_element_code
@@ -70,7 +70,7 @@ feature {NONE} -- Creation
 			element_code_set: element_code = new_element_code
 		end
 
-	make_zero_or_more (new_element_code: INTEGER) is
+	make_zero_or_more (new_element_code: INTEGER)
 			-- Make a 'zero or more' element
 		do
 			element_code := new_element_code
@@ -80,7 +80,7 @@ feature {NONE} -- Creation
 			element_code_set: element_code = new_element_code
 		end
 
-	make_one_or_more (new_element_code: INTEGER) is
+	make_one_or_more (new_element_code: INTEGER)
 			-- Make a 'one or more' element
 		do
 			element_code := new_element_code

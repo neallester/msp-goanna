@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Access to Objects associated with the user session"
 	author: ""
 	date: "$Date: 2006-04-16 23:42:40 -0700 (Sun, 16 Apr 2006) $"
@@ -12,7 +12,7 @@ inherit
 
 	GOA_SESSION_STATUS
 
-creation
+create
 	
 	make
 	

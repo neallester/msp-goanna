@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent a FastCGI standalone application"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI protocol"
@@ -21,7 +21,7 @@ inherit
 
 feature -- Basic operations
 
-	run is
+	run
 			-- Read, process, and finish requests
 		local
 			request_read, ending_listening: BOOLEAN
@@ -59,7 +59,7 @@ feature -- Basic operations
 			end
 		end
 
-	max_retries_exceeded: BOOLEAN is
+	max_retries_exceeded: BOOLEAN
 			-- Have we already retried/re-initialized listening too many times
 			-- If we are in a loop that is generating errors or we simply can't listen
 			-- Then bail instead of continuing forever and filling the server logs
@@ -71,14 +71,14 @@ feature -- Basic operations
 	retries: INTEGER
 		-- The number of times run has retried or called initialize_listening
 
-	max_retries: INTEGER is
+	max_retries: INTEGER
 		-- The maximum number of times application will retry
 		once
 			Result := 100
 		end
 
 
-	set_end_application is
+	set_end_application
 			-- Set end_application to true
 		do
 			end_application := True
@@ -90,13 +90,13 @@ feature -- Basic operations
 	end_application: BOOLEAN
 			-- Should we stop running this application?
 
-	process_request is
+	process_request
 			-- Process a request.
 		deferred
 		end
 
 
-	field_exception: BOOLEAN is
+	field_exception: BOOLEAN
 			-- Should we attempt to retry?
 		require
 			True

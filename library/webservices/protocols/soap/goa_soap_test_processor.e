@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Processor for testing SOAP Messaging Framework"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "SOAP"
@@ -20,7 +20,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (an_identity: like node) is
+	make (an_identity: like node)
 		require
 			identity_not_void: an_identity /= Void
 		do
@@ -32,7 +32,7 @@ feature {NONE} -- Initialization
 
 feature -- Template routines
 
-	send_build_failure_message (a_message: STRING) is
+	send_build_failure_message (a_message: STRING)
 			-- Send a build-failure message.
 		require
 			message_not_empty: a_message /= Void and then not a_message.is_empty
@@ -40,12 +40,12 @@ feature -- Template routines
 			print (a_message);print ("%N")
 		end
 
-	add_additional_known_roles is
+	add_additional_known_roles
 			-- Add non-standard roles.
 		do
 		end
 
-	determine_active_roles is
+	determine_active_roles
 			-- Determine in which roles we will act.
 		local
 			a_cursor: DS_LINKED_LIST_CURSOR [GOA_SOAP_HEADER_BLOCK]
@@ -64,7 +64,7 @@ feature -- Template routines
 			end
 		end
 
-	examine_header_for_roles (a_header: GOA_SOAP_HEADER_BLOCK) is
+	examine_header_for_roles (a_header: GOA_SOAP_HEADER_BLOCK)
 			-- Examine `a_header' to determine roles in which `Current' will act.
 		local
 			a_candidate_role: STRING
@@ -77,12 +77,12 @@ feature -- Template routines
 			end
 		end
 
-	examine_body_for_active_roles is
+	examine_body_for_active_roles
 			-- Examine message body to determine roles in which `Current' will act.
 		do
 		end
 
-	process_headers is
+	process_headers
 			-- Process all mandatory headers (and optionally, non-mandatory headers) targetted at `Current'.
 		local
 			a_cursor: DS_LINKED_LIST_CURSOR [GOA_SOAP_HEADER_BLOCK]
@@ -101,13 +101,13 @@ feature -- Template routines
 			end
 		end
 
-	process_header (a_header:  GOA_SOAP_HEADER_BLOCK) is
+	process_header (a_header:  GOA_SOAP_HEADER_BLOCK)
 			-- Process `_header'
 		do
 			is_header_fault := False
 		end
 
-	process_body is
+	process_body
 			-- Process message body.
 		local
 			a_formatter: GOA_SOAP_NODE_FORMATTER
@@ -124,7 +124,7 @@ feature -- Template routines
 			print ("%N")
 		end
 
-	create_and_send_must_understand_fault is
+	create_and_send_must_understand_fault
 			-- Send a MustUnderstand fault.
 		local
 			a_fault_intent: GOA_SOAP_FAULT_INTENT
@@ -134,7 +134,7 @@ feature -- Template routines
 			send_message (new_fault_message (a_fault_intent))
 		end
 
-	create_and_send_fault (a_fault_intent: GOA_SOAP_FAULT_INTENT) is
+	create_and_send_fault (a_fault_intent: GOA_SOAP_FAULT_INTENT)
 			-- Create and send a fault_message.
 		require
 			fault_intent_not_void: a_fault_intent /= Void
@@ -145,7 +145,7 @@ feature -- Template routines
 			send_message (an_envelope)
 		end
 	
-	send_message (an_envelope: GOA_SOAP_ENVELOPE) is
+	send_message (an_envelope: GOA_SOAP_ENVELOPE)
 			-- Send a SOAP message.
 		local
 			a_formatter: GOA_SOAP_NODE_FORMATTER
@@ -159,7 +159,7 @@ feature -- Template routines
 			print ("%N")
 		end
 
-	relay_message is
+	relay_message
 			-- TODO
 		do
 		end

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects on forms that accept input from the user"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "FastCGI Applications"
@@ -17,7 +17,7 @@ inherit
 
 feature {FORM} -- Access
 
-	initialize is
+	initialize
 		-- Initialize values from database/model if necessary
 		require
 			ready_to_initialize : ready_to_initialize
@@ -37,12 +37,12 @@ feature {FORM} -- Access
 	initialized : BOOLEAN
 		-- Has this form been initialized
 
-	ready_to_initialize : BOOLEAN is
+	ready_to_initialize : BOOLEAN
 		-- Is the element ready to initialize
 		deferred
 		end
 
-	process is
+	process
 		-- Process information received from the user
 		require
 			valid_web_request : parent.page.web_request /= Void
@@ -55,12 +55,12 @@ feature {FORM} -- Access
 			end
 		end
 
-	processed : BOOLEAN is
+	processed : BOOLEAN
 		-- Was the information sucessfully processed
 		deferred
 		end
 
-	set_validity_function (new_validity_function : FUNCTION [PROCESSOR_HOST, TUPLE, BOOLEAN]) is
+	set_validity_function (new_validity_function : FUNCTION [PROCESSOR_HOST, TUPLE, BOOLEAN])
 		-- Set the agent used to verify validity of the input
 		require
 			valid_new_validity_function : new_validity_function /= Void
@@ -70,7 +70,7 @@ feature {FORM} -- Access
 			validity_function_updated : validity_function = new_validity_function
 		end
 
-	set_error_message_function (new_error_message_function : FUNCTION [PROCESSOR_HOST, TUPLE, STRING]) is
+	set_error_message_function (new_error_message_function : FUNCTION [PROCESSOR_HOST, TUPLE, STRING])
 		-- Set the function that will generate text of the error message
 		require
 			valid_new_error_message_function : new_error_message_function /= Void
@@ -88,12 +88,12 @@ feature {FORM, FORM_ELEMENT} -- Implementation
 	force_update : BOOLEAN
 		-- Force update even if user has not changed values obtained from database
 
-	process_element is
+	process_element
 		-- Process the element
 		deferred
 		end
 
-	initialize_element is
+	initialize_element
 		-- Initialize values from database/model if necessary
 		deferred
 		end
@@ -101,12 +101,12 @@ feature {FORM, FORM_ELEMENT} -- Implementation
 	database_corrupt : BOOLEAN
 		-- The data obtained from the database is corrupt
 
-	new_input : BOOLEAN is
+	new_input : BOOLEAN
 		-- Has the user input something new
 		deferred
 		end
 
-	input_valid : BOOLEAN is
+	input_valid : BOOLEAN
 		-- Is the input received from the user valid?
 		do
 			if validity_function = Void then
@@ -120,7 +120,7 @@ feature {FORM, FORM_ELEMENT} -- Implementation
 	parent : FORM
 		-- The form that created this element
 
-	unique_name_factory : UNIQUE_FORM_ELEMENT_NAME_FACTORY is
+	unique_name_factory : UNIQUE_FORM_ELEMENT_NAME_FACTORY
 		-- Where the unique form element names come from
 		once
 			create result.make
@@ -131,7 +131,7 @@ feature {FORM, FORM_ELEMENT} -- Implementation
 
 feature {NONE} -- Creation
 
-	make_form_element (proposed_parent : FORM) is
+	make_form_element (proposed_parent : FORM)
 		require
 			valid_proposed_parent : proposed_parent /= Void
 		do
@@ -146,7 +146,7 @@ feature {NONE} -- Creation
 
 feature {CONTENT_CONTAINER} -- Access
 
-	error_message : STRING is
+	error_message : STRING
 		-- Text explaining any problems with the input
 		do
 			if error_message_function = Void then -- or parent.page.web_request = Void then

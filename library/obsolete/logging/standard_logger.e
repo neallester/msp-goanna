@@ -1,4 +1,4 @@
-indexing
+note
 	description: "A standard logger with one channel registered under the facility 'general' that %
 		%writes to a specified file."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
@@ -33,12 +33,12 @@ inherit
 			{NONE} all
 		end
 		
-creation
+create
 	make
 
 feature -- Initialization
 
-	make (log_file_name: STRING) is
+	make (log_file_name: STRING)
 			-- Create a standard logger to write to 'log_file_name'
 		require
 			log_file_name_exists: log_file_name /= Void
@@ -54,6 +54,6 @@ feature -- Initialization
 		
 feature -- Facilities
 
-	Standard_facility: STRING is "general"
+	Standard_facility: STRING = "general"
 	
 end -- class STANDARD_LOGGER

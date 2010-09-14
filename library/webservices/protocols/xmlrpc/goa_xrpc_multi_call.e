@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent an XML-RPC multi call."
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "XML-RPC"
@@ -27,7 +27,7 @@ create
 
 feature -- Initialisation
 
-	make is
+	make
 			-- Initialise 
 		do
 			call_make (Multicall_method_name)
@@ -35,7 +35,7 @@ feature -- Initialisation
 			unmarshall_ok := True
 		end
 		
-	unmarshall (node: XM_ELEMENT) is
+	unmarshall (node: XM_ELEMENT)
 			-- Initialise XML-RPC call from DOM element.
 			-- NOTE: Does nothing. Should never be called. Unmarshalling
 			-- occurs in execution of multiCall method.
@@ -50,7 +50,7 @@ feature -- Access
 
 feature -- Status setting
 
-	add_call (new_call: GOA_XRPC_CALL) is
+	add_call (new_call: GOA_XRPC_CALL)
 			-- Add 'new_call' to the list of sub-calls to send
 			-- with this call.
 		require
@@ -61,7 +61,7 @@ feature -- Status setting
 	
 feature -- Marshalling
 
-	marshall: STRING is
+	marshall: STRING
 			-- Serialize this call to XML format
 		local
 			c: DS_LINKED_LIST_CURSOR [GOA_XRPC_CALL]
@@ -106,14 +106,14 @@ feature -- Marshalling
 			Result.append ("</methodCall>")
 		end
 	
-	Multicall_method_name: STRING is 
+	Multicall_method_name: STRING 
 		once
 			create Result.make_from_string ("system.multiCall")
 		end
 	
-	Method_params_id: STRING is "params"
+	Method_params_id: STRING = "params"
 	
-	Method_name_id: STRING is "methodName"
+	Method_name_id: STRING = "methodName"
 	
 invariant
 	

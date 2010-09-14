@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Objects that represent an Eiffel code class"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Eiffel Code Generator"
@@ -15,13 +15,13 @@ inherit
 
 	EIFFEL_CODE
 
-creation
+create
 
 	make
 
 feature -- Initialization
 
-	make (class_name: like name) is
+	make (class_name: like name)
 			-- Create new code class with 'name'
 		require
 			class_name_exists: class_name /= Void
@@ -52,7 +52,7 @@ feature -- Access
 
 feature -- Status setting
 
-	set_name (new_name: like name) is
+	set_name (new_name: like name)
 			-- Set the class name
 		require
 			new_name_exists: new_name /= Void
@@ -60,7 +60,7 @@ feature -- Status setting
 			name := new_name
 		end
 
-	add_indexing_clause (new_indexing: STRING) is
+	add_indexing_clause (new_indexing: STRING)
 			-- Add 'new_indexing' as an indexing clause for this class
 		require
 			new_clause_exists: new_indexing /= Void
@@ -68,7 +68,7 @@ feature -- Status setting
 			indexing_clauses.force_last (new_indexing)
 		end
 	
-	add_parent (new_parent: STRING) is
+	add_parent (new_parent: STRING)
 			-- Add 'new_parent' to parents
 		require
 			new_parent_exists: new_parent /= Void
@@ -76,7 +76,7 @@ feature -- Status setting
 			parents.force_last (new_parent)
 		end
 
-	add_creation_procedure_name (new_name: STRING) is
+	add_creation_procedure_name (new_name: STRING)
 			-- Add 'new_name' as the name of a creation procedure.
 		require
 			new_name_exists: new_name /= Void
@@ -84,7 +84,7 @@ feature -- Status setting
 			creation_procedure_names.force_last (new_name)
 		end
 
-	add_feature_group (new_group: EIFFEL_FEATURE_GROUP) is
+	add_feature_group (new_group: EIFFEL_FEATURE_GROUP)
 			-- Add 'new_group' to the feature groups of this class.
 		require
 			new_group_exists: new_group /= Void
@@ -94,7 +94,7 @@ feature -- Status setting
 		
 feature -- Basic operations
 
-	write (output: IO_MEDIUM) is
+	write (output: IO_MEDIUM)
 			-- Print source code representation of this class
 		do
 			if not indexing_clauses.is_empty then
@@ -115,7 +115,7 @@ feature -- Basic operations
 
 feature {NONE} -- Implementation
 
-	write_indexing (output: IO_MEDIUM) is
+	write_indexing (output: IO_MEDIUM)
 		do
 			output.put_string ("indexing")
 			output.put_new_line
@@ -132,14 +132,14 @@ feature {NONE} -- Implementation
 			output.put_new_line			
 		end
 	
-	write_header (output: IO_MEDIUM) is
+	write_header (output: IO_MEDIUM)
 		do
 			output.put_string ("class " + name)
 			output.put_new_line
 			output.put_new_line
 		end
 
-	write_parents (output: IO_MEDIUM) is
+	write_parents (output: IO_MEDIUM)
 		do
 			output.put_string ("inherit")
 			output.put_new_line
@@ -156,7 +156,7 @@ feature {NONE} -- Implementation
 			output.put_new_line
 		end
 
-	write_creation_names (output: IO_MEDIUM) is
+	write_creation_names (output: IO_MEDIUM)
 		do
 			output.put_string ("creation")
 			output.put_new_line
@@ -177,7 +177,7 @@ feature {NONE} -- Implementation
 			output.put_new_line
 		end
 
-	write_feature_groups (output: IO_MEDIUM) is
+	write_feature_groups (output: IO_MEDIUM)
 		do
 			from
 				feature_groups.start
@@ -189,7 +189,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	write_end (output: IO_MEDIUM) is
+	write_end (output: IO_MEDIUM)
 		do
 			output.put_string ("end -- class " + name)
 			output.put_new_line

@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Servlet connector for connecting to standalone servers"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -27,7 +27,7 @@ create
 
 feature -- Initialisation
 
-	make (new_port, new_backlog: INTEGER; document_root, servlet_mapping_prefix: STRING) is
+	make (new_port, new_backlog: INTEGER; document_root, servlet_mapping_prefix: STRING)
 			-- Initialise
 		require
 			document_root_exists: document_root /= Void
@@ -43,7 +43,7 @@ feature -- Initialisation
 	
 feature -- Basic operations
 
-	read_request is
+	read_request
 			-- Read a request from the service. Indicate success of read by
 			-- setting 'last_operation_ok'.
 		local
@@ -102,7 +102,7 @@ feature -- Implementation
 	socket_ok: BOOLEAN
 			-- Was last socket operation successful?
 			
-	receive_request (socket: TCP_SOCKET): STRING is
+	receive_request (socket: TCP_SOCKET): STRING
 			-- Receive request from client
 		require
 			socket_exists: socket /= Void
@@ -145,7 +145,7 @@ feature -- Implementation
 	
 	content_length, end_header_index: INTEGER
 	
-	check_request (buffer: STRING): BOOLEAN is
+	check_request (buffer: STRING): BOOLEAN
 			-- Check request to determine if all headers and body have been read
 		require
 			buffer /= Void
@@ -183,7 +183,7 @@ feature -- Implementation
 			end
 		end
 
-	check_socket_error (socket: ABSTRACT_SOCKET) is
+	check_socket_error (socket: ABSTRACT_SOCKET)
 			-- Check for socket error and print
 		require
 			socket_exists: socket /= Void

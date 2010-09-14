@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Servlet based producer/consumer application"
 	project: "Project Goanna <http://sourceforge.net/projects/goanna>"
 	library: "Servlet API"
@@ -26,7 +26,7 @@ inherit
 
 feature -- Initialization
 
-	default_create is
+	default_create
 			-- Initialise this servlet application by registering all security realms,
 			-- connectors and servlets
 		do
@@ -53,27 +53,27 @@ feature -- Access
 
 feature {NONE} -- Implementation
 
-	register_servlets is
+	register_servlets
 			-- Register all servlets for this application
 		deferred
 		end
 		
-	register_security is
+	register_security
 			-- Register all security realms
 		deferred
 		end
 		
-	register_producers is
+	register_producers
 			-- Register all producers
 		deferred
 		end
 
-	register_consumers is
+	register_consumers
 			-- Register all consumers
 		deferred
 		end
 
-	run is
+	run
 			-- Start the request processor threads and wait for them 
 			-- exit
 		do

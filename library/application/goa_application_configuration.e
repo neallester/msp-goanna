@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Configuration information required for GOA_APPLICATION_SERVER"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2009-12-23 16:16:29 -0800 (Wed, 23 Dec 2009) $"
@@ -18,7 +18,7 @@ inherit
 
 feature -- Page Sequencing
 
-	next_page (processing_result: REQUEST_PROCESSING_RESULT): GOA_DISPLAYABLE_SERVLET is
+	next_page (processing_result: REQUEST_PROCESSING_RESULT): GOA_DISPLAYABLE_SERVLET
 			-- What is the next page to display to the user?
 		require
 			valid_processing_result: processing_result /= Void and then processing_result.was_processed
@@ -31,25 +31,25 @@ feature -- Page Sequencing
 --			not_ok_to_read_write_data: implements_transaction_and_version_access implies not (ok_to_read_data (processing_result) or ok_to_write_data (processing_result))
 		end
 
-	log_directory: STRING is
+	log_directory: STRING
 			-- Interpreted version of internal_log_directory
 		once
 			Result := execution_environment.interpreted_string (internal_log_directory)
 		end
 
-	temp_directory: STRING is
+	temp_directory: STRING
 			-- Interpreted version of internal_temp_directory
 		once
 			Result := execution_environment.interpreted_string (internal_temp_directory)
 		end
 
-	xslt_directory: STRING is
+	xslt_directory: STRING
 			-- Interpreted version of internal_xslt_directory
 		once
 			Result := execution_environment.interpreted_string (internal_xslt_directory)
 		end
 
-	document_root: STRING is
+	document_root: STRING
 			-- Interpreted version of internal_document_root
 		once
 			Result := execution_environment.interpreted_string (internal_document_root)
@@ -57,7 +57,7 @@ feature -- Page Sequencing
 
 feature -- Deferred Features
 
-	internal_data_directory: STRING is
+	internal_data_directory: STRING
 			-- Directory where the log files will be written to; e.g. must exist and be writable
 			-- Include trailing directory separator
 		obsolete
@@ -65,21 +65,21 @@ feature -- Deferred Features
 		deferred
 		end
 
-	internal_log_directory: STRING is
+	internal_log_directory: STRING
 			-- Directory where the log files will be written to; e.g. must exist and be writable
 			-- Include trailing directory separator
 		do
 			Result := internal_data_directory
 		end
 
-	internal_temp_directory: STRING is
+	internal_temp_directory: STRING
 			-- Directory where the temp files will be written to; e.g. must exist and be writable
 			-- Include trailing directory separator
 		do
 			Result := internal_data_directory
 		end
 
-	internal_xslt_directory: STRING is
+	internal_xslt_directory: STRING
 			-- Directory where the xslt translation files are located
 			-- e.g. must exist and contain 'goa_page.xsl' and 'goa_page.frng'
 			-- Include trailing directory separator
@@ -87,20 +87,20 @@ feature -- Deferred Features
 			Result := internal_data_directory
 		end
 
-	internal_document_root: STRING is
+	internal_document_root: STRING
 			-- The document root directory where stand alone server looks for documents
 			-- Not sure what this is used for in a fastcgi application (use an arbitrary string).
 		deferred
 		end
 
-	internal_test_mode: BOOLEAN is
+	internal_test_mode: BOOLEAN
 			-- This configuration should run in "test mode"
 			-- In test mode, page xml data is written to file
 			-- In test mode, the application does not run as a daemon
 		deferred
 		end
 
-	host: STRING is
+	host: STRING
 			-- Host name for server to listen on
 			-- Use 'localhost' to listen only to requests from local machine (domain socket)
 			-- Use IP Address of host running the GOA_APPLICATION_SERVER server if
@@ -110,18 +110,18 @@ feature -- Deferred Features
 		end
 
 
-	port: INTEGER is
+	port: INTEGER
 			-- Server connection port
 		deferred
 		end
 
-	default_virtual_host_lookup_string: STRING is
+	default_virtual_host_lookup_string: STRING
 			-- The default virtual host name to use, if the actual host name
 			-- does not correspond to an existing VIRTUAL_DOMAIN_HOST
 		deferred
 		end
 
-	bring_down_server_servlet_name: STRING is
+	bring_down_server_servlet_name: STRING
 			-- Name of the servlet that will shut down the application server
 			-- Make it long and random for security purposes
 			-- I was having trouble getting Interupt handling to work reliably
@@ -138,7 +138,7 @@ feature -- Attributes
 	use_saxon: BOOLEAN
 			-- Use Saxon as the XSLT processor
 
-	servlet_configuration: GOA_SERVLET_CONFIG is
+	servlet_configuration: GOA_SERVLET_CONFIG
 			-- Goanna configuration
 		once
 			create Result
@@ -146,25 +146,25 @@ feature -- Attributes
 			Result.set_document_root (document_root)
 		end
 
-	test_mode: BOOLEAN is
+	test_mode: BOOLEAN
 			-- Run in test mode
 		do
 			Result := internal_test_mode or over_ride_test_mode
 		end
 
-	bring_down_server_exception_description: STRING is "Shut Down Server"
+	bring_down_server_exception_description: STRING = "Shut Down Server"
 			-- Description of developer exception thrown to bring down the application
 
 	bring_down_server: BOOLEAN
 			-- Should we bring down the application?
 
-	validate_email_domain: BOOLEAN is
+	validate_email_domain: BOOLEAN
 			-- Should we validate the domain of emails submitted by the user
 			-- Program 'dig' must be available in the execution path of the system
 		deferred
 		end
 
-	install_snoop_servlet: BOOLEAN is
+	install_snoop_servlet: BOOLEAN
 			-- Should we install snoop_servlet?  This servlet echos the contents of
 			-- A web request back to the user.  Sometimes useful in debugging.
 			-- Descendents may redefine to True
@@ -174,19 +174,19 @@ feature -- Attributes
 
 feature -- Configuration Setting
 
-	set_use_saxon is
+	set_use_saxon
 			-- Set configuration to use saxon as the XSLT processor
 		do
 			use_saxon := True
 		end
 
-	set_over_ride_test_mode is
+	set_over_ride_test_mode
 			-- Set configuration to run credit cards in test mode
 		do
 			over_ride_test_mode := True
 		end
 
-	set_bring_down_server is
+	set_bring_down_server
 			-- Set bring_down_server to True
 			-- Will result in shut down of application
 		do
@@ -195,9 +195,9 @@ feature -- Configuration Setting
 
 feature -- Constants
 
-	session_status_attribute_name: STRING is "SESSION_STATUS"
+	session_status_attribute_name: STRING = "SESSION_STATUS"
 
-	parameter_separator: CHARACTER is ':'
+	parameter_separator: CHARACTER = ':'
 
 feature -- File Names
 
@@ -221,19 +221,19 @@ feature -- File Names
 
 feature -- Transformation
 
-	java_binary_location: STRING is
+	java_binary_location: STRING
 			-- file name of the java VM; include full path if not in execution path (e.g. /usr/java/j2re1.5.2_04/bin/java)
 		once
 			Result := execution_environment.interpreted_string ("$JAVA")
 		end
 
-	saxon_jar_file_location: STRING is
+	saxon_jar_file_location: STRING
 			-- Full path and file name to the saxon XSLT transformation jar file (.e.g. /opt/saxon/saxon8.jar)
 		once
 			Result := "/opt/saxon/saxon8.jar"
 		end
 
-	validate_xml: BOOLEAN is
+	validate_xml: BOOLEAN
 			-- Should we validate xml generated by GOA_XML_DOCUMENT objects
 			-- If yes, jing ( http://www.thaiopensource.com/relaxng.jing.html ) must
 			-- be installed and jing_invocation set
@@ -241,7 +241,7 @@ feature -- Transformation
 			Result := False
 		end
 
-	jing_invocation: STRING is
+	jing_invocation: STRING
 			-- Invocation string on this system, e.g.
 			-- Result := "$JAVA_HOME/bin/java -jar /usr/local/share/jing/jing.jar"
 			-- Or, if jing is in the execution path, simply
@@ -252,13 +252,13 @@ feature -- Transformation
 
 feature -- Logging
 
-	log_file_name: STRING is
+	log_file_name: STRING
 			-- Name of file used to log servlet activity
 		once
 			Result := log_directory + "application.log"
 		end
 
-	illegal_requests_file_name: STRING is
+	illegal_requests_file_name: STRING
 			-- Name of file used to log full text of illegal requests
 		once
 			Result := log_directory + "illegal_requests.log"
@@ -266,11 +266,11 @@ feature -- Logging
 
 feature -- Servlet Names
 
-	snoop_servlet_name: STRING is "snoop.htm"
+	snoop_servlet_name: STRING = "snoop.htm"
 
 feature -- Servlet Names
 
-	fast_cgi_directory: STRING is
+	fast_cgi_directory: STRING
 			-- The directory configured to serve fast_cgi requests
 			-- Must include two directory names with leading and
 			-- Trailing slashes, e.g.
@@ -282,11 +282,11 @@ feature -- Servlet Names
 
 feature -- Logging
 
-	application_log_category: STRING is "app"
+	application_log_category: STRING = "app"
 
-	application_error_log_category: STRING is "error"
+	application_error_log_category: STRING = "error"
 
-	application_security_log_category: STRING is "security"
+	application_security_log_category: STRING = "security"
 
 invariant
 

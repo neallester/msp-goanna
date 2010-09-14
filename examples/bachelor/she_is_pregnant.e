@@ -1,4 +1,4 @@
-indexing
+note
 	description : "Is the user's girlfriend pregnant?"
 	author: "Neal L. Lester (neal@3dsafety.com)"
 	date: "$ May 14, 2001: $"
@@ -15,11 +15,11 @@ create
 
 feature
 
-	question : STRING is
+	question : STRING
 		do
 			result := text.she_is_pregnant
 		end
 
-	title : STRING is ""
+	title : STRING = ""
 
 end -- class SHE_IS_PREGNANT

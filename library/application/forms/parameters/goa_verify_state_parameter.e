@@ -1,4 +1,4 @@
-indexing
+note
 	description: "Verify a current state matches state when html form was generated"
 	author: "Neal L Lester <neallester@users.sourceforge.net>"
 	date: "$Date: 2006-07-27 22:10:14 -0700 (Thu, 27 Jul 2006) $"
@@ -24,7 +24,7 @@ inherit
 
 feature
 	
-	process (processing_result: PARAMETER_PROCESSING_RESULT) is
+	process (processing_result: PARAMETER_PROCESSING_RESULT)
 			-- Process the paramter
 		local
 			value, message: STRING
@@ -44,7 +44,7 @@ feature
 			commit (processing_result.request_processing_result)
 		end		
 		
-	bad_value_message (processing_result: REQUEST_PROCESSING_RESULT): STRING is
+	bad_value_message (processing_result: REQUEST_PROCESSING_RESULT): STRING
 			-- The message to add to the SESSION_STATUS.user_message if current_value in request form doesn't
 			-- match current_value on the server
 		require
@@ -54,7 +54,7 @@ feature
 			valid_result: Result /= Void
 		end
 		
-	expected_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING is
+	expected_value (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): STRING
 			-- The value of this parameter that is expected in the response from the user
 		do
 			Result := current_value (processing_result, suffix)

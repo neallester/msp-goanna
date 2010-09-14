@@ -1,4 +1,4 @@
-indexing
+note
 	description:
 		"splits a string into tokens %
 		%string consists of tokens and delimiters"
@@ -11,12 +11,12 @@ indexing
 
 class GOA_STRING_TOKENIZER
 
-creation
+create
 	make, make_default, make_exclude_delimiters, make_include_delimiters
 
 feature -- creation
 
-	make_default (str_: STRING)is
+	make_default (str_: STRING)
 			-- Extract tokens, excluding default delimiters, namely "%N%R%T"
 		require
 			string_exists: str_ /= Void
@@ -24,7 +24,7 @@ feature -- creation
 			make (str_, "%R%N%T")
 		end
 
-	make, make_exclude_delimiters (str_, delimiters_: STRING) is
+	make, make_exclude_delimiters (str_, delimiters_: STRING)
 			-- extract tokens, excluding delimiters
 		require
 			string_exists: str_ /= Void
@@ -37,7 +37,7 @@ feature -- creation
 			start
 		end
 
-	make_include_delimiters (str_, delimiters_: STRING) is
+	make_include_delimiters (str_, delimiters_: STRING)
 			-- extract tokens, including delimiters
 		require
 			string_exists: str_ /= Void
@@ -52,37 +52,37 @@ feature -- creation
 
 feature -- change
 
-	start is
+	start
 		do
 			idx := 1
 		end
 
-	forth is
+	forth
 		do
 			idx := idx + 1
 		end
 
 feature -- status
 
-	empty: BOOLEAN is
+	empty: BOOLEAN
 			-- are there any tokens?
 		do
 			Result := (count = 0)
 		end
 
-	off: BOOLEAN is
+	off: BOOLEAN
 		do
 			Result := (idx > count)
 		end
 
-	item: STRING is
+	item: STRING
 		require
 			active_item: not off and not empty
 		do
 			Result := tokens @ idx
 		end
 
-	i_th, infix "@" (ix: INTEGER): STRING is
+	i_th, infix "@" (ix: INTEGER): STRING
 			-- the i_th token
 		require
 			valid_index: (ix >= 1) and (ix <= count)
@@ -99,7 +99,7 @@ feature {NONE} -- implementation
 	idx: INTEGER
 		-- index of current token
 
-	next_start (start_ix: INTEGER): INTEGER is
+	next_start (start_ix: INTEGER): INTEGER
 		do
 			from
 				Result := start_ix
@@ -110,7 +110,7 @@ feature {NONE} -- implementation
 			end
 		end
 
-	next_finish (start_ix:  INTEGER): INTEGER is
+	next_finish (start_ix:  INTEGER): INTEGER
 		do
 			from
 				Result := start_ix
@@ -122,7 +122,7 @@ feature {NONE} -- implementation
 			Result := Result - 1
 		end
 
-	extract_tokens_exclude is
+	extract_tokens_exclude
 			-- extract the tokens excluding delimiters
 		local
 			ll: DS_LINKED_LIST [STRING]
@@ -142,7 +142,7 @@ feature {NONE} -- implementation
 			to_array (ll)
 		end
 
-	extract_tokens_include is
+	extract_tokens_include
 			-- extract the tokens including delimiters
 		local
 			ll: DS_LINKED_LIST [STRING]
@@ -170,7 +170,7 @@ feature {NONE} -- implementation
 			to_array (ll)
 		end
 
-	to_array (ll: DS_LINKED_LIST [STRING]) is
+	to_array (ll: DS_LINKED_LIST [STRING])
 			-- convert linked list to array
 		local
 			ix : INTEGER
