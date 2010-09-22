@@ -64,6 +64,12 @@ feature -- Attributes
 	receive_secure: BOOLEAN
 		-- This servlet should receive information from clients via SSL
 
+
+	get_session_status (request: MSP_FAST_CGI_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE): SESSION_STATUS
+		do
+			result := request.session
+		end
+
 feature -- Parameter Queries
 
 	has_mandatory_parameter (the_parameter: STRING): BOOLEAN
@@ -104,7 +110,7 @@ feature -- Parameter Queries
 
 feature -- Request Processing
 
-	do_get (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE)
+	do_get (request: MSP_FAST_CGI_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE)
 			-- Called to allow the servlet to handle a GET request.
 			-- Verify form elements in request conform to semantics required by this servlet
 			-- Process each request parameter if request is valid
@@ -367,11 +373,6 @@ feature -- Request Processing
 			end
 		end
 
-	get_session_status (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE): SESSION_STATUS
-		do
-			Result ?= request.session.get_attribute (configuration.session_status_attribute_name)
-		end
-
 	exception_html (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE): STRING
 		require
 			valid_request: request /= Void
@@ -399,7 +400,7 @@ feature -- Request Processing
 			Result := True
 		end
 
-	do_post (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE)
+	do_post (request: MSP_FAST_CGI_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE)
 			-- Called to allow the servlet to handle a POST request.
 		do
 			do_get (request, response)

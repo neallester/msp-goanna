@@ -105,14 +105,15 @@ feature -- Status setting
 					debug ("session_management")
 						print ("Creating session as we don't have the cookie value%R%N")
 					end
-					create_new_session (resp)
+					session := create_new_session (resp)
 				end
 			else
 				debug ("session_management")
 					print ("Creating session as we can't find the cookie%R%N")
 				end
-				create_new_session (resp)
+				session := create_new_session (resp)
 			end
+			req.set_session (session)
 		end
 
 	terminate is
@@ -148,18 +149,17 @@ feature {NONE} -- Implementation
 	sessions: DS_HASH_TABLE [like session_anchor, STRING]
 			-- Active sessions.
 
-	create_new_session (resp: GOA_HTTP_SERVLET_RESPONSE) is
+	create_new_session (resp: GOA_HTTP_SERVLET_RESPONSE): like session_anchor is
 			-- Create a new session and set the session cookie
 		local
-			session: like session_anchor
 			cookie: GOA_COOKIE
 		do
 			last_session_id := generate_session_id
-			create session.make (last_session_id)
-			sessions.force (session, last_session_id)
+			create Result.make (last_session_id)
+			sessions.force (Result, last_session_id)
 			create cookie.make (Session_cookie_name, last_session_id)
 			resp.add_cookie (cookie)
-			notify_listeners (session, Created_code)
+			notify_listeners (Result, Created_code)
 		end
 
 	generate_session_id: STRING is
@@ -271,32 +271,6 @@ feature  -- Listeners
 			Result := listener_list /= Void and then listener_list.has (listener)
 		end
 
-feature {GOA_HTTP_SESSION} -- Attribute Binding Event Notification
-
-	attribute_bound_notification (session: like session_anchor; name: STRING; a_attribute: ANY) is
-			-- receive notification from session that an attribute was bound
-		require
-			session_exists: session /= Void
-			name_exists: name /= Void
-			a_attribute_exists: a_attribute /= Void
-		do
-			event_attribute_name := name
-			event_attribute := a_attribute
-			notify_listeners (session, Attribute_bound_code)
-		end
-
-	attribute_unbound_notification (session: like session_anchor; name: STRING; a_attribute: ANY) is
-			-- Receive notification from session that an attribute was unbound
-		require
-			session_exists: session /= Void
-			name_exists: name /= Void
-			a_attribute_exists: a_attribute /= Void
-		do
-			event_attribute_name := name
-			event_attribute := a_attribute
-			notify_listeners (session, Attribute_unbound_code)
-		end
-
 feature {NONE} -- Listener implementation
 
 	listener_list: DS_LINKED_LIST [GOA_HTTP_SESSION_EVENT_LISTENER]
@@ -308,16 +282,12 @@ feature {NONE} -- Listener implementation
 			-- Event code
 	Created_code: 			INTEGER is 3
 			-- Event code
-	Attribute_bound_code: 	INTEGER is 4
-			-- Event code
-	Attribute_unbound_code: INTEGER is 5
-			-- Event code
 
 	valid_event_code (arg_event_code: INTEGER): BOOLEAN is
 			-- Is the supplied event code valid?
 		do
 			inspect arg_event_code
-				when Expiring_code..Attribute_unbound_code then
+				when Expiring_code..Created_code then
 					Result := True
 				else
 					Result := False
@@ -329,8 +299,6 @@ feature {NONE} -- Listener implementation
 		require
 			session_exists: session /= Void
 			event_code_valid: valid_event_code(event_code)
-			event_attribute_name_set: (equal (event_code, Attribute_bound_code) or equal (event_code, Attribute_unbound_code)) implies event_attribute_name /= Void
-			event_attribute_set: (equal (event_code, Attribute_bound_code) or equal (event_code, Attribute_unbound_code)) implies event_attribute /= Void
 		local
 			listener_cursor: DS_LINKED_LIST_CURSOR [GOA_HTTP_SESSION_EVENT_LISTENER]
 		do
@@ -342,10 +310,6 @@ feature {NONE} -- Listener implementation
 					listener_cursor.after
 				loop
 					inspect event_code
-					when attribute_bound_code then
-						listener_cursor.item.attribute_bound (session, event_attribute_name, event_attribute)
-					when attribute_unbound_code then
-						listener_cursor.item.attribute_unbound (session, event_attribute_name, event_attribute)
 					when expiring_code then
 						listener_cursor.item.expiring (session)
 					when expired_code then
@@ -356,17 +320,6 @@ feature {NONE} -- Listener implementation
 					listener_cursor.forth
 				end
 			end
-			event_attribute_name := void
-			event_attribute := void
-		ensure
-			event_attribute_name_void: event_attribute_name = void
-			event_attribute_void: event_attribute = void
 		end
-
-	event_attribute_name: STRING
-			-- Set if notifying of an attribute_bound/unbound event; otherwise void
-
-	event_attribute: ANY
-			-- Set if notifying of an attribute_bound/unbound event; otherwise void
 
 end -- class GOA_HTTP_SESSION_MANAGER

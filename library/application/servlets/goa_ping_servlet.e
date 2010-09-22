@@ -23,7 +23,7 @@ feature
 
 	name: STRING = "ping.htm"
 
-	do_get (request: GOA_HTTP_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE)
+	do_get (request: MSP_FAST_CGI_SERVLET_REQUEST; response: GOA_HTTP_SERVLET_RESPONSE)
 		do
 			response.set_content_type ("text/html")
 			response.set_status (sc_ok)

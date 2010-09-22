@@ -49,6 +49,16 @@ feature -- Access
 			result_exists: Result /= Void
 		end
 
+feature -- Set Session
+
+	set_session (new_session: like session) is
+		do
+			session := new_session
+		ensure
+			session_updated: session = new_session
+		end
+
+
 feature -- Status report
 
 	has_header (name: STRING): BOOLEAN
@@ -72,12 +82,6 @@ feature -- Status report
 		end
 
 	session: GOA_HTTP_SESSION
-			-- Return the session associated with this request. Create a new session
-			-- if one does not already exist.
-		deferred
-		ensure
-			session_exists: Result /= Void
-		end
 
 	method: STRING
 			-- The name of the HTTP method with which this request was made, for

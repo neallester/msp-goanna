@@ -50,7 +50,7 @@ create
 
 feature {NONE} -- Initialisation
 
-	make (resp: GOA_CGI_SERVLET_RESPONSE)
+	make (new_session: like session; resp: GOA_CGI_SERVLET_RESPONSE)
 			-- Create a new cgi servlet request wrapper
 		require
 			response_exists: resp /= Void
@@ -58,6 +58,7 @@ feature {NONE} -- Initialisation
 			internal_response := resp
 			create parameters.make (5)
 			parse_parameters
+			session := new_session
 		end
 
 feature -- Access
@@ -311,17 +312,6 @@ feature -- Status report
 				parse_cookie_header
 			end
 			Result := internal_cookies
-		end
-
-	session: GOA_HTTP_SESSION
-			-- Return the session associated with this request. Create a new session
-			-- if one does not already exist.
-		do
-			if session_id = Void then
-				Session_manager.bind_session (Current, internal_response)
-				session_id := Session_manager.last_session_id
-			end
-			Result := Session_manager.get_session (session_id)
 		end
 
 	method: STRING

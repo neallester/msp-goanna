@@ -12,10 +12,10 @@ class GOA_SHARED_HTTP_SESSION_MANAGER
 
 feature -- Access
 
-	Session_manager: GOA_HTTP_SESSION_MANAGER
+--	Session_manager: GOA_HTTP_SESSION_MANAGER
 			-- Singleton access to a session manager
-		once
-			create Result.make
-		end
-	
+--		once
+--			create Result.make
+--		end
+
 end -- class GOA_SHARED_HTTP_SESSION_MANAGER
