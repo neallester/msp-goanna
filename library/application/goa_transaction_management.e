@@ -53,6 +53,26 @@ feature -- Access to data structures
 		deferred
 		end
 
+	conditional_start_version_access (processing_result: GOA_REQUEST_PROCESSING_RESULT)
+			-- Start a version access if access is not open
+		do
+			if not ok_to_read_data (processing_result) then
+				start_version_access (processing_result)
+				conditional_access_is_open := True
+			end
+		end
+
+	conditional_end_version_access (processing_result: GOA_REQUEST_PROCESSING_RESULT)
+			-- End a version access if conditional access was started
+		do
+			if conditional_access_is_open then
+				end_version_access (processing_result)
+				conditional_access_is_open := False
+			end
+		end
+
+	conditional_access_is_open: BOOLEAN
+
 	safe_end_version_access (processing_result: GOA_REQUEST_PROCESSING_RESULT)
 			-- End state where information may be read from data structures
 			-- Swallow any exceptions which occur

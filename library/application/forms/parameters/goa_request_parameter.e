@@ -47,7 +47,9 @@ feature -- Queries
 	is_suffix_valid (processing_result: REQUEST_PROCESSING_RESULT; suffix: INTEGER): BOOLEAN
 			-- Is suffix a valid value.  Default is suffix = 0 (no suffix allowed)
 		do
+			conditional_start_version_access (processing_result)
 			Result := minimum_suffix (processing_result) <= suffix and suffix <= maximum_suffix (processing_result)
+			conditional_end_version_access (processing_result)
 		end
 
 	minimum_suffix (processing_result: REQUEST_PROCESSING_RESULT): INTEGER
