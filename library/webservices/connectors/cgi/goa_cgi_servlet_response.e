@@ -151,22 +151,29 @@ feature -- Basic operations
 			-- set. Standard headers are set when this object is instantiated therefore you can call
 			-- this routine directly after creating the response object.
 			-- This routine is automatically called by the service routine of HTTP_SERVLET.
+		local
+			exception_occurred: BOOLEAN
 		do
-			if content_buffer = Void then
-				content_buffer := ""
+			if not exception_occurred then
+				if content_buffer = Void then
+					content_buffer := ""
+				end
+				if not is_committed then
+					set_content_length (content_buffer.count)
+					write_headers
+					is_committed := True
+				end
+				debug ("thread_control")
+					io.put_string ("Buffer count: " + content_buffer.count.out + "%N")
+					--io.put_string (content_buffer + "%N%N")
+				end
+				if not content_buffer.is_empty then
+					write (content_buffer)
+				end
 			end
-			if not is_committed then
-				set_content_length (content_buffer.count)
-				write_headers
-				is_committed := True
-			end
-			debug ("thread_control")
-				io.put_string ("Buffer count: " + content_buffer.count.out + "%N")
-				--io.put_string (content_buffer + "%N%N")
-			end
-			if not content_buffer.is_empty then
-				write (content_buffer)
-			end
+		rescue
+			exception_occurred := True
+			Retry
 		end
 
 	reset
