@@ -55,6 +55,7 @@ feature -- Basic operations
 			if not ending_listening and not field_exception then
 				error (Servlet_app_log_category, "Uncaught exception, code: " + Exceptions.exception.out + ", retry not requested, so exiting...")
 			else
+				error (Servlet_app_log_category, Exceptions.exception_trace)
 				retry
 			end
 		end
