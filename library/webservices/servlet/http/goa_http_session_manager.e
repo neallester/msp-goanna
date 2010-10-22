@@ -26,7 +26,7 @@ feature -- Initialization
 	make is
 			-- Create a new session manager
 		do
-			create sessions.make (10)
+			create sessions.make_equal (10)
 		end
 
 feature -- Access

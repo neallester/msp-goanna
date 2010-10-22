@@ -185,7 +185,7 @@ feature -- Output
 					saxon_input_file.put_string (as_xml)
 					saxon_input_file.close
 					command_text := configuration.java_binary_location + " -jar " + configuration.saxon_jar_file_location + " -s " + saxon_input_file_name + " -s " + saxon_input_file_name + " -xsl " + transform_file_name + " > " + saxon_output_file_name
-					io.put_string (command_text + "%N")
+					-- io.put_string (command_text + "%N")
 					create shell_command.make (command_text)
 					shell_command.execute
 					saxon_output_file := file_system.new_input_file (saxon_output_file_name)

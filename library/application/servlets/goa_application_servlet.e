@@ -13,7 +13,7 @@ inherit
 
 	GOA_HTTP_SERVLET
 		redefine
-			do_get, do_post, log_service_error, service, log_write_error
+			do_get, do_post, log_service_error, log_write_error
 		end
 	GOA_SHARED_APPLICATION_CONFIGURATION
 	GOA_TEXT_PROCESSING_FACILITIES
@@ -226,7 +226,7 @@ feature -- Request Processing
 					all_expected_parameters_are_present := equal (expected_parameters.count, expected_parameters_in_request.count)
 					if not all_mandatory_parameters_are_present then
 						log_hierarchy.logger (configuration.application_security_log_category).info ("Missing Mandatory Parameter(s)")
-						if configuration.test_mode then
+						debug ("parameters")
 							io.put_string ("Missing Mandatory Parameters:%N")
 							from
 								mandatory_parameters.start
@@ -242,7 +242,7 @@ feature -- Request Processing
 					end
 					if not all_expected_parameters_are_present then
 						log_hierarchy.logger (configuration.application_security_log_category).info ("Missing Expected Parameter")
-						if configuration.test_mode then
+						debug ("parameters")
 							io.put_string ("Missing Expected Parameters:%N")
 							from
 								expected_parameters.start
@@ -618,17 +618,6 @@ feature -- Logging Facilities
 			-- Was the last developer exception a signal to shutdown the application
 		do
 			Result := exceptions.is_developer_exception_of_name (configuration.bring_down_server_exception_description)
-		end
-
-	service (req: GOA_HTTP_SERVLET_REQUEST; resp: GOA_HTTP_SERVLET_RESPONSE)
-			-- Handle a request by dispatching it to the correct method handler.
-		local
-			socket_error: STRING
-		do
-			precursor (req, resp)
-			if configuration.bring_down_server then
-				exceptions.raise (configuration.bring_down_server_exception_description)
-			end
 		end
 
 feature {NONE} -- Creation
