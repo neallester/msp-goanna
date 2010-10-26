@@ -328,7 +328,7 @@ feature -- Request Processing
 					-- Redirect client to an SSL page so they may obtain the response securely
 					processing_result.session_status.set_secure_page (servlet)
 --					io.put_string ("Redirect to: " +  + "%N")
-					response.send_redirect (secure_redirection_servlet.hyperlink (processing_result, "Dummy Text").url)
+					response.set_redirect_location (secure_redirection_servlet.hyperlink (processing_result, "Dummy Text").url)
 				else
 					servlet.send_response (processing_result)
 				end

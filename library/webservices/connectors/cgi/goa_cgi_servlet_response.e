@@ -249,6 +249,13 @@ feature -- Basic operations
 			content_buffer.append_string (data)
 		end
 
+	content_buffer_length: INTEGER
+		do
+			if content_buffer /= Void then
+				Result := content_buffer.count
+			end
+		end
+
 feature {GOA_APPLICATION_SERVLET}
 
 	content_buffer: STRING

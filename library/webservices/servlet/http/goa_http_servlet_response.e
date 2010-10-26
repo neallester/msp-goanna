@@ -18,16 +18,16 @@ inherit
 		export
 			{NONE} all
 		end
-		
+
 feature -- Access
 
 	contains_header (name: STRING): BOOLEAN
 			-- Has the header named 'name' already been set?
 		require
 			name_exists: name /= Void
-		deferred			
+		deferred
 		end
-	
+
 feature -- Status setting
 
 	add_cookie (cookie: GOA_COOKIE)
@@ -37,7 +37,7 @@ feature -- Status setting
 			cookie_exists: cookie /= Void
 		deferred
 		end
-	
+
 	set_header (name, value: STRING)
 			-- Set a response header with the given name and value. If the
 			-- header already exists, the new value overwrites the previous
@@ -49,7 +49,7 @@ feature -- Status setting
 		ensure
 			header_set: contains_header (name)
 		end
-	
+
 	add_header (name, value: STRING)
 			-- Adds a response header with the given name and value. This
 			-- method allows response headers to have multiple values.
@@ -60,20 +60,20 @@ feature -- Status setting
 		ensure
 			header_set: contains_header (name)
 		end
-	
+
 	set_status (sc: INTEGER)
-			-- Set the status code for this response. This method is used to 
+			-- Set the status code for this response. This method is used to
 			-- set the return status code when there is no error (for example,
 			-- for the status codes Sc_ok or Sc_moved_temporarily). If there
 			-- is an error, the 'send_error' method should be used instead.
 		deferred
 		end
-	
+
 	set_status_message (sc: INTEGER; message: STRING)
 			-- Set the status code to 'sc' with 'message' as the text message to
 			-- send to the client.	
 		require
-			message_exists: message /= Void		
+			message_exists: message /= Void
 		deferred
 		end
 
@@ -81,7 +81,7 @@ feature -- Basic operations
 
 	send_error_msg (sc: INTEGER; msg: STRING)
 			-- Send an error response to the client using the specified
-			-- status code and descriptive message. The server generally 
+			-- status code and descriptive message. The server generally
 			-- creates the response to look like a normal server error page.
 		require
 			msg_exists: msg /= Void
@@ -90,18 +90,18 @@ feature -- Basic operations
 		ensure
 			committed: is_committed
 		end
-	
+
 	send_error (sc: INTEGER)
 			-- Send an error response to the client using the specified
-			-- status code. The server generally creates the response to 
+			-- status code. The server generally creates the response to
 			-- look like a normal server error page.
 		require
 			not_committed: not is_committed
 		deferred
 		ensure
 			committed: is_committed
-		end	
-		
+		end
+
 	send_redirect (location: STRING)
 			-- Send a temporary redirect response to the client using the
 			-- specified redirect location URL.
@@ -112,16 +112,34 @@ feature -- Basic operations
 		ensure
 			committed: is_committed
 		end
-	
+
 	send (data: STRING)
-			-- Send 'data' to the client. The data is buffered for writing. It will not be 
-			-- physically sent to the client until 'flush_buffer' is called. 
+			-- Send 'data' to the client. The data is buffered for writing. It will not be
+			-- physically sent to the client until 'flush_buffer' is called.
 			-- You must set the content_length before sending content data.
 		require
 			data_exists: data /= Void
 --			content_length_set: contains_header ("Content-Length")
 		deferred
 		end
-			
-	
+
+	redirect_location: STRING
+			-- Preset redirect location
+
+	set_redirect_location (new_redirect_location: STRING)
+			-- Set a location for a redirect to be sent later
+		do
+			redirect_location := new_redirect_location
+		ensure
+			redirect_location_updated: redirect_location = new_redirect_location
+		end
+
+	send_preset_redirect
+			-- Send redirect to redirect_location
+		require
+			valid_redirect_location: redirect_location /= Void
+		do
+			send_redirect (redirect_location)
+		end
+
 end -- class GOA_HTTP_SERVLET_RESPONSE
