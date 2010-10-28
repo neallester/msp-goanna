@@ -147,6 +147,7 @@ feature -- Request Processing
 				safe_end_version_access (processing_result)
 			end
 			if not failed_once then
+				debugging (configuration.application_log_category, "GOA_APPLICATION_SERVLET.do_get: if not failed_once")
 				log_hierarchy.logger (configuration.application_log_category).info ("Request: " + name + client_info (request))
 --				io.put_string ("Request: " + name + client_info (request) + "%N")
 
@@ -328,8 +329,10 @@ feature -- Request Processing
 					-- Redirect client to an SSL page so they may obtain the response securely
 					processing_result.session_status.set_secure_page (servlet)
 --					io.put_string ("Redirect to: " +  + "%N")
+					debugging (configuration.application_log_category, "redirecting to secure page for servlet: " + servlet.generating_type)
 					response.set_redirect_location (secure_redirection_servlet.hyperlink (processing_result, "Dummy Text").url)
 				else
+					debugging (configuration.application_log_category, "servlet: " + servlet.generating_type)
 					servlet.send_response (processing_result)
 				end
 				session_status.set_has_served_a_page
@@ -338,25 +341,7 @@ feature -- Request Processing
 				end
 			end
 		rescue
-			if 	exception_is_shutdown_signal then
---				processing_result.response.send ("Server Will Be Shut Down</br>")
---				processing_result.response.flush_buffer
-			elseif exceptions.is_developer_exception_of_name (connection_reset_by_peer_message) then
-				cgi_response ?= response
-				if cgi_response /= Void then
-					create connection_reset_output_file.make (configuration.internal_log_directory + "connection_reset_output.txt")
-					connection_reset_output_file.open_write
-					if cgi_response.content_buffer /= Void then
-						connection_reset_output_file.put_string (cgi_response.content_buffer)
-					else
-						connection_reset_output_file.put_string ("GOA_CGI_SERVLET_RESPONSE.content_buffer was Void%N")
-					end
-					connection_reset_output_file.close
-				end
-			elseif 	exceptions.is_developer_exception_of_name (broken_pipe_exception_message) or not
-					field_exception (request, response) then
-				-- Do nothing
-			elseif not failed_once then
+			if not failed_once then
 				log_hierarchy.logger (configuration.application_log_category).info (generator + " Failed Once:%N" + exceptions.exception_trace)
 				do_get_exception_occurred (request, response)
 				failed_once := True
@@ -367,7 +352,6 @@ feature -- Request Processing
 				else
 					log_hierarchy.logger (configuration.application_log_category).info (generator + " Failed Twice: " + exceptions.exception.out)
 				end
-				log_hierarchy.logger (configuration.application_log_category).info (generator + " Failed Twice")
 				failed_twice := True
 				retry
 			end
