@@ -18,11 +18,13 @@ inherit
 
 feature -- Page Sequencing
 
+	selecting_next_page: BOOLEAN
+
 	next_page (processing_result: REQUEST_PROCESSING_RESULT): GOA_DISPLAYABLE_SERVLET
 			-- What is the next page to display to the user?
 		require
 			valid_processing_result: processing_result /= Void and then processing_result.was_processed
-			ok_to_write_data: implements_transaction_and_version_access implies ok_to_write_data (processing_result)
+			ok_to_write_data: (not selecting_next_page) and implements_transaction_and_version_access implies ok_to_write_data (processing_result)
 		deferred
 		ensure
 			valid_result: Result /= Void
