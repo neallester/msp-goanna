@@ -64,29 +64,49 @@ feature -- FGCI interface
 		local
 			service: EPX_SERVICE
 			host_port: EPX_HOST_PORT
+			l_has_ended_listening: BOOLEAN
+			l_retry_count: INTEGER
 		do
-			create service.make_from_port (svr_port, "tcp")
-			create host_port.make (host, service)
-			if srv_socket /= Void then
-				srv_socket.close
+			if unable_to_listen and not l_has_ended_listening then
+				l_has_ended_listening := True
+				end_listening
+			elseif not unable_to_listen then
+				create service.make_from_port (svr_port, "tcp")
+				create host_port.make (host, service)
+				if srv_socket /= Void then
+					srv_socket.close
+				end
+				create srv_socket.listen_by_address (host_port)
+				request := Void
+				srv_socket.errno.clear_all
 			end
-			create srv_socket.listen_by_address (host_port)
-			request := Void
-			srv_socket.errno.clear_all
 		rescue
-			unable_to_listen := True
-			end_listening
+			l_retry_count := l_retry_count + 1
+			if l_retry_count > 5 then
+				unable_to_listen := True
+			else
+				ise_execution_environment.sleep (10000000)
+			end
+			Retry
 		end
+
+	ise_execution_environment: expanded EXECUTION_ENVIRONMENT
+			-- Access to `sleep'
 
 	unable_to_listen: BOOLEAN
 		-- True if the application is unable to listen on host_port
 
 	end_listening
 			-- Take down socket used to listen for requests from the server
+		local
+			l_exception_occurred: BOOLEAN
 		do
-			if srv_socket /= Void and then srv_socket.is_owner and then srv_socket.is_open then
+			if srv_socket /= Void and then srv_socket.is_owner and then srv_socket.is_open and then not l_exception_occurred then
 				srv_socket.close
 			end
+		rescue
+			l_exception_occurred := True
+			Retry
 		end
 
 	finish
